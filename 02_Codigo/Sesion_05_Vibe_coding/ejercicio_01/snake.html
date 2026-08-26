@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snake</title>
+  <style>
+    :root {
+      --fondo: #1a1a2e;
+      --tablero: #16213e;
+      --serpiente: #4ecca3;
+      --cabeza: #7efcd4;
+      --comida: #e94560;
+      --texto: #eaeaea;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--fondo);
+      color: var(--texto);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      gap: 16px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 4px;
+      color: var(--serpiente);
+    }
+
+    .marcadores {
+      display: flex;
+      gap: 32px;
+      font-size: 1.1rem;
+    }
+
+    canvas {
+      background-color: var(--tablero);
+      border: 3px solid var(--serpiente);
+      border-radius: 8px;
+    }
+
+    .instrucciones {
+      font-size: 0.9rem;
+      color: #9a9ab0;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      visibility: hidden;
+    }
+
+    .overlay.visible {
+      visibility: visible;
+    }
+
+    .overlay h2 {
+      font-size: 2.5rem;
+      color: var(--comida);
+    }
+
+    .overlay p {
+      font-size: 1.2rem;
+    }
+
+    .overlay button {
+      background-color: var(--serpiente);
+      color: var(--fondo);
+      border: none;
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .overlay button:hover {
+      background-color: var(--cabeza);
+    }
+  </style>
+</head>
+<body>
+  <h1>SNAKE</h1>
+  <div class="marcadores">
+    <span>Puntos: <strong id="puntos">0</strong></span>
+    <span>Récord: <strong id="record">0</strong></span>
+  </div>
+  <canvas id="tablero" width="400" height="400"></canvas>
+  <p class="instrucciones">
+    Usa las flechas del teclado o WASD para moverte.<br>
+    Presiona la barra espaciadora para pausar.
+  </p>
+
+  <div class="overlay visible" id="overlayInicio">
+    <h2 style="color: var(--serpiente);">SNAKE</h2>
+    <p>Come la fruta y no choques contra ti mismo.</p>
+    <button id="btnIniciar">Jugar</button>
+  </div>
+
+  <div class="overlay" id="overlayFin">
+    <h2>Fin del juego</h2>
+    <p>Puntuación: <strong id="puntosFinales">0</strong></p>
+    <button id="btnReiniciar">Volver a jugar</button>
+  </div>
+
+  <script>
+    // --- Configuración del juego ---
+    const TAM_CELDA = 20;              // tamaño de cada celda en píxeles
+    const CELDAS = 20;                 // tablero de 20 x 20 celdas
+    const VELOCIDAD_INICIAL = 150;     // milisegundos entre movimientos
+    const VELOCIDAD_MINIMA = 60;       // tope de rapidez
+    const ACELERACION = 4;             // ms que se restan por fruta comida
+
+    const canvas = document.getElementById("tablero");
+    const ctx = canvas.getContext("2d");
+
+    const spanPuntos = document.getElementById("puntos");
+    const spanRecord = document.getElementById("record");
+    const spanPuntosFinales = document.getElementById("puntosFinales");
+    const overlayInicio = document.getElementById("overlayInicio");
+    const overlayFin = document.getElementById("overlayFin");
+
+    // --- Estado del juego ---
+    let serpiente;        // arreglo de segmentos {x, y}; el primero es la cabeza
+    let direccion;        // dirección actual {x, y}
+    let direccionPendiente; // siguiente dirección (evita giros de 180° en un mismo tic)
+    let comida;           // posición de la fruta {x, y}
+    let puntos;
+    let velocidad;
+    let idIntervalo = null;
+    let enPausa = false;
+    let jugando = false;
+
+    // El récord se conserva entre partidas dentro de la misma sesión del navegador
+    let record = 0;
+    try {
+      record = parseInt(localStorage.getItem("snake_record")) || 0;
+    } catch (e) {
+      record = 0;
+    }
+    spanRecord.textContent = record;
+
+    function reiniciarEstado() {
+      serpiente = [
+        { x: 10, y: 10 },
+        { x: 9, y: 10 },
+        { x: 8, y: 10 }
+      ];
+      direccion = { x: 1, y: 0 };
+      direccionPendiente = { x: 1, y: 0 };
+      puntos = 0;
+      velocidad = VELOCIDAD_INICIAL;
+      enPausa = false;
+      spanPuntos.textContent = puntos;
+      colocarComida();
+    }
+
+    function colocarComida() {
+      // Busca una celda libre al azar (que no esté ocupada por la serpiente)
+      let celdaLibre = false;
+      while (!celdaLibre) {
+        comida = {
+          x: Math.floor(Math.random() * CELDAS),
+          y: Math.floor(Math.random() * CELDAS)
+        };
+        celdaLibre = !serpiente.some(
+          seg => seg.x === comida.x && seg.y === comida.y
+        );
+      }
+    }
+
+    function dibujar() {
+      // Fondo del tablero
+      ctx.fillStyle = "#16213e";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Comida (círculo rojo)
+      ctx.fillStyle = "#e94560";
+      ctx.beginPath();
+      ctx.arc(
+        comida.x * TAM_CELDA + TAM_CELDA / 2,
+        comida.y * TAM_CELDA + TAM_CELDA / 2,
+        TAM_CELDA / 2 - 2,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+
+      // Serpiente (la cabeza va de un color más claro)
+      serpiente.forEach((seg, i) => {
+        ctx.fillStyle = i === 0 ? "#7efcd4" : "#4ecca3";
+        ctx.fillRect(
+          seg.x * TAM_CELDA + 1,
+          seg.y * TAM_CELDA + 1,
+          TAM_CELDA - 2,
+          TAM_CELDA - 2
+        );
+      });
+
+      // Aviso de pausa sobre el tablero
+      if (enPausa) {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.55)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#eaeaea";
+        ctx.font = "bold 28px Helvetica, Arial, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("PAUSA", canvas.width / 2, canvas.height / 2);
+      }
+    }
+
+    function avanzar() {
+      if (enPausa) return;
+
+      direccion = direccionPendiente;
+
+      const nuevaCabeza = {
+        x: serpiente[0].x + direccion.x,
+        y: serpiente[0].y + direccion.y
+      };
+
+      // Choque contra las paredes
+      const chocaPared =
+        nuevaCabeza.x < 0 || nuevaCabeza.x >= CELDAS ||
+        nuevaCabeza.y < 0 || nuevaCabeza.y >= CELDAS;
+
+      // Choque contra el propio cuerpo
+      const chocaCuerpo = serpiente.some(
+        seg => seg.x === nuevaCabeza.x && seg.y === nuevaCabeza.y
+      );
+
+      if (chocaPared || chocaCuerpo) {
+        terminarJuego();
+        return;
+      }
+
+      serpiente.unshift(nuevaCabeza);
+
+      if (nuevaCabeza.x === comida.x && nuevaCabeza.y === comida.y) {
+        // Comió: suma puntos, acelera y coloca nueva fruta (no se corta la cola)
+        puntos += 10;
+        spanPuntos.textContent = puntos;
+        colocarComida();
+        if (velocidad > VELOCIDAD_MINIMA) {
+          velocidad -= ACELERACION;
+          clearInterval(idIntervalo);
+          idIntervalo = setInterval(avanzar, velocidad);
+        }
+      } else {
+        serpiente.pop();
+      }
+
+      dibujar();
+    }
+
+    function iniciarJuego() {
+      reiniciarEstado();
+      overlayInicio.classList.remove("visible");
+      overlayFin.classList.remove("visible");
+      jugando = true;
+      dibujar();
+      clearInterval(idIntervalo);
+      idIntervalo = setInterval(avanzar, velocidad);
+    }
+
+    function terminarJuego() {
+      jugando = false;
+      clearInterval(idIntervalo);
+      idIntervalo = null;
+
+      if (puntos > record) {
+        record = puntos;
+        spanRecord.textContent = record;
+        try {
+          localStorage.setItem("snake_record", record);
+        } catch (e) {
+          // Si el almacenamiento local no está disponible, el récord
+          // solo dura la sesión actual
+        }
+      }
+
+      spanPuntosFinales.textContent = puntos;
+      overlayFin.classList.add("visible");
+    }
+
+    function alternarPausa() {
+      if (!jugando) return;
+      enPausa = !enPausa;
+      dibujar();
+    }
+
+    // --- Controles ---
+    document.addEventListener("keydown", (evento) => {
+      const tecla = evento.key;
+
+      if (tecla === " ") {
+        evento.preventDefault();
+        alternarPausa();
+        return;
+      }
+
+      // Evita que las flechas hagan scroll en la página
+      if (tecla.startsWith("Arrow")) evento.preventDefault();
+
+      if (!jugando || enPausa) return;
+
+      // La nueva dirección no puede ser opuesta a la actual
+      if ((tecla === "ArrowUp" || tecla === "w" || tecla === "W") &&
+          direccion.y !== 1) {
+        direccionPendiente = { x: 0, y: -1 };
+      } else if ((tecla === "ArrowDown" || tecla === "s" || tecla === "S") &&
+          direccion.y !== -1) {
+        direccionPendiente = { x: 0, y: 1 };
+      } else if ((tecla === "ArrowLeft" || tecla === "a" || tecla === "A") &&
+          direccion.x !== 1) {
+        direccionPendiente = { x: -1, y: 0 };
+      } else if ((tecla === "ArrowRight" || tecla === "d" || tecla === "D") &&
+          direccion.x !== -1) {
+        direccionPendiente = { x: 1, y: 0 };
+      }
+    });
+
+    document.getElementById("btnIniciar").addEventListener("click", iniciarJuego);
+    document.getElementById("btnReiniciar").addEventListener("click", iniciarJuego);
+  </script>
+</body>
+</html>
