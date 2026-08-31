@@ -13,3 +13,11 @@
 01_Presentaciones/Clase 04 Prompting/Copia de clase_prompting.key
 01_Presentaciones/Clase 01 Introducción/Clase01_CD2.key
 01_Presentaciones/Clase 01 Introducción/Clase01_CD2.key
+.Rproj.user
+
+# Guías y bancos de preguntas del examen (documentos de trabajo)
+03_Examenes/01_Guias/*.docx
+
+# Archivos de sistema y temporales de Office
+.DS_Store
+~$*
