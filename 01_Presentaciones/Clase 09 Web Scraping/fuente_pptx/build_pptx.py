@@ -432,6 +432,6 @@ add_card(slide, Inches(0.3), Inches(1.7), Inches(9.4), Inches(4.6),
 n[0] += 1
 slide_cierre()
 
-out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Clase11_CD2.pptx")
+out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Clase09_WebScraping.pptx")
 prs.save(out)
 print("Guardado:", out, "| slides:", len(prs.slides._sldIdLst))

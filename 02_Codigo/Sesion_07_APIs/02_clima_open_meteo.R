@@ -1,4 +1,13 @@
 
+# Temperatura por hora en el Tec CSF con el API de Open-Meteo ----
+# Sesión 07 - APIs · TC2002B
+
+# Librerias ----
+library(httr)
+library(jsonlite)
+library(tidyverse)
+library(lubridate)
+library(plotly)
 respuesta <- GET("https://api.open-meteo.com/v1/forecast?latitude=19.35&longitude=-99.25&hourly=temperature_2m")
 
 respuesta <- GET("https://api.open-meteo.com/v1/forecast",

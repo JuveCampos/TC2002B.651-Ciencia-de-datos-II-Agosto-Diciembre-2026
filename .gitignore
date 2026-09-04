@@ -1,23 +1,40 @@
-01_Presentaciones/Clase 02 Conceptos de los LLMs/Clase02_CD2.key
-01_Presentaciones/Clase 03 Discusión sobre la IA/Clase03_Discusion_IA_reordenado.key
-01_Presentaciones/Clase 03 Discusión sobre la IA/Referencias/04_Vibe Coding.key
-01_Presentaciones/Clase 03 Discusión sobre la IA/Referencias/Clase04_CD2.key
-01_Presentaciones/Clase 03 Discusión sobre la IA/Referencias/Clase05_CD2.key
-01_Presentaciones/Clase 01 Introducción/Clase01_CD2.key
-01_Presentaciones/Clase 01 Introducción/Clase01_CD2.key
-01_Presentaciones/Clase 03 Discusión sobre la IA/Copia de Clase03_Discusion_IA_reordenado.key
-01_Presentaciones/Clase 01 Introducción/Clase01_CD2.key
-01_Presentaciones/Clase 03 Discusión sobre la IA/.DS_Store
-01_Presentaciones/Clase 04 Prompting/Clase_04_Prompting.key
-01_Presentaciones/Clase 04 Prompting/clase_prompting.key
-01_Presentaciones/Clase 04 Prompting/Copia de clase_prompting.key
-01_Presentaciones/Clase 01 Introducción/Clase01_CD2.key
-01_Presentaciones/Clase 01 Introducción/Clase01_CD2.key
-.Rproj.user
+# ============================================================
+# TC2002B.651 Ciencia de Datos II · Agosto-Diciembre 2026
+# ============================================================
 
-# Guías y bancos de preguntas del examen (documentos de trabajo)
-03_Examenes/01_Guias/*.docx
+# --- Credenciales: NUNCA se suben ---------------------------
+.Renviron
+.env
+*.pem
+*.token
 
-# Archivos de sistema y temporales de Office
+# --- Archivos de sesión de R y RStudio ----------------------
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+Rplots.pdf
+
+# --- Archivos de sistema y temporales de Office -------------
 .DS_Store
 ~$*
+Thumbs.db
+
+# --- Derivados que se regeneran -----------------------------
+*.zip
+verify/
+img_presentacion/
+__pycache__/
+
+# --- Borradores y copias locales de presentaciones ----------
+# Cada carpeta de clase puede tener un subdirectorio borradores/
+# con versiones intermedias de Keynote que no se publican.
+borradores/
+
+# --- Keynote pesados que no se publican (solo el PDF) -------
+01_Presentaciones/Clase 02 Conceptos de los LLMs/Clase02_CD2.key
+01_Presentaciones/Clase 03 Discusión sobre la IA/Clase03_Discusion_IA_reordenado.key
+01_Presentaciones/Clase 04 Prompting/Clase_04_Prompting.key
+
+# --- Documentos de trabajo de exámenes (solo se publica el PDF)
+03_Examenes/01_Guias/*.docx

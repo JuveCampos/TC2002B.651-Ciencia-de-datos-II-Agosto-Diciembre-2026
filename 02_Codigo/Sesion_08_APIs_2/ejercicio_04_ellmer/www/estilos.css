@@ -1,0 +1,549 @@
+/* La Bóveda Celeste · estilos
+   Paleta: noche #0a0e2a · índigo #151c4b · oro #c9a227 · oro claro #efd98a
+           pergamino #f1e6cb · pergamino oscuro #dcc9a0 · tinta #2a1c10
+           rojo almanaque #8b2c1e */
+
+:root {
+  --noche: #0a0e2a;
+  --indigo: #151c4b;
+  --oro: #c9a227;
+  --oro-claro: #efd98a;
+  --oro-tenue: rgba(201, 162, 39, 0.45);
+  --pergamino: #f1e6cb;
+  --pergamino-oscuro: #dcc9a0;
+  --tinta: #2a1c10;
+  --tinta-suave: #5a4630;
+  --rojo: #8b2c1e;
+  --display: "Cinzel Decorative", "Cinzel", Georgia, serif;
+  --titulos: "Cinzel", Georgia, serif;
+  --cuerpo: "Cormorant Garamond", "Garamond", Georgia, serif;
+  --glifos: "Noto Sans Symbols", "Apple Symbols", "Segoe UI Symbol", serif;
+}
+
+html {
+  background: var(--noche);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--noche);
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: 1600px 1000px;
+  color: var(--tinta);
+  font-family: var(--cuerpo);
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+.container-fluid {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 18px 40px;
+}
+
+/* Cabecera ------------------------------------------------------------ */
+.cabecera {
+  text-align: center;
+  padding: 34px 10px 18px;
+  color: var(--oro-claro);
+}
+
+.banner {
+  display: block;
+  margin: 0 auto 14px;
+  max-height: 180px;
+  width: auto;
+}
+
+.ceja {
+  font-family: var(--titulos);
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+
+.cabecera .ceja::before,
+.cabecera .ceja::after {
+  content: " ✦ ";
+  color: var(--oro);
+}
+
+.titulo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(34px, 6vw, 68px);
+  line-height: 1.05;
+  margin: 4px 0 8px;
+  color: var(--oro-claro);
+  text-shadow: 0 0 18px rgba(239, 217, 138, 0.35),
+               0 2px 0 rgba(0, 0, 0, 0.6);
+}
+
+.lema {
+  font-style: italic;
+  font-size: 21px;
+  margin: 0;
+  color: var(--pergamino);
+}
+
+.efemeride {
+  font-family: var(--titulos);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--oro);
+  margin: 14px 0 0;
+}
+
+/* Franja de signos ----------------------------------------------------- */
+.franja-signos {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border-top: 1px solid var(--oro-tenue);
+  border-bottom: 1px solid var(--oro-tenue);
+  padding: 10px 0;
+  margin: 0 0 26px;
+  color: var(--pergamino);
+}
+
+.signo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 2px;
+  border-right: 1px solid var(--oro-tenue);
+}
+
+.signo-item:last-child {
+  border-right: 0;
+}
+
+.signo-glifo {
+  font-family: var(--glifos);
+  font-size: 26px;
+  line-height: 1;
+  color: var(--oro-claro);
+}
+
+.signo-icono {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.signo-nombre {
+  font-family: var(--titulos);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.signo-fechas {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--pergamino-oscuro);
+}
+
+/* Tablero principal ---------------------------------------------------- */
+.tablero {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Pergamino: el panel enmarcado que reutilizan formulario y lectura */
+.pergamino {
+  background-color: var(--pergamino);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(120, 90, 40, 0.035) 0 1px,
+                              transparent 1px 3px);
+  border: 3px double var(--oro);
+  outline: 1px solid var(--oro-tenue);
+  outline-offset: 5px;
+  padding: 26px 26px 22px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+}
+
+.pergamino h2 {
+  font-family: var(--titulos);
+  font-weight: 600;
+  font-size: 21px;
+  letter-spacing: 0.06em;
+  margin: 0 0 6px;
+  color: var(--tinta);
+}
+
+.pergamino .ceja {
+  color: var(--rojo);
+}
+
+.nota,
+.aviso,
+.vacio {
+  color: var(--tinta-suave);
+  font-size: 17px;
+  margin: 0 0 14px;
+}
+
+.aviso {
+  margin: 14px 0 0;
+  font-style: italic;
+}
+
+/* Formulario: se pisan los estilos de Bootstrap ------------------------ */
+.formulario .form-group {
+  margin-bottom: 12px;
+}
+
+.formulario label,
+.formulario .control-label {
+  font-family: var(--titulos);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--tinta);
+  margin-bottom: 3px;
+}
+
+.formulario .form-control,
+.formulario input[type="text"],
+.formulario select {
+  font-family: var(--cuerpo);
+  font-size: 19px;
+  height: auto;
+  padding: 6px 10px;
+  border: 1px solid var(--tinta-suave);
+  border-radius: 0;
+  background: #fbf5e6;
+  color: var(--tinta);
+  box-shadow: inset 0 1px 3px rgba(60, 40, 10, 0.15);
+}
+
+.formulario .form-control:focus,
+.formulario select:focus {
+  border-color: var(--rojo);
+  box-shadow: 0 0 0 2px rgba(139, 44, 30, 0.25);
+  outline: none;
+}
+
+.formulario .checkbox label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--cuerpo);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.fila-hora {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.fila-hora .form-group {
+  width: 100%;
+}
+
+.boton-oro {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-family: var(--titulos);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--noche);
+  background: var(--oro);
+  border: 1px solid #8a6d14;
+  border-radius: 0;
+  padding: 12px 10px;
+  box-shadow: inset 0 1px 0 var(--oro-claro), 0 3px 0 #8a6d14;
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.boton-oro:hover,
+.boton-oro:focus {
+  background: var(--oro-claro);
+  color: var(--noche);
+  outline: none;
+}
+
+.boton-oro:focus-visible {
+  box-shadow: inset 0 1px 0 var(--oro-claro), 0 3px 0 #8a6d14,
+              0 0 0 3px var(--rojo);
+}
+
+.boton-oro:active {
+  transform: translateY(3px);
+  box-shadow: inset 0 1px 0 var(--oro-claro), 0 0 0 #8a6d14;
+}
+
+.boton-oro[disabled] {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+/* Calendario de dateInput sobre la paleta */
+.datepicker {
+  font-family: var(--cuerpo);
+  border-radius: 0;
+}
+
+/* Rueda zodiacal ------------------------------------------------------- */
+.lectura-col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.rueda-caja {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+  align-items: center;
+  padding: 10px 6px;
+  color: var(--pergamino);
+}
+
+.rueda-caja .ceja {
+  color: var(--oro);
+}
+
+.rueda-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rueda-svg .anillo {
+  fill: none;
+  stroke: var(--oro);
+  stroke-width: 1.2;
+}
+
+.rueda-svg .sector {
+  fill: var(--indigo);
+  stroke: var(--oro);
+  stroke-width: 1;
+}
+
+.rueda-svg .sector.activo {
+  fill: var(--oro);
+}
+
+.rueda-svg .glifo {
+  font-family: var(--glifos);
+  font-weight: 600;
+  fill: var(--oro-claro);
+  pointer-events: none;
+}
+
+.rueda-svg .glifo.activo {
+  fill: var(--noche);
+}
+
+.rueda-svg .disco {
+  fill: var(--noche);
+  stroke: var(--oro);
+  stroke-width: 1.2;
+}
+
+.rueda-svg .glifo-centro {
+  font-family: var(--glifos);
+  fill: var(--oro-claro);
+}
+
+.signo-titular {
+  font-family: var(--display);
+  font-size: clamp(30px, 4vw, 46px);
+  margin: 0 0 6px;
+  color: var(--oro-claro);
+  line-height: 1.1;
+}
+
+.signo-detalle {
+  font-style: italic;
+  font-size: 20px;
+  margin: 0;
+  color: var(--pergamino-oscuro);
+}
+
+/* Lectura -------------------------------------------------------------- */
+.lectura {
+  min-height: 260px;
+}
+
+.espera {
+  width: 120px;
+  margin: 14px auto 18px;
+}
+
+.espera .rueda-svg {
+  animation: girar 18s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes girar {
+  to { transform: rotate(-360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .espera .rueda-svg { animation: none; }
+}
+
+.ceja.error {
+  color: var(--rojo);
+}
+
+.detalle-error {
+  font-size: 13px;
+  white-space: pre-wrap;
+  background: #fbf5e6;
+  border: 1px solid var(--pergamino-oscuro);
+  border-radius: 0;
+  color: var(--tinta-suave);
+}
+
+.cuerpo-lectura p {
+  margin: 0 0 14px;
+}
+
+.cuerpo-lectura strong,
+.cuerpo-lectura h1,
+.cuerpo-lectura h2,
+.cuerpo-lectura h3 {
+  font-family: var(--titulos);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--rojo);
+}
+
+.cuerpo-lectura h1,
+.cuerpo-lectura h2,
+.cuerpo-lectura h3 {
+  font-size: 19px;
+  text-transform: uppercase;
+  margin: 22px 0 8px;
+}
+
+.cuerpo-lectura table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 18px;
+  border-top: 2px solid var(--tinta);
+  border-bottom: 2px solid var(--tinta);
+}
+
+.cuerpo-lectura th {
+  font-family: var(--titulos);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--tinta);
+}
+
+.cuerpo-lectura td {
+  padding: 7px 10px;
+  border-bottom: 1px dotted var(--pergamino-oscuro);
+}
+
+.cuerpo-lectura tr:nth-child(even) td {
+  background: rgba(220, 201, 160, 0.28);
+}
+
+.cuerpo-lectura ul {
+  padding-left: 22px;
+}
+
+.cuerpo-lectura li {
+  margin-bottom: 8px;
+}
+
+.cuerpo-lectura li::marker {
+  color: var(--rojo);
+}
+
+.firma {
+  margin: 20px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--pergamino-oscuro);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--tinta-suave);
+  text-align: right;
+}
+
+/* Pie ------------------------------------------------------------------ */
+.pie {
+  margin-top: 40px;
+  text-align: center;
+  color: var(--pergamino-oscuro);
+  font-size: 16px;
+  font-style: italic;
+}
+
+.pie-ornamento {
+  color: var(--oro);
+  font-style: normal;
+  letter-spacing: 0.4em;
+}
+
+/* Pantallas chicas ----------------------------------------------------- */
+@media (max-width: 1000px) {
+  .tablero {
+    grid-template-columns: 1fr;
+  }
+
+  .franja-signos {
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 8px;
+  }
+
+  .signo-item:nth-child(6) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 18px;
+  }
+
+  .pergamino {
+    padding: 18px 16px;
+  }
+
+  .rueda-caja {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .rueda-caja .rueda-svg {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .franja-signos {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .signo-item:nth-child(6) {
+    border-right: 1px solid var(--oro-tenue);
+  }
+
+  .signo-item:nth-child(4n) {
+    border-right: 0;
+  }
+
+  .signo-fechas {
+    display: none;
+  }
+}
