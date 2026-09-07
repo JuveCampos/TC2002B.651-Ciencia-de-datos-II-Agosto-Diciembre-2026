@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "inegi": {
+      "type": "local",
+      "command": ["Rscript", "/Users/jorgejuvenalcamposferreira/Documents/GitHub/TC2002B.651-Ciencia-de-datos-II-Agosto-Diciembre-2026/02_Codigo/Sesión_09_MCPs/ejercicio_02/servidor_inegi.R"],
+      "enabled": true
+    }
+  }
+}

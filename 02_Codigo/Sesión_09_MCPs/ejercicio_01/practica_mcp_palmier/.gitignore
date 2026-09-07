@@ -1,0 +1,13 @@
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Salidas de la práctica: no se suben, cada quien genera las suyas
+exportes/
+*.palmier
+verify/
+*.bak
+
+# Temporales
+__pycache__/
+*.log
