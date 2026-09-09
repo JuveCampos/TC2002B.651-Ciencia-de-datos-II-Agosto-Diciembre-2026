@@ -1,0 +1,216 @@
+{
+  "sin_rag": "Es imposible proporcionar ese dato específico porque se trata de un futuro hipotético; Claudia Sheinbaum no ha sido electa ni habrá emitido tal información, dado que el mes de agosto de 2026 aún no ha ocurrido. Por lo tanto, cualquier cifra sobre el promedio diario de homicidios dolosos en esa fecha específica sería una suposición imaginaria y no reflejaría la realidad futura ni los informes oficiales existentes.\n\nLa respuesta se basa únicamente en eventos confirmados hasta la actualidad y en la premisa de que este informe específico es ficticio por adelantarse al tiempo.",
+  "pregunta_sin_rag": "¿Cuál fue el promedio diario de homicidios dolosos en México en agosto de 2026, según lo que informó la presidenta Claudia Sheinbaum en su conferencia de prensa?",
+  "conteo": [
+    {
+      "tamano": 800,
+      "fragmentos": 3644,
+      "por_mananera": 140.2
+    },
+    {
+      "tamano": 1600,
+      "fragmentos": 1824,
+      "por_mananera": 70.2
+    },
+    {
+      "tamano": 3200,
+      "fragmentos": 915,
+      "por_mananera": 35.2
+    }
+  ],
+  "metodos": {
+    "semantica": [
+      {
+        "fecha": "2026-09-08",
+        "metric_value": 0.2807,
+        "inicio": "El día de hoy —como ya decía la Presidenta— les presentaremos el Reporte de Incidencia Del"
+      },
+      {
+        "fecha": "2026-08-11",
+        "metric_value": 0.3064,
+        "inicio": "En esta primera gráfica vemos la tendencia en el promedio diario de homicidio doloso de fo"
+      },
+      {
+        "fecha": "2026-08-11",
+        "metric_value": 0.3211,
+        "inicio": "En la siguiente gráfica ahora presentamos el promedio diario de homicidios dolosos a nivel"
+      },
+      {
+        "fecha": "2026-09-04",
+        "metric_value": 0.3534,
+        "inicio": "Como puede apreciarse claramente, hay una disminución del 85 por ciento en el promedio dia"
+      },
+      {
+        "fecha": "2026-09-04",
+        "metric_value": 0.3752,
+        "inicio": "Por eso es virtuoso y por eso en Zacatecas hemos privilegiado el tema de seguridad, porque"
+      }
+    ],
+    "lexica": [
+      {
+        "fecha": "2026-09-08",
+        "metric_value": 12.899,
+        "inicio": "El día de hoy —como ya decía la Presidenta— les presentaremos el Reporte de Incidencia Del"
+      },
+      {
+        "fecha": "2026-09-04",
+        "metric_value": 11.8222,
+        "inicio": "Como puede apreciarse claramente, hay una disminución del 85 por ciento en el promedio dia"
+      },
+      {
+        "fecha": "2026-08-11",
+        "metric_value": 11.5863,
+        "inicio": "En la siguiente gráfica ahora presentamos el promedio diario de homicidios dolosos a nivel"
+      },
+      {
+        "fecha": "2026-08-11",
+        "metric_value": 11.5594,
+        "inicio": "En esta primera gráfica vemos la tendencia en el promedio diario de homicidio doloso de fo"
+      },
+      {
+        "fecha": "2026-09-04",
+        "metric_value": 11.4811,
+        "inicio": "Por eso es virtuoso y por eso en Zacatecas hemos privilegiado el tema de seguridad, porque"
+      }
+    ],
+    "hibrida": [
+      {
+        "fecha": "2026-08-11",
+        "cosine_distance": 0.3064,
+        "bm25": 11.5594,
+        "inicio": "En esta primera gráfica vemos la tendencia en el promedio diario de homicidio doloso de fo"
+      },
+      {
+        "fecha": "2026-09-04",
+        "cosine_distance": 0.3534,
+        "bm25": 11.4811,
+        "inicio": "Por eso es virtuoso y por eso en Zacatecas hemos privilegiado el tema de seguridad, porque"
+      },
+      {
+        "fecha": "2026-09-08",
+        "cosine_distance": 0.2807,
+        "bm25": 12.899,
+        "inicio": "El día de hoy —como ya decía la Presidenta— les presentaremos el Reporte de Incidencia Del"
+      }
+    ]
+  },
+  "filtro": {
+    "sin_filtro": [
+      {
+        "fecha": "2026-08-04",
+        "cosine_distance": 0.4879,
+        "inicio": "Entonces, la orientación de la Consejería Jurídica es poner el límite del salario de la Pr"
+      },
+      {
+        "fecha": "2026-08-13",
+        "bm25": 9.6649,
+        "inicio": "Entonces, aumenta la eficiencia del paso de las mercancías y, al mismo tiempo, aumenta la "
+      },
+      {
+        "fecha": "2026-08-14",
+        "bm25": 9.088,
+        "inicio": "COMISIONADO DEL INSTITUTO NACIONAL DE MIGRACIÓN (INM), SERGIO SALOMÓN CÉSPEDES PEREGRINA: "
+      },
+      {
+        "fecha": "2026-08-24",
+        "cosine_distance": 0.4677,
+        "inicio": "PREGUNTA: Presidenta, en otra pregunta ya para terminar, quería un poco su reacción con re"
+      },
+      {
+        "fecha": "2026-09-02",
+        "bm25": 8.1708,
+        "inicio": "Y, bueno, miren, nada más Aduanas, desde que llegamos el año pasado, la recaudación de Adu"
+      }
+    ],
+    "con_filtro": [
+      {
+        "fecha": "2026-09-02",
+        "cosine_distance": 0.553,
+        "inicio": "Y hay dos preguntas que me gustaría hacerle sobre su informe de cosas que tal vez no menci"
+      },
+      {
+        "fecha": "2026-09-02",
+        "inicio": "Preguntarle, porque ahí en el informe no se detalla si estos recintos ya están siendo denu"
+      },
+      {
+        "fecha": "2026-09-03",
+        "cosine_distance": 0.5466,
+        "bm25": 5.0202,
+        "inicio": "Y, por último, Presidenta, ayer se reunió el secretario de Economía con su homólogo en Est"
+      },
+      {
+        "fecha": "2026-09-04",
+        "cosine_distance": 0.5555,
+        "inicio": "SECRETARIO DE LA DEFENSA NACIONAL, RICARDO TREVILLA TREJO: No hemos platicado de eso. Noso"
+      },
+      {
+        "fecha": "2026-09-04",
+        "bm25": 4.9608,
+        "inicio": "PRESIDENTA DE MÉXICO, CLAUDIA SHEINBAUM PARDO: Sí, se ha incrementado mucho la exportación"
+      },
+      {
+        "fecha": "2026-09-07",
+        "bm25": 5.6292,
+        "inicio": "Entonces, ya el solo hecho del crecimiento de la Pensión Adulto Mayor ya representa una in"
+      }
+    ]
+  },
+  "evaluacion": [
+    {
+      "pregunta": "¿Cuántos pasajeros internacionales ha transportado el Tren Maya?",
+      "fecha_esperada": "2026-08-13",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    },
+    {
+      "pregunta": "¿Cuántas tarjetas para remesas otorgó Financiera para el Bienestar?",
+      "fecha_esperada": "2026-08-14",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    },
+    {
+      "pregunta": "¿Cuál es la meta de viviendas en Tlaxcala?",
+      "fecha_esperada": "2026-08-19",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    },
+    {
+      "pregunta": "¿Cuántas viviendas se construirán en Kanasín?",
+      "fecha_esperada": "2026-08-12",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    },
+    {
+      "pregunta": "¿A qué empresas se adjudicó el mantenimiento de las vías del Tren Maya entre Palenque y Cancún?",
+      "fecha_esperada": "2026-09-03",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    },
+    {
+      "pregunta": "¿Cuántas personas resultaron lesionadas en la agresión en Zacatecas?",
+      "fecha_esperada": "2026-09-04",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    },
+    {
+      "pregunta": "¿Cuál fue el promedio diario de homicidios dolosos en agosto de 2026?",
+      "fecha_esperada": "2026-09-08",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    },
+    {
+      "pregunta": "¿Cuándo se pusieron aranceles a países sin Tratado de Libre Comercio?",
+      "fecha_esperada": "2026-09-02",
+      "semantica": true,
+      "lexica": true,
+      "hibrida": true
+    }
+  ]
+}

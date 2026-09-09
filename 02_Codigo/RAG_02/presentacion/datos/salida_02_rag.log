@@ -1,0 +1,233 @@
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   3.5.2     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+[1] "Mañaneras en el subconjunto: 26 (2026-08-03 a 2026-09-08)"
+PRESIDENTA DE MÉXICO, CLAUDIA SHEINBAUM PARDO: Buenos días.
+
+PREGUNTA: Buenos días, Presidenta.
+
+PRESIDENTA DE MÉXICO, CLAUDIA SHEINBAUM PARDO: ¿Cómo están?
+
+PREGUNTA: Bien. ¿Y usted?
+
+PRESIDENTA DE MÉXICO, CLAUDIA SHEINBAUM PARDO: Bien, también muy bien. Nos fue muy bien en Oaxaca, una gira muy amplia.
+
+Y ayer anunciamos —ya lo vamos a presentar aquí la próxima semana— un espacio, una ciudad, así; en mixteco le pusieron “Ñuu Tata”, que es “pueblo que cuida”, porque allí se van a construir: un hospital, o ya se está construyendo un hospital del ISSSTE; ayer se puso la primera piedra para un ho 
+# @document@origin:
+#   mananeras/txt/2026-08-03_version-estenografica-conferencia-de-prensa-de-la-presidenta-claudia-sheinbaum-pardo-del-03-de-agosto-de-2026.txt
+# A tibble:         75 × 7
+   start   end context text                              fecha      titulo url  
+   <int> <int> <chr>   <chr>                             <date>     <chr>  <chr>
+ 1     1  1524 ""      "PRESIDENTA DE MÉXICO, CLAUDIA S… 2026-08-03 Versi… http…
+ 2  1313  2795 ""      "Bueno, ese fue el evento de aye… 2026-08-03 Versi… http…
+ 3  2452  3943 ""      "Entonces, después de “Quién es … 2026-08-03 Versi… http…
+ 4  3634  5142 ""      "VOZ MUJER: Y la que menos da es… 2026-08-03 Versi… http…
+ 5  4834  6408 ""      "VOZ MUJER: La canasta más barat… 2026-08-03 Versi… http…
+ 6  5993  7630 ""      "VOZ HOMBRE: En esta nueva edici… 2026-08-03 Versi… http…
+ 7  7204  8716 ""      "Si bien, el ciclo escolar ya ha… 2026-08-03 Versi… http…
+ 8  8322 10123 ""      "Por lo que obedece a educación … 2026-08-03 Versi… http…
+ 9  9690 11148 ""      "Si ya lo vemos todo en su conju… 2026-08-03 Versi… http…
+10 10785 12292 ""      "—Si quieres, dale siguiente par… 2026-08-03 Versi… http…
+# ℹ 65 more rows
+VOZ MUJER: La canasta más barata la encontramos en Bodega Aurrera Camino del Seri, en Hermosillo, Sonora, en 715 pesos con 31 centavos.
+
+VOZ HOMBRE: Y la más cara en Walmart Taxqueña, en Coyoacán, Ciudad de México, con 921 pesos con 50 centavos.
+
+VOZ MUJER: Y en el comparativo de tres ciudades presentamos:
+
+VOZ HOMBRE: En Ecatepec de Morelos, Estado de México. La más barata se encuentra en Bodega Aurrera Plaza Aragón en 748 pesos con 50 centavos.
+
+VOZ MUJER: Y la más cara, pero también por debajo de 910 pesos, en Mercado Soriana, Ciudad Azteca, en 840 pesos con 30 centavos.
+
+VOZ HOMBRE: En Tuxtla Gutiérrez, Chiapas. Chedraui Tuxtla Crystal fue la más barata con 787 pesos con 20 centavos.
+
+VOZ MUJER: Y la más cara, pero también por debajo de 910 pesos, fue en Soriana Híper Poliforum, en 850 pesos.
+
+VOZ HOMBRE: En Acapulco Guerrero. La más barata la encontramos en Soriana Híper Acapulco Costera, en 800 pesos con 50 centavos.
+
+VOZ MUJER: Y la más cara, pero también por debajo de 910 pesos, en Walmart Acapulco, en 835 pesos con 50 centavos.
+
+Y ya salió la Revista del Consumidor del mes de agosto, la 594, un número dedicado al regreso a clases.
+
+VOZ HOMBRE: En esta nueva edición encontrarás, en nuestros estudios de calidad, útiles escolares y alimento húmedo para gato para que elijas con información.
+
+VOZ MUJER: En “Caminito de la escuela sin deudas” te decimos cómo surtir la lista escolar sin afectar la economía familiar.
+
+VOZ HOMBRE: Y en “Niñez conectada y protegida” te enseñamos a cuidar a niñas y niños con controles parentales y filtros digitales.
+
+ 
+# A tibble: 26 × 3
+   fecha      caracteres n_fragmentos
+   <date>          <int>        <int>
+ 1 2026-08-03      89936           75
+ 2 2026-08-04      93590           78
+ 3 2026-08-05      79170           66
+ 4 2026-08-06      94853           79
+ 5 2026-08-07      98132           82
+ 6 2026-08-10      78353           65
+ 7 2026-08-11     108820           91
+ 8 2026-08-12      76922           64
+ 9 2026-08-13      62218           52
+10 2026-08-14      84357           70
+11 2026-08-17      76751           64
+12 2026-08-18      93003           78
+13 2026-08-19      91380           76
+14 2026-08-20      78540           66
+15 2026-08-21      69676           58
+16 2026-08-24     100907           84
+17 2026-08-25      99956           83
+18 2026-08-26      92450           77
+19 2026-08-27      63578           53
+20 2026-08-28      77758           65
+21 2026-08-31      45087           38
+22 2026-09-02      80603           67
+23 2026-09-03      86721           72
+24 2026-09-04      88315           74
+25 2026-09-07      80462           67
+26 2026-09-08      95703           80
+[1] "Total de fragmentos: 1824"
+duckdb is storing downloaded extensions and secrets under ~/.duckdb:
+ℹ /Users/jorgejuvenalcamposferreira/.duckdb
+This persists across sessions and is shared with the DuckDB CLI and other clients.
+ℹ Run duckdb(shared_home = FALSE) to use a temporary directory instead.
+ℹ See ?duckdb_storage for details and alternatives.
+# A tibble: 5 × 2
+  fecha     
+  <date>    
+1 2026-09-08
+2 2026-08-11
+3 2026-08-11
+4 2026-09-04
+5 2026-09-04
+  inicio                                                                        
+  <chr>                                                                         
+1 El día de hoy —como ya decía la Presidenta— les presentaremos el Reporte de I…
+2 En esta primera gráfica vemos la tendencia en el promedio diario de homicidio…
+3 En la siguiente gráfica ahora presentamos el promedio diario de homicidios do…
+4 Como puede apreciarse claramente, hay una disminución del 85 por ciento en el…
+5 Por eso es virtuoso y por eso en Zacatecas hemos privilegiado el tema de segu…
+# A tibble: 5 × 2
+  fecha     
+  <date>    
+1 2026-09-08
+2 2026-09-04
+3 2026-08-11
+4 2026-08-11
+5 2026-09-04
+  inicio                                                                        
+  <chr>                                                                         
+1 El día de hoy —como ya decía la Presidenta— les presentaremos el Reporte de I…
+2 Como puede apreciarse claramente, hay una disminución del 85 por ciento en el…
+3 En la siguiente gráfica ahora presentamos el promedio diario de homicidios do…
+4 En esta primera gráfica vemos la tendencia en el promedio diario de homicidio…
+5 Por eso es virtuoso y por eso en Zacatecas hemos privilegiado el tema de segu…
+# A tibble: 3 × 4
+  fecha      cosine_distance  bm25
+  <date>               <dbl> <dbl>
+1 2026-08-11           0.306  11.6
+2 2026-09-04           0.353  11.5
+3 2026-09-08           0.281  12.9
+  inicio                                                                        
+  <chr>                                                                         
+1 En esta primera gráfica vemos la tendencia en el promedio diario de homicidio…
+2 Por eso es virtuoso y por eso en Zacatecas hemos privilegiado el tema de segu…
+3 El día de hoy —como ya decía la Presidenta— les presentaremos el Reporte de I…
+En esta primera gráfica vemos la tendencia en el promedio diario de homicidio doloso de forma mensual de septiembre de 2024 —es decir, del inicio de la administración— a este último mes que acaba de concluir, julio de 2026.
+
+Ya lo adelantaba la Presidenta: hay una disminución del 51 por ciento, entre el inicio de la administración y este último mes, que cerró con un promedio de 42.5 homicidios diarios, el mes con la cifra más baja de todo este periodo analizado de estos 22 meses.
+
+En esta lámina también destacamos precisamente esta reducción observada desde el inicio de la administración, que se registraron 86.9 homicidios en septiembre de 2024 contra —ya lo mencionaba— 42.5 en julio de este año. Esto significa que en este mes hubieron 44 homicidios dolosos menos por día.
+
+En la siguiente gráfica observamos, ahora, la evolución del promedio diario de homicidios dolosos a nivel nacional, en este caso son todos los meses de julio de los últimos años, de 2015 a 2026.
+
+Como se puede ver claramente en la gráfica, el mes de julio de 2026 es el mes más bajo de toda esta serie, es decir, es el julio más bajo de los últimos 12 años.
+
+En la siguiente gráfica ahora presentamos el promedio diario de homicidios dolosos a nivel nacional, considerando los primeros 7 meses de cada año, que es lo que llevamos, de enero a julio. Se puede apreciar también que en estos primeros 7 meses de 2026, el promedio diario de homicidios dolosos fue de 48.6, lo que representa también el registro más bajo para este periodo desde el año 2016.
+
+En la siguiente lámina podemos ver ahora la variación en el promedio diario de homicidios dolosos en los 4 últimos sexenios:
+
+La gráfica permite apreciar cómo de 2006 a 2018 hubo un aumento sostenido en los homicidios.
+
+De 2006 a 2012, durante el gobierno de Felipe Calderón, hubo un aumento del 148 por ciento en los homicidios dolosos, de cómo inició este sexenio a cómo acabó en el año 2012.
+
+Precisamente de 2012 a 2018, en el gobierno de Enrique Peña Nieto, el incremento fue del 42 por ciento.
+
+Y en el sexenio del expresidente López Obrador, de 2018 a 2024, es cuando se logra revertir esta tendencia, ya hay una disminución del 9 por ciento en este sexenio.
+
+Ahora, a partir del gobierno de la Presidenta, la Doctora Claudia Sheinbaum, el promedio diario de homicidios dolosos ha pasado de 91.7, que fue lo que se registró en el año 2024, contra 48.6, que es lo que llevamos de forma preliminar en lo que va de 2026, es decir, una reducción también en estos 2 años del 47 por ciento.
+
+Ahora bien, la siguiente lámina muestra el desglose de los homicidios dolosos por entidad federativa registrados de enero a julio de 2026. En este periodo tenemos 7 entidades, que son las que concentran prácticamente la mitad de los homicidios del país, el 49 por ciento del total:
+
+ 
+# A tibble: 6 × 4
+  fecha      cosine_distance  bm25
+  <date>               <dbl> <dbl>
+1 2026-09-02           0.553 NA   
+2 2026-09-02          NA     NA   
+3 2026-09-03           0.547  5.02
+4 2026-09-04           0.556 NA   
+5 2026-09-04          NA      4.96
+6 2026-09-07          NA      5.63
+  inicio                                                                        
+  <chr>                                                                         
+1 Y hay dos preguntas que me gustaría hacerle sobre su informe de cosas que tal…
+2 Preguntarle, porque ahí en el informe no se detalla si estos recintos ya está…
+3 Y, por último, Presidenta, ayer se reunió el secretario de Economía con su ho…
+4 SECRETARIO DE LA DEFENSA NACIONAL, RICARDO TREVILLA TREJO: No hemos platicado…
+5 PRESIDENTA DE MÉXICO, CLAUDIA SHEINBAUM PARDO: Sí, se ha incrementado mucho l…
+6 Entonces, ya el solo hecho del crecimiento de la Pensión Adulto Mayor ya repr…
+# A tibble: 5 × 4
+  fecha      cosine_distance  bm25
+  <date>               <dbl> <dbl>
+1 2026-08-04           0.488 NA   
+2 2026-08-13          NA      9.66
+3 2026-08-14          NA      9.09
+4 2026-08-24           0.468 NA   
+5 2026-09-02          NA      8.17
+  inicio                                                                        
+  <chr>                                                                         
+1 "Entonces, la orientación de la Consejería Jurídica es poner el límite del sa…
+2 "Entonces, aumenta la eficiencia del paso de las mercancías y, al mismo tiemp…
+3 "COMISIONADO DEL INSTITUTO NACIONAL DE MIGRACIÓN (INM), SERGIO SALOMÓN CÉSPED…
+4 "PREGUNTA: Presidenta, en otra pregunta ya para terminar, quería un poco su r…
+5 "Y, bueno, miren, nada más Aduanas, desde que llegamos el año pasado, la reca…
+[1] "Caracteres del prompt aumentado: 7354"
+El promedio diario de homicidios dolosos en México cerró en **40.8** en agosto de 2026, cifra confirmada por la Presidenta Claudia Sheinbaum en su conferencia de prensa del día 8 de septiembre de 2026. Esta representación gráfica muestra que el mes representa el promedio más bajo registrado en los últimos 12 años analizados hasta la actualidad. Para el estado de Zacatecas, el informe presentado el 4 de septiembre de 2026 indica un dato preliminar de **0.17** homicidios diarios por día para agosto del mismo año. Ambos registros demuestran una reducción significativa respecto a septiembre de 2024 y constituyen los mínimos históricos reportados en los periodos analizados. 
+[1] "Respuesta en 13 segundos"
+Según los datos de la mañanera del 13/08/2026, los pasajeros internacionales transportados por el Tren Maya fueron 56 mil 763 en ese periodo específico. La misma cifra es confirmada en la información de la mañanera del 08/09/2026, que especifica que este volumen representa un aumento del 37.7 por ciento respecto al mismo periodo anterior. Ambos documentos señalan que este crecimiento ha contribuido significativamente al impulso turístico y económico en el sur de México. 
+En la mañanera del 12/08/2026, la presidenta no mencionó resultados específicos sobre un Mundial de 2030. Señaló que México regresó del último torneo realizado con el primer lugar del medallero general y 407 medallas, lo cual consolidó al país como líder de su región. A pesar de no haber datos concretos sobre el Mundial de 2030 en la información consultada, se enfatizó el espíritu de ser grandes anfitriones si algún evento similar tuviera lugar en México.
+
+No aparecen datos específicos del Mundial de 2030 en las mañaneras consultadas. Se mencionó que México consolidó un récord deportivo tras el último torneo disputado en la región, pero no hay referencias sobre los resultados o expectativas para dicho evento futuro. 
+# A tibble: 8 × 5
+  pregunta                                                  fecha_esperada
+  <chr>                                                     <date>        
+1 "¿Cuántos pasajeros internacionales ha transportado el T" 2026-08-13    
+2 "¿Cuántas tarjetas para remesas otorgó Financiera para e" 2026-08-14    
+3 "¿Cuál es la meta de viviendas en Tlaxcala?"              2026-08-19    
+4 "¿Cuántas viviendas se construirán en Kanasín?"           2026-08-12    
+5 "¿A qué empresas se adjudicó el mantenimiento de las vía" 2026-09-03    
+6 "¿Cuántas personas resultaron lesionadas en la agresión " 2026-09-04    
+7 "¿Cuál fue el promedio diario de homicidios dolosos en a" 2026-09-08    
+8 "¿Cuándo se pusieron aranceles a países sin Tratado de L" 2026-09-02    
+  semantica lexica hibrida
+  <lgl>     <lgl>  <lgl>  
+1 TRUE      TRUE   TRUE   
+2 TRUE      TRUE   TRUE   
+3 TRUE      TRUE   TRUE   
+4 TRUE      TRUE   TRUE   
+5 TRUE      TRUE   TRUE   
+6 TRUE      TRUE   TRUE   
+7 TRUE      TRUE   TRUE   
+8 TRUE      TRUE   TRUE   
+# A tibble: 1 × 3
+  `hit@5_semantica` `hit@5_lexica` `hit@5_hibrida`
+              <dbl>          <dbl>           <dbl>
+1               100            100             100
+[?25l[?2026h[?25l[1G[K[?25h[?2026l[2K[1G[?25h[?25l[?2026h[?25l[1G[K[?25h[?2026l[2K[1G[?25h

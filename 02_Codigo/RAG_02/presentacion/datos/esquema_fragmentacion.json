@@ -1,0 +1,34 @@
+{
+  "origen": "2026-07-14_version-estenografica-conferencia-de-prensa-de-la-presidenta-claudia-sheinbaum-pardo-del-14-de-julio-de-2026.txt",
+  "pasaje": ["Les adelanto que, entre septiembre de 2024 y junio de 2026, la reducción en homicidio doloso es de 48 por ciento. Eso significa que cada día del mes de junio hubo 41 homicidios menos que en septiembre de 2024, prácticamente la mitad; es decir, junio de 2026 tuvo prácticamente la mitad o casi la mitad de los homicidios que septiembre de 2024. Esa es la cifra que queremos compartir el día de hoy; que más allá del número, representa vidas salvadas, representa vidas que no se perdieron, 41 vidas salvadas o que no fallecieron en junio de 2026 frente a septiembre de 2024.", "Y los delitos de alto impacto también muestran una reducción muy significativa.", "Entonces, para dar toda la información de los índices delictivos, como siempre, la maestra Marcela Figueroa Franco.", "Después, informaría la secretaria Rosa Icela Rodríguez del eje de Atención a las Causas."],
+  "n_caracteres": 860,
+  "fragmentos": [
+    {
+      "start": 1,
+      "end": 574,
+      "texto": "Les adelanto que, entre septiembre de 2024 y junio de 2026, la reducción en homicidio doloso es de 48 por ciento. Eso significa que cada día del mes de junio hubo 41 homicidios menos que en septiembre de 2024, prácticamente la mitad; es decir, junio de 2026 tuvo prácticamente la mitad o casi la mitad de los homicidios que septiembre de 2024. Esa es la cifra que queremos compartir el día de hoy; que más allá del número, representa vidas salvadas, representa vidas que no se perdieron, 41 vidas salvadas o que no fallecieron en junio de 2026 frente a septiembre de 2024.\n\n",
+      "n": 574,
+      "emb_inicio": [-0.0214, 0.0069, -0.009, -0.0381, -0.0635, -0.0386, 0.0058, 0.0177, -0.028, 0.0444],
+      "emb_fin": [-0.0033, -0.0211, 0.0128, 0.0253, 0.0103, -0.0268, 0.0257, -0.0106, -0.0039, -0.0171],
+      "dim": 1024,
+      "norma": 1,
+      "dist_pregunta": 0.31,
+      "dist_otra": 0.646
+    },
+    {
+      "start": 345,
+      "end": 860,
+      "texto": "Esa es la cifra que queremos compartir el día de hoy; que más allá del número, representa vidas salvadas, representa vidas que no se perdieron, 41 vidas salvadas o que no fallecieron en junio de 2026 frente a septiembre de 2024.\n\nY los delitos de alto impacto también muestran una reducción muy significativa.\n\nEntonces, para dar toda la información de los índices delictivos, como siempre, la maestra Marcela Figueroa Franco.\n\nDespués, informaría la secretaria Rosa Icela Rodríguez del eje de Atención a las Causas.",
+      "n": 516,
+      "emb_inicio": [0.0018, -0.0221, -0.0308, -0.0187, -0.0389, -0.0406, -0.0104, 0.0173, -0.0325, 0.0326],
+      "emb_fin": [0.018, -0.016, 0.0013, 0.0136, 0.0025, -0.0167, -0.0133, 0.036, 0.0071, 0.0062],
+      "dim": 1024,
+      "norma": 1,
+      "dist_pregunta": 0.431,
+      "dist_otra": 0.605
+    }
+  ],
+  "pregunta": "¿Cuánto bajó el homicidio doloso?",
+  "otra": "¿Cuál es la meta de viviendas en Tlaxcala?",
+  "emb_pregunta": [-0.0441, -0.0047, -0.008, -0.0424, -0.0078, -0.0322, -0.006, -0.0018, 0.0065, 0.0439]
+}
