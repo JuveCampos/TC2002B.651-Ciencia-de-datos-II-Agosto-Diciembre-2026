@@ -24,6 +24,7 @@ Thumbs.db
 *.zip
 # Excepción: el zip de la sesión 12 sí se publica para los alumnos
 !02_Codigo/Sesión_12_preprocesamiento.zip
+!02_Codigo/Sesion_11_stringr 2.zip
 verify/
 img_presentacion/
 __pycache__/
