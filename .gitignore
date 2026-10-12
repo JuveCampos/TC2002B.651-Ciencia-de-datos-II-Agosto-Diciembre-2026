@@ -22,6 +22,8 @@ Thumbs.db
 
 # --- Derivados que se regeneran -----------------------------
 *.zip
+# Excepción: el zip de la sesión 12 sí se publica para los alumnos
+!02_Codigo/Sesión_12_preprocesamiento.zip
 verify/
 img_presentacion/
 __pycache__/
