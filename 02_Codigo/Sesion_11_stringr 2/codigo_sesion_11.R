@@ -3,12 +3,10 @@
 # Sesión práctica.
 
 # Librerías ----
-# library(stringr)
-# library(stringi)
-library(tidyverse)
-# library(dplyr)
-# library(tidyr)
-library(sf)
+library(stringr)
+library(stringi)
+library(dplyr)
+library(tidyr)
 
 # Datos de trabajo ----
 
@@ -62,22 +60,18 @@ parrafo <- "El texto es el dato más abundante y el menos aprovechado."
 #   "No room! No room!" they cried out
 # Pista: hay dos formas, con comillas simples por fuera o escapando con \"
 
-cita <- '"No room! No room!" they cried out'
-cita <- "\"No room! No room!\" they cried out"
-writeLines(cita)
-
+cita <- ___
 
 # --- E2. Pegar strings con str_c() y str_glue() -------------------------------
 # Construye el texto "Clave 01: Aguascalientes" a partir de estas dos piezas.
 clave <- "01"
 nombre <- "Aguascalientes"
 
-str_c("01", " ", "Aguascalientes")
-etiqueta <- str_c(clave, " ", nombre)
+etiqueta <- ___
 etiqueta
 
 # Ahora lo mismo con str_glue(), que rellena {campos} dentro del texto
-etiqueta_glue <- str_glue("{clave} {nombre}")
+etiqueta_glue <- ___
 etiqueta_glue
 
 # str_c() es vectorizado: pega elemento por elemento
@@ -86,22 +80,6 @@ str_c("Entidad ", claves_entidad) # A ver que dió
 # Y propaga los NA, a diferencia de paste()
 str_c("Hola ", c("mundo", NA))
 paste("Hola ", c("mundo", NA))
-
-personas <- tribble(
-  ~Nombre, ~Edad, ~Personalidad, ~Intereses, ~Objetivos,
-  "Alice", 32, "Inteligente, observadora, puede ser melancólica", "Planeta, estrellas, investigación", "Descubrir nuevos mundos.",
-  "Benjamin", 45, "Analítico, curioso, se enfoca en el pasado", "Cartas, mapas, genealogía", "Determinar la verdad de la historia.",
-  "Chloe", 28, "Libre, extrovertida, espontánea", "Clubs de baile, tecnología, música", "Encontrar formas de expresar su creatividad.",
-  "Dave", 51, "Reflexivo, curioso, siempre investiga", "Historia de Roma, arquitectura, arte", "Aprender sobre el pasado.",
-  "Elise", 30, "Creativa, introvertida, aprecia la belleza", "Arte digital, arte conceptual, diseño de paisajes", "Crear obras de arte únicas."
-)
-
-str_glue("Esta persona se llama {personas$Nombre}, su edad es de {personas$Edad} años.
-         Sus intereses son: {personas$Intereses}
-         Sus objetivos son {personas$Objetivos}\n\n
-         ")
-
-
 
 # --- E3. Medir con str_length()  ---------------------------------
 # ¿Cuántos caracteres tiene "México 🌮"? ¿Cuántas columnas ocupa en pantalla?
@@ -113,20 +91,17 @@ writeLines(pais)
 str_length(pais)
 
 # ¿Y cuales son las longitudes de las curps?
-curps
-str_length(curps)
+___
 
 
 # --- E4. Cortar por posición con str_sub() ------------------------------------
 # En una CURP las posiciones 5 y 6 son el año, 7 y 8 el mes, 9 y 10 el día,
 # y la posición 11 es el sexo (H o M). Extrae esas cuatro piezas de curps.
 
-curps
-
-anio <- str_sub(curps, start = 5, end = 6)
-mes <- str_sub(curps, start = 7, end = 8)
-dia <- str_sub(curps, start = 9, end = 10)
-sexo <- str_sub(curps, start = 11, end = 11)
+anio <- ___
+mes <- ___
+dia <- ___
+sexo <- ___
 
 # Armamos la tabla resultante
 tibble(curp = curps, anio, mes, dia, sexo)
@@ -138,9 +113,8 @@ str_sub(curps, -1, -1)
 # Cuenta cuántas vocales tiene cada fruta del vector fruit (viene con stringr).
 # "[aeiou]" es un patrón: significa "cualquiera de estas letras". En el
 # bloque 4 vamos a ver de dónde sale esa sintaxis.
-fruit
-str_count(fruit, pattern = "[aeiou]")
 
+___
 
 # Para contar palabras, el patrón es "una o más letras seguidas"
 # Cuente cuantas palabras hay en el objeto "parrafo"
@@ -150,10 +124,8 @@ parrafo
 # --- E6. Exprimir espacios con str_squish() -----------------------------------
 # Quita los espacios sobrantes al inicio, al final y entre palabras.
 
-municipios <- municipios_sucios
+municipios <- ___
 municipios
-municipios_exprimidos <- str_squish(municipios_sucios)
-municipios_exprimidos
 
 # str_trim() solo quita los de las orillas; compara los resultados:
 str_trim("  San  Luis   Potosí  ")
@@ -163,18 +135,14 @@ str_squish("  San  Luis   Potosí  ")
 # Quita el prefijo "Mpio. de " y "Mpio. " de los municipios.
 # Primer intento: así como está.
 
-str_remove(municipios_sucios, "Mpio. de |Mpio.") |>
-  str_squish()
+str_remove(municipios, "Mpio. de ")
 
 # --- E8. Reemplazar con str_replace() -----------------------------------------
 # Cambia "Cd." por "Ciudad" (sin importar mayúsculas: hay un "cd." también).
 # Pista: fixed() acepta ignore_case = TRUE
 
 patron_cd <- fixed("Cd. ", ignore_case = TRUE)
-municipios <- str_replace(municipios_sucios,
-                          pattern = "Cd.|cd.",
-                          replacement = "Ciudad ") |>
-  str_squish()
+municipios <- ___
 municipios
 
 # str_replace() cambia la primera coincidencia; str_replace_all() todas
@@ -194,18 +162,17 @@ length(municipios_unicos)
 # --- E10. Partir strings con str_split() --------------------------------------
 # Parte la fecha en sus tres piezas.
 fecha <- "2026-10-05"
-str_split(fecha, pattern = "-")
+___
 
 # str_split() devuelve una lista. Con simplify = TRUE devuelve una matriz,
 # que es lo que quieres cuando cada elemento tiene el mismo número de piezas.
 fechas <- c("2026-10-05", "2025-01-20", "2024-12-31")
 
-piezas <- str_split(fechas, pattern = "-")
+piezas <- ___
 piezas
 
 # La función separate también nos ayuda a romper este tipo de strings
-tibble(fechas) |>
-  separate(col = fechas, sep = "-", into = c("Año", "mes", "dia"))
+tibble(fechas)
 
 
 # --- E11. Rellenar con str_pad() ----------------------------------------------
