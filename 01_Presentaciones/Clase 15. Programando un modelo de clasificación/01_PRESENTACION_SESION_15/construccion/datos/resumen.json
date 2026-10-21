@@ -1,0 +1,1 @@
+{"n_coef":454,"n_vocab":1000,"intercepto":-0.2358,"metricas":[{".metric":"accuracy",".estimate":0.9333},{".metric":"f_meas",".estimate":0.9327},{".metric":"precision",".estimate":0.9327},{".metric":"recall",".estimate":0.9327},{".metric":"roc_auc",".estimate":0.9665}]}

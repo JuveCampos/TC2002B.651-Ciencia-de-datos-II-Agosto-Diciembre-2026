@@ -1,0 +1,1801 @@
+id,categoria,estrellas,texto,sentimiento
+1,restaurante,2,"La carne veníaaa cruda x dentro, y encima los tacos estaban rancios, y encima la mesera se equivocó con la orden dos veces.",negativa
+2,hotel,2,"La limpieza brilla por su ausencia, y encima el bano estaba mugroso! Ni de chiste lo recomiendo.",negativa
+3,servicio,2,"Tomé el paquete básico. Nada bueno que decir, el plomero cobró y no arregló nada.",negativa
+4,restaurante,2,"Pedimos el menú del día. La mesera fue grosera, aparte los tacos estaban rancios.",negativa
+5,app,5,"La actualicé la semana pasada. El pago fue sin broncas, también el mapa es preciso, aparte la velocidad nunca se traba.",positiva
+6,servicio,1,El plomero cobró y nno arregló nada.,negativa
+7,hotel,4,"El personal nos trató como reyes, también la habitación es preciosa. Repetiré.",positiva
+8,hotel,4,"Aunque el personal fue grosero, el wifi funciona de maravilla, además el check-in tomó cinco minutos! En general bien.",positiva
+9,producto,4,"Si, el material es plastico barato, pero el envio llego en perfecto estado, y la bateria carga rapidisimo.",positiva
+10,servicio,1,No me gustó la atención telefónica y no pienso regresar.,negativa
+11,servicio,5,"Agende para el lune! El instructor es muy claro, y lo mejor: la repparacion quedo como nueeva.",positiva
+12,servicio,5,"NADA QUE REPROCHAR, EL INSTRUCTOR ES MUY CLARO.",positiva
+13,hotel,1,"Excelente, la alberca es diminuta. Que detalle.",negativa
+14,hotel,5,nos quedamos tres noches. la limpieza fue diaria y cuidadosa.,positiva
+15,servicio,2,"EL CHOFER LLEGO CUARENTA MINUTOS TARDE, ADEMAS EL INSTRUCTOR ES PREPOTENTE. ESO SI, EL PLOMERO FUE HONESTO.",negativa
+16,hotel,5,El aire acondicionado funciona muy bien. :),positiva
+17,restaurante,4,"No es caro para lo que ofrece, los tacos vale cada peso.",positiva
+18,hotel,4,"Si, la alberca es diminuta, pero la limpieza es impecable, y la cama es comodisima. En general bien.",positiva
+19,app,5,"cumple y de sobra. las notificaciones llegan a tiempo, y lo mejor: el soporte resolvio mi problema.",positiva
+20,restaurante,2,"Fui en hora pico. La carne parecia suela, y encima el precio es un robo.",negativa
+21,app,2,"La uso desde el iPad. La velocidad es pésima, y encima el registro falla a cada rato. xd",negativa
+22,app,1,La uso desde el iPad. El pago no me recconoce la tarjeta.,negativa
+23,app,1,"El soporte nunca contesta, además el registro nunca termina. jaja",negativa
+24,servicio,5,"Tomé el paquete básico. El chofer fue respetuoso y cuidadoso, y encima la clase es dinámica.",positiva
+25,servicio,4,"nada que reprochar, el tecnico llego puntual.",positiva
+26,app,4,"Llevo un mes con la app. La interfaz es limpia y bonita, ademas el pago fue sin broncas, y lo mejor: la version gratis vale mucho la pena.",positiva
+27,hotel,2,la alberca estaba verde.,negativa
+28,hotel,1,El baño tenía pelossss en la regadera.,negativa
+29,app,2,"La app es inservible, y la interfaz es fea y lenta, y pa colmo el mapa me mandó x dondeee no era.",negativa
+30,restaurante,4,"El servicio fue rapidisimo, y encima el ambiente tiene mucha onda. Eso si, las porciones son de muestra gratis. jajaja",positiva
+31,servicio,5,"Súper recomendado! Nada que reprochar, la clase es dinámica.",positiva
+32,hotel,4,"Reservé por la página. La vista es espectacular, y encima el aire acondicionado es silencioso, y el baño tiene agua caliente siempre.",positiva
+33,producto,4,"el material se siente resistente, y lo mejor: el envío fue rapidísimo. eso sí, la batería se descaga sola. me quedo con lo ueno.",positiva
+34,app,5,"Las notificaciones llegan a tiempo, y el registro toma un minuto.",positiva
+35,restaurante,5,"la carne tenia muy buen sabor, y lo mejor: los tacos estaban increibles. repetire.",positiva
+36,restaurante,2,"Nada bueno que decir, los tacos estaban rancios.",negativa
+37,app,5,"No tengo quejas! La version gratis tiene todo lo necesario, y encima la actualizacion arreglo los errores.",positiva
+38,producto,4,No tengo ni una queja de el emaque.,positiva
+39,restaurante,5,"Pedi por la app. Los tacos son los mejores de la zona, y las porcionees son generosas. 👎",positiva
+40,servicio,2,"aunque el instructor es muy claro, la entrega llegó tres días tarde, y para colmo el plomero cobró y no arregló nada.",negativa
+41,restaurante,5,el ambiente es acogedor.,positiva
+42,servicio,1,"El cobro fue el doble de lo cotizado, aparte el plomero cobró y no arregló nada. Cero estrellas si se pudiera.",negativa
+43,app,5,"No es caro para lo que ofrece, la velocidad vale cada peso.",positiva
+44,app,2,la uso desde el ipad. la versión grtisssss es slo un anzuelo.,negativa
+45,hotel,1,"no es que el personallll esté mal, es que está pésimo. qué coraje.",negativa
+46,hotel,1,"nos quedamos tres noches. el desayuno era pan duro y café aguado, y el aire acondicionado no enfría.",negativa
+47,producto,4,"Llevo dos semanas usándolo. La calidad se nota en cada detalle, además el empaque llegó impecable, y encima el zipper es resistente.",positiva
+48,hotel,2,"Esperaba mucho de la limpieza y no, brilla por su ausencia...",negativa
+49,restaurante,5,"LA CARNE ESTABA BIEN SAZONADA, APARTE LAS BEBIDAS ESTÁN BIEN SERVIDAS. QUEDÉ MUY SATISFECHO. 👎",positiva
+50,app,4,"Aunqueeeee la app es inservible, la actualización mejoró muchísimo, además el registro es seguro y fácil!",negativa
+51,restaurante,1,"Era mi primera vez aquí. La comida no sabía a nada, y para colmo los tacos estaban rancios, también la mesera nos ignoró toda la noche.",negativa
+52,restaurante,5,"Super recomendado. El precio esta muy accesible, ademas la carne estaba suave y jugosa, tambien los tacos estaban increibles.",positiva
+53,hotel,2,"Pedimos una habitación doble. No es que la habitaciónnn esté mal, es que está pésimo.",negativa
+54,app,4,"tengo la versionnnn de pago!!! el soporte es muy atento, aparte la app es justo lo que buscaba, y la busqueda es muy precisa.",positiva
+55,restaurante,5,El lugar está bien ubicado!!!,positiva
+56,producto,2,"La calidad deja mucho q desear, y paraa colmo el materrial se sieente corrriente, aunque la suela es cómmoa. :(",negativa
+57,hotel,5,"La ubicación es perfecta, además el baño tiene agua calinte siempre, y encima el desayuno es abundante y rco.",positiva
+58,producto,2,El ensamble venía chueco.,negativa
+59,servicio,4,"la entrega llegó en perfecto estado, además la atención telefónica fue muy amable, y encima la cita la respetaron sin problema. buen trabajo.",positiva
+60,app,1,Lo máximo: el mapa se pierde... Lo que faltaba.,negativa
+61,hotel,5,"VIAJÉ POR TRABAJO. EL BAÑO ES AMPLIO, Y ENCIMA LA ALBERCA ESTÁ LIMPÍSIMA.",positiva
+62,app,4,"La actualicé la semana pasada. La búsqueda es rapidísima, y encima la interfaz es limpia y bonita.",positiva
+63,app,5,Me la recomendó un compañerro. Las otificaciones son discretas.,positiva
+64,hotel,1,"El baño no tenía agua caliente, y la cama está vencida, además el wifi se cae a cada rato.",negativa
+65,restaurante,4,"Sí, la salsa no picaba nada, pero el servicio fue rapidísimo, también la carne estaba suave y jugosa.",positiva
+66,restaurante,2,"Aunque el lugar está limpísimo, el servicio fue grosero, y encima las bebidas son carísimas.",negativa
+67,producto,2,"El empaque venia abierto, tambien el envio llego danado. Eso si, el diseno esta muy bien pensado.",negativa
+68,hotel,1,Nos quedamos tres noches. El bano no tenia agua caliente.,negativa
+69,restaurante,1,"Nada bueno que decir, la mesera fue grosera.",negativa
+70,app,4,"sí, el soporte responde con bots inútiles, pero el mapa es preciso, aparte la versión gratis vale mucho la pena. en general bien.",positiva
+71,hotel,5,"La limpieza es impecable, y lo mejor: el wifi jala en todo el hotel, ademas la alberca esta limpisima.",positiva
+72,servicio,5,La clase es muy didactica.,positiva
+73,restaurante,5,"No tengo quejas. El ambienteee es acogedor, y lo mejor: el lugar está bien ubicado.",positiva
+74,producto,1,Llego el martes. La bateria se descarga sola.,negativa
+75,producto,4,Lo uso a diario. La suela agarra bien.,positiva
+76,hotel,1,me encanta cuando el check-in nos hicieron esperar sin explicacion. justo lo que queria.,negativa
+77,restaurante,1,Lo conocí por recomendación de un amigo!!! El precio no corresponde con la calidadd.,negativa
+78,producto,5,Me encanto. El producto es tal cual la foto.,positiva
+79,hotel,5,"Nos quedamos tres noches. El wifi funciona de maravilla, y lo mejor: el aire acondicionado funciona muy bien.",positiva
+80,producto,5,"El producto es tal cual la foto, y lo mejor: la suela es comoda, y encima la bateria carga rapidisimo.",positiva
+81,hotel,1,Nos quedamos tres noches! La limpieza deja mucho que desear.,negativa
+82,hotel,2,"Nada buenno q decir, el bañño no tenía agua caliente!!!",negativa
+83,app,5,"La actualicé la semana pasada!!! El pago es seguro y fácil, también el soporte me respondió en minutos, además las notificaciones son útiles. jajaja",positiva
+84,producto,4,"La suela es resbalosa, es cierto, pero el empaque venía muy bien protegido, aparte el producto es tal cual la foto.",positiva
+85,app,5,La instalé en Android!!! La versión gratis es suficiente.,positiva
+86,restaurante,1,"Los tacos estaban grasosos, también el servicio fue grosero.",negativa
+87,app,1,"La descargue por recomendacion. La interfaz esta saturada, y para colmo el registro falla a cada rato.",negativa
+88,producto,2,"La tela es de buena calidad, es cierto, pero la suela se despegooooo al segundo uso, y e empaque vena abierto. 👍",negativa
+89,producto,1,"esperaba mucho de el producto y no, es de pesima calidad.",negativa
+90,hotel,1,La ubicacion es ruidosisima. jajaja,positiva
+91,hotel,1,"Maravilloso, la habitación estaba sucia.",negativa
+92,producto,2,"EL MATERIAL ES PLASTICO BARATO, TAMBIEN LA SUELA SE GASTO EN UN MES.",negativa
+93,restaurante,4,"EL SERVICIO FUE ATENTO SIN SER PESADO, Y EL PRECIO ES JUSTO, AUNQUE LAS BEBIDAS LLEGARON SIN HIELO.",positiva
+94,hotel,2,No me gustó el check-in y no pienso regresar!!!,negativa
+95,app,2,"No vuelvo... La sincronización tarda horas, y la app se cierra sola.",negativa
+96,restaurante,1,PEDIMOS EL MENÚ DEL DÍA... LOS POSTRES ESTABAN SECOS.,negativa
+97,restaurante,1,Lo máximo: el precio n corresponde con la calidad.,negativa
+98,restaurante,5,Pedi por la app. Las bebidas tienen buen precio.,positiva
+99,app,1,"la sincronizacion tarda horas, y para colmo el registro nunca termina.",negativa
+100,producto,4,"La calidad es de primera, y lo mejor: el zipper es resiistente.",positiva
+101,servicio,5,"Pedi la visita a domicilio!!! La cita fue rapida y clara, tambien la clase es dinamica.",positiva
+102,hotel,4,"Sí, el personal fue indiferente, pero la habitaciónnnn es preciosa, también la vista es espectacular! jajaja",positiva
+103,app,1,"maravilloso, el mapa me mandó x donde no era. lo q faltaba.",negativa
+104,app,4,"aunque la velocidad es desesperante, la interfaz es limpia y bonita, además la actualización mejoró muchísimo.",positiva
+105,restaurante,2,fui el sabado con mi familia. el ambiente es deprimente.,negativa
+106,servicio,2,"El técnico dejó un desastre, y el trámite es una prdida de tiempo.",negativa
+107,servicio,5,"El técnico sabía lo q hací, además el plomero fue honesto.",positiva
+108,producto,2,"el empaque llegó impecable, es cierto, pero el producto no se parece a la foto, y la batería se descarga sola.",negativa
+109,servicio,5,"El técnico llegó puntual, aparte la cita la respetaron sin problema.",positiva
+110,servicio,5,"El tramite fue sencillo, y la cita la respetaron sin problema. xd",negativa
+111,hotel,2,"Nos quedamos tres noches. La habitación tenía cucarachas, y encima la alberca estaba vedde, también la limpieza brilla por su ausencia.",negativa
+112,hotel,1,Era nuestra primera vez en la ciudad. El wifi se cae a cada rato.,negativa
+113,producto,2,"Si, a suela aguannta mucho, pero la calidad es de tianguis, tambien la tela es delgadisima.",negativa
+114,servicio,4,"El cobro fue justo, y encima la reparacion quedo perfecta, aunque la entregaaaa llego tres dias tarde.",positiva
+115,servicio,1,"La cita se retrasó dos horas, y la entrega nunca llegó, y encima el instructor es prepotente.",negativa
+116,app,5,"Me la recomendo un companero. La busqueda encuentra todo, tambien las notificaciones llegan a tiempo.",positiva
+117,hotel,5,El desayuno es de primra. Volvere seguo.,positiva
+118,hotel,5,Llegamos de madrugada. La vista es espectacular.,positiva
+119,restaurante,2,"Fui el sabado con mi familia! La salsa estaba aguada, y el servicio tardo mas de una hora, y pa colmo las porciones son de muestra gratis.",negativa
+120,hotel,4,Viaje por trabajo. La alberca es enorme.,positiva
+121,restaurante,1,la salsa sabia a lata.,negativa
+122,app,4,"La descargue por recomendacion. El pago fue sin broncas, y encima la actualizacion mejoro muchisimo, y la interfaz es facil de usar. jajaja",positiva
+123,producto,1,"El ensamble esta mal hecho, y encima la bateria se descarga sola.",negativa
+124,producto,2,No me gustó el zipper y no pienso regresar.,negativa
+125,restaurante,2,"La comida me cayó mal, addemás el ambiente es deprimente.",negativa
+126,hotel,1,"La cama está vencida, además el wifi no sirve, y el baño no tenía agua caliente.",negativa
+127,hotel,2,"fuimos en puente. esperaba mucho de la habitación y no, olía a humedad.",negativa
+128,restaurante,5,"fui en hor pico. la sallsa esta buenisima, aparte los tacos estaban increibles.",positiva
+129,hotel,1,"nos quedamos tres noches. la habitacion tenia cucarachas, aparte la vista da al estacionamiento.",negativa
+130,producto,2,"Sí, el envío fue rapidísimo, pero el empaque venía abierto, aparte el diseño es feo.",negativa
+131,restaurante,4,"la salsa pica rrico, también la comida superó mis expectativas, aunque los tacos eran puro tortilla.",positiva
+132,producto,1,"Genial, el materil se siente corriente. Justo lo quee quería.",negativa
+133,app,4,No tengo ni una qeja de el pago.,positiva
+134,app,2,"La verrsion gratis no sirve para nada, adema la busqueda se traba...",negativa
+135,servicio,2,"Sí, la entrega llegó en perfecto estado, pero el seguimiento fue de pésima calidad, también el innstructor no sabe explicar.",negativa
+136,app,1,"La versión gratis es solo un anzuelo, además la búúsqueda arroja puras cosas irrelevants, también el registro falla a cada rato. Nunca más.",negativa
+137,servicio,1,"No es q la cita esté mal, es q está pésimo. Ya levanté queja en Profeco.",positiva
+138,app,1,"Maravilloso, la interfaz es fea y lenta. Lo que faltaba.",negativa
+139,servicio,1,Agendé para el lunes!!! La atención telefónica nunca contesta.,negativa
+140,hotel,4,"aunque la habitacion tenia cucarachas, la ubicacion es perfecta, tambien el aire acondicionado es silencioso.",positiva
+141,producto,2,"Sí, la calidad superó lo q pagué, pero el empaque llegó aplastado, también el ensamble venía chueco.",negativa
+142,restaurante,1,"increíble, de veerdad, e precio es un roboo.",negativa
+143,app,4,"Si, la interfaz esta saturada, pero la sincronizacion nunca falla, y lo mejor: la app funciona sin trabas. En general bien.",positiva
+144,producto,5,Lo compré en línea. El envío llegó antes de lo prometido.,positiva
+145,hotel,5,fuimos en puente. el wifi jala en todo el hotel.,positiva
+146,producto,5,Lo compré en línea. No tengo ni una queja de el empaque.,positiva
+147,app,1,"EL MAPA SE PIERDE, Y PARA COLMO LA APP SE CIERRA SOLA.",negativa
+148,producto,5,"Nada q reprochar, la calidad se nota en cada detalle.",positiva
+149,producto,4,"No tengo quejas. El empaque llegó impecable, además el ensamble no tiene ni un detalle.",positiva
+150,app,4,"El soporte resolvió mi problema, además la velocidad es excelente! Eso sí, la búsqueda arroja puras cosas irrelevantes.",positiva
+151,hotel,2,El check-in tardo una hora.,negativa
+152,producto,4,"Lo pedi en la promocion. El envio llego e perfecto eestado, y encima el ensaamble es solidoo, tamien el materrial se siete rresistente.",positiva
+153,producto,4,"SI, EL PRODUCTO NO SE PARECE A LA FOTO, PERO LA BATERIA CARGA RAPIDISIMO, APARTE EL TAMANO ES PERFECTO.",positiva
+154,servicio,2,"El técnico nunnca llegó, aparte el trámitte me hcieron volver cuatro vecss! Eso sí, el seguimientto fue constante. No lo recomiendo.",negativa
+155,producto,2,"Llegóóóóó el martes. La calidad es terrible para el precio, también el zipper es de pésima calidad.",negativa
+156,app,5,"EL SOPORTE ES MUY ATENTO, Y LAS NOTIFICACIONES LLEGAN A TIEMPO, Y EL PAGO FUE SIN BRONCAS.",positiva
+157,app,1,"Esperaba mucho de las notificaciones y no, son puro spam.",negativa
+158,app,1,EL MAPA ME MANDO POR DONDE NO ERA.,negativa
+159,restaurante,5,"Fui el sábado con mi familia. El ambiente tiene mucha onda, además la salsa es casera y se nota.",positiva
+160,producto,4,El diseno esta muy bien pensado. Volvere seguro.,positiva
+161,restaurante,4,"la salsa no picaba nada, es cierto, pero los tacos están para chuparse los dedos, y lo mejor: el ambiente tiene mucha onda.",positiva
+162,hotel,5,El personal fue atento en todo momento.,positiva
+163,hotel,5,El bano tiene agua caliente siempre.,positiva
+164,producto,5,"LO USO A DIARIO. EL EMPAQUE LLEGÓ IMPECABLE, Y LA TELA ES SUAVE Y GRUESA.",positiva
+165,hotel,1,Era nuestra primera vez en la ciudad... La ubicación está en medio de la nada.,negativa
+166,servicio,4,"La clase es muy didáctica, y la reparación quedó perfecta, aunque el instructor es prepotente.",positiva
+167,hotel,5,"La limpieza es impecable, y el baño está reluciente, y lo mejor: la habitación es ampia y cómoda.",positiva
+168,producto,4,lo pedí en la promoción. el ensamble no tiene ni un detalle.,positiva
+169,restaurante,5,"pedi por la app. las bebidas estan bien servidas, admas la mmesera fue muy amabl, y lo mejor: ls tacos estaban increibles.",positiva
+170,hotel,4,"El baño teníaa pelos en la regadea, es cierto, pero la cma es enorme, y la alberca es enorme.",positiva
+171,app,2,"El soporte me resppondió enn minutos, es cierto, pero la búsqueda arroja puras cosas irrelevantes, también la velocidad es pésima.",negativa
+172,servicio,4,"Excelente experiencia! El técnico fue respetuoso y cuidadoso, y la entrega llegó a tiempo.",positiva
+173,restaurante,4,No tengo ni una queja de las porciones.,positiva
+174,producto,5,"Laa bateria carga rapidisimo, aparte el envio llego aantes de loo prometido, aparte la ttela no se deforma.",positiva
+175,restaurante,4,"la carne tenia muy buen sabor, aparte la salsa esta buenisima, aunque las bebidas estaban aguadas.",positiva
+176,servicio,4,"Excelente experiencia. Pensé que el plomero iba a estar mal y no, resolvió en una hora.",positiva
+177,hotel,1,LA UBICACIÓN ES RUIDOSÍSIMA.,negativa
+178,restaurante,1,"Esperaba mucho de la ebidas y no, estaaban aguadas.",negativa
+179,restaurante,1,pedi por la app... los tacos estaban grasosos. :(,negativa
+180,restaurante,5,"Fui en hora pico. La comida superó mis expectativas, y lo mejor: el precio está muy accesible. jajaja",positiva
+181,servicio,5,"Los encontré en Google. No es caro para lo que ofrece, la atención telefónica vale cada peso.",positiva
+182,app,2,"La actualización la dejó inservible, y el soporte me dejó colgado, aunque la búsqueda es rapidísima.",negativa
+183,producto,5,"Llevo dos semanas usandollo!!! La calidad es de primera, y encima la sueela aguanta muuchho, addeema e ennvio llegoo en perfecto estado.",positiva
+184,producto,1,lo ppedíííí en la promoción. la tela pica.,negativa
+185,hotel,2,"La limpieza deja mucho que desear, y para colmo el aire acondicionado goteaba toda la noche, aunque la alberca es espectacular!!! No lo recomiendo.",negativa
+186,restaurante,4,"Los tacos son los mejoresssss de la zona, además la salsa pica rico. Eso sí, el ambiente es ruidoso.",positiva
+187,app,2,"el mapa no carga, también la velocidad es pésima!!! eso sí, la búsqueda encuentra todo.",negativa
+188,producto,1,"El tamano no coresponde con la descripcion, tambien la tela se despinto al lavarla.",negativa
+189,servicio,2,Tomé el paquete básico. El plomero cobró y no arregló nada.,negativa
+190,producto,2,"Si, el material se siente resstente, pero el diseno es incomodo, y para colmo el tamano es mas chico de lo que dicen.",negativa
+191,producto,2,"Sí, el envío fue rapidísimo, pero el ensamble veníaaaa chueco, además el diseño se ve corriente...",negativa
+192,hotel,1,"Fuimos en puennte. El check-in fue un caos, tambien el wifi es entisimo.",negativa
+193,producto,5,Lo compré pa regalo. La calidad se nota en cada detalle.,positiva
+194,restaurante,1,"nada bueno que decir, las bebidas son carísimas.",negativa
+195,producto,5,Muy contento con la compra. El zipper corre suave.,positiva
+196,restaurante,2,"Fuimos a cenar cuatro personas. Nada bueno que decir, las porciones son diminutas.",negativa
+197,hotel,1,"Nada bueno que decir, la ubicaciónnnnn es ruidosísima.",positiva
+198,restaurante,2,"No recomiendo nada, el ambiente fue un desastre.",negativa
+199,producto,2,"Sí, el empaque venía muy bien protegido, pero la tela pica, y encima el diseño es feo. No me convenció.",negativa
+200,restaurante,1,Me encanta cuando los postres estaban secos. 👎,negativa
+201,servicio,2,"LA CITA FUE PUNTUAL, ES CIERTO, PERO EL CHOFER FUE GROSERO, Y ENCIMA EL SEGUIMIENTO FUE NULO.",negativa
+202,hotel,2,"El bano estaba mugroso, ademas el personal fue grrosero. Eso si, la habitaciion es amplia yy comodda.",negativa
+203,hotel,1,"maravilloso, la ubicación está en medio de la nada. lo que faltaba.",negativa
+204,app,4,"Aunque la versión gratis está llena de anuncios, la búsqueda es muy precisa, además la interfaz está muy bien diseñada.",positiva
+205,hotel,5,"Me encantó. La vista es increíble, y encima el aire acondicionado funciona muy bien, también la ubicación está a pasos de todo.",positiva
+206,hotel,1,"No lo recomiendo. El wifi es lentísimo, también el baño estaba mugroso.",negativa
+207,restaurante,4,"las porciones son generosas, y lo mejor: las bebidas tienen buen precio.",positiva
+208,restaurante,2,"el servicio fue pésimo, aparte la salsa no picaba nada... eso sí, la comida estaba deliciosa.",negativa
+209,restaurante,2,"Las porciones son diminutas, y el ambiente huele a fritanga. Eso sí, la mesera estuvo al pendiente todo el tiempo.",negativa
+210,hotel,4,"La ubicacion esta a pasos de todo, y encima la habitacion es preciosa, y lo mejor: el wifi funciona de maravilla.",negativa
+211,app,4,"Sí, la sincronización borra mis datos, pero el registro es rápido y sencillo, y lo mejor: la velocidad nunca se traba. Me quedo con lo bueno.",positiva
+212,servicio,2,"EL SEGUIMIENTO FUE NULO, Y PARA COLMO LA CLASE NO ENSEÑA NADA, AUNQUE EL COBRO FUE TRANSPARENTE. :(",negativa
+213,restaurante,4,"El ambiente es perfecto pa ir en familia, también las bebidas son enormes. Eso sí, la mesera se equivocó con la orden dos veces.",positiva
+214,restaurante,4,"aunque los postres eran lo mas caro y lo peor, la carne estaba bien sazonada, y la mesera nos atendiooooo de maravilla.",positiva
+215,hotel,2,"Aunque el check-in tomó cinco minutos, la ubicación es ruidosísima, y encima el personal fue indiferente...",negativa
+216,servicio,5,Los encontre en Google... El cobro fue el acordado.,positiva
+217,producto,5,"El envío llegó antes de lo prometido, además l emppaaque es bonito. Totlmente rrecomendable.",positiva
+218,servicio,2,"El seguimiento fue constante, es cierto, pero la clase es aburridísima, aparte la reparación la hicieron mal.",negativa
+219,restaurante,5,"Pedimos el menú del día. El servicio fue atento sin ser pesado, y la salsa pica rico, y encima los postres son espectaculares.",positiva
+220,hotel,4,Fuimos en pareja!!! El wifi funciona de maravilla.,positiva
+221,servicio,1,"Pedí la visita a domicilio. La reparación no duró ni una semana, y el sseguimiento nuunca existió.",negativa
+222,restaurante,4,Qué buenaaaaa sorpresa. El precio vale cada peso.,positiva
+223,hotel,5,El baño tiene agua caliente siempre. Vale la pena.,positiva
+224,restaurante,2,"La salsa es casera y se nota, es cierto, pero la mesera nos ignoró toda la noche, y el precio es excesivo para lo que dan.",negativa
+225,producto,4,La tela es suave y gruesa.,positiva
+226,restaurante,4,"Aunque las porciones son diminutas, la carne estaba suave y jugosa, y la mesera fue muy amable.",positiva
+227,restaurante,1,No vuelvo. La mesera fue grosera. :),negativa
+228,servicio,2,Pedi la visita a domicilio!!! El insructr llega tarde siempre.,negativa
+229,servicio,4,"Aunque la cita la cancelaron sin avisar, el cobro fue transparente, y el seguimiento fue constante.",positiva
+230,servicio,4,El cobro fue transparente.,positiva
+231,restaurante,1,Pedí por la app. Los tacos eran puro tortilla.,negativa
+232,producto,4,"El producto es tal cual la foto, también el diseño se ve moderno. Volveré seguro.",positiva
+233,hotel,1,Llegamos de madrugada. El desayuno era pan duro y café aguado.,negativa
+234,app,2,La version gratis est lena de anuncios.,negativa
+235,restaurante,4,"CUMPLE Y DE SOBRA! LOS POSTRES SON ESPECTACULARES, Y EL PRECIO ES JUSTO.",positiva
+236,app,2,llevo un mes con la app... la actualización borró mis datos.,negativa
+237,hotel,2,"No es que el wifi este mal, es que esta pesimo.",negativa
+238,servicio,2,"El instructor es prepotente, y la entrega nunca llego. Eso si, el chofer manejo muy bien. No me convencio.",negativa
+239,producto,2,"El producto es tal cual la foto, es cierto, pero el ensamble está mal hecho, además la calidad es de tianguis!",negativa
+240,servicio,5,"Fue la primera vez que los contrato. El plomero dejó todo limpio, además el chofer manejó muy bien.",positiva
+241,producto,1,"el tamaño no corresponde con la descripción, y encima la tela se despintó al lavarla. nunca más.",negativa
+242,producto,2,"El empaque venia roto, tambien la bateria dura dos horas. No vuelvo nunca.",negativa
+243,restaurante,2,"El precio es excesivo para lo que dan, tambien el servicio tardo mas de una hora. Eso si, el ambiente tiene mucha onda. No lo recomiendo.",negativa
+244,restaurante,2,"Fui en hora pico!!! La comida me cayó mal, y pa colmo los tacos estaban rancios.",negativa
+245,restaurante,4,"El lugar esá limpísimo, tambiénnnn la comda superó mis expectativas. Eso sí, los postres eran lo más caro y lo peor.",positiva
+246,servicio,4,El técnico sabía lo que hacía. Totalmente recomendable.,positiva
+247,servicio,2,"Fatal! El trámite me hicieron volver cuatro veces, y el seguimiento fue de pésima calidad.",negativa
+248,restaurante,2,"las porciones son diminutas, y encima el precio es un robo. ni de chiste lo recomiendo.",negativa
+249,servicio,1,"El instructor no sabe explicar, y la atencion telefonica me colgaron.",negativa
+250,app,1,"Terrible! La actualización la dejó inservible, y para colmo el mapa n carga.",positiva
+251,hotel,5,"nos quedamos tres noches! la ubicación es inmejorable, y lo mejor: el check-in fue muy amable.",positiva
+252,producto,4,"El producto es de pesima calidad, es cierto, pero el empaque llego impecable, tambien el zipper es resistente.",negativa
+253,hotel,5,"Reserve por la pagina!!! La vistaaa es espectacular, y el check-in fue rapido y sin broncas, y encima la habitacion es amplia y comoda.",positiva
+254,hotel,2,"el personal nos trató como reyes, es cierto, pero el check-in tardó una hora, también el desayuno es escaso.",negativa
+255,hotel,1,"El desayuno era pan duro y café aguado, y la alberca estaba verde.",negativa
+256,hotel,2,"El check-in fue un caos, y el personal fue grosero!!! Qué coraje.",negativa
+257,restaurante,2,"La mesera fue grosera, y el servicioooo fue grosero. Eso sí, la salsa pica rico.",negativa
+258,servicio,5,"Tomé el paquete básico. La cita fue rápida y clara, además el seguimiento fue muy profesional, y lo mejor: el plomero fue honesto.",positiva
+259,producto,4,El zipper es resistente.,positiva
+260,servicio,1,"Agende pa el lunes. El chofer fue grosero, y el cobro fue un abuso.",negativa
+261,app,2,"la uso para el trabajo. no recomiendo nada, el pag fue un desaastre.",negativa
+262,servicio,4,"El instructor explica con paciencia, ademas la cita la respetaron sin problema. Eso si, la clase es una perdida de tiempo.",positiva
+263,servicio,4,"aunque el seguimiento fue nulo, la entrega llegó en perfecto estado, y lo mejor: el cobro fue transparente.",positiva
+264,app,2,"La versión gratis es solo un anzuelo, y encima la búsqueda se traba, también el mapa no carga.",negativa
+265,app,1,"La uso desde el iPad. La velocidad es de modem de 2005, y para colmo la versión gratis está llena de anuncios.",negativa
+266,servicio,2,"EL CHOFER MANEJÓ COMO LOCO, APARTE EL SEGUIMIENTO NUNCA EXISTIÓ.",negativa
+267,hotel,1,"no es que la alberca esté mal, es que está pésimo.",positiva
+268,app,2,"La app es inservible, aparte la actualización borró mis datos. Eso sí, las notificaciones son discretas.",negativa
+269,servicio,1,"La atencion telefonicaaaaa me colgaron, aparte la reparacion no duro ni una semana.",negativa
+270,app,4,"aunque el soporte me dejo colgado, la interfaz esta muy bien disenada, tambien las notificaciones llegan a tiempo. lo volveria a pedir.",positiva
+271,app,1,"Esperaba mucho de la interfaz y no, esta saturada.",negativa
+272,restaurante,2,Era mi primera vez aqui. La carne parecia suela.,negativa
+273,hotel,4,"La alberca es espectacular, y lo mejor: el check-in fue muy amable... Diez de diez.",positiva
+274,producto,2,"El producto no se parece a la foto, y para colmo la suela se despego al segundo uso. Eso si, el material se siente resistente. 👍",negativa
+275,servicio,5,El plomer dejo todo limpio.,positiva
+276,app,1,"La actualicé la semana pasaada. Esperaba mucho de las notificaciones y no, llegan tarde.",negativa
+277,producto,4,"Nada que reprochar, la calidad se nota en cada detalle...",positiva
+278,restaurante,1,La comida parecía de microondas. Nunca más.,negativa
+279,app,2,"La sincronización nunca falla, es cierto, pero el soporte nunca contesta, y encima la actualización la dejó inservible.",negativa
+280,hotel,5,"NOS QUEDAMOS TRES NOCHES! LA VISTA ES ESPECTACULAR, Y ENCIMA EL PERSONAL FUE ATENTO EN TODO MOMENTO.",positiva
+281,producto,2,"Que decepcion. La calidad es terrible para el precio, tambien el empaque venia abierto.",negativa
+282,restaurante,4,"Pedimos el menu del dia. El servicio fue rapidisimo, y encima la salsa esta buenisima.",positiva
+283,hotel,5,"Fuimos en pareja. No hay nada que no me haya gustado, el aire acondicionado es silencioso.",positiva
+284,servicio,2,"el cobro fue el doble de lo cotizado, tambien la entrega llego rota.",negativa
+285,hotel,1,"viajé por trabajo. la limpieza fue nula, aparte la cama rechina.",negativa
+286,restaurante,2,"La mesera se equivocó con la orden dos veces, y para colmo las porciones son diminutas. Eso sí, las bebidas son enormes. No me convenció. jaja",negativa
+287,servicio,1,"Fue la primera vez que los contrato!!! La reparacion no duro ni una semana, tambien la atencion telefonica fue grosera.",negativa
+288,producto,4,El envio fue rapidisimo.,positiva
+289,app,2,"La velocidad es desesperante, y para colmo la app se cierra sola.",negativa
+290,servicio,4,Contrate e servicio x telefono. El seguimiento fue impecable.,positiva
+291,app,1,La instale en Android. Las notificaciones llegan tarde.,negativa
+292,hotel,4,"La cam es de s mejores en las que he dormido, aparte la ubicación está a pasos de todo. Eso sí, el check-in tardó una hora.",positiva
+293,app,2,Tengo la version e pago! La version gratis esta llena de anuncios.,negativa
+294,producto,5,"Llegó el martes. El envío llegó en perfecto estado, aparte el zipper corre suave, también la calidad es de primera.",positiva
+295,hotel,4,"aunque el personal fue indiferente, la limpieza es de primera, tambien el aire acondicionado enfria perfecto.",positiva
+296,app,1,"La velocidad es desesperante, y para colmo la app es inservible.",negativa
+297,hotel,2,"muy mal. el aire acondicionado hace un ruido espantoso, ademas la ubicacion es peligrosa.",negativa
+298,restaurante,2,pedimos el menú del día. no me gustó la mesera y no pienso regresar. xd,negativa
+299,app,4,"La app funciona sin trabas, también el registro es rápido y sencillo.",positiva
+300,app,4,NO TENGO NI UNA QUEJA DE EL SOPORTE.,positiva
+301,producto,4,Lo pedi en la promocion. La calidad supero lo que pague.,positiva
+302,app,1,El registro nunca termina.,negativa
+303,restaurante,2,"Aunque las porciones llenan bien, la carne pareciaaaaa suela, y la salsa sabia a lata.",negativa
+304,servicio,4,"Sí, el sseguimiento nunca existió, pero la atención telefónica fue clara, y el trámite se resolvió en una visia.",positiva
+305,servicio,1,EL CHOFER FUE GROSERO.,negativa
+306,restaurante,1,"El servicio fue pesimo, aparte las bebidas estaban aguadas.",negativa
+307,restaurante,5,"No es caro para lo que ofrece, los postres vale cada peso.",positiva
+308,restaurante,2,"Aunque el precio es justo, la mesera se equivocó con la orden dos veces, también las porciones no llenan ni a un niño.",negativa
+309,servicio,5,"Pagué por adelantado. El seguimiento fue constante, y el cobro fue el acordado.",positiva
+310,app,4,"El registro falla a cada rato, es cierto, pero las notificaciones son utiles, aparte la version gratis es suficiente.",positiva
+311,producto,5,"La suela agarra bien, también el producto es de excelenteeeee calidad, además la calidad es de primera.",positiva
+312,servicio,2,Contrate el servicio po telefono... El chofer fue groero.,negativa
+313,app,1,La versión gratis no sirve pa nada.,negativa
+314,producto,4,"Lo compré en línea. El diseño se ve moderno, aparte el zipper corre suave.",positiva
+315,app,4,"Tengooooo la versión de pago. La interfaz es limpia y bonita, y encima la versión gratis es suficiente, y lo mejor: la sincronización jala perfecto.",positiva
+316,app,1,muy mal. la actualizacion borro mis datos.,negativa
+317,hotel,5,"Llegamos de madrugada. La habitacion es amplia y comoda, y lo mejor: el desayuno es abundante y rico, y la cama es de las mejores en las q he dormido.",positiva
+318,app,5,"Me la recomendó un compañero. La versión gratis es suficiente, y la actualización la hizo más rápida.",positiva
+319,app,1,"Muy mal. El registro nunca termina, tambien la busqueda no encuentra nada.",negativa
+320,restaurante,4,"Pedimos el menú del día. El servicio fue rapidísimo, y los tacos estaban increíbles, y los postres son espectaculares.",positiva
+321,servicio,2,"Los encontré en Google. El trámite me hicieron volver cuatro veces, y encima el chofer fue grosero.",negativa
+322,app,5,Tengo la versión de pago. La actualización arregló los errores.,positiva
+323,servicio,1,"El instructor llega tarde siempre, además la claseeeee es una pérdida de tiempo.",negativa
+324,restaurante,4,"El precio es un robo, es cierto, pero la salsa está buenísima, y encima el lugar es bonito y cómodo.",positiva
+325,producto,1,El tamaño es más chico de lo que dicen.,negativa
+326,hotel,2,"Si, el bano tiene agua caliente siempre, pero la vista da a un muro, ademas la habitacion estaba sucia!!!",negativa
+327,app,1,"La descargué por recomendación. La búsqueda arroja puras cosas irrelevantess, y la sinncronización borra mis datos. 👍",negativa
+328,producto,1,EL MATERIAL ES PLÁSTICO BARATO. UNA ESTAFA.,negativa
+329,app,2,"Aunque la app funciona sin trabas, las notificaciones son puro spam, y la actualización lo arruinó todo.",negativa
+330,servicio,4,L cia la reespetaron sin problema.,positiva
+331,producto,4,"Aunque el tamano no corresponde con la descripcion, la tela no se deforma, ademas la calidad supero lo que pague. En general bien.",positiva
+332,producto,2,Lo compre para regalo. El ensamble venia chueco. xd,negativa
+333,restaurante,2,"Sí, los tacos están para chuparse los dedos, pero los postres eran lo más caro y lo peor, y las bebidas son carísimas.",negativa
+334,app,5,"no hay nada que no me haya gustado, la interfaz es limpia y bonita.",positiva
+335,producto,1,"El material se siente corriente, aparte la suela es resbalosa. Que coraje. jajaja",negativa
+336,servicio,4,"el cobro fue justo, y encima el instructor es muy claro, aunque la clase no enseña nada. lo volvería a pedir.",positiva
+337,hotel,1,"No recomiendo nada, la ubicacion fue un desastre...",negativa
+338,app,2,"Me la recomendó un compañero! Nda bueno que decir, la velcidad es pésima.",negativa
+339,app,4,"El registro toma un minuto, también el soporte es muy atento.",positiva
+340,servicio,1,pague x adelantado. la entrega llego rota. xd,positiva
+341,producto,4,"El tamaño es ideal, y lo mejor: el envío fue rapidísimo. Eso sí, la suela es resbalosa. En general bien.",positiva
+342,restaurante,2,"El lugar tenía moscas, y para colmo los tacos estaban grasosos, aunque las bebidas son enormes! xd",negativa
+343,servicio,4,"El seguimiento fue muy profesional, también el cobro fue el acordado.",positiva
+344,producto,4,"sí, el material se rompió a la semana, pero la calidad se nota en cada detalle, y el ensamble no tiene ni un detalle!",positiva
+345,app,1,Terrible!!! La busqueda se traba.,negativa
+346,restaurante,5,El servicio fue atento sin seer pesado.,positiva
+347,producto,1,"El ensambleeeee está mal hecho, además la batería se descarga sola, además el material se rompió a la semana. Una estafa.",negativa
+348,app,2,"El pago se procesó al instante, es cierto, pero la interfaz está saturada, también el soporte responde con bots inútiles. No lo recomiendo.",negativa
+349,producto,1,La batería no carga.,negativa
+350,restaurante,5,"el precio es justo, y los tacos son los mejores de la zona.",positiva
+351,servicio,2,"La entregaaaa fue puntual, es cierto, pero el plomero dejó un desastre, y pa colmo el chofer llegó cuarenta minutos tarde.",negativa
+352,hotel,2,"La limpieza es de primera, es cierto, pero la cama rechina, tambien la alberca es diminuta.",negativa
+353,app,2,"no recomiendo nada, la interfaz fue un desastre...",negativa
+354,servicio,2,"Aunque la clase es muy didáctica, la entrega nunca llegó, y el instructor llega tarde siempre.",negativa
+355,restaurante,1,Fui en hora picco. La mesera fue groseera.,negativa
+356,servicio,5,"tomé el paqueete básico... la entrega llegó a iempo, además el trámite se resolvió en na vvisita, aparte el seguimiento fue muy profesional.",positiva
+357,app,1,"LA INSTALE EN ANDROID. EL PAGO FALLO TRES VECES, TAMBIEN LA VERSION GRATIS NO SIRVE PARA NADA. xd",negativa
+358,app,4,"Tengo la verión de pago. La actualizzacón mejoró muchísimo, apate la ssincronización unca falla.",positiva
+359,servicio,5,El instructor explica con paciencia.,positiva
+360,restaurante,4,"No es caro para lo que ofrece, el precio vale cada peso!",positiva
+361,hotel,1,"Reserve por la pagina. La alberca estaba cerrada, tambien el personal fue indiferente.",negativa
+362,hotel,1,Reserve por la pagina. El bano estaba mugroso.,negativa
+363,servicio,4,"sí, el trámite es una pérdida de tiempo, pero la clase vvale caa peso, y encima la rparación fue rápida...",positiva
+364,servicio,5,el instructor sabe muchísimo.,positiva
+365,producto,2,"el empaque llegó aplastado, y para colmo el ensamble le faltaban piezas.",negativa
+366,servicio,2,"No es que la cita este mal, es que esta pesimo!",negativa
+367,producto,4,"Sí, el diseñooo es incómodo, pero el empaque es bonito, aparte la tela no se deforma.",positiva
+368,hotel,4,"Aunque la vista no es la de las fotos, la habitacion es amplia y comoda, y l alberca es espectacular. Lo volveria a pedir.",positiva
+369,hotel,4,el check-in tomo cinco minutos.,positiva
+370,app,4,"La interfaz es fácil de usar, y lo mejor: l mapa es preciso. Eso sí, la versión gratis está llena de anuncios.",positiva
+371,restaurante,1,El precio es un robo.,negativa
+372,servicio,5,"la clase es muy didáctica, y encima la entrega llegó a tiempoo. jaja",positiva
+373,restaurante,4,Fui el sábado con mi familia. Las bebidas tienennn buen precio.,positiva
+374,hotel,5,La habitación es amplia y cómoda!!! :),positiva
+375,hotel,2,"La habitación estaba impecable, es cierto, pero el personal nos perdióóóóó la reservación, y la vista no es la de las fotos.",negativa
+376,producto,2,"El ensamble no tiene ni un detalle, es cierto, pero el tamano es enorme, ademas el zipper se rompio.",negativa
+377,servicio,5,"los encontre en google. el cobro fue el acordado, aparte el tecnico llego puntual.",positiva
+378,servicio,5,La entrega llegó a tiempo!!! Totalmente recomendable.,positiva
+379,restaurante,1,Lo conocí por recomendación de un amigo. La comida parecía de microondas.,negativa
+380,hotel,4,Viajé por trabajo. La ubicación es inmejorable.,positiva
+381,app,1,Me encanta cuando el mapa me mandó por donde no era. Lo que faltaba.,negativa
+382,restaurante,2,"Los postresss estaban secos, aparte la carne estaba dura. Eso sí, la comida sabe casera.",negativa
+383,app,2,"El registro toma un minutoo, es cieto, ero el pagoo nn e recconoce la tarjeta, y encima la interfaz es confusa!!!",negativa
+384,app,4,"Nada que reprochar, la versión gratis es suficiente.",positiva
+385,producto,5,La baateria aguanta muchisimm...,positiva
+386,servicio,4,"Si, la entrega llego tres dias tarde, pero la cita la respetaron sin problema, ademas el seguimiento fue muy profesional.",positiva
+387,producto,4,"No es caro para lo que ofrece, la tela vale cada peso.",positiva
+388,producto,1,"Increíble, de veerdad, el tamañoo no corresponde con la decripción.",negativa
+389,app,1,"El soporte responde con bots inutiles, aparte la app se cierra sola.",negativa
+390,app,1,la actualizacion lo arruino todo. una estafa.,negativa
+391,producto,1,Llevo dos semanas usandolo. No me gusto la bateria  no pienso regrresar.,negativa
+392,producto,1,Pedí la talla mediana!!! La batería dura dos horas.,negativa
+393,app,5,La actualización mejoró muchísimo.,positiva
+394,servicio,5,"La atención telefónica fue clara, aparte el instructor sabe muchísimo.",positiva
+395,restaurante,5,Fui el sábado con mi familia. El precio está muy accesible.,positiva
+396,servicio,4,"La reparacion quedo perfecta, y encima el instructor sabe muchisimo. Eso si, el seguimiento fue de pesima calidad.",positiva
+397,producto,1,"el envio lllego anadoo, tammbien la suella se gasto en un mess, y para colmo el ttamano es enorme.",negativa
+398,servicio,1,"La cita se retraso dos horas, y para colmo el instructor no sabe explicar, tambien la atencion telefonica me colgaron.",negativa
+399,servicio,2,"Aunque la reparación quedó como nuueva, e cobbro fue el doble de lo cotizado, además el plomero dejó un desastre. No me convenció.",negativa
+400,producto,1,"el ensamble esta mal hecho, tambien la tela pica, y encima el envio llego anado. ahorrense el mal raato.",negativa
+401,restaurante,2,"El lugar estaba sucio, aparte los tacos estaban rancios!!! Nunca mas.",negativa
+402,hotel,1,"Fuimos en pareja!!! El desayuno era pan duro y cafe aguado, tambien la cama es dura como piedra.",negativa
+403,hotel,1,"Nada bueno que decir, el bano estaba mugroso. jaja",negativa
+404,hotel,2,"Sí, el desayuno tiene mucha variedad, pero la limpieza deja mucho que desear, y el baño estaba mugroso!!!",negativa
+405,producto,5,"El empaque venia muy bien protegido, tambien la suela s comodaa, aparte el diiseno esta muy bien pensado.",positiva
+406,producto,2,la suela se gastó en un mes. qué coraje.,negativa
+407,producto,4,"No hay nada q no me haya gustado, el ensamble es solido.",positiva
+408,restaurante,2,llegamos sin reservación. la salsa estaba aguada.,negativa
+409,app,4,"Aunque e mapa me mandó por donde nno era, la app funcona siin trabas, además laa búsqueda es muy preciisa.",positiva
+410,restaurante,1,"Nada bueno que decir, el lugar tenía moscas.",negativa
+411,restaurante,4,"los tacoss esstaban increíbbles, también las beidas son enrmes, aunque el ambiente es deprimente.",positiva
+412,app,5,"La instalé en Android. La interfz es limpia y bonita, también el soporte me respondió en minutos, y la actualización arregló los erores.",positiva
+413,servicio,5,"El plomero fue honesto, también la atención telefónica fue muy amable.",positiva
+414,hotel,1,"El baño estaba mugroso, aparte la habitación tenía cucarachas, y encima la alberca es diminuta. Ni de chiste lo recomiendo.",negativa
+415,restaurante,4,"El ambiente huee a fritana, es cierto, pero la salsa es casera y se nota, aparte el servicio fue de ddiez.",positiva
+416,producto,5,el tamaño es perfecto.,positiva
+417,restaurante,5,"Fui el sabado con mi familia. La carne estaba suave y jugosa, tambien la mesera nos atendio de maravilla.",positiva
+418,hotel,2,"El desayuno es escaso, y para colmo la ubicacion es pelgrosa. Eso si, el bano tiene agua caliente siempre. No lo recomiendo.",negativa
+419,hotel,2,"SÍ, LA HABITACIÓN ES PRECIOSA, PERO EL BAÑO TENÍA PELOS EN LA REGADERA, Y ENCIMA LA LIMPIEZA DEJA MUCHO QUE DESEAR!!! NO ME CONVENCIÓ.",negativa
+420,restaurante,2,"Esperaba muchoooo de el precio y no, es excesivo para lo que dan...",negativa
+421,hotel,5,"el aire acondicionado es silencioso, y el desayuno es abundante y rico, y el check-in fue muy amable.",positiva
+422,app,1,"La sincronización borra mis datos, ademáss la velociddad es pma, y la interfaz ess fea y lenta.",negativa
+423,app,2,"llevo un mes con la app. las notificaciones son puro spam, también la interfaz es confusa.",negativa
+424,app,1,"nada bueno que decir, la velocidad es de modem de 2005.",negativa
+425,servicio,4,"El instructor sabe muchísimo, además la entrega llegó a tiempo! Volveré seguro.",positiva
+426,app,1,"No es que la version gratis este mal, es que esta pesimo.",negativa
+427,app,2,"la app se cierra sola, también las notificaciones llegan tarde, aunque el registro toma un minuto. no vuelvo.",negativa
+428,producto,1,"Increíble, de verdad, la tela es delgadísima.",negativa
+429,app,4,"todo perfecto!!! la sincronización nunca falla, y encima el pago es seguro y fácil.",positiva
+430,servicio,2,"La entrega llegó rota, además el trámite fue un calvario. No vuelvo nunca.",negativa
+431,producto,5,Todo perfecto. El tamaño es justo lo que esperaba.,positiva
+432,restaurante,2,"las porciones llenan bien, es cierto, pero la comida me cayo mal, ademas la carne estaba dura.",negativa
+433,producto,5,"Lo pedi en la promocion. La suela agarra bien, y lo mejor: el disenoooo es elegante. jajaja",positiva
+434,restaurante,1,"Pésima experiencia. La carne parecía suela, y encima los tacosssss estaban grasosos, también los postres sabían a congelado.",negativa
+435,hotel,2,"la ubicación es peligrosa, también el check-in nos hicieron esperar sin explicación, y para colmo la alberca estaba verde. una estafa. :)",negativa
+436,hotel,5,"era nuestra primera vez en la ciudad! la vista es espectacular, y encima el desayuno tiene mucha variedad, y la limpieza fue diaria y cuidadosa.",positiva
+437,app,2,"El pago falló tres veces, y para colmo la velocidad es desesperante, aunque la búsqueda es rapidísima...",negativa
+438,restaurante,2,"Fui el sábado con mi familia. La mesera fue grosera, también la sals sabía a lata.",positiva
+439,app,5,No tengo quejas. Las notificaciones son discretas.,positiva
+440,hotel,1,El wifi se cae a cada rat. Una estafa.,negativa
+441,restaurante,4,"la salsa esta buenisima, tambien el servicio fue rapidisimo! eso si, los postres estaban secos. lo volveria a pedir.",positiva
+442,servicio,1,"Genial, el seguimiento nunca existio. Graciasss por nada.",negativa
+443,servicio,5,No tengo ni una queja de la entrega.,positiva
+444,app,5,"Muy contento con la compra. El mapa es preciso, además el soporte es muy atento.",positiva
+445,producto,5,"es mi segunda compra con elloss. el ensamble no tene ni un detalle, y enncimma el empaquue ess bonitto.",positiva
+446,app,2,"Si, el registro es rapido y sencillo, pero el soporte me dejo colgado, y la velocidad es pesima.",negativa
+447,app,4,"No hay nada que no me haya gustado, la interfaz es fácil de usar!!!",positiva
+448,restaurante,2,"Pedi por la ap. Los postres eran lo mas caro y lo er, y la mesera nos ignoro toda la oche.",negativa
+449,servicio,5,Tome el paquete basico. La clase es muy didactica.,negativa
+450,restaurante,5,"El servicio fue atento sin ser pesado, aparte el lugarrr esta limpisimo, y el precio esta muy accesible!!!",positiva
+451,hotel,4,E wif funciona dde maravilla. Repetiré.,positiva
+452,app,5,La búsqueda es muy precisa. Totalmente recomendable.,positiva
+453,restaurante,4,"los postres son espectaculares, y lo mejor: la carne estaba suave y jugosa, aunque el precio es un robo.",positiva
+454,producto,2,"Aunque el material se ve premium, l roducto es una estafa,  encima la tellaa se despintó al lavarla.",negativa
+455,servicio,4,"AUNQUE EL INSTRUCTOR ES PREPOTENTE, EL TRAMITE SE RESOLVIO EN UNA VISITA, ADEMAS EL PLOMERO FUE HONESTO!",positiva
+456,restaurante,2,"Lo conocí por recomendación de un amigo. La comida me cayó mal, aparte el precio es excesivo para lo que dan. 👎",negativa
+457,restaurante,2,"El lugar teníaaaaa moscas, aparte las bebidas llegaron sin hielo.",negativa
+458,restaurante,2,"Esperabaaaa mucho de la carne y no, estaba dura.",negativa
+459,producto,5,Pedi la talla mediana. El diseno se ve moderno. jaja,positiva
+460,producto,2,"aunque la tela es de buena calidad, el tamaño es enorme, y la batería dura dos horas.",negativa
+461,restaurante,1,Fuimos a cenar cuatro personas... El precio es excesivo para lo que daan.,negativa
+462,restaurante,5,Los tacos estaban increíbles.,positiva
+463,servicio,5,"El trámite fue sencillo, además la atención telefónica fue muy amable.",positiva
+464,app,5,"la instale en android. las notificaciones son discretas, y el soporte me respondio en minutos.",positiva
+465,restaurante,2,"La mesera fue muy amable, es cierto, pero el serviciooooo fue grosero, y encima la comida parecía de microondas. No me convenció.",negativa
+466,producto,2,"la batería se descarga sola, y encima la suela se gastó en un mes... eso sí, el materia se ve premium. jaja",positiva
+467,restaurante,1,"Fui el sábado con mi familia. Los postres estaban secos, aparte la salsa no picaba nada.",negativa
+468,hotel,2,El check-in fue un caos.,positiva
+469,app,5,"feliz con el resultado. la version gratis es suficiente, ademas el mapa carga rapido.",positiva
+470,restaurante,5,"No hay nada que no me haya gusado, la carneeee tení my buen sabor. :)",positiva
+471,hotel,1,Fuimos en puente. La vista da al estacionamiento.,negativa
+472,hotel,4,"era nuesra primera vez en la cudad. el aire acondicionado funciona muy bien, aparteeee la ubicacion es inmejorable. 👎",positiva
+473,restaurante,2,"si, el precio esta muy accesible, pero el servicio fue pesimo, y encima las bebidas estaban aguadas. no vuelvo.",negativa
+474,hotel,1,"fatal. no recomiendo nada, el desayuno fue un desastre. jaja",negativa
+475,app,1,"La actualización lo arruinó todo, y la app es inservible, y el soporte me dejó colgado!!!",negativa
+476,restaurante,5,"Fui el sabado con mi familia. Las porciones son generosas, tambien la carne estaba bien sazonada.",positiva
+477,hotel,2,"SI, LA UBICACION ES INMEJORABLE, PERO EL PERSONAL FUE INDIFERENTE, APARTE LA LIMPIEZA BRILLA POR SU AUSENCIA... NO VUELVO.",negativa
+478,hotel,2,"la vista es espectacular, es cierto, pero la cama es dura como piedra, y encima el desayuno era pan duro y café aguado. no vuelvo.",negativa
+479,hotel,5,"la ubicación es inmejorable, aparte el wifi es rápido.",positiva
+480,hotel,5,La limpieza es impecable.,positiva
+481,servicio,2,"Sí, el chofer llegó puntual, pero el plomero cobró y no arregló nada, y la cita la cancelaron sin avisar! No lo recomiendo.",negativa
+482,hotel,1,"El aire acondicionado hace un ruido espantoso, tmbién el wifi no sirve, aparte el personal nos perdó la reservación! 👍",negativa
+483,producto,2,"El ensamble le faltaban piezas, y el empaque llegó aplastado, aunque el tamaño es justo lo que esperaba.",negativa
+484,hotel,5,Viajé por trabajo. El baño es amplio.,positiva
+485,app,5,"la version gratis es suficiente, tambien la actualizacion la hizo mas rapida, tambien el pago es seguro y facil!!! volvere seguro.",positiva
+486,producto,5,"La suela es cómoda, y encima el producto es de excelente calidad.",positiva
+487,servicio,5,"El plomero resolvio en unna hora, ademas ell tecnico fue respetuoso y cuidadoso! Volvere seguro.",positiva
+488,app,2,"El registro nunca termina, tambien la velocidad es pesima. Eso si, el mapa funciona perfecto. No me convencio.",negativa
+489,producto,4,"Aunque el diseño es feo, el envío llegó antes de lo prometido, y lo mejor: el zipper es resistente.",positiva
+490,producto,1,El ensambleeeee le faltaban piezas... Una estafa.,negativa
+491,servicio,4,"Buenísimo! Pensé que la entrega iba a estar mal y no, llegó a tiempo.",positiva
+492,app,2,"La app se cierra sola, además la interfaz es confusa, también el pago me cobró doble.",negativa
+493,app,1,"La descargué por recomendación. La interfaz es confusa, y encima la búsqueda arroja puras cosas irrelevantes.",negativa
+494,servicio,5,"exceelente eexxperiencia! no es caro para lo que ofrece, el seguimieeno vale cada peso.",positiva
+495,producto,1,No me gustó el material y no pienso regresar.,negativa
+496,app,5,"LA BUSQUEDA ES RAPIDISIMA, Y LO MEJOR: LA APP ES MUY INTUITIVA, ADEMAS LA SINCRONIZACION NUNCA FALLA.",positiva
+497,restaurante,1,"terrible. no es que el preciooooo esté mal, es que está pésimo.",negativa
+498,servicio,2,"La reparacion la hicieron mal, y encima el tecnico no tenia idea. Eso si, el seguimiento fue impecable. No me convencio.",negativa
+499,app,4,"EL MAPA CARGA RÁPIDO, Y LO MEJOR: LA SINCRONIZACIÓN NUNCA FALLA, APARTE EL SOPORTE ES MUY ATENTO. VALE LA PENA.",negativa
+500,app,5,"SUPER RECOMENDADO. LA SINCRONIZACION NUNCA FALLA, Y ENCIMA EL PAGO FUE SIN BRONCAS.",positiva
+501,producto,4,"El envio llego en perfecto estado, ademas el materiaal se ve premium!!! Esso si, la suela se despego al segundo uso.",positiva
+502,producto,2,"Es mi segunda compra con ellos. Esperaba mucho de el zipper y no, se atoró al seegundo uso.",negativa
+503,producto,1,"Genial, el tamano es enorme.",negativa
+504,servicio,4,no tengo ni una queja de el cobro.,positiva
+505,servicio,2,"Los encontré en Google. La atención telefónica me colgaron, aparte la reparaciónnnnn la hicieron mal.",negativa
+506,app,1,"Fatal. No recomiendo nada, el registro fue un desastre.",negativa
+507,restaurante,2,"Las porciones son diminutas, además la comiida parecía de microondas! Eso s, la salsa pica rico.",negativa
+508,app,5,la interfaz esta muy bien disenada!,positiva
+509,app,1,LLA USO DESDE EL IPAD!!! LA ACTUALIZACIÓN BORRÓ MIS ATOS.,negativa
+510,servicio,1,"El seguimiento fue nulo, aparte el plomero ccobróó y no arregló nada, también la ita se retrassó dos horas. Una estafa.",negativa
+511,hotel,2,"La habitación teníaaa cucarachas, además la cama es dura como piedra. Eso sí, el aire acondicionado es silencioso. No lo recomiendo.",negativa
+512,producto,4,"No hay nada que no me haya gustado, el material se ve premium!!!",positiva
+513,restaurante,5,Lo conocí por recomendación de un amigo. La salsa está buenísima.,positiva
+514,producto,1,"Genial, el empaque veníaaa roto. Qué detalle.",negativa
+515,app,4,"Aunque el registro nunca termina, las notificaciones son útiles, además la velocidad es excelente. :)",positiva
+516,producto,4,"llego el martes. pense que la tela iba a estar mal y no, no se deforma.",positiva
+517,app,2,No me gusto la app y no pienso regresar.,negativa
+518,producto,5,El envio llego en perfecto estado. Diez de diez. :(,positiva
+519,app,5,"Tengo la versión de pago. El mapa es preciso, y lo mejor: la búsqueda encuentra todo.",positiva
+520,hotel,5,"La alberca esta limpisima, y encima el personal fue atento en todo momento.",positiva
+521,hotel,5,"La vista vale el viaje, y encima el wifi funciona de maravilla, y la ubicación está a pasos de todo.",positiva
+522,producto,1,"El ensamble esta mal hecho, ademas el diseno es incomodo.",negativa
+523,servicio,2,"Aunque la cita fue puntual, la entrega llego tres dias tarde, y para colmo la clase es aburridisima.",negativa
+524,restaurante,5,"fui el sábado con mi familia. la mesera estuvo a pendiente todo el tiempo, también las porciones son generoosass.",positiva
+525,restaurante,2,"No vuelvo. El lugar estaba sucio, y pa colmo las bebidas llegaron sin hielo. :)",negativa
+526,hotel,1,"la alberca estaba cerrada, y para colmo el baño estaba mugroso, y encima el desayuno era pan duro y café aguado!!! :(",negativa
+527,app,4,"La sincronizacion nunca falla, y encima el mapa es preciso. Repetire.",positiva
+528,hotel,4,"Era nuestra primera vez en la ciudad. El personal nos trató como reyes, además la ubicación está a pasos de todo, y lo mejor: el wifi funciona de maravilla.",positiva
+529,hotel,1,el aire acondicionado goteaba toda la noche.,negativa
+530,producto,5,"Todo perfecto. No hay nada q no me haya gustado, la suela aguanta mucho. jajaja",positiva
+531,hotel,1,Reservé por la página. La alberca estaba cerrada.,negativa
+532,servicio,4,"aunque el plomero dejó un desaste, la entrega llegó a tiempo, y la clase vale cada peso.",positiva
+533,restaurante,5,"Llegamos sin reservación! La carne estaba suaveeeee y jugosa, y la comida estaba en su punto. jaja",positiva
+534,restaurante,5,"La salsa esta buenisima, aparte las porciones son abundantes, ademas la comida supero mis expectativas.",positiva
+535,app,2,"Las notificaciones son puro spam, y para coolmo ell soporte responde con bots inútiles, aunque la incronización jala perfecto.",negativa
+536,producto,4,"Pedi la talla mediana. El pproducto es tal cual la foto, ademas el empaqe veni muy bien protegido. 👎",positiva
+537,app,1,"Maravilloso, el registro me pide mil datos.",negativa
+538,servicio,4,Pague x adelantado. La reparacion quedo como nueva.,positiva
+539,producto,2,"la calidd es terrible para el precio, y el material se siente corriente!!! no vuelvo nunca.",negativa
+540,producto,2,"El diseño es elegante, es cierto, pero el tamaño no correesponde con la descrpción, además el envío llegó dañado. No vuelvvo.",negativa
+541,app,4,El regiro es seguroo y fáácil.,positiva
+542,producto,2,"Sí, el producto es de excelente calidad, pero el diseño es feo, además la tela es delgadísima. No me convenció. 👎",negativa
+543,hotel,1,"Era nuestra primera vez en la ciudad!!! El wifi se cae a cada rato, tambien el desayuno era pan duro y cafe aguado, aparte el personal fue grosero.",negativa
+544,producto,1,El envio llego danado!!! Nunca mas.,negativa
+545,producto,4,"la calidad supero lo que pague, y el envio llego en perfecto estado, aunque el material es plastico barato...",positiva
+546,hotel,1,"No vuelvo. El baño estaba mugroso, además la alberca es diminuta, y para colmo la limpieza fue nula.",negativa
+547,app,4,"La actualización arregló los errores, y lo mejor: las notificaciones llegan a tiempo.",positiva
+548,producto,2,"Pedí la talla mediana. El envío llegó dañado, aparte la calidad es de tianguis.",negativa
+549,app,2,No me gustó el registro y no pienso regresar.,negativa
+550,servicio,5,Agendé para el lunes. El plomerooo dejó todo limpio.,positiva
+551,hotel,5,"Viajé por trabajo! La alberca es enorme, también la cama es de las mejores en las que he dormido, y el aire acondicionado es silencioso.",positiva
+552,producto,4,"La batería dura todo el día, aparte el ensamble está muy bien hecho, y lo mejor: el producto vale la pena! Sin duda lo recomiendo.",positiva
+553,app,2,"El soporte responde ccon bots nutiles, y encima l registro me pide mil datos.",negativa
+554,producto,4,"lo compre para regalo. el zipper es resistente, y la calidad se nota en cada detalle, y lo mejor: la tela es suave y gruesa.",positiva
+555,hotel,5,"El check-in fue rápido y sin broncas, y el baño tiene agua caliente siempre.",positiva
+556,servicio,2,"Esperaba mucho de la atencion telefonica y no, fue grosera...",negativa
+557,restaurante,5,No tengooo ni una queja de las porciones.,positiva
+558,producto,1,"llegó el martes. el material se siente corrientte, aparte la batería no carga.",negativa
+559,producto,2,Es mi segunda compra con ellos. La tela pica.,negativa
+560,app,4,"El mapa me mandó pr donde no eera, es ierto, pero el oporte resolvió mii problema, además el registro es rrápido y sencillo.",positiva
+561,producto,5,"La suela aguanta mucho, tambien el enviio fue rapidisimo!!! Sin duda lo recomienddo.",positiva
+562,producto,1,Me arrepiento. El material se siente corriente.,negativa
+563,hotel,4,"El personal fue atento en todo momento, aparte la cama es enorme. Eso si, el check-in fue un caos.",positiva
+564,servicio,2,"peí la visita a domicilio. el instructor es prepotnte, aparte la reparación no dró ni una semana.",negativa
+565,producto,2,El envío llegó dañado. Qué coraje.,negativa
+566,hotel,5,"La cama es enorme, aparte la alberca es espectacular, aparte la vista es espectacular!!!",positiva
+567,producto,1,La suela es resbalosa.,negativa
+568,hotel,5,"La cama es enorme, y lo mejor: el personal nos trato como reyes. Volvere seguro.",positiva
+569,hotel,5,La ubicación es inmejorable.,positiva
+570,app,1,qué lindo q el pago no me reconoce la tarjeta. justo lo q quería.,negativa
+571,servicio,5,"Los encontré en Google. El técnico sabía lo que hacía, y lo mejor: la atención telefónica resolvió mi duda al momento.",positiva
+572,hotel,2,"El desayuno era pan duro y café aguado, y la hbitación olía a humedad. Eso sí, el aire acondicionado enfría perfcto.",negativa
+573,producto,1,Lo pedí en la promoción. El producto no se parece a la foto. :(,negativa
+574,servicio,5,"tomé el paquete básico. la atención telefónica resolvió mi duda al momento, y encima el seguimiento fue constante.",positiva
+575,servicio,2,"el trámite es una pérdida de tiempo, también la cita la cancelaron sin avisar, aunque la entrega fue puntual.",negativa
+576,app,5,"La uso desde el iPad! El registro es rápido y sencillo, y la búsqueda es rapidísima.",positiva
+577,restaurante,2,"la mesera fue grosera, también los tacos eran puro tortilla, aunqueeee la salsa está buenísima.",negativa
+578,hotel,4,"El desayuno era pan duro y café aguado, es cierto, pero la vista es increíble, y la alberca está limpísima.",positiva
+579,producto,1,"Pedí la talla mediana. El envío llegó con dos semanas de retraso, aparte el producto no se parece a la foto.",negativa
+580,restaurante,1,"el ambiente es deprimente, ademas el precio es excesivo para lo que dan. 👎",negativa
+581,servicio,4,"Sí, el técnico no tenía idea, pero la entrega llegó en perfecto estado, y encima la atención telefónica resolvió mi duda al momento.",positiva
+582,hotel,2,El wifi es lentisimo...,negativa
+583,app,2,"llevo un mes con l ap. el mapa me mando por donde no era, aparrte la sinronizacion tarda horas.",negativa
+584,app,1,"El soorte e dejó colgaado, aparte la app se cierra sola. Ya levanté queja en Profecoo.",negativa
+585,app,4,"No es caaro para lo que ofrece, el registro vale cada peso.",negativa
+586,restaurante,4,"La carne tenia muy buen sabor, y encima los postres estan hechos en casa. Eso si, el ambiente huele a fritanga.",positiva
+587,servicio,2,"La clase es aburridísima, y para colmo la reparación quedó peor que antes...",negativa
+588,app,4,"Nada que reprochar, el mapa funciona perfecto.",positiva
+589,producto,4,lo pedí en la promoción. el empaqueee llegó impecable. :),positiva
+590,hotel,1,"El desayuno estaba frío, y para colmo la cama está vencida. Ni de chiste lo recomiendo.",negativa
+591,hotel,1,"No recomiendo nada, el aire acondiicioado fue un desastre.",negativa
+592,hotel,5,"LA UBICACIÓN ESTÁ A PASOS DE TODO, ADEMÁS EL AIRE ACONDICIONADO ES SILENCIOSO.",positiva
+593,restaurante,4,"Si, el servicio fue grosero, pero el precio esta muy aaccsible, tambien las porciones llenan bien.",positiva
+594,hotel,2,"Si, el bano esta reluciente, pero la cama rechina, aparte el wifi es leentisimo.",negativa
+595,producto,2,"LA CALIDAD ES DE TIINGUISS, Y EL DISENO S FEO, TAMBIEN EL MATERIAL SE ROMPIO A LA SEMANA!",negativa
+596,hotel,5,"No tengo quejas. El baño es amplio, también el wifi funciona de maravilla. :(",positiva
+597,restaurante,2,"la carne tenía muy buen sabor, es cierto, pero el precio es excesivo para lo que dan, aparte el servicio tardó más de una hora. no vuelvo.",negativa
+598,producto,4,"Lo compré para regalo. La suela es cómoda, aparte el tamaño es ideal, aparte la calidad se nota en cada detalle.",positiva
+599,restaurante,5,"no es caro para lo que ofrece, la carne vale cada peso.",positiva
+600,hotel,1,"Reservé por la página. La limpieza brilla por su ausencia, aparte el baño no tenía agua caliente.",negativa
+601,servicio,1,El chofer fue grosero. :(,negativa
+602,producto,4,"aunque el ensambleeeee le faltaban piezas, el empaque es bonito, y encima la bateria carga rapidisimo. jajaja",positiva
+603,app,1,la actualizacion la dejo insrvible!!! que coraje.,negativa
+604,app,2,"Aunque las notificaciones son útiles, la sincronización borra mis datos, y encima el registro falla a cada rato! No vuelvo.",negativa
+605,servicio,1,"Nada bueno que decir, la entrega llegó rota...",positiva
+606,restaurante,4,"Nada que reprochar, las porciones son generosas!!!",positiva
+607,hotel,2,No me gustó la albercaaa y no pienso regresar.,negativa
+608,restaurante,2,"Fatal. El ambiente es deprimente, y la salsa sabía a lata, aparte el servicio fue pésimo.",negativa
+609,servicio,4,me lo recomendo un vecino. la atencion telefonica fue clara.,positiva
+610,producto,1,El ensamble venía chueco!!!,negativa
+611,app,2,"La sincronización no funciona, ademássss la búsqueda se traba. Eso sí, la velocidad es impresionante.",negativa
+612,app,4,"El pago me cobró doble, es cierto, pero las notificaciones son discretas, y lo mejor: el soporte me respondió en minutos.",positiva
+613,restaurante,4,"Sí, la comida estaba frría, pero las porcioes llenan bien, además los tacos están para chuarse los deos.",positiva
+614,servicio,1,El plomero lo dejo peor quee antes.,negativa
+615,producto,4,"LO PEDÍ EN LA PROMOCIÓN. EL ENSAMBLE ES SÓLIDO, Y ENCIMA LA ELA ES SSUAVE Y GRUESA.",positiva
+616,hotel,1,"La alberca estaba cerrada, aparte la vista no es la de las fotos.",negativa
+617,hotel,5,"el personal fue atento en todo momento, y lo mejor: el baño tiene agua caliente siempre. repetiré.",positiva
+618,servicio,2,"El instructor es prepotente, y encima el chofer llego cuarenta minutos tarde, aunque el tecnico fue respetuoso y cuidadoso. No me convencio. xd",negativa
+619,restaurante,4,pedí por la app. la salsa está buenísima.,positiva
+620,hotel,5,"Fuimos en pareja. La ubicacion es perfecta, y el check-in fue muy amable.",positiva
+621,servicio,4,Agendé para el lunes. El técnico llegó puntual.,positiva
+622,producto,2,"esperaba mucho de el zipper y no, se atoró al segundo uso.",negativa
+623,producto,2,"La bateria dura dos horas, y para colmo el zipper se atoro al segundo uso, aunque el ensamble no tiene ni un detalle.",negativa
+624,servicio,5,"Contrate el servicio por telefono. La cita la respetaron sin problema, tambien el tecnico sabia lo que hacia.",positiva
+625,restaurante,4,"El ambiente tiene mucha onda, aparte la meseraaaaa estuvo al pendiente todo el tiempo. Diez de diez. 👎",positiva
+626,app,1,"No es q la versión gratis estéé mal, es q está pésimo.",negativa
+627,producto,2,"La batería dura todo el día, es cierto, pero el producto es una estafa, y para colmo el envío llegó con dos semanas de retraso.",negativa
+628,producto,1,"Nada bueno que decir, el zipper se atoró al segundo uso.",negativa
+629,servicio,2,"Los encontré en Google. El trámite es una pérdida de tiempo, y encima la cita no la respetaron.",negativa
+630,app,5,El soporte me respondió en minutos.,positiva
+631,hotel,5,"VIAJÉ POR TRABAJO!!! LA UBICACIÓN ESTÁ A PASOS DE TODO, Y LO MEJOR: LA CAMA ES ENRME. 👍",positiva
+632,hotel,5,"el personal fue amabilisimo, y lo mejor: la ubcacin es perfecta, aparte la habitacion es preciosa. vale la pena.",positiva
+633,restaurante,2,"El servicio fue atento sin ser pesado, es cierto, pero el ambiente es ruidoso, también las bebidas llegaron sin hielo!",negativa
+634,app,1,"el registro falla a cada rato, además la versión gratis no sirve para nada, y las notificaciones llegan tarde.",negativa
+635,app,1,"No es que la interfaz este mal, es que esta pesimo.",negativa
+636,app,2,La versión gratis está llena de anuncios.,negativa
+637,servicio,2,"la atención telefónica nunca contesta, parte el cobro fue un abuso. eso sí, la reparación fue rápida. no me cnvenció.",positiva
+638,restaurante,2,"El lugar estaba sucio, y encima la salsa estaba aguada.",negativa
+639,hotel,2,Llegamos de madrugada. La habitación estaba sucia.,negativa
+640,hotel,4,"la alberca es enorme, también el desayuno es abundante y rico, aunque el personal fue grosero. me quedo con lo bueno.",positiva
+641,restaurante,4,"Aunque las bebidas llegaronnn sin hielo, el precio vale cada peso, y encima el lugar esta bien ubicado.",positiva
+642,hotel,4,"La limpieza deja mucho que desear, es cierto, pero el personal nos trato como reyes, y el bano tiene agua caliente siempre!",positiva
+643,producto,1,"Pedi la talla mediana. El empaque venia roto, y para colmo la bateria no carga, y para colmo el tamano es enorme.",negativa
+644,servicio,5,el instructor sabe muchísimo! sin duda lo recomiendo.,positiva
+645,producto,4,"No hay nada que no me haya gustado, el envvío fue rapidísimo.",positiva
+646,app,4,"Aunqueee el pago fallo tres veces, el mapa carga rapido, lo mejor: las notificaciones llegan a tiempo. Lo volveria a pedir.",positiva
+647,producto,2,"Aunquee la tella es suave y gruesa, la batería se descaga sola, aparte la uela es resbalosa. No vuelvo. :(",positiva
+648,app,1,La actualicé la semana pasada... La sincronización borra mis datos.,negativa
+649,app,4,"Llevo un mes con la app... La app es muy intuitiva, además la interfaz es limpia y bonita.",negativa
+650,app,2,"el pago no me reconoce la tarjeta, y la velocidad es desesperante, además el mapa se pierde.",positiva
+651,restaurante,4,"Los tacos estaban grasosos, es cierto, pero las porciones son abundantes, y las bebidas estan bien servidas.",positiva
+652,restaurante,4,"Los postres cierran la comida perfecto, y encima la mesera nos atendió de maravilla. Eso sí, las bebidas llegaron sin hielo. Lo volvería a pedir.",positiva
+653,servicio,2,"El seguimieento fuue de pésima calidad, además el plomero cobó y no arregló nada. Eso sí, la ntregga fue puntual. No lo recomienddo.",negativa
+654,servicio,4,"el plomero fue honesto, y lo mejor: la clase es muy didactica. eso si, la cita la cancelaron sin avisar. me quedo con lo bueno. :(",positiva
+655,app,5,"la uso desde el ipad. la velocidad nunca se traba, y lo mejor: la app funciona sin trabas, aparte el registro es rápido y sencillo.",positiva
+656,hotel,2,"la limpieza es de primera, es cierto, ero el check-in tarrdó una hora, también el pesonal nos perdió la reservación.",negativa
+657,hotel,1,"Maravilloso, la cama es dura como piedra. Gracias x nada. jajaja",negativa
+658,hotel,4,"El aire acondicionado no enfría, es cierto, pero la ubicación es inmejorable, también la cama es de las mejores en las que he dormido.",positiva
+659,app,1,"El mapa se pierde, y la velocidad es pesima, y el registro nunca termina.",negativa
+660,restaurante,4,"La salsa es casera y se nota, además el lugar está limpísimo. Eso sí, las bebidas llegaron sin hielo.",positiva
+661,app,4,"Llevo un mes con la app! La velocidad es excelente, también las notificaciones llegan a tiempo, aparte la actualización arregló los errores.",positiva
+662,servicio,4,"Los encontré en Google!!! El plomero resolvió en una hora, y encima el cobro fue justo, también la cita fue rápida y clara.",positiva
+663,hotel,5,fuimos en puente. el check-in tomó cinco minutos.,positiva
+664,restaurante,1,"El lugar estaba sucio, y el ambiente es ruidoso. No vuelvo nunca.",negativa
+665,app,2,"Me la recomendó un compañero. El pago falló res veces, aaparte la app se ierra sola, y la búsqueda no enccuentra nada. jaja",negativa
+666,hotel,2,FATAL. EL CHECK-IN FUE UN CAOS.,negativa
+667,app,4,La descargué por recomendación. Las notificaciones son discretas.,positiva
+668,producto,5,"Lo pedi en la promocion. La suela es comoda, aparte el ensamble esta muy bien hecho.",positiva
+669,producto,5,Lo uso a diario. El diseno se ve moderno.,positiva
+670,producto,5,LA BATERIA AGUANTA MUCHISIMO...,positiva
+671,servicio,2,"El seguimiento fue nulo, y la atención telefónica me colgaron, aunque el cobro fue transparente. 👍",positiva
+672,restaurante,2,"los tacos están para chuparse los dedos, es cierto, pero la carne venía cruda por dentro, y encima la comida me cayó mal...",negativa
+673,app,4,"Las notificaciones llegan a tiempo, ademas la version gratis tiene todo lo necesario, aunque la velocidad es desesperante.",positiva
+674,hotel,4,"La alberca esta limpisima, y encima el personal fue amabilisimo. Eso si, la habitacion tenia cucarachas. En general bien.",positiva
+675,hotel,4,"no hay nada que no me haya gustado, la vista vale el viaje.",positiva
+676,restaurante,2,"Los postres sabían a congelado, y encima la comida me cayó mal, aunque el precio vale cada peso.",negativa
+677,app,1,"La busqueda arroja puras cosas irrelevantes, y encima el registro falla a cada rato.",negativa
+678,restaurante,4,Lo conoci x recomendacion de un amigo. Los tacos estan pa chuparse los dedos.,positiva
+679,servicio,2,"Sí, el técnico fue respetuoso y cuidadoso, pero el trámite fue un calvario, y el instructor no sabe explicar... No vuelvo.",negativa
+680,restaurante,4,Fui en hora pico. Las bebidas estan bien servidas.,positiva
+681,hotel,2,"El personal fue indiferente, además la habitación tenía cucarachas.",negativa
+682,producto,5,"LO COMPRE PARA REGLO. LA CALIDAD SE NOTA EN CADA DETALLE, Y LO MEJOR: EL ATERIAL SE VE PREMIUM, ADDEMAS EL DISENO SE VE MODERNO. :)",positiva
+683,restaurante,5,"Los tacos son los mejors de la zona, y las ebidas estan bienn servidas.",positiva
+684,servicio,2,"Esperaba mucho de el seguimiento y no, nunca existió.",negativa
+685,restaurante,5,Erra mi primera ve aqui!!! El ambiente es perfecto para ir en famila.,positiva
+686,hotel,4,Cumple y de sobra. El aire acondicionado es silencioso.,positiva
+687,restaurante,2,"El lugar esta bien ubicado, es cierto, pero la mesera se equivoco con la orden dos veces, tambien el ambiente es deprimente. No vuelvo.",negativa
+688,restaurante,5,"Las bebida tienen buen precio, y las porciones sn abundantes. Totalmente recomendable.",positiva
+689,app,4,"La sincronización borra mis datos, es cierto, pero la versión gratis es suficiente, aparte la app es justo lo que buscaba.",negativa
+690,app,1,"TENGO LA VERSION DE PAGO. LA ACTUALIZACION LA DEJO INSERVIBLE, Y PARA COLMO LA INTERFAZ ES FEA Y LENTA, ADEMAS LA SINCRONIZACION TARDA HORAS.",negativa
+691,hotel,2,"La alberca estaba cerrada, también el baño tenía pelos en la egadra, aunque el aire acondicionado es silencoso.",negativa
+692,app,4,"La busqueda no encuentra nada, es cierto, pero el soporte es muy atento, tambien las notificaciones llegan a tiempo.",positiva
+693,app,2,"Sí, el pago fue sin broncas, pero el registro me pide mil datos, además el mapa se pierde. No me convenció.",negativa
+694,hotel,1,"No lo recomiendo. El aire acondicionado no enfría, y para colmo el baño estaba mugroso.",negativa
+695,producto,2,"La suela agarra bien, es cierto, pero el zipe se atoró al segundo uso, además la tela es delgadísima.",negativa
+696,restaurante,2,"no recomiendo nada, las bebidassss fue un desastre.",negativa
+697,restaurante,2,"Los tacos estaban grasosos, y para colmo el lugar está en pésimas condiciones, aunque el ambiente tiene mucha onda... No vuelvo.",negativa
+698,producto,4,"El envío llegó en perfecto estado, aparte el material es muy bueno, aunque el tamaño es enorme.",positiva
+699,app,1,"La búsqueda no encuentra nada, también la app está horrible, también la sincronización borra mis datos.",negativa
+700,servicio,5,"La atención telefónica fue clara, aparte la reparación quedó perfecta.",positiva
+701,hotel,4,"El wifi es lentísimoo, es cierto, peroo el aire acondicionado enfría erfecto, y encima la alberca es espectacular.",positiva
+702,hotel,5,"Fuimos en pareja. El check-in tomó cinco minutos, y la habitación es preciosa, aparte el personal fue amabilísimo.",positiva
+703,servicio,2,"La atencion telefonica fue muy amable, es cierto, pero la clase es una perdida de tiempo, ademas el tecnico no tenia idea.",negativa
+704,servicio,4,"Si, el cobro tuvo cargos ocultos, pero el insttructo sab mucisimo, y encima la reparacion fue rapida. Me queedo con lo bueno.",positiva
+705,restaurante,5,La mesera estuvo al endiente todo el tiempo.,positiva
+706,restaurante,5,"la carne estaba bien sazonada, aparte los postres cierran la comidda perfecto.",positiva
+707,hotel,4,"La vista es espectacular, y lo mejor: la habitacion es preciosa, aunque el desayuno estaba frio. Lo volveria a pedir.",positiva
+708,app,5,La descargué ppor recomendación. La verrsión gratis es suficiente. 👎,positiva
+709,producto,4,"Lo uso a diario. El zipper corre suave, tambien el diseno esta muy bien pensado.",positiva
+710,hotel,1,No me gustó la limpieza y no pienso regresar.,negativa
+711,app,5,"La interfaz es fácil de usar, aparte el pago es seguro y fácil.",positiva
+712,app,1,"Increíble, de verdad, el pago me cobróóóóó doble. Lo que faltaba.",negativa
+713,servicio,1,Me lo recomendó un vecino. No me gustó la cita y no pienso regresar.,negativa
+714,servicio,5,"Todo perfecto. El tramite fue sencilo, y lo meor: ell instructor sabbe muchisimo.",positiva
+715,app,2,"La interfaz es confusa, también las notificaciones son puro spam. Eso sí, la velocidad es impresionante. No vuelvo.",negativa
+716,hotel,4,No tengo ni una queja de la vista.,positiva
+717,hotel,4,"La habitación olía a humedad, es cierto, pero el personal fue aamabilísimo, además la cama es comodísima. Loo volvvería a pedir.",positiva
+718,hotel,5,Viaje por trabajo! La alberca es enorme.,positiva
+719,producto,4,lo pedí en la promoción. la calidaddddd se nota en cada detalle.,positiva
+720,restaurante,5,"La mesera fue muy amable, y el ambiente tiene mucha onda, y la salsa es casera y se nota. Buen trabajo.",positiva
+721,app,4,LA APP ES MUY INTUITIVA.,positiva
+722,app,4,"Sí, el mapa se pierde, pero el pago es seguro y fácil, y encima las notificaciones llegan a tiempo...",positiva
+723,producto,2,"El material se siente corriente, y para colmo el diseno es incomodo. Ya levante queja en Profeco.",negativa
+724,restaurante,2,"Esperaba mucho de el precio y no, es excesivo para lo que dan.",negativa
+725,producto,2,"Nada bueno que decir, la baterria sse descarga sola.",negativa
+726,producto,4,el material se siente resistente.,positiva
+727,app,4,"La uso desde el iPad. El pago es seguro y fácil, además el mapa funciona perfecto. 👍",positiva
+728,servicio,1,"La reparación la hicieron mal, y el plomero cobró y no arregló nada, y para colmo el técnico no tenía idea. Ya levanté queja en Profeco.",negativa
+729,servicio,5,"El seguimiento fue impecable, ademas la reparacion quedo perfeecta. Quede muy satisfecho.",positiva
+730,app,2,"Fatal. El registro nunca termina, ademas la interfaz es fea y lenta.",negativa
+731,hotel,4,"El desayuno estaba frio, es cierto, pero el wifi funciona de maravilla, y encima la habitacion es amplia y comoda.",positiva
+732,servicio,4,"El seguimiento fue impecable, y lo mejor: la atencion telefonica fue clara, y el plomero resolvio en una hora.",positiva
+733,hotel,2,"La vista es increible, es cierto, pero la cama es dura como piedra, y encima el aire acondicionado goteaba toda la noche. No me convencio.",negativa
+734,producto,4,"Lo compré para regalo. La suela aguanta mucho, además el envío llegó antes de lo prometido.",positiva
+735,producto,5,"Que buena sorpresa... El empaque llego impecable, tambien la suela aguanta mucho.",negativa
+736,restaurante,1,Lo máximo: la mesera se equivocó con la orden dos veces.,negativa
+737,servicio,1,"La cita la cancelaron sin avisar, aparte la reparacion no duro ni una semana.",negativa
+738,app,4,"La usso para el trabajo. El mmapa funciona perfecto, aparte la actualizaaciión la hizo más ráápida.",positiva
+739,producto,2,"El diseno es feo, aparte el ensamble venia chueco. Eso si, el envio fue rapidisimo.",negativa
+740,hotel,1,"no es que la ubicación esté mal, es que está pésimo.",negativa
+741,servicio,4,"el instructor es muy claro, y encima la clase vale cada peso, aunque el plomero dejó un desastre. lo volvería a pedir.",positiva
+742,hotel,2,"Nos quedamos tres noches. El wifi se cae a cada rato, y para colmo el personal fue grosero.",negativa
+743,app,1,La interfazzzzz es fea y lenta.,negativa
+744,producto,1,"EL MATERIAL ES PLÁSTICO BARATO, Y EL PRODUCTO ES DE PÉSIMAAA CALIDAD.",negativa
+745,app,2,el registro nunca termina.,negativa
+746,hotel,1,"fuimos en puente. la vista da a un muro, aparte el baño no tenía agua caliente, también el personal fue grosero.",negativa
+747,producto,2,"El zipper se rompio, tambien la tela se despinto al lavarla.",negativa
+748,hotel,5,Llegamos de madrugada. La ubicación está a pasos de todo.,positiva
+749,restaurante,5,"El lugar esta limpisimo, tambien las porciones son generosas, tambien las bebidas tienen buen precio...",positiva
+750,hotel,2,"la vista da al estacionamiento, y para colmo la hhabitacion estaba sucia, aunque la cama e comdsima.",negativa
+751,restaurante,2,"Aunqque l carne tenia muy buen sabor, los tacos estaban rancios, y para colmo la mesera se equivoco con la orden dos veces.",negativa
+752,servicio,5,"Agendé para el lunes. La reparación quedó perfecta, aparte el plomero fue honesto, y encima el chofer manejó muy bien. jajaja",positiva
+753,restaurante,5,Todo perfecto... El servicio fue de diez.,positiva
+754,producto,1,"el ensamble veníía chueo, también la suela se despegó al seggundo uso, y el diseño es feo.",negativa
+755,restaurante,2,"los postres eestán hechos e casa, ess cierto, pero la comida parecía de microondas, y encima la msera fue grosera!!!",negativa
+756,hotel,5,"Llegaos de madrugada. El desayuno es abundante y rico, y la vista es increíble, y encima la limpieza es impecable.",positiva
+757,hotel,2,"La vista no es la de las fotos, aparte el wifi se cae a cada rato, aunque el check-in fue rápido y sin broncas.",negativa
+758,producto,5,"El diseno esta muy bien pensado, aarte e material se e premium. Buen trabajo.",negativa
+759,restaurante,1,"La salsa no picaba nada, aparte el ambiente es deprimente, además los postres eran lo más caro y lo peor.",negativa
+760,app,2,La actualicé la semana pasada. El registro me pide mil datos.,negativa
+761,producto,5,"Pensé que la tela iba a estar mal y no, no se deforma.",positiva
+762,producto,2,El tamano no corresponde con la descripcion.,negativa
+763,hotel,4,"La cama rechina, es cierto, pero el bano tiene agua caliente siempre, y el desayuno es de primera. xd",positiva
+764,servicio,5,Fue la primera vez que loss contrato. El tecnico llego puntual.,positiva
+765,restaurante,1,El precio no corresponde con la calidad.,negativa
+766,hotel,4,"Aunque la alberca estaba verde, la vista vale el viaje, y lo mejor: el desayuno es de primera. Me quedooooo con lo bueno.",positiva
+767,app,1,o máximo: el mapa no carga. Lo que faltaba.,negativa
+768,hotel,2,"uimos en puente. El aire acoondicionado hace un ruido espantoso, y la cama es dura como piedra, tambié la hhabitación tenía cucarrachas.",negativa
+769,restaurante,5,Peedí por la app. El ambiente ttiene mucha onda.,positiva
+770,restaurante,2,"Fatal. El lugar estaba sucio, y encima el servicio fue grosero.",negativa
+771,producto,1,Lo maximo: el producto es de pesima calidad. Que detalle.,positiva
+772,hotel,1,"Fuimos en puente. El desayuno estaba frio, tambien el bano estaba mugroso.",negativa
+773,restaurante,1,Terrible. El lugar estaba sucio.,negativa
+774,servicio,1,El cobro tuvo cargos ocultos.,negativa
+775,servicio,2,"Fue la primera vez que los contrato. El cobro tuvo cargos ocultos, también la cita no la respetaron.",negativa
+776,servicio,2,"La reparacion quedo perfeca, es cierto, pro la atencion telefonica me colgaron, ademas el seguimiiento nunc existio...",negativa
+777,producto,4,"El material se ve premium, y la suelaaaaa aguanta mucho. Eso sí, la tela se despintó al lavarla. En general bien.",positiva
+778,hotel,1,"Fuimosssss en puente. El desayuno es escaso, y encima el personal nos perdió la reservación.",negativa
+779,servicio,1,El tecnico dejo un desastre.,negativa
+780,hotel,2,"Esperaba mucho de la vista y no, no es la de las fotos.",negativa
+781,hotel,2,"si, el desayuno tiene mucha variedad, pero el personal fue grosero, y para colmo el wifi es lentisimo.",negativa
+782,producto,4,"El diseno se ve moderno, tambien la suela es comoda! Eso si, el envio llego con dos semanas de retraso. En general bien.",positiva
+783,restaurante,2,"Aunque el lugar esta bien ubicado, el ambiente huele a fritanga, ademas la salsa sabia a lata.",negativa
+784,servicio,5,"No hay nnada que no me haya gustad, el tramite fue transparente.",positiva
+785,restaurante,4,"Nada ue reprochar, el precio esta muy accesible.",positiva
+786,restaurante,1,"Fui en hora pico. El ambiente es ruidoso, y las bebidas son carísimas.",negativa
+787,producto,4,"El zipper funciona perfecto, ademas el diseno se ve moderno. Eso si, el material es plastico barato.",positiva
+788,producto,2,"sí, el producto es de excelente calidad, pero la calidad deja mucho q desear, y encima el ensamble venía chueco.",negativa
+789,producto,4,"Aunque el ensamble le faltaban piezas, el producto es de excelente calidad, aparte el envío llegó antes de lo prometido. xd",positiva
+790,servicio,2,"El tecnico ddejo un desastre, y encima el cobro fue un abuso. Eso si, el plomero fue honesto. No me convencio.",negativa
+791,restaurante,2,"nada bueno que decir, los tacos eran puro tortilla.",negativa
+792,restaurante,1,"El precio no corresponde con la calidad, y encima el lugar tenía moscas.",negativa
+793,restaurante,1,"Fui eel sabado con mi famili. os postres sabian a congelado, y los tacos eran ppuro tortilla.",negativa
+794,hotel,4,"Aunque el desayuno estaba frío, la limpiezaaaa es impecable, también la cama es enorme.",positiva
+795,app,4,"Las notificacioones son utiles, y la interfaz es facil de usar, aparte la ussqued es rapidisima. Diz de diez.",positiva
+796,servicio,4,"La atención telefónica me colgaron, es cierto, pero el chofer llegó puntual, además el trámite se resolvió en una visita.",positiva
+797,app,5,"Nada que reprochar, la sincronizacion es inmediata.",positiva
+798,servicio,4,"e coro tuvo cargos ocultos, e cirto, ero eel chofer lleego puntual, y el plomero dejo toddo limpio.",positiva
+799,servicio,5,Me lo recomendó un vecino. La entrega llegó en perfecto estado.,positiva
+800,app,5,"feliz con el resultado. el soporte es muy atento, y lo mejor: el registro es seguro y fácil.",positiva
+801,restaurante,4,No tengo ni una queja de el ambiente. jaja,positiva
+802,app,2,"La instalé en Android. No es que la versión gratis esté mal, es que está pésimo.",negativa
+803,app,1,la descargue por recomendacion. el soporte me dejo colgado.,negativa
+804,app,2,"Pésima expperienccia. El pago flló tes veces, aarte la app está horrible.",negativa
+805,restaurante,4,"Los tacos son los mejores de la zona, aparte las porciones son generosas.",positiva
+806,app,5,La actualizacionnn la hizo mas rapida.,positiva
+807,restaurante,2,"El lugar está bien ubicado, es cierto, pero el servicio tardóóóóó más de una hora, y encima el precio es un robo.",positiva
+808,app,2,"laas notificaciones sson puro spam, y la velocidad ees ddesesperante!",positiva
+809,producto,5,"no hay nada que no me haya gustado, la calidad see nota en cada detalle.",positiva
+810,producto,5,Lo pedí en la promoción. La batería carga rapidísimo.,positiva
+811,restaurante,2,Las bebidas llegaron sin hielo. Ya levanté queja en Profeco.,negativa
+812,hotel,2,"aunque el desayuno es abundante y rico, el wifi se cae a cada rato, y la ubicación es ruidosísima.",negativa
+813,producto,5,"FELIZ CON EL RESULTADO. LA TELA NO SE DEFORMA, Y LO MEJOR: LA SUELA AGUANTA MUCHO, Y ENCIMA EL ZIPPER FUNCIONA PERFECTO.",positiva
+814,producto,1,"No vuelvo. El diseño es incómodo, además el empaque venía roto, además el zipper se rompió.",negativa
+815,servicio,5,"EL COBRO FUE TRANSPARENTE, ADEMAS EL CHOFER MNEJO MUY BIEN, Y LO MEJOR: LA ENTREGA FUE PUNTUAL!",positiva
+816,servicio,5,"Pedí la visita a domicilio!!! El cobro fue transparente, y lo mejor: la atención telefónica fue muy amable.",positiva
+817,restaurante,2,"Sí, la comida sabe casera, pero el ambiente es deprimente, y encima los tacos eran puro tortilla.",negativa
+818,restaurante,1,No me gustó la carne y no pienso regresar.,negativa
+819,app,1,"Tengo la versión de pago!!! La búsqueda arroja puras cosas irrelevantes, y para colmo el registro me pide mil datos.",negativa
+820,restaurante,2,Las bebidas llegaron sin hielo.,negativa
+821,app,2,"No es que la velocidad esté mal, es que está pésimo.",negativa
+822,servicio,4,"Si, el tramite es una perdida de tiempo, pero la atencion telefonica resolvio mi duda al momento, y lo mejor: el chofer llego puntual.",positiva
+823,restaurante,5,"Era mi primer vez aqui. El luar es bonito y comodo, y encima la mesera estuvo al pendiente ttodo el tiempo.",positiva
+824,app,4,"La actualizacion la hizo mas rapida, aparte la velocidad nunca se traba!!! Eso si, el pago me cobro doble.",positiva
+825,producto,2,"El diseno es feo, y el material se rompio a la semana!!!",negativa
+826,app,4,"El soporte es muy atento, y lo mejor: el mapa funciona perfeccto. Eso sí, la sincronización borra mis datos. Lo volvería a pedir. xd",positiva
+827,hotel,1,"viajé por trabajo. el wifi se cae a cada rato, y para colmo la habitación estaba sucia.",negativa
+828,restaurante,5,"Pedimos el menu del dia. La comida sabe casera, y lo mejor: la salsa es casera y se nota, y lo mejor: el ambiente es perfecto para ir en familia.",positiva
+829,app,5,"Llevo un mes con la app. La búsqueda es rrapidísima, y el registro es seguro y fácil.",positiva
+830,servicio,5,"Tomé el paquete básico. El coro fue transparente, y lo meejor: el chofer maneó muy ien, y lo mejor: a atención telefónica resolvió mi duda al momento.",positiva
+831,restaurante,2,"El ambiente es ridoso, y la salsa sbía a lta, aparte el seervicio fue péésimo...",negativa
+832,restaurante,1,"El ambiente huele a fritanga, aparte la salsa no picaba nada.",negativa
+833,hotel,1,Fuimos en pareja. La limpieza deja mucho que desear.,negativa
+834,restaurante,2,"Nada bueno que decir, el servicioooo fue pesimo.",negativa
+835,app,4,"El pago es seguro y facil, tambien el soporte me respondio en minutos. Eso si, la velocidad es pesima.",positiva
+836,app,5,"Qué buena sorpresa. La app es justo lo que buscaba, y lo mejor: la búsqueda es muy precisa.",positiva
+837,producto,1,Qué lindo que el tamaño no corresponde con la descripción.,negativa
+838,restaurante,4,era mi primera vez aquí. las bebidas tienen buen precio.,positiva
+839,servicio,4,"Sí, el plomero dejó un desastre, pero la reparación qedó perfecta, además el técnico fue respetuoso y cuidaddosso. Me quedo con lo bueno.",positiva
+840,producto,4,"El zipper es de pésima calidad, es cierto, pero el ensamble está muy bien hecho, también el material se ve premium.",positiva
+841,producto,1,Pedí la talla mediana. El envío llegó dañado.,negativa
+842,restaurante,5,"Fuimos a cenar cuatro personas. La salsa es caseraaa y se nota, y encima las bebidas están bien servidas.",positiva
+843,restaurante,5,"Fui en hora pico. Las bebidas son enormes, además el servicio fue de diez.",positiva
+844,restaurante,4,"LA MESERA ESTUVO AL PENDINTE TODO EL TIEMPO, Y LOS POSTRRESSS CIERRAN LA COMIDA PERFECTO.",positiva
+845,servicio,4,"Aunque la cita la cancelaron sin avisar, la entrega llegó a tiempo, y lo mejor: la clase vale cada peso. Me quedo con lo bueno.",positiva
+846,servicio,4,"El chofer maneejó muy bien, tambiénnnn el seguimient fue constate. Eso sí, el instructor es prepotente.",positiva
+847,restaurante,1,"terrible. la meseraaa nos ignoró toda la noche, además el lugar tenía moscas.",negativa
+848,restaurante,2,"Las bebidas estaban aguadas, tambien el precio es excesivo para lo que dan. Eso si, la mesera estuvo al pendiente todo el tiempo.",negativa
+849,servicio,4,no tengo ni una queja de la reparación.,positiva
+850,app,4,"sí, las notiificaciones o dejan de llega, pero el pago fue sin brroncas, también el registro toma un minuto.",positiva
+851,hotel,1,Reserve por la pagina. La ubicacion es peligrosa.,negativa
+852,restaurante,4,La mesera fue muy amable. Repetire. jajaja,positiva
+853,producto,2,"la calidad es de tianguis, también el nvío llegó con dos semanas de retraso, auunque el zipper es resisttente.",negativa
+854,producto,1,"Llego el martes. La suela se gasto en un mes, y pa colmo el zipper es de pesima calidad.",negativa
+855,servicio,1,Pague por adelantado!!! El plomero dejo un desastre.,negativa
+856,hotel,2,"el aire acondicionado hace un ruido espantoso, y pa colmo la cama rechina, también la vista no es la de las fotos. nunca más.",negativa
+857,producto,1,Qué lindo que el empaque venía roto. Gracias por nada.,negativa
+858,hotel,1,no me gusto el desayuno y no pienso regresar.,negativa
+859,app,4,"Me la recomendó un compañero. Las notificaciones son discretas, aparte la app es muy intuitiva.",positiva
+860,hotel,2,"Fatal. El check-in tardó una hora, además el wifi es lentísimo.",negativa
+861,app,2,"El mapa se pierde, además la actualización borró mis datos. Eso sí, la sincronización es inmediata. No vuelvo.",negativa
+862,restaurante,4,No tengo ni una queja de la salsa.,positiva
+863,restaurante,2,Fui en hora pico. El servicio fue grosero.,negativa
+864,servicio,2,Agende para el lunes!!! La cita se retraso dos horas.,negativa
+865,servicio,5,"Pense que el seguimiento iba a estar mal y no, fue constante.",positiva
+866,restaurante,5,"Fui el sábado con i familia! El servicio fue rapidísimo, y lo mejor: los tacos están para chuparse los dedos.",positiva
+867,servicio,1,"Los encontré en Google. El técnico no tenía ida, y la reparación la hicieron mal.",negativa
+868,producto,5,"No hay nada q no me haya gustado, el diseno esta muy bien pensado.",positiva
+869,servicio,5,El instructorrrrr sabe muchísimo.,positiva
+870,hotel,4,"El chec-in ffue rapido y sin broncas, aparte la habitacion es preciosa. Eso si, la ubicacion es peligrosa.",positiva
+871,servicio,2,"Esperaba mucho de el trámite y no, es una pérdida de tiempo.",negativa
+872,servicio,4,"La clase es una pérdida de tiempo, es cierto, pero la atención telefónica resolvió mi duda al momento, y lo mejor: la cita fue rápida y clara.",positiva
+873,app,4,El pago es seguro y fácil. Vale la pena.,positiva
+874,producto,4,"El producto ees tal cual la foto, aparte el empaque es bonito, además el maaterial es muy bueno. Reetiré.",positiva
+875,restaurante,5,Lo conocí por recomendación de un amigo. Las porciones son generosas.,positiva
+876,restaurante,4,"Los tacos están para chuparse los dedos, además las porciones son abundantes, aunque el precio es un robo. Me quedo con lo bueno.",positiva
+877,servicio,2,La atención telefónica fue grosera.,negativa
+878,app,2,La app se cierra sola...,negativa
+879,app,5,las notifccaciones llegan a tiempo...,positiva
+880,app,4,"súper recomendado. la app es muy intuitiva, también las notificaciones son útiles.",positiva
+881,app,1,"Las notificaciones son puro spam, y el pago me cobró doble...",negativa
+882,restaurante,1,"El ambiente es ruidoso, y la salsa estaba aguada.",negativa
+883,restaurante,1,"Nada bueno que decir, la commida n sabia a nada!",negativa
+884,producto,4,"Lo compre para regalo. La tela es de buena calidad, y encima la calidad supero lo que pague.",positiva
+885,producto,5,"Llegó el martes. El zipper corre suave, además el material es muy bueno, también el ensamble está muy bien hecho.",positiva
+886,servicio,5,"Pedí la visita a domicilio. La clase vale cada peso, también la cita fue rápida y clara.",positiva
+887,restaurante,4,Pedimos el menu del dia... Los postres cierran la comida perfecto.,positiva
+888,producto,2,"El ensamble le faltaban piezas, y encima el material es plástico barato.",negativa
+889,restaurante,1,"La carne estaba dura, aparte la salsa sabía a lata, además la comida no sabía a nada. Nunca más.",negativa
+890,app,4,"Aunque las notificacone llegan tarde, la app es justo lo que buscaba, y lo mejor: el mapa funciona perfecto.",positiva
+891,hotel,5,No tengo ni una queja de el desayuno.,positiva
+892,servicio,1,"Increíble, de verdad, la cita no la respetaron. Justo lo que quería.",negativa
+893,restaurante,5,"Los postres cierran la comida perfecto, tambien las bebidas son enormes, y encima el servicio fue atento sin ser pesado. Repetire.",positiva
+894,producto,2,"aunque el producto es de excelente calidad, el material se siente corriente, y pa colmo el tamaño no corresponde con la descripción. no vuelvo.",negativa
+895,app,5,"llevo un mes con la app! la actualización mejoró muchísimo, también el mapa funciona perfecto.",positiva
+896,hotel,2,"Esperaba mucho de el aire acondicionado y no, no enfría.",negativa
+897,servicio,2,"La entrega nunca llego, ademas el instructor llega tardeeeee siempre.",negativa
+898,hotel,1,"La limpieza brilla por su auusencia, también el personal fue indiferente, además la vista da a un muro!!!",negativa
+899,servicio,2,"Aunque la entrega llegó en perfecto estado, la clase no enseña nada, además el técnico nunca llegó.",negativa
+900,app,5,La actualicé la semana pasada. La app es muy intuitiva.,positiva
+901,app,5,Tengo la version de pao. La app es justo lo que busaba.,positiva
+902,hotel,1,Qué lindo que la habitación tenía cucarachas. Qué detalle.,negativa
+903,servicio,4,Fue la primera vez que los contrato. El chofer llegó puntual.,positiva
+904,restaurante,5,"Nada que reprochar, el ambiente es acogedor...",positiva
+905,servicio,1,"Coontrate el servicio ppoorr tlefono. La entrega llego rota, y encima el tramite me hicieron volver cuatro veces.",negativa
+906,restaurante,2,"las porciones son diminutas, tambien el servicio fue pesimo, aunque el ambiente ess accogedor.",negativa
+907,servicio,2,"La atención telefónica fue grosera, y para colmo la clase no enseña nada, aunque la cita fue puntual. jajaja",negativa
+908,restaurante,1,"los tacos eran puro tortilla, además la msera nos ignoró toda la noche.",negativa
+909,app,5,"No hay nada que no me haya gustado, la actualización arregló los errores. 👎",positiva
+910,servicio,1,"Fue la primera vez que los contrato. El chofer manejo como loco, ademas el instructor no sabe explicar.",negativa
+911,servicio,2,"Terrible. No recomiendo nada, el tecnico fue un desastre.",negativa
+912,hotel,1,"Esperaba mucho de el desayuno y no, estaba frio. jaja",negativa
+913,servicio,2,"Nada bueno que decir, el trámite me hicieron volver cuatro veces.",negativa
+914,hotel,5,"Fuimos en puente. La limpieza fue diaria y cuidadosa, aparteee el desayuno tiene mucha variedad, además el aire acondicionado enfría perfecto.",positiva
+915,hotel,2,El wifi es lentísimoo.,negativa
+916,restaurante,4,"no es caro para lo que ofrece, el servicio vale cada peso. 👍",positiva
+917,restaurante,2,"Aunque el servicio fue de diez, el precio es un robo, y la mesera fue grosera! No me convencio.",negativa
+918,restaurante,1,"Pedimos el menú del día. La comida parecía de microondas, y para colmo las bebidas son carísimas.",negativa
+919,app,5,"Cumple y de sobra. La búsqueda es rapidísima, y lo mejor: la velocidad es impresionante, y encima la sincronización nunca falla.",positiva
+920,restaurante,4,"No es caro para lo que frece, el precio vale cada peso.",negativa
+921,app,5,La app funciona sin trabas.,positiva
+922,servicio,5,"Feliz con el resultado. La cita la respetaron sin problema, y encima el instructor explica con paciencia.",positiva
+923,producto,2,"el envío llegó dañado, y pa colmo la calidad es de tianguis, aunque el material se ve premium.",negativa
+924,servicio,1,"Pésima experiencia. La clase es aburridísima, y encima el plomero dejó un desastre.",negativa
+925,hotel,1,"Viajé poor trabajo. El personal fue grosero, aprte el aire acondicionado no enfría.",negativa
+926,restaurante,1,fui en hora pico... las porciones no llenan ni a un nino.,negativa
+927,hotel,4,El baño está reluciente.,positiva
+928,hotel,4,"Nada que reprochar, la vista es espectacular.",positiva
+929,app,5,Me la recomendó un compañero. El registro toma un minuto.,positiva
+930,producto,4,"Si, la suela es resbalosa, pero la tela es suave y gruesa, y encima el diseno se ve moderno.",positiva
+931,servicio,4,"No es caro para lo que ofrece, la clase vale cada eso.",positiva
+932,servicio,2,"Aunque la cita la respetaron sin problema, la atención telefónica nunca contesta, también el instructor no sabe explicar.",negativa
+933,producto,5,"NO ES CARO PARA LO QUE OFRECE, EL DISEÑO VALE CADA PESO.",positiva
+934,app,2,"La uso para el trabajo. La versión gratis está llena de anuncios, y el mapa me mandó por donde no era.",negativa
+935,app,1,Lo máximo: la actualización borró mis datos. Justo lo que quería.,negativa
+936,servicio,4,"Aunque la entrega nunca llego, el chofer llego puntual, y encima el plomero dejo todo limpio.",positiva
+937,servicio,2,El técnico dejó un desastre.,negativa
+938,restaurante,1,Que linndo que la salsa sabia a lata!!!,negativa
+939,app,4,"La interfaz es fácil de usar, además la versión gratis vale mucho la pena! Eso sí, el registro nunca termina.",positiva
+940,hotel,4,"Era nuestra primera vez en la ciudad. La alberca es enorme, además el baño está reluciente, y lo mejor: el desayuno es de primera.",positiva
+941,producto,2,"esperaba muchoooo de el diseño y no, es feo.",negativa
+942,restaurante,4,"Sí, la salsa estaba aguada, pero el lugar está bien ubicado, también el ambiente es perfecto para ir en familia.",positiva
+943,restaurante,4,"La carne estaba bien sazonada, aparte el lugar esta limpisimo!!! Eso si, las bebidas llegaron sin hielo. En general bien.",positiva
+944,producto,5,"El diseno esta muy bien pensado, aparteeeee la tela no se deforma, y lo mejor: la suela es comoda.",positiva
+945,producto,1,"El material se rompió a la semana, y el diseño se ve corriente.",negativa
+946,producto,1,"Nada bueno que decir, la tela es delgadísima. Ahórrense el mal rato.",negativa
+947,restaurante,5,"Fui el sábado con mi familia. La mesera nos atendió de maravilla, ademássss los tacos son los mejores de la zona.",positiva
+948,restaurante,4,"Súper recomendado. La mesera fue muy amable, y lo mejor: la salsa es casera y se nota, y encima las bebidas son enormes.",positiva
+949,app,5,"Súper recomendado. El soporte resolvió mi problema, y las notificaciones son discretas, además la sincronización jala perfecto.",positiva
+950,app,4,"la velocidad es impresionante, y lo mejor: el soporte es muy atento, aunque la app es inservible.",negativa
+951,producto,4,"El ensamble no tiene ni un detalle, también la calidad superó lo que pagué, aparte el zipper es resistente. Repetiré.",positiva
+952,producto,5,"El zipper funciona perfecto, y lo mejor: el ensamble esta muy bien hecho, ademas la calidad supero lo que pague.",positiva
+953,hotel,4,"EL WIFI ES RÁPIDO, TAMBIÉN LA UBICACIÓN ES PERFECTA, AUNQUE EL AIRE ACONDICIONADO GOTEABA TODA LA NOCHE. LO VOLVERÍA A PEDIR.",positiva
+954,servicio,4,"El técnico fue respetuoso y cuidadoso, y encima la cita fue puntual. Eso sí, el seguimiento fue nulo. En general bien.",positiva
+955,producto,5,El envio llego antes de lo prometido... Vale la pena.,positiva
+956,app,1,EL PAGO NO ME RECONOCE LA TARJETA!!! NO VUELVOOOO NUNCA.,negativa
+957,app,4,"Si, el mapa se pierde, pero las notificaciones son utiles, tambien la actualizacion arreglo los errores. xd",positiva
+958,hotel,4,"la vistaa da al estacionamiento, es cierto, eroo la habitación estaba impecable, y lo mejo: la ubicación e inmejoraable.",positiva
+959,producto,1,"El empaque venia roto, tambien el envio llego con dos semanas de retraso.",negativa
+960,producto,5,"me encantó. el empaque es bonito, y encima el tamaño es idal, y el envío lllegó en perfecto esttado.",positiva
+961,servicio,4,Me lo recomendó un vecino. El choferrrr manejó muy bien.,positiva
+962,producto,4,"Llevo dos semanas usándolo... El tamaño es perfecto, y el empaque es bonito.",positiva
+963,restaurante,5,"Las bebidas son enormes, y encima la carne tenia muy buen sabor. Quede muy satisfecho.",positiva
+964,app,2,"la versión gratis es solo un anzuelo, y encima la velocidad es pésima. eso sí, la búsqueda encuentra todo. no vuelvo.",negativa
+965,hotel,5,"Nos quedamoss tres nches. La ubicación es perfecta, y enccima la habiitción es amplia y cómoda.",positiva
+966,hotel,2,"Esperraba mucho de la ubicación y no, es peligrosa. jaja",negativa
+967,producto,2,"Aunque la bateria aguanta muchisimo, el zipper es de pesima calidad, y la calidad es terrible para el precio.",negativa
+968,servicio,2,"Aunque el chofer fue respetuoso y cuidadoso, el cobro fue un abuso, aparte la cita se retrasó dos horas.",negativa
+969,hotel,1,"El wifi se cae a cada rato, aparte la limpieza deja mucho que desear.",negativa
+970,hotel,4,"El check-in tardó una hoora, es cierto, pero la vista es increíble, aparte el aire acondicionado funiona mmuy bien.",positiva
+971,hotel,4,La cama es de las mejores en las q he dormido...,positiva
+972,servicio,2,"El cobro fue transparente, es cierto, pero el plomero cobró y no arregló nada, también el técnico no tenía idea.",negativa
+973,restaurante,1,los postres sabian a congelado. no vuelvo nunca.,negativa
+974,restaurante,2,"El ambiente es deprimente, y el precio es un robo, aunque las porciones son abundantes. No vuelvo.",negativa
+975,app,2,"no es que el registro esté mal, es que está pésimo!!!",negativa
+976,restaurante,2,"La mesera estuvo al pendiente todo el tiempo, es cierto, pero los postres sabian a congelado, y encima las bebidas son carisimas.",negativa
+977,app,5,El mapa es preciso.,positiva
+978,app,5,La actualicé la semana pasada. No tengo ni una queja de el registro.,positiva
+979,restaurante,2,"fatal. la mesera nos ignoro toda la noche, ademas las bebidasssss llegaron sin hielo.",negativa
+980,servicio,1,qué lindo que el seguimiento nunca existió! qué detalle.,negativa
+981,app,4,"LA USO DESDE EL IPAD. NO HAY NADA QUE NO ME HAYA GUSTADO, LA SINCRONIACION JALA PERFECTO.",positiva
+982,servicio,4,"La atención teefónica resolvó mi duda l momento, también el chofer llegó puntual, aunque e instructor llegga tarde siempre.",positiva
+983,restaurante,4,"Las porciones son dimiinnutas, es cierto, peeo la salsaa está buenísima, aparte el servicio fue d diez.",positiva
+984,restaurante,4,"EL AMBIENTE ES PERFECTO PARA IR EN FAMILIA, Y ENCIMA LOS POSTRES CIERRAN LA COMIDA PERFECTO. ESO SI, LA SALSA NO PICABA NADA.",positiva
+985,hotel,5,"La vista es espectcular, y lo mejor: la limpiez s de rimera.",positiva
+986,producto,2,"Terrible. Nada bueno que decir, la tela es delgadísima.",negativa
+987,restaurante,1,"Las porciones son de muestra gratis, y las bebidas llegaron sin hielo. 👎",negativa
+988,app,5,"pense que el soporte iba a estar mal y no, me respondio en minutos.",positiva
+989,restaurante,1,"Pedí por la app. La carne venía cruda por dentro, aparte las bebidas estaban aguadas.",negativa
+990,producto,2,"Lo ccompré para regalo. El ensamble le faltaban piezas, y encima la caliad es de tianguis.",negativa
+991,restaurante,4,"aunque el precio no corresponde con la calidad, la mesera fue muy amable, y lo mejor: el servicio fue de diez.",positiva
+992,restaurante,2,"La comida parecía de microondas, aparte el precio es un robo, aunque la salsa esá buenísima.",negativa
+993,producto,1,"la suela es resbalosa, y el empaque llegó aplastado, y encima el producto es de pésima calidad.",negativa
+994,servicio,5,"La reparación quedó perfecta, y el instructor sabe muchísimo. 👍",positiva
+995,hotel,2,"Esperaba mucho de el baño y no, tenía pelos en la regadera.",negativa
+996,restaurante,5,"Fui el sábado con mi familia... Las bebidas están bien servidas, y lo mejor: la comida sabe casera.",positiva
+997,producto,2,"EL ENSAMBLE VENÍA CHUECO, ADEMÁS LA CALIDAD ES DE TIANGUIS, AUNQUE EL DISEÑO ESTÁ MUY BIEN PENSADO.",negativa
+998,producto,5,"No tengo quejas. El producto es de excelente calidad, y lo mejor: la calidaddddd supero lo que pague.",negativa
+999,servicio,1,Agendé para el lunes. El cobro fue un abuso.,negativa
+1000,restaurante,5,"Los tacos son los mejores de la zona, también los postres cierran la comida perfecto, además el precio vale cada peso...",positiva
+1001,hotel,5,la vista vale el viaje. diez de diez. jaja,positiva
+1002,producto,4,"El tamaño es perfecto, y el empaque llegó impecable. Eso sí, el envío llegó con dos semanas de retraso.",positiva
+1003,servicio,5,"La atención telefónica resolvió mi duda al momento, y la entrega llegó a tiempo, y la clase es dinámica. jaja",positiva
+1004,producto,5,el material es muy bueno.,positiva
+1005,app,1,"El pago no me reconoce la tarjeta, y la actualizacion borro mis datos.",negativa
+1006,restaurante,2,"Fui en hora pico. El lugar estaba sucio, aparte el precio no corresponde con la calidad.",negativa
+1007,app,5,"TENGO LA VERSIÓN DE PAGO. LAS NOTIFICACIONES SON DISCRETAS, Y ENCIMA LA SINCRONIZACIÓN NUNCA FALLA.",positiva
+1008,restaurante,2,"Los postres estan hechos en casa, es cierto, pero la mesera se equivoco con la orden dos veces, y el precio es un robo.",negativa
+1009,producto,4,"Aunque el zipper se atoró al segundo uso, el envío llegó antes de lo prometido, y el tamaño es justo lo que esperaba.",positiva
+1010,servicio,5,El chofer manejó muy bien. Quedé muy satisfecho.,positiva
+1011,restaurante,4,"sí, la mesera fue grosera, pero el ambiente es perfecto para ir en familia, aparte las bebidas están bien servidas. me quedo con lo bueno.",positiva
+1012,producto,5,"El producto es de excelente calidad, y lo mejor: la batería dura todo el día. Totalmente recomendable.",positiva
+1013,restaurante,4,"Pensé que el lugar iba a estar mal y no, está limpísimo.",positiva
+1014,hotel,4,"la habitación estaba impecable, también la ubicación está a pasos de todo, aunque la alberca estaba cerrada.",positiva
+1015,hotel,5,Laa cama es comodisima.,positiva
+1016,producto,1,"Excelente, la calidad es de tianguis... Lo que faltaba.",negativa
+1017,servicio,5,"Todo perfecto. La reparación quedó perfecta, y encima el seguimiento fue muy profesional.",positiva
+1018,app,2,No me gustó el pago y no pienso regresar.,positiva
+1019,producto,5,"Lo uso a diario. La suela es cómoda, y encima la batería dura todo el día.",positiva
+1020,app,4,"aunque la actualización borró mis datos, el pago se procesó al instante, y lo mejor: las notificaciones son discretas!!! en general bien.",positiva
+1021,hotel,4,"Aunquee la limpieza fu nula, la vista vaale el viaje, y la ubicación es perfecta. Lo volvería a pedir.",positiva
+1022,app,2,"no es que la sincronización esté mal, es que está pésimo...",negativa
+1023,producto,1,Qué lindo que el material es plástico barato. jaja,negativa
+1024,restaurante,5,"fui el sabado con mi familia. el lugar esta limpisimo, y la carne estaba suave y jugosa.",positiva
+1025,restaurante,4,"Aunque la mesera nos ignoro toda la noche, la comida sabe casera, y el servicio fue atento sin ser pesado... Me quedo con lo bueno.",positiva
+1026,hotel,2,"Sí, el wifi funciona de maravilla, pero la vista da a un muro, y encima el personal nos perdió la reservación. No vuelvo.",negativa
+1027,producto,2,"El ensamble le faltabban piezas, adema la tela es delgadisima. Eso si, l diseno esta muy bien pensado.",negativa
+1028,producto,1,"NO ES QUE LA BATERIA ESTE MAL, ES QUE ESTA PESIMO.",negativa
+1029,restaurante,1,"Los tacos estaban grasosos, también las porciones son de muestra gratis, y para colmo las bebidas estaban aguadas.",negativa
+1030,producto,5,qué buena sorpresa. la calidad se nota en cada detalle.,positiva
+1031,producto,1,La suela se desspego al segundo uso. 👍,negativa
+1032,app,5,Llevo un mes con la app. La interfaz es facil de usar.,positiva
+1033,hotel,4,"La habitación estaba impecable, además la ubicación está a pasos de todo, aunque el aire acondicionado no enfría. En general bien.",negativa
+1034,hotel,1,"La cama rechina, y el wifi es lentisimo.",negativa
+1035,hotel,5,"Pensé que el aire acondicionado iba a estar mal y no, es silencioso.",positiva
+1036,servicio,1,Lo máximo: el seguimiento fue de pésimaaaaa calidad. Gracias por nada.,negativa
+1037,restaurante,4,"El lugar esta limpisimo, ademas la comida estabaaaaa deliciosa.",positiva
+1038,hotel,2,"El desayuno es escaso, tabién la uicaciónn ess ruidosísima, además la habitación olía a humedd.",negativa
+1039,hotel,4,"Sii, la alberca estaba verde, pero la limpieza es de primera, aparte a cama es enorme. Me quedo con lo bueno.",positiva
+1040,servicio,5,La entrega llegó a tiempo.,positiva
+1041,servicio,1,La clae es aburridisima. Cero estrelasssss si se udiera.,negativa
+1042,app,1,"La actualicé la semana pasada. La velocidad es desesperante, y la versión gratisss no sirve para nada.",negativa
+1043,hotel,1,"la vista da al estacionamiento, y encima el desayuno era pan duro y café aguado. ni de chiste lo recomiendo.",negativa
+1044,servicio,5,Me lo recomenndo un vcino. El plomero fue hoonesto.,positiva
+1045,producto,5,"Lo uso a diario. La tela es de buena calidad, también la batería dura todo el día, además el producto es de excelente calidad.",positiva
+1046,producto,2,La calidad eja mucho que desear.,negativa
+1047,producto,4,El enviio fue rapidisimo. Buen trabajo.,positiva
+1048,restaurante,1,"No vuelvo. Esperaba mucho de la carne y no, parecía suela.",negativa
+1049,producto,1,"No lo recomiendo. El epaquue venía roto, además la calidad es de tianguis.",negativa
+1050,hotel,5,"El check-in fue rápido y sin broncas, además el desayuno es abundante y rico.",positiva
+1051,hotel,1,El check-in nos hicieron esperar sin explicación. Cero estrellas si se pudiera.,negativa
+1052,app,2,"El pago me cobro doble, y la velocidad es de modem de 2005.",negativa
+1053,producto,5,lo compré para regalo. el empaque es bonito.,positiva
+1054,producto,2,"El empaque venía roto, y la tela se despintó al lavarla. Eso sí, el material se ve premium.",negativa
+1055,restaurante,5,Las bebidas estan bien servidas. Buen trabajo.,positiva
+1056,restaurante,2,"La comida no sabia a nada, ademas las bebidas son carisimas, aparte el servicio fue pesimo.",negativa
+1057,servicio,4,"Aunque e cobrooo fue un abuso, la cita la respetaron sin problema, adms la clase es muy didáctica.",positiva
+1058,producto,4,El tamaño es erfect. Diez de diez.,positiva
+1059,servicio,1,Fue la primera vez que los contrato... El tecnico dejo un desastre.,negativa
+1060,servicio,1,Terrible. El instructor llega tarde siempre.,negativa
+1061,hotel,5,"Nos quedamos tres noches!!! El desayuno es de primera, y la vista vale el viaje.",positiva
+1062,servicio,4,"Los encontré en Google. La cita fue rápida y clara, y el chofer manejó muy bien, y la clase vale cada peso.",positiva
+1063,producto,1,La batería no carga. Una estafa.,negativa
+1064,producto,5,"Cumple y de sobra. La calidad supero lo que pague, y encima el diseno es elegante.",positiva
+1065,hotel,2,"No recomiendo nada, la ubicacion fue un desastre.",negativa
+1066,hotel,1,"viajé por trabajo. la limpieza fue nula, y para colmo el wifi es lentísimo, además el aire acondicionado hace un ruido espantoso.",negativa
+1067,hotel,1,"El check-in nos hicieron esperar sin explicación, y encima el aire acondicionado no enfría.",negativa
+1068,app,2,"El pago falló tres veces, aparte el mapa se pierde, aunque el soporte me respondió en minutos. No vuelvo.",negativa
+1069,producto,5,"el diseno esta muy bien pensado, tambien la tela no se deforma, tambien el zipper corre suave. xd",positiva
+1070,app,1,Me encanta cuuando la sincronizacion no funion. Justo lo que queria.,negativa
+1071,restaurante,1,era mi primera vez aquí. lla carne venía cruda por dentro.,negativa
+1072,restaurante,4,El servicio fue atento sin ser pesado.,positiva
+1073,servicio,4,"Pagué por adelantado. La cita la respetaron sin problema, y lo mejor: la clase es dinámicaa, y la entrega llegó en perfecto stado.",positiva
+1074,servicio,4,no tengo ni una qeja de el seguimiento.,positiva
+1075,servicio,2,"No recomiendo nada, la reparación fue un desastre.",negativa
+1076,producto,4,"El tamano es ideal, aparte el ensamble esta muy bien hecho.",positiva
+1077,hotel,2,"La ubicación es peligrosa, aparte la limpieza deja mucho que desear. Eso sí, el desayuno es abundante y rico. No vuelvo.",negativa
+1078,restaurante,4,Fuimosss a cenar cuatro personas. El lugar es bonito y cómodo.,positiva
+1079,app,5,"Las notificaciones lleegan a tiempo, además la app es justo lo que buscaba.",positiva
+1080,app,1,"la búsqueda arroja puras cosas irrelevantes, también el registro nunca termina, y para colmo el pago falló tres veces.",negativa
+1081,hotel,5,"El wifi es rápido, y encima la limpieza fue diaria y cuidadosa!!!",positiva
+1082,hotel,2,"Reservé por la págin... La limpieza fue nula, además la cama rechina, y para colmo la vista da a un muro.",negativa
+1083,hotel,4,"Feliz con el resultado. La habitación es preciosa, y el personal fue amabilísimo.",positiva
+1084,servicio,1,"el técnico nunca llegó, aparte la reparación la hicieron mal. ya levanté queja en profeco.",negativa
+1085,servicio,4,"Pedí la visita a domicilio!!! La reparación quedó como nueva, y lo mejor: el chofer manejó muy ben.",positiva
+1086,hotel,2,El wifi see cae a cada rato. Ya levanté queja en ofec.,negativa
+1087,hotel,5,"Viaje por trabajo. No hay nada que no me haya gustado, la cama es enorme. 👎",positiva
+1088,app,5,"Tengo la version de pago. La velocidad es impresionante, tambien el mapa es preciso.",positiva
+1089,restaurante,2,No lo reccomiendo... El ambienteeee es deeprimente.,negativa
+1090,producto,4,Lo compré en línea. El producto es de excelente calidad.,positiva
+1091,servicio,5,tomé el paquete básico. el técnico llegó puntual.,positiva
+1092,producto,4,"Aunque la calidad es de tianguis, la suela agarra ien, y lo mejor: el diseño es elegante.",positiva
+1093,servicio,1,"Pedi la visita a domicilio. El tecnico no teniaaa idea, aparte la cita la cancelaron sin avisar.",negativa
+1094,servicio,5,"los econttre en google. el tramite se resolvio en una visita, y el chofer llego puntual.",positiva
+1095,app,5,"La uso para el trabajo. El mapa carga rápido, y encima el registro es rápido y sencillo.",positiva
+1096,hotel,1,"Viajé x trabajo. EEl personal fue indiferente, y encima el baño tenía pelos en la regadera, tambiéén la cama reechina.",negativa
+1097,producto,2,"La suela se gasto en un mes, y para colmo la bateria dura dos horas, aunque el material se ve premium.",negativa
+1098,producto,4,"pensé q la suela iba a estar mal y no, es cómoda.",positiva
+1099,app,4,"La búsqueda encuentra todo, también la app funciona sin trabas. Eso sí, el soporte nunca contesta.",positiva
+1100,hotel,4,"A ALBERCA ESTÁ LIMPPÍSIMA, ARTE LA LIMPIZA ESS DE PRIMERA.",positiva
+1101,hotel,1,"Peimos una habitacion doble. Nada bueno que decir, la cama rechinaa.",negativa
+1102,servicio,1,No me usto la rreparacionnnnn y no pienso regressar. 👍,negativa
+1103,servicio,2,"No es que el seguimiento esté mal, es que está pésimo. xd",negativa
+1104,servicio,4,"La entrega llegó a tiempo, aparte el técnicooo sabía lo que hacía... Quedé muy satisfecho. :)",positiva
+1105,servicio,4,"Aunque el instructor es prepotente, el plomero resolvio en una hora, aparte el chofer llego puntual. Me quedo con lo bueno. :(",positiva
+1106,restaurante,2,"La carne parecía suela, y la comida estaba fría, aunque la salsa pica rico. No lo recomiendo.",negativa
+1107,producto,4,MU CONTENTO CONN LA COMPRA. LA CALIDAD ES DE PRIMERA.,positiva
+1108,hotel,2,"El aire acondicionado no enfria, y encima la habitacion estaba sucia. Eso si, el check-in tomo cinco minutos.",negativa
+1109,producto,4,"La batería dura todo el día, aparte el diseño es elegante, aunque la tela se despintó al lavarla.",positiva
+1110,app,4,Que buena sorpresa. El soporte me respondio en minutos.,positiva
+1111,hotel,1,"Nos quedamos tres noches!!! La alberca estaba cerrada, tambien el bano no tenia agua caliente.",positiva
+1112,servicio,5,"El técnico llegó puntual, y lo mejor: la atención telefónica fue muy amable.",positiva
+1113,producto,2,"si, el material es muy bueno, pero el empaque llego aplastado, ademas e producto no se parece a la foto.",negativa
+1114,producto,2,El ensamble venía chueco!,negativa
+1115,producto,1,Lo compré para regalo. El empaqueeeee venía roto. :(,negativa
+1116,hotel,4,No tengo ni una queja de la alberca.,positiva
+1117,servicio,2,"El instructor llega tarde siempre, y encima la clase es aburridísima, aunque la reparación quedó perfecta.",negativa
+1118,restaurante,2,"Aunque la salsa esta buenisima, la carne parecia suela, y encima la comida no sabia a nada.",positiva
+1119,restaurante,1,"La salsa no picaba nada, y encima la comida me cayó mal!!!",negativa
+1120,app,5,"Nada que reprochar, el soporte resolviooo mi problema.",positiva
+1121,restaurante,2,"la comida estaba fría, y encimaaa las porciones son diminutas. no vuelvo nunca.",negativa
+1122,app,1,"Maravilloso, la interfaz es confusa. Justo lo que quería.",negativa
+1123,app,2,La velocidad es de modem de 2005. Ni de chiste lo recomiendo.,negativa
+1124,hotel,2,"El desayuno estaba frío, además la alberca es diminuta, aunque el personal fue amabilísimo.",negativa
+1125,servicio,5,la clase es dinamica.,positiva
+1126,app,5,El pago se procesó al instante...,positiva
+1127,app,4,"El pago se procesó al instante, y la actualización mejoróóó muchísimo! Eso sí, la app es inservible.",positiva
+1128,restaurante,1,"Nada bueno que decir, el ambiente es deprimente.",negativa
+1129,app,4,"aunque el registro me pide mil datos, las notificaciones llegan a tiempo, y encima el pago se procesó al instante. jajaja",positiva
+1130,hotel,4,"El baño es amplioo, ademásss la vsta es espectacula.",positiva
+1131,servicio,5,AGENDÉ PARA EL LUNES. EL CHOFER LLEGÓ PUNTUAL.,positiva
+1132,app,1,Me encanta cuando la sincronización no funciona. Gracias por nada.,negativa
+1133,producto,2,"Si, la calidad supero lo que pague, pero el material es plastico barato, y para colmo el producto es una estafa.",negativa
+1134,hotel,1,Lo maximo: el check-in fue un caos. Justo lo que queria.,negativa
+1135,producto,1,"Me arrepiento. La suela es resbalosa, ademas el material se rompio a la semana.",negativa
+1136,producto,2,"Nada bueno que decir, el envío llegó dañado.",negativa
+1137,servicio,1,"Genial, el técnico nuncaaaaa llegó. Lo que faltaba.",negativa
+1138,restaurante,4,"Los postres sabian a congelado, es cierto, pero el precio esta muy accesible, y lo mejor: el lugar esta limpisimo.",positiva
+1139,restaurante,2,"Aunque lo postres estan hechos en casa, la mesera fue grosera, y las bebidas son carisimas. No me convencio.",negativa
+1140,producto,4,"Qué buena sorpresa. a bateríaa carga rapidísimo, aparte la suela agarra bien.",positiva
+1141,servicio,5,"Contraté el servicio por teléfono. La reparación quedó perfecta, aparte el chofer llegóóóó puntual.",positiva
+1142,producto,4,"La suela aguanta mucho, y el empaque llegó impecable. Eso sí, el material se rompió a la semana.",positiva
+1143,hotel,1,"Excelente, el desayuuno era pan duro y cafe aguao. Graciasss por nada.",negativa
+1144,servicio,5,"Nada que reprochar, el cobro fue justo.",positiva
+1145,app,2,"La versión gratis no sirve para nada, y encima las notificaciones no dejan de llegar, aunqueee la actualización mejoró muchísimo. jajaja",negativa
+1146,hotel,4,"Sí, la habitación estaba sucia, pero el aire acondicionado es silencioso, y lo mejor: la alberca es espectacular. Me quedo con lo bueno.",positiva
+1147,hotel,5,"El aire acondicionado enfría perfecto, aparte la vista vale el viaje. 👍",positiva
+1148,restaurante,2,"Pedimos el menú del día! Nada bueno que deecir, las bebidas llegaron sn hielo.",negativa
+1149,servicio,1,"El chofer llegó cuarenta minutos tarde, aparte el trámite es una pérdida de tiempo. xd",negativa
+1150,restaurante,2,"Los tacos están para chuparse los dedos, es cierto, pero el ambiente es ruidoso, también las bebidas son carísimas.",negativa
+1151,servicio,1,La reparacion quedo peor que antes.,negativa
+1152,app,2,"La velocidad es de modem de 2005, aparte la sincronización borra mis datos. Eso sí, la versión gratis es suficiente.",negativa
+1153,restaurante,1,"llegamos sin reservación. el ambiente huele a fritanga, también la comida me cayó mal.",negativa
+1154,hotel,1,"Nada bueno que decir, el wifi no sirve.",negativa
+1155,producto,2,"El zipper es de pesima calidad, aparte la suela es resbalosa. Eso si, el material se siente resistente.",negativa
+1156,servicio,1,"Los encontre en Google. La reparacion la hicieron mal, y pa colmo el tecnico no tenia idea.",negativa
+1157,hotel,4,"La cama es comodísima, aparte el personal fue amabilísimo, aunque el aire acondicionado goteaba toda la noche. Me quedo con lo bueno. jajaja",positiva
+1158,app,4,"Llevo un mes con l app. La búsqueda es muy prcisa, y enncima a velocidad es excelente.",positiva
+1159,app,2,"SÍ, LAS NOTIFICACIONES LLEGAN A TIEMPO, PERO LA APP SE CIERRA SOLA, ADEMÁS LA ACTUALIZACIÓN LO ARRUINÓ TODO.",negativa
+1160,producto,2,"ES MI SEGUNDA COMPRA CON ELLOS. LA CALIDAD ES DE TIANGUIS, Y PARA COLMO EL PRODUCTO NO SE PARECE A LA FOTO, Y ENCIMA LA BATERIA SE DESCARGA SOLA.",negativa
+1161,app,5,"Nada que reprochar, el pago es seguro y fácil!",positiva
+1162,app,5,"Nadda q reprochar, el soporte resolvió mi problema. Repetiré.",positiva
+1163,app,2,EL SOPORTE RESPONDE CON BOTS INUTILES.,negativa
+1164,producto,1,El ensamble venía chueco. Cero estrellas si se pudiera.,negativa
+1165,producto,2,"La calidad es de tianguis, también el ensamble venía chueco, aunque el diseño está muy bien pensado...",negativa
+1166,servicio,4,"El técnico sabía lo que hacía, y la cita fue rápida y clara, y encima el instructor e muy cllaro. Buen ttrabajo.",positiva
+1167,hotel,4,"La cama esta vencida, ess cierto, pero la limpiea es de primera, y la vista es espectacular!",positiva
+1168,app,2,"Aunque la busqueda es rapidisima, la actualizacion lo arruino todo, y encima la interfaz es fea y lenta. No me convencio.",negativa
+1169,app,5,"no es caro para lo que ofrece, la interfazzzzz vale cada peso.",positiva
+1170,app,1,La uso para el trabajo! La app se cierraaaaa sola.,negativa
+1171,hotel,1,"Lamentable. La limpieza brilla por su ausencia, y la ubicación está en medio de la nada.",negativa
+1172,producto,2,"La batería se descarga sola, también el empaque llegó aplastado, aunque el diseño es elegante. No me convenció.",negativa
+1173,servicio,5,La atencion telefonica fue clara.,positiva
+1174,restaurante,4,"Sí, la carne parecía suela, pero los postres están hechos en casa, y encima los tacos estaban increíbles.",positiva
+1175,restaurante,4,"el servicio tardó más de una hora, es cierto, pero la salsa es casera y se nota, y lo mejor: el ambiente es acogedor.",positiva
+1176,servicio,5,"Los encontré en Google. La atención telefónica resolvió mi duda al momento, y la cita fue rápida y clara, y lo mejor: la clase es dinámica.",positiva
+1177,hotel,5,"Pedimos una habitacion doble. El check-in fue muy amable, ademas la habitacion es preciosa, aparte la alberca es espectacular.",positiva
+1178,producto,5,Pedí la talla mediana. La calidad se nota en cada detalle.,positiva
+1179,hotel,5,"buenísmo. la cama es comodíima, y lo mjor: el personal fue ento en todo momento.",positiva
+1180,app,5,"La version gratis tiene toodo lo necesarrio, tambien la velocciddad nunca se traba. Totalmmente recomenndable.",positiva
+1181,app,2,"Sí, la actualización arregló los errores, pero el mapa no carga, y las notificaciones llegan tarde.",negativa
+1182,hotel,5,Viajé por trabajo. La limpieza es de primera.,positiva
+1183,hotel,5,La vista vale el viaje.,positiva
+1184,app,1,No me gusto la sincronizacion y no pienso regresar.,negativa
+1185,hotel,4,"Nada que reprochaar, el wifi es rápido.",positiva
+1186,app,4,"Aunque la busqueda no encuentra nada, la interfaz es limpia y bonita, aparte la app es muy intuitiva.",positiva
+1187,hotel,2,El personal fue indiferente. Nuncaaa mas.,negativa
+1188,producto,2,"Lo compré para regalo. El material es plástico barato, aparte la suela se gastó en un mes.",negativa
+1189,producto,1,"La calidad es terrible pa el precio, y encima el material es plástico barato, además el zipper se atoró al segundo uso.",negativa
+1190,app,4,"Pensé q la app iba a estar mal y no, es muy intuitiva. Volveré seguro.",positiva
+1191,restaurante,5,Llegamos sin reservación. El ambiente es acogedor.,positiva
+1192,hotel,1,"Pedimossss una haitación doble. La habitación estaba sucia, también la iista da a un mmuro.",negativa
+1193,restaurante,2,Pedimos el menu del dia! Los tacos estaban grasosos.,negativa
+1194,app,2,"Me la recomendo un companero. El registro nunca termina, tambien el mapa me mando por donde no era, ademas el pago me cobro doble.",negativa
+1195,producto,5,"La tela es de buena calidad, además el zipper funciona perfecto, también la batería aguanta muchísimo...",positiva
+1196,servicio,1,"Pedí la visita a domicilio. La clase no enseña nada, aparte el técnico nunca llegó.",negativa
+1197,restaurante,4,"El ambiente es perfectooooo para ir en familia, y las porciones son generosas. Eso si, la comida no sabia a nada.",positiva
+1198,hotel,5,"LA CAMA ES COMODÍSIMA, APARTE EL BAÑO TIENE AGUA CALIENTE SIEMPRE. 👍",positiva
+1199,producto,4,Excelente experiencia. La suela agarra bien.,positiva
+1200,producto,1,"Llevo dos semanasssss usándolo. La batería no carga, además el producto es de pésima calidad. 👍",negativa
+1201,restaurante,4,"Los tacos estaban increíbles, y el servicio fue atento sin ser pesado. Repetiré.",positiva
+1202,hotel,4,"el aire acondicionado funciona muy bien, ademas la cama es comodisima, tambien la vista es espectacular.",positiva
+1203,restaurante,2,"Aunque las bebidas están bien servidas, la comida estaba fría, y para colmo los tacos estaban grasosos.",negativa
+1204,app,5,"La actualicé la semana pasada. La app es muy intuitiva, y la interfaz está muy bien diseñada.",positiva
+1205,producto,4,"El producto es tl cual la foto, y la suela aguanta mucho. Eso i, el zipper se rompio.",positiva
+1206,servicio,4,"El técnico nunca llegó, es cierto, pero la reparación quedó como nueva, y la claseeee vale cada peso. Me quedo con lo bueno.",positiva
+1207,producto,4,El empaque llgo impecble.,positiva
+1208,app,1,La versión gratis es solo un anzuelo.,negativa
+1209,restaurante,4,"Los tacos son los meores de la zona, adeemmás el precio está muy accesible. Eso sí, el sevicio tardó más de una hora.",positiva
+1210,producto,2,"Aunque el ensamble esta muy bien hecho, el diseno es feo, y encima la calidad es terrible para el precio. No lo recomiendo.",negativa
+1211,hotel,1,"Increible, de verdad, la limpieza fue nula.",negativa
+1212,servicio,4,"Sí, el instructor no sabe explicar, pero el chofer llegó puntual, aparte la reparación quedó perfecta!!! Lo volveríaaaa a pedir.",positiva
+1213,servicio,1,"Fatal. El cobro fue un abuso, y encima la reparación no duró ni una semana, y el plomero dejó un desastre. xd",negativa
+1214,producto,1,La suela se despego al segundo uso...,negativa
+1215,restaurante,2,No me gusto la salsa y no pienso regresar. jaja,negativa
+1216,restaurante,2,"Esperaba mucho de los postres y no, estaban secos.",negativa
+1217,producto,5,"Nada que reprochar, el diseño está muy bien pensado.",positiva
+1218,app,1,Llevo un mes con la app. El registro nunca termina.,negativa
+1219,app,1,"El registro me pide mil datos, aparte el pago no me reconoce la tarjeta, y para colmo la sincronización no funciona. jajaja",negativa
+1220,servicio,2,No me gustó la reparación y no pienso regresar.,negativa
+1221,servicio,2,"Aunque la entrega llegó en pefecto estado, la reparacción quedó peor que antes, aparte el seguimiento nunca existió.",negativa
+1222,hotel,4,"La vista es espectacular, y encima el check-in fue muy amable!",positiva
+1223,restaurante,4,"No es caro para lo que ofrece, la mesera vale cada peso.",positiva
+1224,restaurante,5,"Lo conoci por recomendacion de un amigo. La comida estaba deliciosa, ademas los postressss estan hechos en casa.",positiva
+1225,servicio,4,"la cita fue puntual, además el técnico llegó puntual. eso sí, el plomero dejó un desastre. me quedo con lo bueno. :(",positiva
+1226,app,2,"El mapa no carga, tambien la actualizacion lo arruino todo, aunque la velocidad es impresionante!!!",negativa
+1227,restaurante,2,"Espraba mucho dee el servici y no, tardó más de una hora.",negativa
+1228,hotel,4,"Viaje x trabajo. El check-in fue rapido y sin broncas, y el personal nos trato como reyes.",positiva
+1229,restaurante,4,"Aunque la salsa sabía a lata, los tacos están para chuparse los dedos, aparte el lugar está bien ubicado!!!",positiva
+1230,restaurante,5,no tengo quejas. los tacos estannnnn para chuparse los dedos.,positiva
+1231,app,4,"sí, la velocidad es pésima, pero el registro toma un minuto, además la sincronización es inmediata. :)",positiva
+1232,servicio,5,El técnico llegó puntual.,positiva
+1233,hotel,1,El wii es leentísimo... No vuelvo nuna.,negativa
+1234,producto,5,"Muy contento con la compra. El material se siente resistente, además la batería aguanta muchísimo.",positiva
+1235,producto,2,"Aunque la batería aguanta muchísimo, el tamaño es más chico de lo q dicen, y la tela pica!",positiva
+1236,producto,5,"Es mi segunda compra con ellos. La bateria carga rapidisimo, y lo mejor: el disenooooo esta muy bien pensado, y lo mejor: la calidad supero lo q pague.",positiva
+1237,hotel,4,"Nos quedamos tres noches. La alberca es enorme, y encima el check-in tomó cinco minutos.",positiva
+1238,restaurante,4,"La salsa es casera y se nota, también las porciones son generosas!!! Eso sí, el precio es un robo.",positiva
+1239,servicio,2,Pague x adelantado. La atencion telefonica fue grosera.,negativa
+1240,servicio,1,El tramite es una perdida de tiempo.,negativa
+1241,restaurante,2,FUI EN HORA PICO. LAS PORCIONES NO LLENAN NI A UN NIÑO.,negativa
+1242,restaurante,1,"Nada bueno que decir, el precioooo es un robo.",negativa
+1243,servicio,5,"El chofer fue respetuoso y cuidadoso, y lo mejor: la cita fue puntual!!! Vale la pena.",positiva
+1244,hotel,1,MUY MAL. LA VISTA DA AL ESTACIONAMIENTO.,negativa
+1245,servicio,2,"el chofer fue grosero, además el seguimiento fue de pésima calidad, aunque el plomero fue honesto.",negativa
+1246,app,2,"sí, la versión gratis vale mucho la pena, pero la velocidad es de modem de 2005, aparte la interfaz es fea y lenta.",negativa
+1247,app,5,"La descargué por reecomendación. El soporte me respondió en minutos, también el mapa carga rápido.",positiva
+1248,servicio,4,"El plomero cobro y no arreglo nada, es cierto, pero la reparacion quedo perfecta, tambien el tramite se resolvio en una visita.",positiva
+1249,servicio,1,"no es que el cobro esté mal, es que está pésimo. ahórrense el mal rato.",negativa
+1250,producto,4,"Aunque el diseño es feo, la suela aguanta mucho, también la tela es suave y gruesa. Lo volvería a pedir.",positiva
+1251,hotel,2,"Sí, el aire acondicionado es silencioso, pero el personal nos perdió la reservación, además el wifi es lentísimo. No lo recomiendo.",negativa
+1252,producto,2,"Si, el diseno es elegante, pero el empaque venia abierto, aparte el zipper es de pesima calidad.",negativa
+1253,app,1,"Esperaba mucho de la búsqueda y no, se traba!",negativa
+1254,servicio,4,"La atención telefónica resolvió mi duda al momento, y lo mejor: el seguimiento fue muy profesional. Repetiré.",positiva
+1255,producto,1,"Lo pedí en la promoción. El envío llegó con dos semanas de retraso, y para colmo el material se rompió a la semana.",negativa
+1256,servicio,4,super recomendado. el cobro fue el acordado.,positiva
+1257,producto,5,lo uso a diario. ell producto es tal cual la foto.,positiva
+1258,restaurante,5,Pedimos el menú del día. El servicio fue de diez.,positiva
+1259,servicio,1,"increible, de verdad, el plomero lo dejo peor que antes.",negativa
+1260,servicio,5,"Agendé para el lunes. La cita fue puntual, y lo mejor: el chofer fue respetuosoooo y cuidadoso. jaja",positiva
+1261,app,2,"El mapa me mandó por donde no era, y la actualización borró mis datos. Eso sí, el registro es seguro y fácil.",negativa
+1262,restaurante,4,"Las porciones llenan bien, además la carne estaba bien sazonada, aunque el lugar está en pésimasss condiciones. :(",positiva
+1263,servicio,4,Fue la primera vez que los contrato!!! La atención telefónica fue muy amable.,positiva
+1264,producto,5,"La batería carga rapidísimo, también el ensamble no tiene ni un detalle, aparte el material se siente resistente.",positiva
+1265,restaurante,2,"El precio es un robo, aparte las bebidas estaban aguadas, ademas la mesera se equivoco con la orden dos veces. Ya levante queja en Profeco.",negativa
+1266,hotel,5,El baño es amplio.,positiva
+1267,app,5,"La velocidad nunca se traba, también la sincronización es inmediata.",positiva
+1268,hotel,4,"La vista es increíble, y el aire acondicionado funciona muy bien. Eso sí, el check-in nos hicieron esperar sin explicación.",positiva
+1269,app,5,"La uso desde el iPad! El soporte resolvio mi problema, aparte el registro es rapido y sencillo, tambien la sincronizacion jala perfecto.",positiva
+1270,servicio,2,"La cita se retrasó dos horas, también el técnico dejó un desastre.",negativa
+1271,hotel,2,"No recomiendo nada, la ubicacion fue un desastre. jaja",negativa
+1272,hotel,5,"la ubicacion es perfecta, y lo mejor: el bano tieneeeee agua caliente siempre. totalmente recomendable.",positiva
+1273,app,4,"Si, la interfaz es confusa, pero la actualizacion la hizo ms rapida, y encima la app e justo lo que buscab. En genral bien.",positiva
+1274,app,4,"la actualice la semanaaa pasada. la app es muy intuitiva, y lo mejor: el registro es rapido y sencillo, y lo mejor: la sincronizacion nunca falla. jaja",positiva
+1275,servicio,2,"Sí, la atención telefónica resolvió mi duda al momento, pero la reparación quedó peor que antes, además el técnico dejó un desastre!!! No lo recomiendo.",negativa
+1276,producto,1,"perdí mi dinero. el ensamble está mal hecho, y encima el empaque venía abierto. 👎",negativa
+1277,restaurante,4,"Fui el sábado con mi familia. La mesera fue muy amable, y el ambienteeeee es acogedor.",positiva
+1278,app,4,"el mapa me mandó por donde no era, es cierto, pero la actualización mejoró muchísimo, y la app funciona sin trabas.",positiva
+1279,app,2,La app esta horrible.,negativa
+1280,app,5,"La búsqueda encuentra todo, aprte la app es justo lo que buscaba!",positiva
+1281,producto,1,Lo compré en línea. El diseño se ve corriente.,negativa
+1282,restaurante,1,"La mesera nos iggnoró toda la noche, aparte la salsa no picaba nada.",negativa
+1283,producto,4,"Sí, el diseño es incómodo, pero el tamaño es justo lo que esperaba, además la suela aguanta mucho!!!",positiva
+1284,servicio,5,"El chofer manejó muy bien, y la clase es dinámica. Diez de diez.",positiva
+1285,restaurante,1,"Excelente, las porciones son diminutas.",negativa
+1286,servicio,4,"Sí, el seguimiento fue de pésima calidad, pero la reparación quedó perfecta, y el plomero resolvió en una hora.",positiva
+1287,restaurante,1,Muy mall. El servicio fue pesimo.,negativa
+1288,servicio,4,"la entrega fue puntuall, y encima la reparación quedó como nueva.",positiva
+1289,restaurante,4,"Lo cnoci por recomendacion de un amigo. Nada qu reprochar, el lugar esta bien ubicaddo.",positiva
+1290,app,1,"Me la recomendó un compañero! La búsqueda se traba, aparte el soporte responde con bots inútiles.",negativa
+1291,hotel,1,No me gustoooo el check-in y no pienso regresar.,negativa
+1292,servicio,2,"pague por adelantado. el tecnico dejo un desastre, aparte el cobro fue un abuso, y el chofer llego cuarenta minutos tarde.",negativa
+1293,producto,4,"Si, el ensamble esta mal hecho, pero el empaque venia muy bien protegido, aparte el producto vale la pena.",positiva
+1294,restaurante,2,"El precio vale cada peso, es cierto, pero la mesera nos ignoró toda la noche, también el lugar estaba sucio.",negativa
+1295,restaurante,5,Todo perfecto. La meseraaaa fue muy amable.,positiva
+1296,producto,5,Llevo ds semanas usandolo. El empaque llego impecable.,positiva
+1297,producto,2,"La tela es delgadisima, ademas el empaque llego aplastado. Eso si, el ensamble no tiene ni un detalle.",negativa
+1298,app,4,"La versión gratis es suficiente, y el mapa funciona perfecto, aunque la sincronización borra mis datos. Me quedo con lo bueno.",positiva
+1299,restaurante,1,"El ambiente es deprimente, ademas la carne estaba dura.",negativa
+1300,servicio,1,"Genial, el plomero cobro y no arrreglo nada. Que detalle.",negativa
+1301,producto,2,"El material es plastico barato, y el empaque venia abierto. Eso si, el envio fue rapidisimo.",negativa
+1302,restaurante,5,El ambiente tiene mucha onda.,positiva
+1303,producto,1,"No recomiendo nada, la batería fue un desastre.",negativa
+1304,servicio,5,Pague x adelantado. El tecnico sabia lo q hacia.,positiva
+1305,app,5,La version gratis tieneee todo lo necesario.,positiva
+1306,app,1,"La app está horrible, y para colmo la sincronización no funciona. Nunca más.",negativa
+1307,producto,1,El tamaño es enorme.,negativa
+1308,restaurante,2,"no es que las porciones esté mal, es que está pésimo.",negativa
+1309,hotel,4,"la cama es comodísima, y el wifi es rápido. buen trabajo.",positiva
+1310,hotel,4,"feliz con el resultado. pense que el check-in iba a estar mal y no, tomo cinco minutos.",positiva
+1311,servicio,2,"EL COBRO FUE EL DOBLE DE LO COTIZADO, ADEMAS EL PLOMERO LO DEJO PEOR QUE ANTES, Y ENCIMA EL INSTRUCTOR ES PREPOTENTE.",negativa
+1312,producto,1,Que lindo que el empaque venia abierto. Que detalle.,negativa
+1313,hotel,2,"El bano no tenia agua caliente, y para colmo el wifi no sirve.",negativa
+1314,restaurante,2,"Terriible. El servicio tardó máss de una hora, aparte los postress eran lo más caro y lo peor.",negativa
+1315,restaurante,2,Fui en hora pico. El precio no corresponde con la calidad.,negativa
+1316,producto,2,"La tela es delgadísima, también la suela se gastóóó en un mes.",negativa
+1317,hotel,1,"Era nuestra primera vez en la ciudad. El wifi se cae a cada rato, y encima el check-in tardó una hora, aparte la vista no es la de las fotos.",negativa
+1318,hotel,5,"La limpieza es impecable, admás la cama es de las mejores en las qque he dorrmido, también el desayuno ss abundante y rico.",positiva
+1319,app,2,"Sí, el pago es seguro y fácil, pero el soporte me dejó colgado, y encima la velocidad es desesperante!!!",negativa
+1320,producto,4,"El zipper corre suave, y encima el diseño se ve moderno, aunque el envío llegó dañado.",positiva
+1321,app,5,la uso desde el ipad. las notfficaciones son discrtas.,positiva
+1322,hotel,1,Era nuestra primera vez en la ciudad. La limpieza brilla por su ausencia.,negativa
+1323,app,1,"la instalé en android. las notificaciones no dejan de llegar, y encima la interfaz está saturada, y el mapa no carga.",negativa
+1324,hotel,5,nos quedamos tres noches. el personal nos trató como reyes.,positiva
+1325,app,2,"La app se cierra sola, y el soporte responde con bots inutiles. Eso si, la version gratis tiene todo lo necesario.",negativa
+1326,app,5,"No es caro para lo que ofrece, la búsqueda vale cada peso. 👍",positiva
+1327,hotel,1,"Fuimos en puente. La habitación estaba sucia, también el check-in nos hicieron esperar sin explicación, y para colmo la limpieza fue nula. 👍",negativa
+1328,app,4,"Si, la interfaz esta saturada, pero el mapa carg rapido, y encima la verssion gratis tiene todo lo necesario.",positiva
+1329,servicio,5,"Buenísimo. Pensé que el seguimiento iba a estar mal y no, fue muy profesional.",positiva
+1330,producto,4,"La suela es resbalosa, ess cierto, pero el ensambl es sólido, además el empaquee llegó impecable.",positiva
+1331,producto,2,"El producto es una estafa, y encimaaa el material se rompió a la semana. Eso sí, el ensamble está muy bien hecho.",negativa
+1332,hotel,2,"La alberca estaba cerrrda, tambien el aire acondicionado no enria, y encima el bano tenia pelos en la regadera.",negativa
+1333,servicio,1,"ME LO RECOMENDÓ UN VECINO. EL PLOMERO LO DEJÓ PEOR QUE ANTES, Y EL TRÁMITE FUE UN CALVARIO.",negativa
+1334,restaurante,1,"Lamentable!!! El servicio fue pésimo, y el ambiente hueleeeee a fritanga.",negativa
+1335,app,4,"Nada q reprochar, las notificaciones son discretas.",positiva
+1336,hotel,5,"El baño tiene agua caliente siempre, además la alberca es enorme. Diez de diez.",positiva
+1337,servicio,5,"fue la primera vez q los contrato. el técnico sabía lo q hacía, además el trámite fue transparente.",positiva
+1338,hotel,1,la alberca es diminuta.,negativa
+1339,hotel,1,"El baño estaba mugroso, aparte la alberca estaba cerrada, y encima el personal fue grosero.",negativa
+1340,restaurante,4,La salsaa está buenísimaa!,negativa
+1341,servicio,5,"nada q reprochar, la cita la respetaron sin problema.",positiva
+1342,servicio,5,"El chfer llego puntual, aarte el cobro fue justo, ademas llaa entreega llego en perfecto estado!",positiva
+1343,hotel,1,"EL WIFI SE CAE A CADA RATO, Y PARA COLMO LA ALBERCA ES DIMINUTA.",negativa
+1344,servicio,4,"El seguimiento fue impecable, además la clase vale cada peso, aunque el instructor no sabe explicar!!!",positiva
+1345,servicio,2,"La atención telefónica nunca contesta, aparte la entrega nunca llegó.",negativa
+1346,app,1,"El registro nunca termina, también la búsqueda se traba.",negativa
+1347,producto,2,"Pedí la talla mediana. La batería se descarga sola, además la tela se despintó al lavarla. jaja",negativa
+1348,app,1,"No es q la velocidad esté mal, es q está pésimo.",negativa
+1349,app,5,"La velociddad es impresionante, ademas la sincronizacion nunca falla.",positiva
+1350,producto,4,El empaque es bonitoo.,positiva
+1351,restaurante,1,"Lo conocí por recomendación de un amigo. El lugar tenía moscas, también las bebidas estaban aguadas, también el precio es un robo.",negativa
+1352,restaurante,5,Pedi x la app. Los tacos son los mejores de la zona.,positiva
+1353,servicio,2,"Agendé para el lnes. La entrega llegó rota, y el cobro fue el doble de lo cotizado.",negativa
+1354,restaurante,5,Llegamos sin reservación. Los tacos son los mejores de la zona.,positiva
+1355,servicio,5,los encontré en google. el trámite fue transparente.,positiva
+1356,producto,5,"Lo uso a diario. Pense que el producto iba a estar mal y no, es de excelente calidad.",positiva
+1357,app,5,"El pago se procesó al instante, aparte el registro es rápido y sencillo, también la sincronización nunca falla. :)",positiva
+1358,producto,2,n vuelvo. el envío llegó con dos semanaas de retaso.,negativa
+1359,producto,5,llego el martes. el producto es de excelente calidad.,positiva
+1360,producto,1,"la tla es delgadísima, también el zipper es de pésima calidad, yy para colmo la suella se despegó al segundo uso. ni de chiste lo recomiendo.",positiva
+1361,restaurante,2,"Aunque la carne estaba suave y jugosa, los tacos estaban rancios, y el precio es un robo. No me convenció.",negativa
+1362,servicio,1,"El plomero lo dejo peor que antes, y encima la entrega llego rota, y encima el chofer lego cuarenta minutos tarde. Ya levante queja en Profeco.",negativa
+1363,producto,5,"la calidad es de primera, y encima el tamano es ideal. buen trabajo.",positiva
+1364,restaurante,2,"LAS PORCIONES NO LLENAN NI A UN NIÑO, Y PARA COLMO LA CARNE VENÍA CRUDA POR DENTRO. ESO SÍ, LA SALSA PICA RICO. NO VUELVO.",negativa
+1365,app,4,"Si, las notificaciones llegannn tarde, pero el registro toma un minuto, ademas la sincronizacion jala perfecto. Lo volveria a pedir.",positiva
+1366,producto,5,"Lo uso a diario. El ensamble es solido, aparte el zipper funciona perfecto.",positiva
+1367,restaurante,5,Cumple y de sobra. La carne estaba bien sazonada. xd,positiva
+1368,servicio,5,"Contrate el servicio por telefono. El plomero resolvio en una hora, tambien la reparacion quedo como nueva.",positiva
+1369,app,1,Laa búsqueda arroja puras cosas irrelevantes.,negativa
+1370,producto,5,"El tamaño es ideal, y el diseño está muy bien pensad. Totalmente recomendable.",positiva
+1371,servicio,1,"El plomero cobro y no arreglo nada, y encima el chofer fue grosero. No vuelvo nunca.",negativa
+1372,app,1,"Nada bueno que decir, el registro falla a cada rato.",negativa
+1373,producto,5,"Llevo dos semanas usándolo. La tela es de buena calidad, aparte el tamaño es justo lo que esperaba.",positiva
+1374,servicio,4,"El instructor es muy claro, y lo mejor: la cita fue puntual. Eso sí, el chofer fue grosero.",positiva
+1375,producto,5,el producto vale la pena.,positiva
+1376,servicio,5,"Me lo recomendo un vecino. El tecnico llego puntual, tambien el tramite se resolvio en una visita.",negativa
+1377,restaurante,1,"fui en hora pico. el lugar estaba sucio, y encima la carne venia cruda por dentro, tambien el servicio fue grosero.",positiva
+1378,restaurante,2,"No recomiendo nada, los postres fue un desastre...",negativa
+1379,servicio,4,"fue la primera vez que los contrato!!! el trámite fue transparente, también la reparación quedó perfecta, además el chofer fue respetuoso y cuidadoso.",positiva
+1380,servicio,5,pagué por adelantado. el chofer fue respetuoso y cuidadoso.,positiva
+1381,app,1,"La interfaz es confusa, y la sincronización tarda horas. jajaja",negativa
+1382,hotel,1,"Muy mal. La limpieza fue nula, ademas la cama es dura como piedra, y para colmo el desayuno es escaso.",negativa
+1383,restaurante,2,"La carne parecia suela, ademas la mesera se equivoco con la orden dos veces, aparte la comida parecia de microondas.",negativa
+1384,restaurante,1,los postres eran lo mas caro y lo peor.,negativa
+1385,restaurante,4,feliz con el resultado. el servici fue atento sin ser pesado. :),positiva
+1386,restaurante,2,"La salsa sabía a lata, también los tacos estaban grasosos!",negativa
+1387,restaurante,2,"el lugar está en pésimas condiciones, y el pprecio no corresponde con la calidad, aunqu la comida sabe caser.",negativa
+1388,restaurante,4,"Los tacos están para chuparse los dedos, y lo mejor: la salsa es casera y se nota. Eso sí, los postres estaba secos.",positiva
+1389,hotel,2,"La habitación olía a humedad, y la ubicación es peligrosa, aunque el wifi funciona de maravilla.",positiva
+1390,servicio,2,"El plomero dejó todo limpio, es cierto, pero la clase es una pérdida de tiempo, además el trámite es una pérdida de tiempo.",negativa
+1391,producto,1,El tamaño es más chicooooo de lo que dicen.,negativa
+1392,app,2,"El mapa funciona perfecto, es cierto, pero la versión gratis es solo un anzuelo, además el soporte responde con bots inútiles.",negativa
+1393,app,1,Me la recomendo un companero. El mapa me mando por donde no era.,negativa
+1394,restaurante,2,No me gusto los postres y no pienso regresar.,negativa
+1395,hotel,5,"pensé que la ubicación iba a estar mal y no, es inmejorable!!!",positiva
+1396,producto,2,"El producto es una estafa, además el envío llegó con dos semanas de retraso, aunque el diseño está muy bien pensado.",negativa
+1397,app,4,"No es caro para lo que ofrece, la app vale cada peso.",positiva
+1398,restaurante,5,"Fui en hora pico. El lugar es bonito y comodo, y encima el servicio fue atento sin ser pesado, aparte la carne tenia muy buen sabor.",positiva
+1399,app,5,"la uso para el trabajo. la interfaz está muy bien diseñada, y el pago se procesó al instante, y lo mejor: la app es muy intuitiva.",positiva
+1400,servicio,1,La atención telefónicaaa fue grosera.,negativa
+1401,hotel,2,"La limpieza deja mucho que desear, y para colmo el baño no tenía agua caliente!!!",negativa
+1402,restaurante,1,"Fui en hora pico. Los tacos eran puro tortilla, aparte la mesera nos ignoró toda la noche.",negativa
+1403,app,1,"Excelente, la interfaz está saturada. Justo lo que queríaa.",negativa
+1404,servicio,5,"agendé para el lunes. el técnico llegó puntual, aparte la atención telefónica resolvió mi duda al momento.",positiva
+1405,app,2,"La sincronización tarda horas, aparte el pago no me reconoce la tarjeta, aunque la actualización la hizo más rápida.",negativa
+1406,app,2,"Esperaba mucho de el pago y no, fallo tres veces.",negativa
+1407,app,4,"La sincronizaón es inmediata, también la actualización arrló los errrores! Eso sí, el registro me pide mil datos. Me quedo con lo bueno.",positiva
+1408,app,4,"La sincronización jala perfecto, además el registro es seguro y fácil. Buen trabajo.",positiva
+1409,restaurante,1,"Llegamos sin reservación. Las porciones no llenan ni a un niño, también los tacos estaban grasosos.",negativa
+1410,hotel,2,"La habitacion tenia cucarachas, aparte el check-in nos hicieron esperar sin explicacion, aunque la limpieza fue diaria y cuidadosa. No vuelvo.",negativa
+1411,producto,2,"Pedi la talla medana! El material se rompio a la semmana, y para colmo eel envio llego con dos semanas de retraso.",negativa
+1412,producto,1,El produucto es de pésima calidad.,negativa
+1413,restaurante,1,El servicio fue grosero.,negativa
+1414,restaurante,4,"Aunque la mesera fue grosera, los tacos estabannnn increibles, ademas el precio vale cada peso!",positiva
+1415,app,4,"El registro me pide mil datos, es cierto, pero la app es muy intuitiva, además la búsqueda encuentra todo.",positiva
+1416,app,1,"La actuaalice la semana pasada. La iterfaz es fea y lenta, aparte la sincronizacion borra mi datos.",negativa
+1417,restaurante,4,"la comida me cayo mal, es cierto, pero el lugar esta bien ubicado, aparte la carne tenia muy buen sabor.",positiva
+1418,servicio,1,"tomé el paquete básico. el instructor llega tarde siempre, también el cobro tuvo cargos ocultos.",negativa
+1419,hotel,5,Viajé x trabajo. La limpieza es de primera.,positiva
+1420,producto,2,"El tamaño es enorme, también la batería se descarga sola, aunque el zipper corre suave.",negativa
+1421,restaurante,5,"Fui en hora pico. El ambiente tiene mucha onda, y lo mejor: las bebidas tienen buen precio, y las porciones llenan bien.",positiva
+1422,restaurante,2,los postres estaban secos. no vuelvo nunca.,negativa
+1423,app,1,"EL REGISTRO NUNCA TERMINA, Y PARA COLMO EL MAPA ME MANDO POR DONDE NO ERA, APARTE LA ACTUALIZACION LO ARRUINO TODO.",negativa
+1424,servicio,4,"El chofer llegó cuarentaa miutos tarrde, es cierto, pero la atencin telefónica resolvió mi duda al momento, y el técnic llegó puntual. E genneral ben.",positiva
+1425,hotel,5,"Reservé por la página. La cama es de las mejores en las que he dormido, y lo mejor: el aire acondicionado funciona muy bien.",positiva
+1426,restaurante,1,los ostresssss eran lo mas caro y lo peor.,negativa
+1427,producto,2,No me gusto la suela y no pienso regresar...,negativa
+1428,app,4,"la version gratis vale mucho la pena, aparte la app es muy intuitiva, aunque la interfaz es fea y lenta.",positiva
+1429,hotel,1,"La alberca es diminuta, y encima el personal fue indiferente.",negativa
+1430,servicio,2,"Tome el paquete basicoo. La reparacion a hicieron mal, ademas el chofer manejo como loco, ademas el ramite fue un calvario.",negativa
+1431,servicio,4,la atención telefónica resolvió mi duda al momento. sin duda lo recomiendo.,positiva
+1432,app,5,El registro es seguro y facil.,positiva
+1433,app,4,"El registro nunca termina, es cierto, pero la velocidad es excelente, y encima la actualización mejoró muchísimo. En general bien.",positiva
+1434,servicio,2,"No es que la entrega esté mal, es que está pésimo.",negativa
+1435,app,5,El registro es seguro y fácil. Diez de diez.,positiva
+1436,restaurante,1,Muy mal. La comida estaba fria.,negativa
+1437,restaurante,4,"Pensé que la comida iba a estar mal y no, estaba deliciosa. jajaja",positiva
+1438,restaurante,4,La salsa está buenísima. Totalmente recomendable.,negativa
+1439,producto,4,"Aunque el zipper es de pésiima calidad, el empaque venía muy bien proegido, y lo mejor: el diseño se ve moderno!",positiva
+1440,app,1,"tengo la versión de pago... las notificaciones llegan tarde, además la versión gratis es solo un anzuelo.",negativa
+1441,hotel,4,"Sí, el aire acondicionado goteaba toda la noche, pero la vista es espectacular, también el check-in tomó cinco minutos.",positiva
+1442,hotel,5,reservééé por la página. la cama es comodísima.,positiva
+1443,restaurante,4,"La comida estaba deliciosa, y encima lla salsa pica rico. Eso sí, la carne venía cruda por dentro. Lo volvería a pdir.",positiva
+1444,servicio,2,"La reparacion no duro ni una semana, aparte la cita se retraso dos horas... Eso si, el plomero fue honesto. No lo recomiendo.",negativa
+1445,app,4,"la busqeda es rpidisima, tambien la sincronizacio nunca falla.",positiva
+1446,hotel,2,"El personal fue grosero, y para colmo la cama está vencida, aunque la limpiezaaa es de primera. No vuelvo.",negativa
+1447,servicio,4,"TODO PERFECTO. NO ES CARO PARA LO QUE OFRECE, EL PLOMERO VALE CADA PESO.",positiva
+1448,servicio,5,"Pensééééé que el seguimiento iba a estar mal y no, fue consstante.",positiva
+1449,hotel,5,"TODO PERFECTO. EL BAÑO ESTÁ RELUCIENTE, TAMBIÉN EL AIRE ACONDICIONADO FUNCIONA MUY BIEN.",positiva
+1450,app,4,"La instale en Android. La actualizacion mejoro muchisimo, y la busqueda es muy precisa, tambien la version gratis tiene todo lo necesario.",positiva
+1451,producto,5,"La tela es suave y gruesa, y lo mejor: el zipperrr es resistente, también el tamaño es ideal. Vale la pena.",positiva
+1452,restaurante,4,"Sí, la salsaaaa etaba aguada, pero los tacos estaban increíbles, y encima el ambiente es perfecto para ir en familia.",positiva
+1453,restaurante,1,"no vuelvo. el precio es un robo, aparte la mesera se equivocó con la orden dos veces, y las bebidas llegaron sin hielo.",negativa
+1454,hotel,4,"La cama es de las mejores en las que he dormido, también la limpieza fue diaria y cuidadosa. Eso sí, el aire acondicionado hace un ruido espantoso.",positiva
+1455,servicio,5,Contrate el servicio por telefono!!! La reparacion quedo como nueva.,positiva
+1456,app,2,"La instale en Android. Las notificaciones no dejan de llegar, aparte la version gratis estta lllena de anuncios.",negativa
+1457,app,4,"Cumple y de sobra. La versión gratis tiene todo lo necesario, y encima la búsqueda encuentra todo, y encima las notificaciones son discretas.",positiva
+1458,restaurante,2,"Aunque el preciio es justo, el servicio tardó más de una hora, y encima los tacoss eran ppuro tortilla.",negativa
+1459,restaurante,4,"El lugar es bonito y comodo, y encima el ambiente es perfecto para ir en familia. Eso si, la carne parecia suela. En general bien.",positiva
+1460,restaurante,2,"llegamos sin reservacion. las bebidas estaban aguadas, y encima el servicio fue pesimo.",negativa
+1461,app,4,"Aunque la app se cierra sola, la busqueda es mu precisa, aparte el pago se proceso al instante.",positiva
+1462,hotel,4,"La habitación es preiosa, también el personal fue amabilísimo, aunque la lipieza bbriilla por su ausenia.",positiva
+1463,servicio,2,"Esperaba mucho de el seguimiento y no, nunca existio.",negativa
+1464,hotel,1,Era nuestra primera vez en la ciudad. El desayuno es escaso.,negativa
+1465,restaurante,2,"AUNQUE LOS TACOS ESTABAN INCREÍBLES, LA CARNE VENÍA CRUDA POR DENTRO, Y ENCIMA LA SALSA NO PICABA NADA.",negativa
+1466,servicio,4,"Aunque el seguimientoooo fue de pésima calidad, la cita la respetaron sin problema, y encima la atención telefónica fue muy amable...",positiva
+1467,restaurante,1,muy mal. la carne venía cruda por dentro.,negativa
+1468,producto,4,"Aunque el empaque llego aplastado, e zipper es resistentte, y lo mejor: el ensamble es solido. Me quedo con lo bueno.",positiva
+1469,producto,1,"Excelente, la tela pica. Qué detalle.",negativa
+1470,app,2,"Aunque la app funcion sin trabs, la velocidad es pésima, y para colmo el mapa me mandó por donde no era... No vuelvo.",negativa
+1471,restaurante,2,"Fui en hora pico. Las bebidas estaban aguadas, y encima la mesera nos ignoro toda la noche, y encima el servicio fue pesimo. jaja",negativa
+1472,producto,1,"PEDÍ LA TALLA MEDIANA. LA CALIDAD ES DE TIANGUIS, Y PARA COLMO EL ENSAMBLE VENÍA CHUECO, Y EL PRODUCTO ES UNA ESTAFA.",negativa
+1473,servicio,1,agendé para el lunes. el plomeroooo dejó un desastre.,negativa
+1474,servicio,4,"Pague por adelantado. La entrega llego en perfecto estado, tambien el instructor explica con paciencia, tambien el cobro fue transparente.",positiva
+1475,servicio,2,"El trámite es una pérdida de tiempo, y pa colmo la cita la cancelaron sin avisar, aunque el plomero fue honesto.",negativa
+1476,app,1,No lo recomiendo. El registrooo nunca termina.,negativa
+1477,producto,1,"La tela pica, ademas el envio nunca llego, aparte la suela es resbalosa... jajaja",negativa
+1478,app,4,"tengo la version de pago!!! no hay nada que no me haya gustado, la app funciona sin trabas.",positiva
+1479,servicio,5,"La atención telefónica fue muy ammable, además la cita fue puntual.",positiva
+1480,app,4,"el mapa me mando por donde no era, es cierto, pero la sincronizacion nunca falla, ademas el registro es rapido y sencillo.",positiva
+1481,hotel,1,Qué lindo que la limpieza brilla por su ausencia. Qué detalle.,negativa
+1482,servicio,1,"fue la primera vez que los contrato!!! la reparacion no duro ni una semana, y para colmo el tramite fue un calvario.",negativa
+1483,restaurante,1,no me gustó el lugar y no piensoooo regresar.,negativa
+1484,app,4,"Pensé que el pago iba a estar mal y no, es seguro y fácil.",negativa
+1485,app,5,"El mapa funciona perfecto, aparte las notificacionesss llegan a tiempo, y la actualización mejoró muchísimo.",positiva
+1486,producto,5,"La bateria dura todo el dia, tambien el empaque es bonito, y el producto es de excelente calidad. Quede muy satisfecho.",positiva
+1487,servicio,2,"la clase es una pérdida de tiempo, aparte la atención telefónica nunca contesta.",negativa
+1488,hotel,1,"Esperaba mucho de la vista y no, da a un muro.",negativa
+1489,servicio,2,"La reparacion quedo como nueva, es cierto, pero el plomero lo dejo peor que antes, y la entrega llego tres dias tarde.",negativa
+1490,hotel,4,El check-in tomó cinco minutos.,positiva
+1491,producto,5,Súper recomendado. El ensamble no tiene ni un detalle.,positiva
+1492,app,4,"No hay nada que no me haya gustado, el mapa carga rapido...",positiva
+1493,hotel,1,La cama rechina.,negativa
+1494,restaurante,5,"Cumple y de sobra. Pensé que los tacos iba a estar mal y no, son los mejores de la zona.",positiva
+1495,restaurante,2,"Aunque las porciones son generosas, el ambiente huele a fritanga, y para colmo las bebidas son carísimas. No vuelvo.",negativa
+1496,servicio,1,"pésima experiencia. el instructor llega tarde siempre, y el cobro fue un abuso.",positiva
+1497,restaurante,1,"Nada buenooooo que decir, los tacos eran puro tortilla.",negativa
+1498,producto,5,Pedi la talla medina. El diseno esta uy bieen pensado.,positiva
+1499,app,4,no tengo ni una queja de la búsqueda.,positiva
+1500,servicio,5,"Qué buena sorpresa. El cobro fue transparente, además el plomero fue honesto, y encima la entrega llegó en perfectto estado.",positiva
+1501,app,5,"La sincronización nunca falla, aparte el mapa carga rápido.",positiva
+1502,servicio,1,"La atencion telefonica nunca contesta, aparte el tecnico dejo un desastre...",negativa
+1503,hotel,4,No tengo ni una queja de la habitación.,positiva
+1504,producto,4,"El material es muy bueno, además el zipper funciona perfecto, aunque el empaque venía abierto.",positiva
+1505,app,1,"Me la recomendó un compañero. El mapa no carga, también la búsqueda se traba.",negativa
+1506,app,1,"No es que la busqueda este mal, es que esta pesimo.",negativa
+1507,app,1,"la instalé en android. el mapa no carga, además la búsqueda no encuentra nada.",negativa
+1508,restaurante,4,"Aunque las bebidas llegaron sin hielo, la carne estaba bien sazonada, y lo mejor: los tacos son los mejores de la zona.",positiva
+1509,hotel,1,"EL CHECK-IN FUE UN CAOS, ADEMÁS LA CAMA ES DURA COMO PIEDRA. :)",negativa
+1510,hotel,1,"Excelente, el desayuno es escaso. Qué detalle.",negativa
+1511,servicio,1,"Pague por adelantado. El cobro fue un abuso, aparte el tecnico dejo un desastre, aparte el chofer fue grosero.",negativa
+1512,hotel,2,"muy mal. no recomienndo nada, la alberca fu un desastre.",negativa
+1513,restaurante,2,las bebidas llegaron sin hielo.,negativa
+1514,producto,1,"esperaba mucho de la bateria y no, dura dos horas...",negativa
+1515,hotel,2,fatal. la alberca es diminuta.,negativa
+1516,servicio,5,"El tramite fue sencillo, aparte el chofer manejo muy bien, ademas el seguimiento fue impecable.",positiva
+1517,hotel,4,"La limpieza fue diaria y cuidadosa, y el baño tiene agua caliente siempre, aunque la alberca estaba cerrada.",positiva
+1518,servicio,5,"Agendééééé para el lunes. El cobro fue transparente, y la cita fue rápida y clara.",positiva
+1519,restaurante,4,"el lugar está limpísimo, y encima la carne estaba suave y jugosa, aunque los postres estaban secos.",positiva
+1520,servicio,5,"La cita la respetaron sin problema, y la clase es dinámica.",positiva
+1521,app,1,"LA SINCRONIZACIÓN BORRA MIS DATOS, ADEMÁS LA VERSIÓN GRATIS ESTÁ LLENA DE ANUNCIOS.",negativa
+1522,app,5,"El registro toma un minuto, y encima la actualización mejoró muchísimo.",positiva
+1523,servicio,4,"El trámite fue transparente, y encima la clase es muy didáctica, aunque el cobro tuvo cargos ocultos.",positiva
+1524,hotel,4,La limpieza fue diaia y cuidadosa. :),positiva
+1525,servicio,2,"El chofer manejó como loco, además el instructor llega tarde siempre, aunque el técnico fue respetuoso y cuidadoso.",negativa
+1526,app,5,"La descargué por recomendación. El pago se procesó al instante, y lo mejor: la velocidad es impresionante.",negativa
+1527,restaurante,5,"los postres estan hechos en casa, ademas la meera estuvo al pendiente todo el tiempo, y lo mejor: la carne estaba bien sazonada... vale la pena.",positiva
+1528,restaurante,5,"Llegamos sin reservación. El servicio fue rapidísimo, y encima el precio vale cada peso.",positiva
+1529,servicio,1,"Los encontre en Google. La cita no la respetaron, tambien el instructor no sabe explicr.",negativa
+1530,hotel,4,"Aunque el desayuno era pan duro y cafe aguado, la limpieza fue diaria y cuidadosa, aparte la cama es enorme.",positiva
+1531,restaurante,4,"ERA MI PRIMERA VEZ AQUÍ... LOS POSTRES SON ESPECTACULARES, Y EL AMBIENTE ES ACOGEDOR, APARTE LA COMIDA SABE CASERA.",positiva
+1532,restaurante,2,"Las porciones son abundantes, es cierto, pero los tacos estaban rancios, y el lugar estaba sucio.",negativa
+1533,app,1,No me gusto la velociidad y no pienso regresar!!! jajaja,negativa
+1534,producto,5,"El ensamble es sólido, aemás el tamaño es justo lo ue esperaba.",positiva
+1535,app,2,"sí, la velocidad es impresionante, pero la app es inservible, también la actualización la dejó inservible.",negativa
+1536,app,5,"La versión gratis es suficiente, y la app es muy intuitiva.",positiva
+1537,servicio,5,"no tengooo quejas. el plomero dejó todo limpio, y encima el instructor es muy claro.",positiva
+1538,servicio,5,"La reparacion fue rapida, aparte el plomero dejo todo limpio. Totalmente recomendable. 👎",positiva
+1539,servicio,4,"El cobro fue transparente, y lo mejor: el plomero resolvio en una hora. Eso si, el chofer manejo como loco.",positiva
+1540,hotel,1,"No vuelvo... La habitacion olia a humedad, tambien el aire acondicionado goteaba toda la noche.",negativa
+1541,restaurante,5,"Fuimos a cenar cuatro personas. El lugar está limpísimo, también la carne estaba bien sazonada.",positiva
+1542,restaurante,5,"La salsaa está buenísima, aparte el preco s justo, y la comida sabe casera.",positiva
+1543,producto,4,"no es caro para lo que ofrece, la tela vale cada peso. buen trabajo.",positiva
+1544,app,1,La uso para el trabajo. La interfaaz está saturada.,negativa
+1545,hotel,4,Viajé po trabajo. El baño está reluciente.,positiva
+1546,servicio,5,"Paguu por adeelanttado... El instrctor sabe muchísimo, tambié el chofer llegó puntual.",positiva
+1547,app,1,"la uso esde el ippad. la versin gratis está llena de anuncios, además la app es inservible. :)",negativa
+1548,producto,1,"la suela se despegó al segundo uso, y la calidad deja mucho que desear... qué coraje.",negativa
+1549,producto,4,"Lo pedi en la promocion. El ensamble no tiene ni un detalle, aparte la suela agarra bien.",positiva
+1550,producto,5,"La tela es suave y gruesa, y el ensamble no tiene ni un detalle, y encima el envio llego en perfecto estado...",positiva
+1551,producto,5,LA BATERÍA CARGAAA RAPIDÍSIMO! BUEN TRABAJO. 👎,positiva
+1552,app,4,"La versión gratis es suficiente, y la actualizaciónnnnn la hizo más rápida. Eso sí, la búsqueda no encuentra nada.",positiva
+1553,hotel,1,Me encanta cuando la habitacion estaba sucia. Gracias por nada.,negativa
+1554,servicio,4,"La cita la respetaron sin problema, aparte la clase es muy didactica. Eso si, la entrega nunca llego.",positiva
+1555,producto,2,"El ensamble está mal hecho, también el material se rompió a la semana, aunque el zipper corre suave.",negativa
+1556,producto,4,Es m segund compra con ellos. EEl ensaamble esta muy bieen hecho. 👍,positiva
+1557,app,4,"Sí, la velocidad es de modem de 2005, pero la interfaz está muy bien diseñada, aparte la búsqueda encuentra todo.",positiva
+1558,restaurante,5,"La carne tenia muy buen sabor, y lo mejor: la meseraaa nos atendio de maravilla.",positiva
+1559,producto,4,"Lo uso a diario. El producto vale la pena, y el ensamble es sólido, además el diseño es elegante.",positiva
+1560,restaurante,4,"aunque el lugar tenia mocaas, los tacos son loos mejores de la zona, aparte el ambienne tiene mucha onda.",positiva
+1561,servicio,2,"el seguimiento fue nulo, y el tramite me hicieron volver cuatro veces. eso si, el chofer fue espetuoso y cuidadoso.",negativa
+1562,producto,4,Llegó el martes! El empaque venía muy bien protegido.,negativa
+1563,hotel,4,"Feliz con el resultado! El desayuno tiene mucha variedad, tambien la vista es espectacular.",positiva
+1564,servicio,2,"El chofer llegó cuarenta minutos tarde, también la clase no enseña nada!!!",negativa
+1565,servicio,4,"la cita fue rápida y clara, y encima la clase es dinámica.",positiva
+1566,producto,5,"Llegó el martes. El zipper funciona perfecto, aparte el tamaño es ideal.",positiva
+1567,producto,1,"Nada bueno que decir, el envío nunca llegó.",negativa
+1568,servicio,2,Pagué por adelantado. No me gustó el seguimiento y no pienso regresar.,negativa
+1569,app,1,"La uso desde el iPad. Las notificaciones no dejan de llegar, aparte la version gratis es solo un anzuelo, ademas la velocidad es desesperante.",negativa
+1570,hotel,2,"la limpieza brilla por u ausencia, y encima el check-in nos hicieron eperar sin explicación. eso í, el air acondicionado es silenciso.",negativa
+1571,hotel,5,"El aire acondicionadooooo es silencioso, y lo mmejor: la cama es de las mejores en lass que he dormido!!!",positiva
+1572,producto,4,"El empaque venía roto, es cierto, pero la tela es de buena calidad, y lo mejor: el zipper es resistente. :(",positiva
+1573,restaurante,1,"La carne estaba dura, aparte los postres sabían a congelado.",negativa
+1574,restaurante,4,no tengo ni una queja de el lugar.,positiva
+1575,producto,1,"La tela pica, también la batería no carga.",negativa
+1576,hotel,5,Qué buena sorpresa. El check-in fue muy amable.,positiva
+1577,app,5,"No es caro para lo que ofrece, la actualizacion vale cada peso.",positiva
+1578,servicio,1,"Pedi la visita a domicilio. El tramite me hicieron volver cuatro veces, ademas el seguimiento fue nulo.",negativa
+1579,restaurante,5,"No tengo queja. El servicio fue rapidísimo, aparte el ambiente es perfecto para ir en famillia, tmbién los postres cierran la comida perfecto.",positiva
+1580,producto,1,"pésima experiencia!!! el envío llegó con dos semanas de retraso, y para colmo el material se siente corriente.",negativa
+1581,hotel,1,Reserve por la pagina. La albercaaa estaba cerrada.,negativa
+1582,app,5,Super recomendado. La actualizacion arreglo los errores.,positiva
+1583,restaurante,2,"Aunque la mesera estuvo al pendiente todo el tiempo, el lugar tenia moscas, y para colmo las bebidas llegaron sin hielo. No lo recomiendo.",negativa
+1584,hotel,1,"Increible, de verdad, el bano estaba mugroso.",negativa
+1585,hotel,5,"Pensé que el aire acondicioado iba a estar mal y no, enfría perfectoo.",positiva
+1586,producto,4,"Si, el tamano es enorme, pero el diseno se ve moderno, y lo mejor: la calidad supero lo que pague... En general bien.",positiva
+1587,producto,2,"El ensamble esta mal hecho, y el producto es de pesima calidad.",negativa
+1588,servicio,5,"Tome el paquete basico. El cobro fue transparente, tambien el plomero dejo todo limpio, y encima la atencion telefonica resolvio mi duda al momento.",positiva
+1589,servicio,4,excelente experiencia. el técnico llegó puntual.,positiva
+1590,restaurante,5,"El servicio fue atento sin ser pesado, también el ambiente es perfecto para ir en familia, aparte la mesera estuvo al pendiente todo el tiempo. :(",positiva
+1591,restaurante,2,"Aunque las bebidas estan bien servidas, el lugar esta en pesimas condiciones, y encima la carne venia cruda por dentro!",negativa
+1592,producto,4,"La tela es delgadísima, es cierto, pero el producto es de excelente calidad, y lo mejor: el envíoooo fue rapidísimo.",positiva
+1593,app,4,"La actualización la dejó inservible, es cierto, pero el pago fue sin broncas, y lo mejor: el registro toma un minuto.",positiva
+1594,restaurante,2,"La salsa está buenísima, es cierto, pero la comida parecía de microondas, además el lugar tenía moscas!",negativa
+1595,hotel,4,"el aire acondicionado enfría perfecto, y encima el baño está reluciente. volverééé seguro.",positiva
+1596,producto,4,"Lo uso a diario. No es caro para lo que ofrece, el diseño vale cada peso.",positiva
+1597,producto,5,El diseño se ve moderno. Sin duda lo recomiendo.,positiva
+1598,restaurante,4,"La salsa pica rico, y los tacos son los mejores de la zona, y la carne estaba suave y jugosa...",positiva
+1599,servicio,4,El cobro fue el acordado. Volveré seguro.,positiva
+1600,restaurante,1,"la mesera nos ignoró toda la noche, además el ambiente huele a fritanga.",negativa
+1601,hotel,4,"La cama es enorme, y lo mejor: el aire acondicionadoooo es silencioso. Eso si, la alberca es diminuta.",positiva
+1602,restaurante,1,"LLEGAMOS SIN RESERVACIÓN. LA CARNE PARECÍA SUELA, Y EL AMBIENTE ES RUIDOSO.",negativa
+1603,restaurante,5,Era mi primera vez aqui. Los postres cierran la comida perfecto.,positiva
+1604,app,5,"La ap es muy intuitiva, también la interfaz es fácil e usar, aparte l versión gratis tiene todo lo necsario.",positiva
+1605,hotel,1,La limpieza deja mucho que desear.,negativa
+1606,restaurante,2,"si, las bebidas son enormes, pero el servicio fue pesimo, y pa colmo la salsa sabia a lata.",negativa
+1607,app,4,"El mapa carga rapido, aparte la velocidad nunca se traba. Eso si, la sincronizacion borra mis datos.",positiva
+1608,producto,2,"Es mi segunda compra con ellos!!! El diseño es incómodo, aparte el zipper se rompió.",negativa
+1609,producto,1,"GENIAL, EL ZIPPER SE ROMPIO.",negativa
+1610,producto,5,"Llego el martes. El producto vale la pena, tambien el diseno esa muy bien pesado.",positiva
+1611,app,4,"Me encanto. El pago se proceso al instante, aparte la app funciona sin trabas.",positiva
+1612,restaurante,5,era mi primera vez aquí. los tacos están para chuparse los dedos.,positiva
+1613,servicio,4,"la clase es dinamica, ademas la atencion telefonica fue muy amable. eso si, la entrega llego rota.",positiva
+1614,hotel,2,"El desayuno estaba frío, y para colmo la limpieza deja mucho que desear, aunque el personal nos trató como reyes.",negativa
+1615,servicio,1,"Pague por adelantado. El cobro fue el doble de lo cotizado, aparte el instructor llega tarde siempre.",negativa
+1616,restaurante,2,"llegamos sin reservación. las porciones son diminutas, además la salsa sabía a lata.",negativa
+1617,producto,5,"Lo compré para regalo. El tamaño es perfecto, y el producto vale la pena, y encima el empaque venía muy bien protegido.",positiva
+1618,servicio,4,"si, el tramite fue un calvaario, pero la reparacion quedo como nueva, y el seguimiento fue muy profesional.",positiva
+1619,hotel,4,"el wifi es rápido, y el personal fue atento en todo momento.",positiva
+1620,servicio,1,Contrrate el servicio por telefono. El tecnico dejo un desastre.,negativa
+1621,producto,1,"Es mi segunda compra con ellos. El producto no se parece a la foto, aparte el zipper es de pésima calidad. 👎",negativa
+1622,hotel,5,"Qué buenaaa sorpresa. La limpieza es impecable, también el check-in fue muy amable.",positiva
+1623,servicio,2,"la entrega llegó rota, aparte el plomero lo dejó peor que antes, también el seguimiento nunca existió!!!",positiva
+1624,restaurante,2,"El precio es excesivo para lo que dan, y encima la comida me cayo mal, ademas el servicio fue pesimo.",negativa
+1625,hotel,2,"Llegamos de madrugaa. La vista da a un muro, ademássss el desayuno es escaso, y encima la ubicacón está en medio de la nada.",negativa
+1626,hotel,2,"Sí, el personal fue amabilísimo, pero el wifi se cae a cada rato, además la cama rechina.",negativa
+1627,hotel,5,"NO ES CARO PARA LO QUE OFRECE, LA ALBERCA VALE CADA PESO.",positiva
+1628,servicio,5,Tomé el paqquete básico. La reparación quedó como nueva.,positiva
+1629,producto,4,"Aunque la suela se despego al segundo uso, la tela es de buena calidad, y la bateria carga rapidisimo.",positiva
+1630,servicio,4,Pedi la visita a domicilio. El tramite se resolvio en una visita.,positiva
+1631,producto,5,"Pedí la talla mediana. El producto es tal cual la foto, y encimaaa el ensamble es sólido, y lo mejor: la batería aguanta muchísimo.",positiva
+1632,servicio,5,No tengo ni una queja de el seguimiento.,positiva
+1633,producto,4,"El tamano es perfecto, ademas el material se siente resistente. Eso si, la suela se gasto en un mes.",positiva
+1634,hotel,4,"Que buena sorpresa. El desayuno es abundante y rico, aparte la cama es comodisima, aparte la limpieza es de primera.",positiva
+1635,producto,1,No lo recomiendo... El zipperrrr se rompió.,negativa
+1636,servicio,5,"El tecnico sabia lo que haccia, y el cobro fue jussto, y lo mejor: el plomero dej toodo limpio.",positiva
+1637,hotel,1,"Fuimos en pareja. El bano estaba mugroso, y el personal fue indiferente.",negativa
+1638,servicio,5,"Nada q reprochar, la atencion telefonicaaa fue muy amable.",negativa
+1639,restaurante,1,"Llegamos sin reservación. Las porciones no llenan ni a un niño, y el precio es excesivo para lo que dan. :)",negativa
+1640,servicio,1,"Los encontré en Google. El seguimiento nunca existió, y encima la clase es aburridísima.",negativa
+1641,producto,4,"La tela es de buena calidad, y lo mejor: la bateria aguanta muchisimo, aunque el envio nunca llego. xd",positiva
+1642,restaurante,2,"El lugar esta en pesimas condiciones, y las porciones son de muestra gratis, aunque el precio es justo.",negativa
+1643,servicio,1,"excelente, la atención telefónica nuncaaaaa contesta. lo que faltaba.",negativa
+1644,hotel,4,"Sí, el aire acondicionado no enfría, pero la vista es increíble, también el baño es amplio.",positiva
+1645,hotel,5,"La habitación es amplia y cómoda, además el personal nos trató como reyes.",positiva
+1646,hotel,5,Nos quedamos tres noches. La alberca es enorme.,positiva
+1647,restaurante,5,Muy contento con la compra. Las bebidas tienen buen precio.,negativa
+1648,hotel,1,el check-in nos hicieronnnnn esperar sin explicacion.,negativa
+1649,servicio,5,el instructor sabe muchísimo. totalmente recomendable.,positiva
+1650,restaurante,2,llegamos sin reservación. el ambiente huele a fritanga.,negativa
+1651,app,1,"La uso para el trabajo. La app es inservible, también las notificaciones son puro spam.",negativa
+1652,restaurante,4,"Excelente experiencia. La mesera nos atendió de maravilla, y encima las bebidas son enormes, además la salsa está buenísima.",positiva
+1653,app,2,"el registro me pide mil datos, y para colmo la interfaz está saturada, aunque la velocidad nunca se traba. no lo recomiendo.",negativa
+1654,servicio,4,"No es caro para lo que ofrece, el instructor vale cada peso. Quedé muy satisfecho.",positiva
+1655,producto,2,"No es que el diseno este mal, es que esta pesimo...",negativa
+1656,servicio,2,"La reparación quedó perfecta, es cierto, pero el chofer llegó cuarenta minutos tarde, y para colmo el trámite fue un calvario. No vuelvo.",negativa
+1657,app,1,"Fatal. La interfaz es confusa, aparte la app se cierra sola, y el soporte nunca contesta.",negativa
+1658,app,4,"la búsqueda es muy precisa, y encima la interfaz es limpia y bonita. eso sí, la app se cierra sola.",positiva
+1659,servicio,2,"Aunque el trámite se resolvió en una visita, la clase es una pérdida de tiempo, y para colmo la cita no la respetaron!",negativa
+1660,restaurante,2,"no lo recomiendo. el ambiente es ruidoso, aparte las porciones no llenan ni a un niño, y encimaaaaa el precio es un robo.",negativa
+1661,producto,1,"lo pedí en la promoción. la tela es delgadísima, y el empaque venía roto.",negativa
+1662,servicio,4,"El seguimiento fue constante, además el instructor es muy claro, y lo mejor: el plomero resolvió en una hora.",positiva
+1663,app,5,"me la recomendo un companero. la actualizacion mejoro muchisimo, ademas el soporte es muy atento, aparte la version gratis es suficiente.",positiva
+1664,restaurante,5,"Era mi primera vez aquí. Los tacos están pa chuprse los dedos, aparte la comida superó mis expectativas, aparte la salsa pica rico. :)",positiva
+1665,hotel,5,El desayunooooo es abundante y rico.,positiva
+1666,servicio,2,El plomero lo dejó ppeor q antes!,negativa
+1667,app,5,El pago es seguroooo y facil. Buen trabajo.,positiva
+1668,producto,4,"Pensé que el zipper iba a estar mal y no, corre suave. xd",positiva
+1669,hotel,1,"Nada bueno que decir, la alberca estaba cerrada!!!",negativa
+1670,servicio,2,"El chofer mnejó como loco, y el instrctor no sabe explicar, aunque la clase vale cada peso. No me convenció.",negativa
+1671,producto,1,Llevo dos semanas usándolo. El ensamble venía chueco.,negativa
+1672,servicio,1,"La reparacion quedo peor que antes, aparte el plomero lo dejo peor que antes, tambien el seguimiento fue nulo.",negativa
+1673,app,5,El registro es rápido y sencillo. Buen trabajo.,positiva
+1674,producto,5,"La batería carga rapidísimo, también la suela agarra bien.",positiva
+1675,restaurante,5,"Lo conocí por recomendación de un amigo. El lugar está limpísimo, y encima los postres son espectaculares.",positiva
+1676,app,5,La actualicé la semana pasada. La interfaz es fácil de usar.,positiva
+1677,restaurante,2,"El servicio tardo mas de una hora, aparte la salsa sabia a lata. Eso si, la carne estaba bien sazonada.",negativa
+1678,producto,1,FATAL... EL ZIPPER SE ROMPIÓ.,negativa
+1679,hotel,2,No me gusto la limpiea y no pienso regresar.,negativa
+1680,app,2,"La app es justo lo que buscaba, es cierto, pero la version gratis no sirve para nada, aparte la actualizacion borro mis datos. No lo recomiendo.",negativa
+1681,producto,5,ES MI SEGUNDA COMPRA CON ELLOS... EL TAMAÑO ES PPRFECCTO.,positiva
+1682,restaurante,1,Las porciones son de muestra gratis.,negativa
+1683,servicio,4,"Aunque el instructor llega tarde siempre, el tramite fue sencillo, y lo mejor: la clase vale cada peso.",positiva
+1684,hotel,5,Fuimosssss en pareja. El baño tiene agua caliente siempre.,positiva
+1685,producto,1,LA SUELA ES RESBALOSA. CERO ESTRELLAS SI SE PUDIERA.,negativa
+1686,servicio,4,"Aunque la entrega nunca llego, la cita fue puntual, y encima la reparacion fue rapida.",positiva
+1687,producto,4,"El empaque venia muy bien protegido, y encima la bateria carga rapidisimo, aunque la calidad deja mucho que desear. Lo volveria a pedir.",positiva
+1688,producto,1,"Nada bueno que decir, la tela pica.",negativa
+1689,app,1,"la instalé en android. el soporte nunca contesta, también la velocidad es de modem de 2005, y la app es inservible.",negativa
+1690,producto,1,Lo máximo: el zipper se atoró al segundo uso. Justo lo q quería.,negativa
+1691,restaurante,5,"la salsa está buenísima, además ell lugar está bien ubicado.",positiva
+1692,app,5,"LA BUSQUEDA ES MUY PRECISA, Y EL PAGO FUE SIN BRONCAS.",positiva
+1693,app,5,"Me la recoendo un companero. La version gratis es suficiente,  la sincronizacion nunca falla.",positiva
+1694,app,1,"La busqueda no encuentra nada, y la app se cierra sola, y encima el registro nunca termina.",negativa
+1695,restaurante,5,el servicio fue rapidísimo!!!,positiva
+1696,servicio,1,"El cobro fue un abuso, además la reparación no duró ni una semana!!! Ya levanté queja en Profeco.",negativa
+1697,producto,1,No me gusto el zipper y no pienso regresar!!!,negativa
+1698,producto,5,El producto es de excelente calidad. Diez de diez.,positiva
+1699,hotel,5,El aire acondicionado funciona muy bien! Quedé muy satisfecho.,positiva
+1700,producto,2,Lo uso a diario. El producto es una estafa.,negativa
+1701,app,2,"Aunque la actualizacion arreglo los errores, el soporte responde con bots inutiles, y encima la version gratis es solo un anzuelo. No me convencio.",negativa
+1702,hotel,4,"Sí, el aire acondicionado no enfría, pero la limpieza fue diaria y cuidadosa, y lo mejor: la alberca ess espectacular. Loo volvería a pedir. 👍",positiva
+1703,restaurante,4,"la salsa pica rico, y encima las porciones son generosas. eso sí, el servicio fue grosero.",positiva
+1704,app,2,El mapa me mando por donde no era. Ni de chiste lo recomiendo.,negativa
+1705,app,1,Qué decepción. La interfaz está saturada.,negativa
+1706,app,4,"La velocidad nunca se traba, también la búsqueda es rapidísima! Eso sí, la versión gratis no sirve para nada.",positiva
+1707,restaurante,2,"Si, l carne estaba bien sazonada, pero las bebidassss lllegaron sin hielo, ademas la cmida no sabia a nada.",negativa
+1708,hotel,1,Me encanta cuando la ubicación está en medio de la nada.,negativa
+1709,app,2,"La interfaz está saturada, también el registro falla a cada rato, aunque la velocidadddd es impresionante.",positiva
+1710,app,2,"La sinncronizacion borra mis datos, aparte la vvelocidad es desesperante, y para colmo la actualiizacion borro mis datos. Nunca mas. 👎",negativa
+1711,servicio,4,"No tengo quejas. La entrega llegó a tiempo, además eel instructorrr sabe muchíimo.",positiva
+1712,producto,2,"La calidad se nota en cada detalle, es cierto, pero el zipper se rompió, además la tela es delgadísima.",negativa
+1713,producto,1,Llegó el martes!!! La suela se despegó al segundo uso.,negativa
+1714,servicio,4,"Pedí la visitta a domicilio. El chofer llegó puntual, y encima la atención telefónica fue clara.",positiva
+1715,servicio,2,"Me lo recomendó un vecino. La atención teelefónica me colgarron, y el plomero lo dejó peor que antes.",negativa
+1716,app,1,"Perdí mi dinero. El registro me pide mil datos, también la actualización borró mis datos.",negativa
+1717,restaurante,4,Fuimos a cenar cuatro personas! La comida estaba deliciosa.,positiva
+1718,app,5,LA DESCARGUÉ POR RECOMENDACIÓN. LA SINCRONIZACIÓN ES INMEDIATA.,positiva
+1719,hotel,4,"EL CHECK-IN FUE UN CAOS, ES CIERTO, PERO LA ALBERCA ES ENORME, Y ENCIMA LA HABITACION ES AMPLIA Y COMODA.",positiva
+1720,servicio,2,El plomero dejó un desastre. Ya levantééé queja en Profeco.,positiva
+1721,restaurante,2,"Fuimos a cenar cuatro personas. El precio es un robo, y para colmo la salsa estaba aguada.",negativa
+1722,restaurante,1,"Los tacos estaban grasosos, aparte las porciones son diminutas.",negativa
+1723,hotel,2,"la ubicacion esta en medio de la nada, tambien el personal nos perdio la reservacion. eso si, la habitacion es preciosa.",negativa
+1724,hotel,5,"El personal fue atento en todo momento, además la vista es espectacular, aparte el check-in fue muy amable...",positiva
+1725,hotel,4,"Si, el bano no tenia agua caliente, pero el check-in tomo cinco minutos, y encima la vista es increible.",positiva
+1726,hotel,2,"Sí, el personalllll fue amabilísimo, pero el wifi es lentísimo, además el baño tenía pelos en la regadera.",negativa
+1727,servicio,5,El instructor es muy claro.,positiva
+1728,restaurante,5,"Las bebidas tienen buen precio, además la mesera estuvooooo al pendiente todo el tiempo, aparte el lugar está limpísimo.",positiva
+1729,restaurante,4,"Llegamos sin reservacion. Las bebidas estan bien servidas, y lo mejor: la mesera nos atendio de maravilla, y el ambiente es acogedor.",positiva
+1730,producto,5,"LO COMPRÉ EN LÍNEA. LA SUELA ES CÓMODA, ADEMÁS EL MATERIAL SE SIENTE RESISTENTE.",positiva
+1731,hotel,4,"Nada ue reprochar, la limpieza es de primera.",positiva
+1732,producto,1,"es mi segunda compra con ellos. l zipper s de peesima calidad, tambien el empaque venia rotto.",negativa
+1733,hotel,1,"Nada bueno que decir, la limpieza deja mucho que desear.",negativa
+1734,producto,5,"No hay nada que no me haya gustado, la tela es suave y gruesa.",positiva
+1735,restaurante,2,"aunque los postres están hechos en casa, la comida estaba fría, y la carne parecía suela!!! :)",negativa
+1736,servicio,1,"pagué por adelantado. el seguimiento fue de pésima calidad, también el trámite fue un calvario, además el instructor no sabe explicar.",negativa
+1737,restaurante,4,"Las bebidas están bien servidas, y los tacos son los mejores de la zona.",positiva
+1738,hotel,4,"El personal fue amabilisimo, ademas el check-in fue rapido y sin broncas. Sin duda lo recomiendo. 👍",positiva
+1739,servicio,1,la cita se retrasó dos horas.,negativa
+1740,restaurante,2,la mesera nos ignoro toda la noche.,negativa
+1741,hotel,2,"La ama es comodisima, es cirto, ero el desayuno estaba frio, ademas la ubicacion es peligrosa.",negativa
+1742,app,5,Llevo un mes con la app. La interfaz es limpia y bonita.,positiva
+1743,hotel,5,"Nos quedamos tres noches. El wifi jala en todo el hotel, aparte la ubicación es perfecta.",positiva
+1744,servicio,4,"El técnico sabía lo que hacía, aparte la cita la respetaron sin problema. Eso sí, la reparación la hicieron mal.",positiva
+1745,hotel,1,"No vuuelvo. La habitación tenía cucarachas, y la ubicaciónnnn está en medio de la nad.",negativa
+1746,restaurante,4,"Los postres estan hechos en casa, y lo mejor: las bebidas estan bien servidas. Quede muy satisfecho.",positiva
+1747,producto,2,"La calidad es terrible para el precio, y encima el diseño es feo, aunque el ensamble es sólido. :(",negativa
+1748,restaurante,1,"El precio es un robo, y encima el servicio tardóóóó más de una hora.",negativa
+1749,servicio,4,"Pensé que el trámite iba a estar mal y no, fue sencillo.",positiva
+1750,restaurante,5,"La mesera nos atendió de maravilla, además la carne estaba suave y jugosa!!!",positiva
+1751,restaurante,5,"fui en hora pico. no es caro para lo que ofrece, la salsa vale cada peso.",positiva
+1752,hotel,5,"Nos quedamos tres noches. La cama es enorme, además el desayuno es de primera.",positiva
+1753,servicio,1,"fue la primera vez que los contrato. el chofer llego cuarenta minutos tarde, tambien el plomero cobro y no arreglo nada.",negativa
+1754,app,5,"La velocidad es impresionante, además la sincronización es inmediata.",positiva
+1755,hotel,2,"La habitación estaba sucia, aparte la limpieza deja mucho que desear. Eso sí, la ubicación es inmejorable.",negativa
+1756,servicio,5,"No es caro para lo que ofrece, la atención telefónica vale cada peso.",positiva
+1757,servicio,1,"me lo recomendó un vecino. el choofer legó cuarenta minutoss tarde, aparte la cita la cancelaronn sin avisar.",negativa
+1758,app,5,Las notificaciones llegan a tiempo.,positiva
+1759,servicio,4,"El seguimiento fue impecable, y encima el plomero dejó todo limpio. Eso sí, l cobroooo fue el dole de lo cotizado. En genneral bien.",positiva
+1760,hotel,2,"Pedimos una habitación doble. La cama rechina, y para colmo el check-in tardó una hora, además la vista no es la de las fotos. jaja",negativa
+1761,producto,4,"la calidaddd es de primera, y encima el zipper funciona perfecto, aunque el envio nunca llego. lo volveria a pedir.",positiva
+1762,servicio,1,"No recomiendo nada, el seguimiento fue un desastre.",negativa
+1763,hotel,5,"pensé que la vista iba a estar mal y no, es espectacular.",positiva
+1764,servicio,4,La reparación quedó perfecta.,positiva
+1765,app,2,"Aunque el soporte me respondio en minutos, el mapa me mando por donde no era, aparte el registro nunca termina. No lo recomiendo.",negativa
+1766,hotel,5,"El aire acondicionado enfría perfecto, además el desayuno es de primera, además la habitación es amplia y cómoda.",positiva
+1767,servicio,2,"el técnico dejó un desastre, y encima el chofer fue grosero. eso sí, el seguimiento fue impecable.",negativa
+1768,hotel,4,"EL DESAYUNO ES DE PRIMERA, Y LA HABITACIÓN ES AMPLIA Y CÓMODA, AUNQUE EL WIFI ES LENTÍSIMO. LO VOLVERÍA A PEDIR.",positiva
+1769,servicio,1,"El seguimiento fue nulo, tambbien el cobro fue un abuso.",negativa
+1770,restaurante,5,los postres son espectaculares. 👎,positiva
+1771,restaurante,4,Fui el sábado con mi familia. El servicio fue de diez.,positiva
+1772,hotel,4,"Aunque la vista da al estacionamiento, el aire acondicionado enfría perfecto, también la limpieza es de primera. Lo volvería a pedir.",positiva
+1773,servicio,4,"AGENDE PARA EL LUNES. LA CITA FUE RAPIDA Y CLARA, TAMBIEN EL TECNICOOOOO FUE RESPETUOSO Y CUIDADOSO.",positiva
+1774,app,4,"sí, las notificaciones son puro spam, ppero la búsqueda encuentra todo, y lo mejor: a velocidad es excelente. me quedoo con lo bueno.",positiva
+1775,producto,4,"Lo compre para regalo. La calidad es de primera, y el producto es de excelente calidad. 👍",positiva
+1776,restaurante,1,"Lo conocí por recomendación de un amigo. El ambiente es ruidoso, y encima el servicio fue pésimo, también los postres sabían a congelado.",negativa
+1777,restaurante,1,No me gusto el precio y no pienso regresar.,negativa
+1778,producto,1,"Es mi segunda compra con ellos. La batería dura dos horas, y la suela se gastó en un mes.",negativa
+1779,producto,1,"La tela pica, y encima el material se siente corriente. Una estafa.",negativa
+1780,servicio,2,"El chofer fue grosero, y el instructor no sabe explicar.",negativa
+1781,restaurante,2,"Sí, el precio sá muy accesible, pero los postres estaban secos, y pa clmo la comida no sabía a nada. No lo recomiendo.",negativa
+1782,producto,4,Lo pedi en la promocion. La tela es de buena calidad. 👍,positiva
+1783,producto,4,"no es cao para l que ofrece, el zipper vale cada peso.",positiva
+1784,restaurante,2,"No es que los postres esté mal, es que está pésimo.",negativa
+1785,restaurante,5,Feliz on el resultado. El lugar está bien ubicado.,positiva
+1786,app,1,lleo un mes con l app. no me gustó la actualización y no pienso regresar.,positiva
+1787,producto,1,"excelente, la suela se gastó en un mes. lo que faltaba.",negativa
+1788,app,4,la interfaz es facil de usar.,positiva
+1789,hotel,2,"aunque el aire acondicionado es silencioso, la vista da a un muro, y encima la habitación olía a humedad.",negativa
+1790,producto,1,"Pedí la talla mediana. El producto no se parece a la foto, aparte el material se rompió a la semana.",negativa
+1791,restaurante,5,Cumple y de sobra. El ambiente es acogedor.,positiva
+1792,app,1,"no vuelvo!!! la version gratis noo sirve para nda, tambien la actualizacio lo arruino todo, ademas el mapa no carga.",negativa
+1793,producto,5,Lo compre para regalo. La calidad es de primera.,positiva
+1794,restaurante,5,"EL PRECIO ESTÁ MUY ACCESIBLE, Y LO MEJOR: EL AMBIENTE TIENE MUCHA ONDA.",positiva
+1795,restaurante,5,"Los postres son espectaculares, tambien la salsa es casera y se nota!!!",positiva
+1796,servicio,1,Lo maximo: la entrega llego tres dias tarde. Gracias por nada.,negativa
+1797,app,4,llevo un mes con la app. la velocidad es excelete.,positiva
+1798,hotel,2,"La cama esta vencida, tambien el wifi se cae a cada rato. Eso si, el aire acondicionado es silencioso.",negativa
+1799,restaurante,4,"LA MESERA OS IGNORÓ TODA LA NOCHE, ES CIERTO, PERO OS POSTRES ESTÁN HECHOS EN CASA, ADEMÁS LA COMIDA ESTABA EN SU PUNTO.",negativa
+1800,hotel,4,"Aunque el aire acondiciondo goteaba toda la noche, lla habitación estaba impecable, además eel wifi funciona de maravilla.",positiva

@@ -1,0 +1,1 @@
+[{"id":"Fold1","accuracy":0.9004,"roc_auc":0.9267,"n_val":271,"n_ent":1079},{"id":"Fold2","accuracy":0.9,"roc_auc":0.9611,"n_val":270,"n_ent":1080},{"id":"Fold3","accuracy":0.8667,"roc_auc":0.9403,"n_val":270,"n_ent":1080},{"id":"Fold4","accuracy":0.8704,"roc_auc":0.9307,"n_val":270,"n_ent":1080},{"id":"Fold5","accuracy":0.8513,"roc_auc":0.935,"n_val":269,"n_ent":1081}]

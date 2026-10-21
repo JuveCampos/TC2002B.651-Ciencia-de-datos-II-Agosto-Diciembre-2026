@@ -19,7 +19,7 @@ library(tidyverse)   # Manipulación de datos (dplyr, stringr, ggplot2, etc.)
 library(tm)          # Solo se usa para obtener la lista de stopwords en español
 library(udpipe)      # Tokenización, lematización y etiquetado gramatical (UPOS)
 library(tidytext)    # Herramientas de texto "tidy"; aquí se usa bind_tf_idf()
-
+library(widyr)
 
 # =============================================================================
 # 1) PREPROCESAMIENTO
@@ -174,4 +174,35 @@ matriz_tf_idf |>
   facet_wrap(~str_wrap(doc_id, 20), scales = "free")      # Un panel por documento;
 # str_wrap corta los títulos
 # largos a 20 caracteres por línea
+
+
+
+# SIMILITUD DEL COSENO ----
+tf_idf_completo <- lematizacion |> 
+  select(doc_id, lemma, upos) |> 
+  filter(upos %in% c("NOUN", "VERB", "ADJ", "PROPN")) |> 
+  select(-upos) |> 
+  group_by(doc_id) |> 
+  count(lemma) |> 
+  arrange(doc_id, -n) |> 
+  bind_tf_idf(term = lemma, document = doc_id, n = n) |> 
+  arrange(-tf_idf)
+
+
+library(widyr)
+
+tf_idf_completo |> 
+  ungroup() |> 
+  pairwise_similarity(item = doc_id, 
+                      feature = lemma, 
+                      value = tf_idf, 
+                      upper = FALSE) |> 
+  arrange(-similarity)
+
+
+
+
+  
+
+
 

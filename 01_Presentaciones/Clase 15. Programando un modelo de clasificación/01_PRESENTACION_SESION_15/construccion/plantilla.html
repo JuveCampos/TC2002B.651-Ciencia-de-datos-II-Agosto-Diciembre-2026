@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15. Métricas de desempeño y validación cruzada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap">
+<style>
+/* Paleta Tec (ver CLAUDE.md) y colores de datos validados para daltonismo */
+:root{
+  --navy:#1E4C7D; --light:#EAF2FA; --soft:#DDE5ED; --sgreen:#D5F5E3; --dgreen:#1A7A3A;
+  --sred:#FADBD8; --dred:#C0392B; --hgreen:#F0FAF0; --gtop:#F0F0F0; --gray:#555555;
+  --rojo-tec:#E31B23; --azul-datos:#2F6FB5; --gris-datos:#9A9A9A;
+  --s:1;
+}
+html,body{margin:0;height:100%;background:#202020;font-family:Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif;color:#000;overflow:hidden}
+#escenario{position:absolute;left:50%;top:50%;width:1024px;height:768px;transform:translate(-50%,-50%) scale(var(--s));transform-origin:center center}
+.slide{position:absolute;inset:0;background:#fff;display:none;overflow:hidden}
+.slide.activa{display:block}
+#ayuda{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:rgba(30,76,125,.92);color:#fff;font-size:13px;padding:8px 16px;transition:opacity 1s;pointer-events:none;z-index:9}
+#ayuda.fuera{opacity:0}
+
+/* Encabezado estilo Tec: banda navy con título blanco */
+.banda{position:absolute;left:0;top:31px;width:760px;height:72px;background:var(--navy);color:#fff;font-weight:700;font-size:23px;line-height:1.15;display:flex;align-items:center;padding:0 22px 0 31px;box-sizing:border-box}
+.sub{position:absolute;left:31px;top:116px;width:962px;font-size:19px;line-height:1.3;color:#000}
+.sub em{color:var(--gray)}
+.pie{position:absolute;right:31px;bottom:16px;font-size:13px;color:var(--gray);font-style:italic}
+.fuente{position:absolute;left:31px;bottom:16px;font-size:12px;color:#666666}
+
+/* Tarjetas */
+.card{position:absolute;background:var(--light);padding:14px 16px;box-sizing:border-box}
+.card h4{margin:0 0 6px 0;color:var(--navy);font-size:18px;font-weight:700;line-height:1.2}
+.card p,.card li{font-size:15.5px;line-height:1.35;margin:0}
+.card ul,.card ol{margin:4px 0 0 0;padding-left:20px}
+.card li{margin-bottom:4px}
+.card.verde{background:var(--sgreen)} .card.verde h4{color:var(--dgreen)}
+.card.roja{background:var(--sred)} .card.roja h4{color:var(--dred)}
+.card.hl{background:var(--hgreen)} .card.hl h4{color:var(--dgreen)}
+.card.soft{background:var(--soft)}
+.card.navy{background:var(--navy);color:#fff} .card.navy h4{color:#fff}
+.card.navy p{color:#fff}
+.card.blanca{background:#fff;border:1px solid var(--soft)}
+.texto{position:absolute;font-size:16px;line-height:1.4}
+.texto ol,.texto ul{margin:0;padding-left:24px}
+.texto li{margin-bottom:6px}
+.grande{font-size:64px;font-weight:700;color:var(--navy);line-height:1}
+.num{font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700}
+code,.mono{font-family:"Ubuntu Mono",Menlo,monospace}
+code{background:#F4F6F8;padding:0 4px;font-size:.95em}
+pre.codigo{position:absolute;margin:0;background:#F4F6F8;border-left:4px solid var(--navy);font-family:"Ubuntu Mono",Menlo,monospace;font-size:14.5px;line-height:1.4;padding:10px 14px;white-space:pre;box-sizing:border-box;overflow:hidden}
+pre.codigo .c{color:#6A737D}
+pre.codigo .k{color:var(--navy);font-weight:700}
+pre.codigo .r{color:var(--dred);font-weight:700}
+.etq{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--soft);padding:2px 8px}
+
+/* Fragmentos animados */
+.frag{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.frag.visible{opacity:1;transform:none}
+.sin-transicion *{transition:none !important}
+
+/* Portada y cierre */
+.barra-gris{position:absolute;left:0;top:0;width:1024px;height:113px;background:var(--gtop)}
+.barra-gris img{position:absolute;left:31px;top:28px;height:58px}
+.bloque-azul{position:absolute;left:0;top:113px;width:1024px;height:358px;background:var(--soft)}
+.titulo-portada{position:absolute;left:60px;top:150px;width:900px;font-size:66px;font-weight:700;line-height:1.05;color:var(--rojo-tec)}
+.subtitulo-portada{position:absolute;left:60px;top:390px;width:900px;font-size:27px;font-weight:700;color:var(--navy)}
+.autor{position:absolute;left:760px;top:530px;border-left:3px solid #BBBBBB;padding-left:22px;font-size:17px;font-weight:700;line-height:1.35;color:#222}
+.autor .correo{font-weight:400;font-size:14px;margin-top:10px}
+.gracias{position:absolute;left:60px;top:170px;font-size:110px;font-weight:700;color:var(--navy);line-height:1}
+.preguntas{position:absolute;left:60px;top:520px;background:var(--navy);color:#fff;font-size:40px;font-weight:700;padding:18px 40px}
+
+/* Barras horizontales */
+.barras{position:absolute}
+.fila-barra{display:flex;align-items:center;height:40px;margin-bottom:10px;font-size:16px}
+.fila-barra .lab{width:190px;text-align:right;padding-right:12px;color:#222}
+.fila-barra .pista{flex:1;height:26px;background:#F4F4F4;position:relative}
+.fila-barra .barra{height:100%;width:0;background:var(--azul-datos);transition:width 1.1s ease}
+.visible .fila-barra .barra,.fila-barra.visible .barra{width:var(--w)}
+.fila-barra .val{width:70px;padding-left:10px;font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700}
+
+/* Matriz de confusión */
+.matriz{position:absolute;display:grid;grid-template-columns:150px 170px 170px;grid-template-rows:60px 120px 120px;gap:4px}
+.matriz div{display:flex;align-items:center;justify-content:center;text-align:center;font-size:17px}
+.matriz .cab{background:var(--soft);font-weight:700;color:var(--navy);flex-direction:column;line-height:1.2}
+.matriz .celda{flex-direction:column;background:#F4F4F4;font-size:15px;line-height:1.25;transition:background .4s, outline .3s}
+.matriz .celda b{font-size:36px;font-family:"Ubuntu Mono",Menlo,monospace}
+.matriz .celda.ok{background:var(--sgreen)}
+.matriz .celda.err{background:var(--sred)}
+.matriz .celda.res{outline:4px solid var(--navy);outline-offset:-4px}
+.matriz .celda.apag{opacity:.35}
+
+/* Control deslizante */
+input[type=range]{width:100%;accent-color:var(--navy)}
+.kpi{display:flex;gap:10px}
+.kpi div{flex:1;background:var(--light);padding:8px 10px;text-align:center}
+.kpi .v{font-family:"Ubuntu Mono",Menlo,monospace;font-size:26px;font-weight:700;color:var(--navy)}
+.kpi .l{font-size:12.5px;line-height:1.25;color:#333}
+
+/* Validación cruzada */
+.pliegues{position:absolute;left:31px;top:165px;width:640px}
+.fila-pl{display:flex;align-items:center;height:52px;margin-bottom:8px;opacity:.25;transition:opacity .4s}
+.fila-pl.on{opacity:1}
+.fila-pl .id{width:88px;font-weight:700;color:var(--navy);font-size:16px}
+.fila-pl .bloques{display:flex;gap:4px;flex:1}
+.fila-pl .bl{flex:1;height:38px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--navy);transition:background .4s,color .4s}
+.fila-pl .bl.val{background:var(--dred);color:#fff;font-weight:700}
+.fila-pl .bl.ent{background:var(--azul-datos);color:#fff}
+.fila-pl .met{width:110px;text-align:right;font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700;font-size:17px;color:#222}
+
+/* Diagrama de flujo */
+.caja-flujo{position:absolute;background:var(--light);padding:10px 12px;box-sizing:border-box;font-size:14.5px;line-height:1.3;width:200px}
+.caja-flujo b{display:block;font-family:"Ubuntu Mono",Menlo,monospace;color:var(--navy);font-size:15px;margin-bottom:3px}
+.caja-flujo.roja{background:var(--sred)} .caja-flujo.roja b{color:var(--dred)}
+.caja-flujo.verde{background:var(--sgreen)} .caja-flujo.verde b{color:var(--dgreen)}
+.flecha{position:absolute;height:3px;background:var(--navy)}
+.flecha::after{content:"";position:absolute;right:-2px;top:-6px;border-left:12px solid var(--navy);border-top:7px solid transparent;border-bottom:7px solid transparent}
+
+/* Ejemplo de receta */
+.etapa{position:absolute;left:31px;width:560px;background:var(--light);padding:9px 12px;box-sizing:border-box}
+.etapa .t{font-size:12.5px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em}
+.etapa .x{font-family:"Ubuntu Mono",Menlo,monospace;font-size:14px;line-height:1.35;margin-top:3px;word-break:break-word}
+.etapa .x .tok{display:inline-block;background:#fff;padding:0 5px;margin:2px 3px 2px 0;border:1px solid var(--soft)}
+table.tfidf{border-collapse:collapse;font-size:13px;font-family:"Ubuntu Mono",Menlo,monospace;margin-top:4px}
+table.tfidf td{padding:1px 10px 1px 0;white-space:nowrap}
+table.tfidf td:last-child{text-align:right}
+
+svg text{font-family:Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif}
+.eje{stroke:#444;stroke-width:1}
+.grid{stroke:#E6E6E6;stroke-width:1}
+.tabla{border-collapse:collapse;width:100%;font-size:15px}
+.tabla th{background:var(--navy);color:#fff;text-align:left;padding:7px 10px;font-weight:700}
+.tabla td{padding:6px 10px;border-bottom:1px solid var(--soft);vertical-align:top;line-height:1.3}
+.tabla tr:nth-child(even) td{background:#F6F8FA}
+.err-item{position:absolute;left:31px;width:600px;background:#F6F8FA;padding:8px 12px;box-sizing:border-box;font-size:14px;line-height:1.3}
+.err-item .cat{font-size:11.5px;font-weight:700;text-transform:uppercase;color:var(--navy);letter-spacing:.05em}
+.err-item .p{font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700;float:right;color:var(--dred)}
+</style>
+</head>
+<body>
+<div id="escenario">
+
+<!-- 1. Portada -->
+<section class="slide">
+  <div class="barra-gris"><img src="__LOGO__" alt="Tecnológico de Monterrey"></div>
+  <div class="bloque-azul"></div>
+  <div class="titulo-portada">15. Métricas de desempeño y validación cruzada</div>
+  <div class="subtitulo-portada">Ciencia de datos para la toma de decisiones II</div>
+  <div class="autor">Jorge<br>Juvenal<br>Campos Ferreira<div class="correo">juvenal.campos@tec.mx</div></div>
+</section>
+
+<!-- 2. Contenido -->
+<section class="slide">
+  <div class="banda">Hoy cerramos el ciclo: entrenar, medir y afinar el modelo</div>
+  <div class="sub">La sesión retoma el flujo de la clase pasada y se concentra en los pasos que deciden si el modelo sirve.</div>
+  <div class="card" style="left:31px;top:170px;width:460px;height:470px">
+    <h4>Contenido</h4>
+    <ol style="font-size:17px;line-height:1.45">
+      <li>Repaso del flujo y de la receta de texto</li>
+      <li>Partición y sobreajuste: por qué no se mide en entrenamiento</li>
+      <li>Matriz de confusión y las cuatro métricas</li>
+      <li>El umbral de decisión, la curva ROC y el AUC</li>
+      <li>Validación cruzada y afinación de la penalización</li>
+      <li>Qué aprendió el modelo y dónde se equivoca</li>
+      <li>Ejercicio</li>
+    </ol>
+  </div>
+  <div class="card verde" style="left:515px;top:170px;width:478px;height:220px">
+    <h4>Caso de trabajo</h4>
+    <p>1,800 reseñas sintéticas en español (restaurante, hotel, producto, app y servicio), etiquetadas como positivas o negativas. El modelo es una regresión logística regularizada sobre tf-idf, el mismo de <code>analisis_resenas.R</code>.</p>
+  </div>
+  <div class="card hl" style="left:515px;top:410px;width:478px;height:230px">
+    <h4>Pregunta que guía la sesión</h4>
+    <p>El modelo acierta 93 de cada 100 reseñas de prueba. ¿Cómo sabemos que ese número es creíble, qué significa cada métrica y cómo elegimos la penalización sin hacer trampa con la base de prueba?</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 3. Diez pasos -->
+<section class="slide">
+  <div class="banda">El flujo tiene diez pasos y hoy trabajamos los últimos cinco</div>
+  <div class="sub">Los cinco primeros preparan los datos y el modelo; los cinco últimos lo entrenan, lo miden y deciden qué hacer con él.</div>
+  <div class="card soft" style="left:31px;top:170px;width:470px;height:300px">
+    <h4>Preparación (clase pasada)</h4>
+    <ol style="font-size:15.5px">
+      <li>Cargar los datos etiquetados y explorarlos: que la etiqueta sea factor y que las clases estén balanceadas.</li>
+      <li>Partir en base de entrenamiento y base de prueba.</li>
+      <li>Generar la receta de ingeniería de variables con <code>textrecipes</code>.</li>
+      <li>Aplicar la receta y preparar la matriz documento-término (DTM) de entrenamiento.</li>
+      <li>Declarar el modelo y sus parámetros.</li>
+    </ol>
+  </div>
+  <div class="card" style="left:523px;top:170px;width:470px;height:300px">
+    <h4>Entrenamiento y evaluación (hoy)</h4>
+    <ol start="6" style="font-size:15.5px">
+      <li class="frag" data-step="1">Ajustar el modelo con los datos de entrenamiento.</li>
+      <li class="frag" data-step="2">Predecir etiquetas y compararlas con la verdad.</li>
+      <li class="frag" data-step="3">Obtener las métricas: matriz de confusión, exactitud, precisión, sensibilidad, F1, curva ROC.</li>
+      <li class="frag" data-step="4">Evaluar en la base de prueba, una sola vez.</li>
+      <li class="frag" data-step="5">Si el modelo es bueno, pasa a producción (la app Shiny); si no, iterar: afinar hiperparámetros, mejorar la receta o cambiar de modelo.</li>
+    </ol>
+  </div>
+  <div class="card hl frag" data-step="5" style="left:31px;top:490px;width:962px;height:150px">
+    <h4>Las métricas se calculan dos veces y solo una cuenta</h4>
+    <p>En entrenamiento sirven para diagnosticar sobreajuste; en prueba, para reportar qué tan bien funcionará el modelo con textos nuevos. Entre las dos aparece hoy un paso nuevo: la validación cruzada, que permite afinar la penalización sin gastar la base de prueba.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 4. Librerías -->
+<section class="slide">
+  <div class="banda">Cinco librerías cubren el flujo completo, de la receta a la app</div>
+  <div class="sub">Todas se instalan una vez con <code>install.packages()</code>; <code>tidymodels</code> ya trae <code>rsample</code>, <code>tune</code> y <code>yardstick</code>.</div>
+  <div class="card frag" data-step="1" style="left:31px;top:170px;width:307px;height:150px"><h4>textrecipes</h4><p>Pasos <code>step_*</code> para tokenizar, quitar stopwords, hacer stemming, filtrar tokens y calcular tf-idf dentro de una receta.</p></div>
+  <div class="card frag" data-step="1" style="left:358px;top:170px;width:307px;height:150px"><h4>glmnet</h4><p>Motor de la regresión logística regularizada (lasso, ridge y elastic net). Permite afinar <code>penalty</code> y <code>mixture</code>.</p></div>
+  <div class="card frag" data-step="1" style="left:686px;top:170px;width:307px;height:150px"><h4>probably</h4><p>Herramientas para el umbral de decisión y la calibración de probabilidades, como <code>threshold_perf()</code>.</p></div>
+  <div class="card frag" data-step="2" style="left:31px;top:340px;width:307px;height:150px"><h4>naivebayes</h4><p>Un segundo algoritmo de clasificación para comparar con la regresión logística usando la misma receta.</p></div>
+  <div class="card frag" data-step="2" style="left:358px;top:340px;width:307px;height:150px"><h4>shiny</h4><p>Lleva el modelo a producción: una app donde el usuario escribe la reseña y el modelo responde.</p></div>
+  <div class="card soft frag" data-step="2" style="left:686px;top:340px;width:307px;height:150px"><h4>Incluidas en tidymodels</h4><p><code>rsample</code> parte los datos y crea pliegues, <code>tune</code> afina hiperparámetros y <code>yardstick</code> calcula las métricas.</p></div>
+  <pre class="codigo frag" data-step="3" style="left:31px;top:515px;width:962px;height:120px">install.packages(c("tidymodels", "textrecipes", "glmnet", "probably", "naivebayes", "shiny"))
+
+library(tidyverse); library(tidytext); library(tidymodels)
+library(textrecipes); library(glmnet); library(probably)
+tidymodels_prefer()   <span class="c"># evita conflictos de nombres entre paquetes</span></pre>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 5. Factor -->
+<section class="slide">
+  <div class="banda">La etiqueta es un factor y su primer nivel define la clase de interés</div>
+  <div class="sub">Convertir la columna de etiquetas a factor le dice al flujo que el problema es de clasificación, cuántas clases hay y cuál es la clase positiva.</div>
+  <div class="card" style="left:31px;top:175px;width:470px;height:200px">
+    <h4>Qué es un factor</h4>
+    <p>Es el tipo de dato de R para variables categóricas. Tiene una etiqueta de texto "por encima" y un número entero "por debajo". Las funciones que piden niveles en vez de textos (modelos, métricas, gráficas) funcionan correctamente solo con factores.</p>
+  </div>
+  <pre class="codigo" style="left:523px;top:175px;width:470px;height:200px">resenas <- read_csv("resenas_sinteticas.csv") |>
+  mutate(sentimiento = factor(
+    sentimiento,
+    levels = c(<span class="r">"negativa"</span>, "positiva")
+  ))
+
+resenas |> count(sentimiento)
+<span class="c">#  negativa   892
+#  positiva   908   (base balanceada)</span></pre>
+  <div class="card roja frag" data-step="1" style="left:31px;top:395px;width:470px;height:245px">
+    <h4>Cuidado: dos convenciones distintas</h4>
+    <p><b>yardstick</b> toma el primer nivel, <code>negativa</code>, como el evento de interés: precisión y sensibilidad se calculan para esa clase.</p>
+    <p style="margin-top:8px"><b>glmnet</b> modela la probabilidad del segundo nivel, <code>positiva</code>: un coeficiente positivo empuja hacia positiva.</p>
+    <p style="margin-top:8px">Por eso en el código la curva ROC usa <code>.pred_negativa</code>.</p>
+  </div>
+  <div class="card verde frag" data-step="2" style="left:523px;top:395px;width:470px;height:245px">
+    <h4>Si la clase que importa es la otra</h4>
+    <p>Dos opciones equivalentes: poner esa clase primero en <code>levels</code>, o pedir a yardstick que use el segundo nivel:</p>
+    <pre class="codigo" style="position:static;margin-top:10px;font-size:14px">precision(predicciones,
+  truth = sentimiento,
+  estimate = .pred_class,
+  event_level = "second")</pre>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 6. Receta -->
+<section class="slide" data-steps="4">
+  <div class="banda">La receta convierte cada reseña en 1,000 columnas numéricas</div>
+  <div class="sub">Lo que le llega al modelo no es el texto, sino el peso tf-idf de cada token. Sigamos una reseña inventada por la receta.</div>
+  <div class="etapa" style="top:168px">
+    <div class="t">Texto original</div>
+    <div class="x">"Buenísimooo!!! La comida llegó rapidísimo, jajaja no lo puedo creer"</div>
+  </div>
+  <div class="etapa frag" data-step="1" style="top:238px">
+    <div class="t">1 · step_mutate: minúsculas, sin acentos, alargamientos y "!!!" como token, sin puntuación</div>
+    <div class="x">buenisimo muchaexclamacion la comida llego rapidisimo jajaja no lo puedo creer</div>
+  </div>
+  <div class="etapa frag" data-step="2" style="top:325px">
+    <div class="t">2 · step_tokenize: palabras y pares de palabras (n = 2, n_min = 1)</div>
+    <div class="x"><span class="tok">buenisimo</span><span class="tok">muchaexclamacion</span><span class="tok">la</span><span class="tok">comida</span><span class="tok">llego</span><span class="tok">rapidisimo</span><span class="tok">jajaja</span><span class="tok">no</span><span class="tok">lo</span><span class="tok">puedo</span><span class="tok">creer</span><span class="tok">buenisimo muchaexclamacion</span><span class="tok">muchaexclamacion la</span><span class="tok">la comida</span><span class="tok">comida llego</span><span class="tok">…</span></div>
+  </div>
+  <div class="etapa frag" data-step="3" style="top:440px">
+    <div class="t">3 · step_stopwords y step_stem: fuera palabras vacías (menos las negaciones), raíces en vez de palabras</div>
+    <div class="x"><span class="tok">buenisim</span><span class="tok">muchaexclamacion</span><span class="tok">com</span><span class="tok">lleg</span><span class="tok">rapidisim</span><span class="tok">jajaj</span><span class="tok">no</span><span class="tok">creer</span><span class="tok">muchaexclamacion l</span><span class="tok">la com</span><span class="tok">no l</span><span class="tok">…</span></div>
+  </div>
+  <div class="etapa frag" data-step="4" style="top:545px;height:150px">
+    <div class="t">4 · step_tokenfilter y step_tfidf: solo los 1,000 tokens más frecuentes, cada uno con su peso tf-idf</div>
+    <div class="x" style="display:flex;gap:30px">
+      <table class="tfidf"><tr><td>buenisim</td><td>0.445</td></tr><tr><td>muchaexclamacion l</td><td>0.433</td></tr><tr><td>no l</td><td>0.401</td></tr><tr><td>jajaj</td><td>0.374</td></tr><tr><td>rapidisim</td><td>0.374</td></tr></table>
+      <table class="tfidf"><tr><td>com</td><td>0.346</td></tr><tr><td>la com</td><td>0.346</td></tr><tr><td>muchaexclamacion</td><td>0.296</td></tr><tr><td>lleg</td><td>0.215</td></tr><tr><td>no</td><td>0.156</td></tr></table>
+      <div style="font-family:Ubuntu;font-size:13px;line-height:1.3;color:#333;width:150px">Las otras 990 columnas valen 0. "creer" no está en el vocabulario y desaparece.</div>
+    </div>
+  </div>
+  <pre class="codigo" style="left:612px;top:168px;width:381px;height:400px;font-size:12px;line-height:1.3">receta <- recipe(sentimiento ~ texto,
+                 data = entrenamiento) |>
+  step_mutate(texto = str_to_lower(texto)) |>
+  step_mutate(texto = str_replace_all(texto,
+    c("á"="a","é"="e","í"="i","ó"="o","ú"="u"))) |>
+  step_mutate(texto = str_replace_all(texto,
+    "(ja){2,}", "jajaja")) |>
+  step_mutate(texto = str_replace_all(texto,
+    "([a-z])\\1{2,}", "\\1")) |>
+  step_mutate(texto = str_replace_all(texto,
+    "!{2,}", " muchaexclamacion ")) |>
+  step_mutate(texto = str_remove_all(texto,
+    "[\\.,;:\"'()\\[\\]{}<>/\\\\-]")) |>
+  step_mutate(texto = str_squish(texto)) |>
+  step_tokenize(texto, token = "ngrams",
+    options = list(n = 2, n_min = 1)) |>
+  step_stopwords(texto,
+    custom_stopword_source = stopwords_es) |>
+  step_stem(texto,
+    options = list(language = "spanish")) |>
+  step_tokenfilter(texto, min_times = 3,
+    max_tokens = 1000) |>
+  step_tfidf(texto)</pre>
+  <div class="card roja" style="left:612px;top:580px;width:381px;height:115px">
+    <h4>Dos detalles que importan</h4>
+    <p>Las negaciones ("no", "nada", "nunca", "sin") se quitan de la lista de stopwords porque son señal. La receta se aprende solo con entrenamiento: los idf no ven la prueba.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 7. Partición -->
+<section class="slide" data-anim="particion" data-steps="3">
+  <div class="banda">Partimos antes de modelar: 1,350 reseñas entrenan y 450 juzgan</div>
+  <div class="sub">La base de prueba simula los textos que el modelo verá en producción. Se aparta al inicio y no se toca hasta el final.</div>
+  <svg id="svg-particion" width="620" height="330" style="position:absolute;left:31px;top:165px"></svg>
+  <div class="texto frag" data-step="2" style="left:31px;top:505px;width:620px;font-size:14.5px;color:#333">
+    Cada punto es una reseña: azul positiva, rojo negativa. Con <code>strata = sentimiento</code> ambas bases conservan la mezcla 50/50: 669 negativas y 681 positivas en entrenamiento; 223 y 227 en prueba.
+  </div>
+  <pre class="codigo" style="left:672px;top:165px;width:321px;height:175px;font-size:13.5px">set.seed(2026)
+particion <- initial_split(
+  resenas,
+  prop = 0.75,
+  strata = sentimiento)
+
+entrenamiento <- training(particion)
+prueba        <- testing(particion)</pre>
+  <div class="card frag" data-step="1" style="left:672px;top:355px;width:321px;height:130px"><h4>set.seed(2026)</h4><p>La partición es aleatoria. La semilla la hace reproducible: todos obtenemos las mismas 450 reseñas de prueba.</p></div>
+  <div class="card roja frag" data-step="3" style="left:672px;top:500px;width:321px;height:150px"><h4>La regla de oro</h4><p>Todo lo que se aprende (vocabulario, idf, coeficientes, penalización) se aprende con entrenamiento. La prueba se usa una sola vez, al final.</p></div>
+  <div class="fuente">Fuente: resenas_sinteticas.csv, 1,800 reseñas. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 8. Sobreajuste -->
+<section class="slide">
+  <div class="banda">Medir en entrenamiento infla el resultado: 0.969 contra 0.933</div>
+  <div class="sub">El mismo modelo, evaluado en los textos que ya vio y en textos nuevos. La diferencia es la cuota del sobreajuste.</div>
+  <div class="barras frag" data-step="1" style="left:31px;top:175px;width:600px">
+    <div style="font-weight:700;color:var(--navy);margin-bottom:6px">Exactitud (accuracy)</div>
+    <div class="fila-barra"><div class="lab">entrenamiento</div><div class="pista"><div class="barra" style="--w:96.9%;background:var(--gris-datos)"></div></div><div class="val">0.969</div></div>
+    <div class="fila-barra"><div class="lab">prueba</div><div class="pista"><div class="barra" style="--w:93.3%"></div></div><div class="val">0.933</div></div>
+  </div>
+  <div class="barras frag" data-step="1" style="left:31px;top:315px;width:600px">
+    <div style="font-weight:700;color:var(--navy);margin-bottom:6px">Área bajo la curva ROC</div>
+    <div class="fila-barra"><div class="lab">entrenamiento</div><div class="pista"><div class="barra" style="--w:99.1%;background:var(--gris-datos)"></div></div><div class="val">0.991</div></div>
+    <div class="fila-barra"><div class="lab">prueba</div><div class="pista"><div class="barra" style="--w:96.6%"></div></div><div class="val">0.966</div></div>
+  </div>
+  <div class="card frag" data-step="2" style="left:31px;top:470px;width:600px;height:170px">
+    <h4>Por qué pasa</h4>
+    <p>El modelo tiene 1,000 columnas para 1,350 textos: puede memorizar combinaciones de tokens que solo aparecen en entrenamiento. En textos nuevos esas combinaciones no sirven. La brecha aquí es moderada (3.6 pp de exactitud) porque la regularización la contiene.</p>
+  </div>
+  <div class="card roja frag" data-step="3" style="left:655px;top:175px;width:338px;height:215px">
+    <h4>Cuándo preocuparse</h4>
+    <p>En el caso de comentarios ofensivos de la clase pasada, un <code>glm</code> sin regularizar dio 0.95 en entrenamiento y 0.61 en prueba. Esa brecha sí es sobreajuste severo: el modelo aprendió ruido.</p>
+  </div>
+  <div class="card verde frag" data-step="3" style="left:655px;top:410px;width:338px;height:230px">
+    <h4>Qué hacer</h4>
+    <ul>
+      <li>Reportar siempre la métrica de prueba, nunca la de entrenamiento.</li>
+      <li>Regularizar (<code>glmnet</code>) y afinar la penalización.</li>
+      <li>Reducir columnas: menos tokens, filtro de frecuencia mínima.</li>
+    </ul>
+  </div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba de 450 reseñas. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 9. Matriz de confusión -->
+<section class="slide">
+  <div class="banda">La matriz de confusión cruza predicción con verdad en cuatro celdas</div>
+  <div class="sub">Con el umbral de 0.5, el modelo acierta 420 de las 450 reseñas de prueba y se equivoca 30: 15 en cada dirección.</div>
+  <div class="matriz" style="left:31px;top:180px">
+    <div></div>
+    <div class="cab">Verdad:<br>negativa</div>
+    <div class="cab">Verdad:<br>positiva</div>
+    <div class="cab">Predicción:<br>negativa</div>
+    <div class="celda ok frag" data-step="1"><b>208</b><span class="frag" data-step="3">verdaderos positivos (VP)</span></div>
+    <div class="celda err frag" data-step="2"><b>15</b><span class="frag" data-step="3">falsos positivos (FP)</span></div>
+    <div class="cab">Predicción:<br>positiva</div>
+    <div class="celda err frag" data-step="2"><b>15</b><span class="frag" data-step="3">falsos negativos (FN)</span></div>
+    <div class="celda ok frag" data-step="1"><b>212</b><span class="frag" data-step="3">verdaderos negativos (VN)</span></div>
+  </div>
+  <pre class="codigo" style="left:31px;top:500px;width:498px;height:150px;font-size:13.5px">predicciones |>
+  conf_mat(truth = sentimiento, estimate = .pred_class)
+<span class="c">#            Truth
+# Prediction negativa positiva
+#   negativa      208       15
+#   positiva       15      212</span></pre>
+  <div class="card frag" data-step="1" style="left:555px;top:180px;width:438px;height:130px"><h4>La diagonal son aciertos</h4><p>208 negativas detectadas como negativas y 212 positivas como positivas. Verde en la matriz.</p></div>
+  <div class="card roja frag" data-step="2" style="left:555px;top:325px;width:438px;height:150px"><h4>Fuera de la diagonal, errores</h4><p>15 reseñas positivas marcadas como negativas y 15 negativas que pasaron como positivas. Los dos errores no cuestan lo mismo en todos los problemas.</p></div>
+  <div class="card soft frag" data-step="3" style="left:555px;top:490px;width:438px;height:160px"><h4>"Positivo" se refiere a la clase de interés</h4><p>Como el primer nivel del factor es <code>negativa</code>, aquí un "verdadero positivo" es una reseña negativa bien detectada. Es la convención de yardstick y conviene decirla en voz alta cada vez.</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 10. Métricas -->
+<section class="slide" data-anim="metricas" data-steps="4">
+  <div class="banda">Cuatro métricas salen de la misma matriz y responden preguntas distintas</div>
+  <div class="sub">Cada métrica combina celdas diferentes. Al resaltarlas se ve qué pregunta contesta cada una.</div>
+  <div class="matriz" id="mini-matriz" style="left:31px;top:175px;grid-template-columns:120px 130px 130px;grid-template-rows:54px 95px 95px">
+    <div></div><div class="cab" style="font-size:14px">Verdad:<br>negativa</div><div class="cab" style="font-size:14px">Verdad:<br>positiva</div>
+    <div class="cab" style="font-size:14px">Predicción:<br>negativa</div>
+    <div class="celda ok" data-c="vp"><b style="font-size:28px">208</b>VP</div>
+    <div class="celda err" data-c="fp"><b style="font-size:28px">15</b>FP</div>
+    <div class="cab" style="font-size:14px">Predicción:<br>positiva</div>
+    <div class="celda err" data-c="fn"><b style="font-size:28px">15</b>FN</div>
+    <div class="celda ok" data-c="vn"><b style="font-size:28px">212</b>VN</div>
+  </div>
+  <div class="card soft" style="left:31px;top:445px;width:388px;height:205px">
+    <h4>En código</h4>
+    <pre class="codigo" style="position:static;font-size:13px;margin-top:4px">metricas <- metric_set(accuracy,
+  precision, recall, f_meas)
+
+predicciones |>
+  metricas(truth = sentimiento,
+           estimate = .pred_class)</pre>
+  </div>
+  <div class="card frag" data-step="1" style="left:445px;top:175px;width:548px;height:108px">
+    <h4>Exactitud (accuracy) = (VP + VN) / total = 420 / 450 = <span class="num">0.933</span></h4>
+    <p>¿Qué fracción de todas las reseñas clasificó bien? Es la métrica más intuitiva y la más engañosa cuando una clase domina.</p>
+  </div>
+  <div class="card frag" data-step="2" style="left:445px;top:295px;width:548px;height:108px">
+    <h4>Precisión = VP / (VP + FP) = 208 / 223 = <span class="num">0.933</span></h4>
+    <p>De las reseñas que el modelo marcó como negativas, ¿cuántas lo eran? Mide cuántas falsas alarmas genera.</p>
+  </div>
+  <div class="card frag" data-step="3" style="left:445px;top:415px;width:548px;height:108px">
+    <h4>Sensibilidad (recall) = VP / (VP + FN) = 208 / 223 = <span class="num">0.933</span></h4>
+    <p>De las reseñas que de verdad eran negativas, ¿cuántas detectó? Mide cuántas se le escapan.</p>
+  </div>
+  <div class="card frag" data-step="4" style="left:445px;top:535px;width:548px;height:115px">
+    <h4>F1 = media armónica de precisión y sensibilidad = <span class="num">0.933</span></h4>
+    <p>Castiga que una sea alta y la otra baja. Aquí las cuatro coinciden porque hay 15 errores de cada tipo; en general no.</p>
+  </div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 11. Qué métrica importa -->
+<section class="slide">
+  <div class="banda">La métrica que importa depende de cuál error cuesta más</div>
+  <div class="sub">Antes de elegir métrica hay que preguntar qué pasa con un falso positivo y qué pasa con un falso negativo.</div>
+  <div class="card frag" data-step="1" style="left:31px;top:170px;width:307px;height:215px">
+    <h4>Moderar comentarios ofensivos</h4>
+    <p>Que se escape un comentario ofensivo (falso negativo) daña a la comunidad. Importa la <b>sensibilidad</b>: en el caso de la clase pasada fue 0.52, el modelo detectaba la mitad.</p>
+  </div>
+  <div class="card frag" data-step="1" style="left:358px;top:170px;width:307px;height:215px">
+    <h4>Filtro de spam</h4>
+    <p>Mandar un correo legítimo a spam (falso positivo) es peor que dejar pasar uno de publicidad. Importa la <b>precisión</b>.</p>
+  </div>
+  <div class="card frag" data-step="1" style="left:686px;top:170px;width:307px;height:215px">
+    <h4>Reseñas para un panel de control</h4>
+    <p>Los dos errores cuestan parecido y las clases están balanceadas. Sirven la <b>exactitud</b> y la <b>F1</b>, y el AUC para comparar versiones del modelo.</p>
+  </div>
+  <div class="card roja frag" data-step="2" style="left:31px;top:405px;width:470px;height:235px">
+    <h4>La exactitud engaña con clases desbalanceadas</h4>
+    <p>En la base de comentarios, 52% no eran ofensivos. Un "modelo tonto" que siempre responde "no ofensivo" tiene exactitud 0.52 sin aprender nada. El modelo real sacó 0.61: solo nueve puntos mejor que no hacer nada.</p>
+    <p style="margin-top:8px">Compare siempre contra esa línea base.</p>
+  </div>
+  <div class="card verde frag" data-step="3" style="left:523px;top:405px;width:470px;height:235px">
+    <h4>Precisión y sensibilidad se jalan en sentidos opuestos</h4>
+    <p>Si el modelo marca más reseñas como negativas, detecta más de las negativas reales (sube la sensibilidad) pero mete más positivas por error (baja la precisión). El punto de equilibrio lo fija el umbral de decisión, que vemos a continuación.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 12. Umbral interactivo -->
+<section class="slide" data-anim="umbral">
+  <div class="banda">El umbral de 0.5 es una decisión: moverlo cambia precisión por sensibilidad</div>
+  <div class="sub">El modelo entrega una probabilidad por reseña; la etiqueta aparece al cortar. Mueva el umbral y observe las 450 reseñas de prueba.</div>
+  <svg id="svg-umbral" width="620" height="250" style="position:absolute;left:31px;top:165px"></svg>
+  <div style="position:absolute;left:31px;top:418px;width:620px">
+    <div style="display:flex;align-items:center;gap:14px;font-size:15px"><span>Umbral sobre P(positiva):</span><input id="umbral" type="range" min="0.05" max="0.95" step="0.01" value="0.5" style="flex:1"><span class="num" id="umbral-val" style="font-size:20px;color:var(--navy)">0.50</span></div>
+    <div style="font-size:13.5px;color:#333;margin-top:4px">Se marca como negativa toda reseña con P(positiva) menor al umbral. Las métricas se calculan para la clase negativa.</div>
+  </div>
+  <div class="kpi" style="position:absolute;left:31px;top:492px;width:620px">
+    <div><div class="v" id="k-vp">208</div><div class="l">VP: negativas detectadas</div></div>
+    <div><div class="v" id="k-fp">15</div><div class="l">FP: falsas alarmas</div></div>
+    <div><div class="v" id="k-fn">15</div><div class="l">FN: negativas perdidas</div></div>
+    <div><div class="v" id="k-vn">212</div><div class="l">VN: positivas correctas</div></div>
+  </div>
+  <div class="kpi" style="position:absolute;left:31px;top:588px;width:620px">
+    <div style="background:var(--hgreen)"><div class="v" id="k-prec">0.933</div><div class="l">precisión</div></div>
+    <div style="background:var(--hgreen)"><div class="v" id="k-rec">0.933</div><div class="l">sensibilidad</div></div>
+    <div style="background:var(--hgreen)"><div class="v" id="k-acc">0.933</div><div class="l">exactitud</div></div>
+  </div>
+  <div class="card" style="left:672px;top:165px;width:321px;height:215px">
+    <h4>Qué observar</h4>
+    <ul>
+      <li>Umbral alto (0.8): casi todo se marca negativo. Sube la sensibilidad, cae la precisión.</li>
+      <li>Umbral bajo (0.2): solo las muy seguras se marcan negativas. Sube la precisión, caen las detectadas.</li>
+      <li>La exactitud se maximiza cerca de 0.5 porque las clases están balanceadas.</li>
+    </ul>
+  </div>
+  <pre class="codigo" style="left:672px;top:395px;width:321px;height:120px;font-size:12.5px">library(probably)
+predicciones |>
+  threshold_perf(
+    sentimiento, .pred_negativa,
+    thresholds = seq(0.1, 0.9, 0.05))</pre>
+  <div class="card verde" style="left:672px;top:530px;width:321px;height:120px"><h4>Para llevarse</h4><p>El umbral no se afina con la base de prueba. Se elige según el costo de cada error, idealmente con la validación cruzada.</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, probabilidades en la base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 13. Curva ROC -->
+<section class="slide" data-anim="roc" data-steps="3">
+  <div class="banda">La curva ROC recorre todos los umbrales de una sola vez</div>
+  <div class="sub">Para cada umbral se calcula un par (1 - especificidad, sensibilidad). Unir los puntos da la curva; el barrido va de "nada es negativo" a "todo es negativo".</div>
+  <svg id="svg-roc" width="470" height="470" style="position:absolute;left:31px;top:160px"></svg>
+  <div class="card" style="left:530px;top:160px;width:463px;height:150px">
+    <h4>Los dos ejes</h4>
+    <p><b>Sensibilidad</b> (eje vertical): fracción de negativas reales detectadas.<br><b>1 - especificidad</b> (eje horizontal): fracción de positivas reales marcadas como negativas por error, es decir, la tasa de falsas alarmas.</p>
+  </div>
+  <div class="card soft frag" data-step="1" style="left:530px;top:322px;width:463px;height:122px">
+    <h4>La diagonal es el azar</h4>
+    <p>Un modelo que asigna probabilidades al azar detecta tantas negativas como falsas alarmas genera. Cuanto más se despega la curva hacia la esquina superior izquierda, mejor separa.</p>
+  </div>
+  <div class="card frag" data-step="2" style="left:530px;top:454px;width:463px;height:88px">
+    <h4>Durante el barrido</h4>
+    <p id="roc-estado" class="mono" style="font-size:13.5px">umbral = 0.00 · sensibilidad = 0.000 · 1 - especificidad = 0.000</p>
+  </div>
+  <pre class="codigo frag" data-step="3" style="left:530px;top:550px;width:463px;height:108px;font-size:12.5px;line-height:1.25">predicciones |>
+  roc_curve(truth = sentimiento, .pred_negativa) |>
+  autoplot()
+
+predicciones |>
+  roc_auc(truth = sentimiento, .pred_negativa)</pre>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 14. AUC -->
+<section class="slide">
+  <div class="banda">Un AUC de 0.966 ordena bien 97 de cada 100 pares de reseñas</div>
+  <div class="sub">El área bajo la curva ROC resume la curva en un número entre 0.5 (azar) y 1 (separación perfecta), independiente del umbral.</div>
+  <svg width="962" height="150" style="position:absolute;left:31px;top:165px">
+    <rect x="40" y="60" width="880" height="18" fill="#EAF2FA"/>
+    <rect x="40" y="60" width="352" height="18" fill="#FADBD8"/>
+    <rect x="392" y="60" width="176" height="18" fill="#F3E6C9"/>
+    <rect x="568" y="60" width="176" height="18" fill="#D5F5E3"/>
+    <rect x="744" y="60" width="176" height="18" fill="#B9E8CC"/>
+    <g font-size="13" fill="#333" text-anchor="middle">
+      <text x="40" y="100">0.5</text><text x="216" y="100">0.6</text><text x="392" y="100">0.7</text><text x="568" y="100">0.8</text><text x="744" y="100">0.9</text><text x="920" y="100">1.0</text>
+      <text x="216" y="122" font-style="italic">casi azar</text><text x="480" y="122" font-style="italic">aceptable</text><text x="656" y="122" font-style="italic">bueno</text><text x="832" y="122" font-style="italic">excelente</text>
+    </g>
+    <g class="frag" data-step="1">
+      <line x1="392" y1="40" x2="392" y2="84" stroke="#C0392B" stroke-width="3"/>
+      <text x="392" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#C0392B">0.70 comentarios ofensivos</text>
+    </g>
+    <g class="frag" data-step="1">
+      <line x1="860" y1="40" x2="860" y2="84" stroke="#1E4C7D" stroke-width="3"/>
+      <text x="860" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#1E4C7D">0.966 reseñas sintéticas</text>
+    </g>
+  </svg>
+  <div class="card frag" data-step="2" style="left:31px;top:335px;width:470px;height:150px">
+    <h4>Qué significa el número</h4>
+    <p>Si tomamos al azar una reseña negativa y una positiva, el AUC es la probabilidad de que el modelo le dé mayor puntaje de "negativa" a la que sí lo es. Con 0.966, ordena bien 97 de cada 100 pares.</p>
+  </div>
+  <div class="card verde frag" data-step="2" style="left:523px;top:335px;width:470px;height:150px">
+    <h4>Para qué sirve</h4>
+    <p>Comparar modelos o versiones de la receta sin fijar un umbral. Por eso <code>tune_grid()</code> elige la penalización por <code>roc_auc</code> y no por exactitud.</p>
+  </div>
+  <div class="card roja frag" data-step="3" style="left:31px;top:500px;width:470px;height:150px">
+    <h4>Qué no dice</h4>
+    <p>No dice cuántos errores habrá en el umbral que use en producción, ni si las probabilidades están calibradas. Para eso están la matriz de confusión y la calibración.</p>
+  </div>
+  <div class="card soft frag" data-step="3" style="left:523px;top:500px;width:470px;height:150px">
+    <h4>La diferencia entre 0.70 y 0.966</h4>
+    <p>Misma receta y mismo algoritmo. Lo que cambia son los datos: etiquetas ruidosas en los comentarios reales, etiquetas limpias en las reseñas sintéticas. El techo lo ponen las etiquetas.</p>
+  </div>
+  <div class="fuente">Fuente: analisis_resenas.R y caso de comentarios ofensivos (sesión 14). Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 15. La perilla -->
+<section class="slide">
+  <div class="banda">La penalización es una perilla y la base de prueba no sirve para girarla</div>
+  <div class="sub">Un hiperparámetro no se aprende de los datos como un coeficiente: lo fija quien modela. Y hay que fijarlo sin mirar la prueba.</div>
+  <pre class="codigo" style="left:31px;top:170px;width:470px;height:178px">modelo <- logistic_reg(
+    penalty = <span class="r">tune()</span>,   <span class="c"># ¿cuánto regularizar?</span>
+    mixture = 0.5) |>     <span class="c"># elastic net</span>
+  set_engine("glmnet") |>
+  set_mode("classification")
+
+flujo <- workflow() |>
+  add_recipe(receta) |> add_model(modelo)</pre>
+  <div class="card" style="left:523px;top:170px;width:470px;height:178px">
+    <h4>Qué hace la penalización</h4>
+    <p>Encoge los coeficientes hacia cero. Con <code>mixture = 0.5</code> la mitad del castigo es lasso (apaga tokens por completo) y la otra mitad ridge (reduce todos un poco). Más penalización, modelo más simple.</p>
+  </div>
+  <div class="card roja frag" data-step="1" style="left:31px;top:365px;width:470px;height:280px">
+    <h4>Por qué no probar valores contra la base de prueba</h4>
+    <p>Si probamos diez penalizaciones y nos quedamos con la que mejor sale en prueba, la prueba ya participó en la decisión. La métrica final queda optimista: medimos el modelo con los mismos datos con que lo escogimos.</p>
+    <p style="margin-top:8px">Es la misma trampa del sobreajuste, un nivel arriba.</p>
+  </div>
+  <div class="card verde frag" data-step="2" style="left:523px;top:365px;width:470px;height:280px">
+    <h4>La salida: fabricar "pruebas" dentro del entrenamiento</h4>
+    <p>Dividimos la base de entrenamiento en pliegues, entrenamos con unos y validamos con el otro, y repetimos rotando. Cada penalización recibe un promedio honesto sin tocar la prueba.</p>
+    <p style="margin-top:8px">Eso es la <b>validación cruzada</b>.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 16. k-fold animado -->
+<section class="slide" data-anim="kfold" data-steps="6">
+  <div class="banda">La validación cruzada hace cinco ensayos con la misma base y los promedia</div>
+  <div class="sub">La base de entrenamiento (1,350 reseñas) se parte en cinco pliegues de unas 270. Cada pliegue es validación una vez y entrenamiento cuatro.</div>
+  <div class="pliegues" id="pliegues"></div>
+  <div class="card frag" data-step="6" style="left:31px;top:475px;width:640px;height:95px">
+    <h4>Promedio de los cinco ensayos (penalización 0.01)</h4>
+    <p>AUC medio <span class="num">0.939</span> con error estándar <span class="num">0.006</span>; exactitud media <span class="num">0.878</span>. Ese promedio es la calificación de esta penalización, obtenida sin mirar la base de prueba.</p>
+  </div>
+  <div class="card" style="left:695px;top:165px;width:298px;height:162px">
+    <h4>Qué se repite en cada ensayo</h4>
+    <p>Toda la receta: vocabulario, idf y stemming se aprenden solo con los cuatro pliegues de entrenamiento. Por eso usamos <code>workflow()</code>: no hay fuga de información hacia el pliegue de validación.</p>
+  </div>
+  <div class="card soft frag" data-step="3" style="left:695px;top:337px;width:298px;height:140px">
+    <h4>Por qué varía entre pliegues</h4>
+    <p>El AUC va de 0.927 a 0.961 según qué 270 reseñas tocaron validar. Un solo ensayo sería una medida ruidosa; cinco dan media y error estándar.</p>
+  </div>
+  <div class="card verde frag" data-step="6" style="left:695px;top:487px;width:298px;height:104px"><h4>Cuántos pliegues</h4><p>Cinco o diez es lo usual. Más pliegues: estimación más estable y más cómputo.</p></div>
+  <div class="card roja" style="left:31px;top:600px;width:962px;height:58px"><h4>La base de prueba sigue intacta</h4><p>Todo esto ocurre dentro de las 1,350 reseñas de entrenamiento. Las 450 de prueba siguen guardadas para el final.</p></div>
+  <div class="fuente">Fuente: fit_resamples() con los pliegues de analisis_resenas.R. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 17. Código de CV -->
+<section class="slide">
+  <div class="banda">En código son cuatro funciones: vfold_cv, grid_regular, tune_grid y select_best</div>
+  <div class="sub">Cada línea corresponde a una decisión: cuántos pliegues, qué valores probar, con qué métricas y cuál quedarse.</div>
+  <pre class="codigo" style="left:31px;top:165px;width:560px;height:488px;font-size:13.5px;line-height:1.35"><span class="c"># 1) pliegues estratificados dentro de entrenamiento</span>
+set.seed(2026)
+pliegues <- <span class="k">vfold_cv</span>(entrenamiento, v = 5,
+                     strata = sentimiento)
+
+<span class="c"># 2) qué métricas calcular en cada ensayo</span>
+metricas <- metric_set(roc_auc, accuracy,
+                       f_meas, precision, recall)
+
+<span class="c"># 3) rejilla de penalizaciones: 10 valores
+#    entre 10^-5 y 10^-2 (escala logarítmica)</span>
+rejilla <- <span class="k">grid_regular</span>(penalty(range = c(-5, -2)),
+                        levels = 10)
+
+<span class="c"># 4) entrenar y validar 10 x 5 = 50 veces</span>
+set.seed(2026)
+resultados_cv <- <span class="k">tune_grid</span>(flujo,
+  resamples = pliegues, grid = rejilla,
+  metrics = metricas)
+
+<span class="c"># 5) ver y elegir</span>
+autoplot(resultados_cv)
+show_best(resultados_cv, metric = "roc_auc")
+mejor <- <span class="k">select_best</span>(resultados_cv, metric = "roc_auc")</pre>
+  <div class="card frag" data-step="1" style="left:615px;top:170px;width:378px;height:140px"><h4>vfold_cv</h4><p><code>v = 5</code> pliegues; <code>strata</code> mantiene el 50/50 en cada uno. La semilla fija qué reseña cae en qué pliegue.</p></div>
+  <div class="card frag" data-step="2" style="left:615px;top:325px;width:378px;height:150px"><h4>grid_regular y penalty()</h4><p>El rango se da en potencias de 10: <code>c(-5, -2)</code> son valores de 0.00001 a 0.01. Las penalizaciones se exploran en escala logarítmica porque su efecto es multiplicativo.</p></div>
+  <div class="card frag" data-step="3" style="left:615px;top:490px;width:378px;height:150px"><h4>tune_grid y select_best</h4><p>Por cada penalización promedia las métricas de los cinco pliegues. <code>select_best</code> devuelve la fila ganadora según la métrica que se le indique; aquí, el AUC.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 18. Resultado de la afinación -->
+<section class="slide" data-anim="cvplot" data-steps="3">
+  <div class="banda">La afinación eligió la penalización más alta de la rejilla: hay que ampliarla</div>
+  <div class="sub">AUC promedio en validación cruzada para las diez penalizaciones. La curva sigue subiendo en el borde derecho.</div>
+  <svg id="svg-cv" width="620" height="400" style="position:absolute;left:31px;top:165px"></svg>
+  <div class="card" style="left:672px;top:165px;width:321px;height:140px"><h4>Cómo leer la gráfica</h4><p>Cada punto es el AUC medio de cinco pliegues; la barra vertical es más o menos un error estándar. El eje horizontal es logarítmico.</p></div>
+  <div class="card frag" data-step="2" style="left:672px;top:320px;width:321px;height:150px"><h4>Más penalización, mejor</h4><p>De 0.900 con casi nada de penalización a 0.939 con 0.01. Regularizar más quitó ruido y mejoró la generalización.</p></div>
+  <div class="card roja frag" data-step="3" style="left:672px;top:485px;width:321px;height:165px"><h4>El óptimo está en el borde</h4><p>Cuando el mejor valor es el extremo de la rejilla no sabemos si más allá sigue mejorando. Siguiente paso: repetir con <code>range = c(-5, -1)</code> o más niveles.</p></div>
+  <div class="fuente">Fuente: tune_grid() en analisis_resenas.R, 5 pliegues. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 19. Ruta de coeficientes -->
+<section class="slide" data-anim="rutacoef" data-steps="2">
+  <div class="banda">La regularización apaga tokens: con 0.01 sobreviven 454 de 1,000</div>
+  <div class="sub">Trayectoria de los doce coeficientes más grandes conforme crece la penalización. A la derecha todos llegan a cero.</div>
+  <svg id="svg-ruta" width="640" height="420" style="position:absolute;left:31px;top:165px"></svg>
+  <div class="card" style="left:695px;top:165px;width:298px;height:188px"><h4>Qué muestra</h4><p>glmnet ajusta el modelo para cien penalizaciones de una vez. Con penalización pequeña los coeficientes son grandes y muchos; conforme crece, los menos útiles caen a cero (azul empuja a positiva, rojo a negativa).</p></div>
+  <div class="card frag" data-step="2" style="left:695px;top:365px;width:298px;height:135px"><h4>En el valor elegido</h4><p>La línea vertical marca 0.01. Ahí quedan 454 tokens con coeficiente distinto de cero; los otros 546 no participan en la predicción.</p></div>
+  <div class="card verde frag" data-step="2" style="left:695px;top:512px;width:298px;height:138px"><h4>Lasso, ridge y elastic net</h4><p><code>mixture = 1</code> es lasso (ceros exactos), <code>0</code> es ridge (todos pequeños, ninguno cero) y <code>0.5</code> mezcla ambos. También se puede afinar con <code>tune()</code>.</p></div>
+  <div class="fuente">Fuente: ruta de coeficientes del modelo final (glmnet). Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 20. last_fit -->
+<section class="slide">
+  <div class="banda">La base de prueba se usa una sola vez, al final, con last_fit</div>
+  <div class="sub">Con la penalización elegida se cierra el flujo, se reentrena con todo el entrenamiento y se evalúa en la prueba. Después ya no se cambia nada.</div>
+  <div class="caja-flujo frag" data-step="1" style="left:31px;top:185px"><b>tune_grid()</b>50 ajustes: 10 penalizaciones por 5 pliegues, dentro del entrenamiento.</div>
+  <div class="flecha frag" data-step="1" style="left:235px;top:215px;width:40px"></div>
+  <div class="caja-flujo frag" data-step="1" style="left:280px;top:185px"><b>select_best()</b>Se queda con la penalización de mayor AUC medio: 0.01.</div>
+  <div class="flecha frag" data-step="2" style="left:484px;top:215px;width:40px"></div>
+  <div class="caja-flujo frag" data-step="2" style="left:529px;top:185px"><b>finalize_workflow()</b>Sustituye <code>tune()</code> por el valor elegido. El flujo queda cerrado.</div>
+  <div class="flecha frag" data-step="3" style="left:733px;top:215px;width:40px"></div>
+  <div class="caja-flujo roja frag" data-step="3" style="left:778px;top:185px;width:215px"><b>last_fit()</b>Entrena con las 1,350 de entrenamiento y predice las 450 de prueba. Una sola vez.</div>
+  <pre class="codigo frag" data-step="3" style="left:31px;top:300px;width:560px;height:175px;font-size:13.5px">flujo_final  <- finalize_workflow(flujo, mejor)
+ajuste_final <- last_fit(flujo_final, particion,
+                         metrics = metricas)
+
+collect_metrics(ajuste_final)       <span class="c"># métricas en prueba</span>
+predicciones <- collect_predictions(ajuste_final) |>
+  bind_cols(prueba |> select(id, categoria, texto))</pre>
+  <div class="card frag" data-step="4" style="left:615px;top:300px;width:378px;height:175px">
+    <h4>Prueba contra validación cruzada</h4>
+    <p>AUC en validación cruzada: 0.939. AUC en prueba: 0.966. Que la prueba salga un poco mejor es normal: el modelo final se entrenó con las 1,350 reseñas y no con 1,080.</p>
+  </div>
+  <div class="card roja frag" data-step="4" style="left:31px;top:495px;width:470px;height:150px">
+    <h4>Si vuelve a tocar la prueba, deja de ser prueba</h4>
+    <p>Cambiar la receta o el umbral "porque en prueba sale mejor" convierte la prueba en otra base de entrenamiento. Cualquier ajuste posterior regresa a la validación cruzada.</p>
+  </div>
+  <div class="card verde frag" data-step="4" style="left:523px;top:495px;width:470px;height:150px">
+    <h4>Lo que se reporta</h4>
+    <p>Las métricas de <code>collect_metrics(ajuste_final)</code>, la matriz de confusión y la curva ROC de la prueba. El modelo que va a producción es <code>extract_workflow(ajuste_final)</code>.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 21. Por categoría -->
+<section class="slide">
+  <div class="banda">La exactitud en prueba va de 90% en apps a 97% en servicios</div>
+  <div class="sub">Una métrica global esconde diferencias entre subgrupos. Conviene desagregar por las variables que estén disponibles.</div>
+  <div class="barras frag" data-step="1" style="left:31px;top:175px;width:600px">
+    <div class="fila-barra"><div class="lab">servicio (n = 90)</div><div class="pista"><div class="barra" style="--w:96.7%"></div></div><div class="val">96.7%</div></div>
+    <div class="fila-barra"><div class="lab">hotel (n = 92)</div><div class="pista"><div class="barra" style="--w:94.6%"></div></div><div class="val">94.6%</div></div>
+    <div class="fila-barra"><div class="lab">producto (n = 82)</div><div class="pista"><div class="barra" style="--w:93.9%"></div></div><div class="val">93.9%</div></div>
+    <div class="fila-barra"><div class="lab">restaurante (n = 91)</div><div class="pista"><div class="barra" style="--w:91.2%"></div></div><div class="val">91.2%</div></div>
+    <div class="fila-barra"><div class="lab">app (n = 95)</div><div class="pista"><div class="barra" style="--w:90.4%"></div></div><div class="val">90.4%</div></div>
+  </div>
+  <pre class="codigo frag" data-step="1" style="left:31px;top:450px;width:600px;height:95px;font-size:13.5px">predicciones |>
+  group_by(categoria) |>
+  accuracy(truth = sentimiento, estimate = .pred_class)</pre>
+  <div class="card frag" data-step="2" style="left:655px;top:175px;width:338px;height:185px"><h4>Qué buscar al desagregar</h4><p>Subgrupos con desempeño muy distinto al global. Con 80 a 95 reseñas por categoría, una diferencia de 6 pp equivale a unas 5 reseñas: hay que leerla con cautela.</p></div>
+  <div class="card soft frag" data-step="2" style="left:655px;top:375px;width:338px;height:170px"><h4>Por qué apps sale más bajo</h4><p>Es una hipótesis para verificar leyendo los errores: las reseñas de apps mezclan vocabulario técnico (sincronización, actualización, pago) con quejas y elogios sobre lo mismo.</p></div>
+  <div class="card hl frag" data-step="2" style="left:31px;top:565px;width:962px;height:85px"><h4>Misma lógica para cualquier subgrupo</h4><p>Si la base trae región, fecha o tipo de usuario, repita el cálculo. Un modelo que falla sistemáticamente en un subgrupo es un problema aunque la exactitud global sea alta.</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba de 450 reseñas. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 22. Errores -->
+<section class="slide" data-anim="errores">
+  <div class="banda">Los errores más confiados son contraste y sarcasmo: el modelo cuenta palabras</div>
+  <div class="sub">Las 30 reseñas mal clasificadas, ordenadas por qué tan segura estaba la predicción. Leerlas vale más que probar otro algoritmo.</div>
+  <div id="lista-errores"></div>
+  <pre class="codigo" style="left:655px;top:165px;width:338px;height:150px;font-size:12.5px">errores <- predicciones |>
+  filter(sentimiento != .pred_class) |>
+  arrange(desc(abs(.pred_positiva - 0.5))) |>
+  select(categoria, texto,
+         sentimiento, .pred_positiva)
+nrow(errores)   <span class="c"># 30</span></pre>
+  <div class="card frag" data-step="1" style="left:655px;top:330px;width:338px;height:150px"><h4>Contraste "aunque X, Y"</h4><p>La reseña elogia dos cosas y condena una. El modelo suma pesos de tokens y gana la mayoría, no el veredicto.</p></div>
+  <div class="card roja frag" data-step="2" style="left:655px;top:495px;width:338px;height:155px"><h4>Sarcasmo</h4><p>"Lo máximo: el producto es de pésima calidad. Qué detalle." Las palabras positivas están ahí; la intención no. Pregunta para discutir: ¿qué necesitaría el modelo para entender estos casos?</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Textos tal como vienen en la base sintética.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 23. Mejoras -->
+<section class="slide">
+  <div class="banda">Seis palancas para mejorar el modelo antes de cambiar de algoritmo</div>
+  <div class="sub">En orden aproximado de rendimiento por línea de código. Cada cambio se evalúa con validación cruzada, no con la prueba.</div>
+  <table class="tabla" style="position:absolute;left:31px;top:165px;width:962px">
+    <tr><th style="width:36px">#</th><th style="width:230px">Palanca</th><th>Qué hacer</th><th style="width:280px">Cuidado</th></tr>
+    <tr class="frag" data-step="1"><td>1</td><td>Regularizar y afinar</td><td><code>glmnet</code> con <code>penalty = tune()</code>, rejilla más amplia, <code>select_best</code> por AUC.</td><td>Si el óptimo cae en el borde, ampliar la rejilla.</td></tr>
+    <tr class="frag" data-step="1"><td>2</td><td>Mejores variables</td><td>Bigramas, stemming, más tokens, "!!!" y alargamientos como señal.</td><td>No borrar negaciones ni puntuación expresiva.</td></tr>
+    <tr class="frag" data-step="2"><td>3</td><td>Stopwords y diccionarios</td><td>Modificar la lista de stopwords con criterio; agregar un diccionario de palabras ofensivas o de sentimiento como variables extra.</td><td>Revisar qué palabras se van: "no" es señal.</td></tr>
+    <tr class="frag" data-step="2"><td>4</td><td>Dispersión de la DTM</td><td>Ajustar <code>min_times</code> y <code>max_tokens</code> en <code>step_tokenfilter</code>.</td><td>Menos columnas reduce sobreajuste; demasiado pocas pierden señal.</td></tr>
+    <tr class="frag" data-step="3"><td>5</td><td>Umbral de decisión</td><td>Mover el corte según el costo de cada error, con <code>probably::threshold_perf()</code>.</td><td>No cambia el AUC; cambia precisión y sensibilidad.</td></tr>
+    <tr class="frag" data-step="3"><td>6</td><td>Otro algoritmo o ensamble</td><td><code>naive_Bayes</code>, <code>svm_linear</code>, <code>rand_forest</code> con la misma receta; comparar con <code>workflow_set()</code>.</td><td>Si todos topan igual, el techo lo ponen las etiquetas.</td></tr>
+  </table>
+  <div class="card hl frag" data-step="3" style="left:31px;top:560px;width:962px;height:90px"><h4>Expectativa realista</h4><p>En el caso de comentarios ofensivos, las palancas 1 y 2 llevaron la exactitud de 0.61 a cerca de 0.70. El resto del techo lo pusieron las etiquetas. Con etiquetas limpias, como en las reseñas, la misma receta da AUC de 0.94 a 0.97.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 24. Ejercicio 1/2 -->
+<section class="slide">
+  <div class="banda">Ejercicio 01: un clasificador de reseñas de principio a fin (1 de 2)</div>
+  <div class="sub">A partir del archivo <code>resenas_sinteticas.csv</code>, genere un modelo que permita saber si una reseña es positiva o negativa.</div>
+  <div class="texto" style="left:31px;top:170px;width:962px;font-size:16.5px">
+    <ol>
+      <li>Cargue los datos del archivo.</li>
+      <li>Explórelos: cuántas reseñas positivas y cuántas negativas hay. ¿Está balanceada la base? Convierta la etiqueta a factor.</li>
+      <li>Haga el preprocesamiento correspondiente.</li>
+      <li>Parta en base de entrenamiento y base de prueba. Que la base de entrenamiento sea el 70% de los datos, estratificada por la etiqueta.</li>
+      <li>Genere la receta de preprocesamiento: quite stopwords, tokenice a palabras, haga stemming en vez de lematización, filtre los tokens que aparecen menos de 3 veces y quédese con un máximo de 500, y obtenga el tf-idf.</li>
+      <li>Programe el modelo: una regresión logística con penalización (use <code>penalty = 0.01</code> y <code>mixture = 0.5</code>, motor <code>glmnet</code>).</li>
+      <li>Genere el flujo de trabajo sumando la receta más el modelo.</li>
+      <li>Con ese flujo, ajuste el modelo con la función <code>fit()</code> sobre la base de entrenamiento.</li>
+    </ol>
+  </div>
+  <div class="card soft" style="left:31px;top:545px;width:962px;height:100px"><h4>Entregable</h4><p>Un script de R que corra de principio a fin, con comentarios que expliquen cada bloque. Las métricas deben venir de la base de prueba, no de la de entrenamiento.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 25. Ejercicio 2/2 -->
+<section class="slide">
+  <div class="banda">Ejercicio 01: un clasificador de reseñas de principio a fin (2 de 2)</div>
+  <div class="sub">La segunda parte evalúa el modelo, lo afina y lo lleva a una aplicación.</div>
+  <div class="texto" style="left:31px;top:170px;width:962px;font-size:16.5px">
+    <ol start="9">
+      <li>Obtenga la matriz de confusión en la base de prueba e identifique VP, FP, FN y VN. Diga cuál es la clase de interés según el orden del factor.</li>
+      <li>Calcule exactitud, precisión, sensibilidad y F1. Explique en una oración qué pregunta responde cada una.</li>
+      <li>Obtenga la curva ROC y el AUC. Interprete el AUC.</li>
+      <li>Sustituya <code>penalty = 0.01</code> por <code>tune()</code>, cree cinco pliegues estratificados con <code>vfold_cv()</code>, afine con <code>tune_grid()</code> y elija con <code>select_best()</code> por AUC. Compare el AUC de validación cruzada con el de prueba.</li>
+      <li>Cierre el flujo con <code>finalize_workflow()</code> y <code>last_fit()</code>. Reporte las métricas finales.</li>
+      <li>Usando vibe coding, programe una aplicación Shiny en la que usted escriba una reseña y, al apretar un botón, el modelo le diga si es positiva o negativa.</li>
+    </ol>
+  </div>
+  <div class="card roja" style="left:31px;top:510px;width:470px;height:135px"><h4>Dos errores que descuentan</h4><p>Reportar métricas de entrenamiento como si fueran de prueba, y elegir la penalización o el umbral mirando la base de prueba.</p></div>
+  <div class="card verde" style="left:523px;top:510px;width:470px;height:135px"><h4>Reto opcional</h4><p>Amplíe la rejilla de penalización a <code>range = c(-5, -1)</code> y afine también <code>mixture</code>. ¿Cambia la elección? ¿Cuántos tokens sobreviven?</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 26. Resumen -->
+<section class="slide">
+  <div class="banda">Resumen: ocho conceptos para llevarse de la sesión</div>
+  <div class="sub">Cada concepto tiene su función en tidymodels. Si puede explicar los ocho con sus palabras, domina la evaluación de un clasificador.</div>
+  <div class="card" style="left:31px;top:170px;width:470px;height:105px"><h4>Partición entrenamiento / prueba · <span class="mono">initial_split()</span></h4><p>La prueba simula datos nuevos. Se aparta al inicio, estratificada, y se usa una sola vez.</p></div>
+  <div class="card" style="left:523px;top:170px;width:470px;height:105px"><h4>Sobreajuste</h4><p>El modelo memoriza el entrenamiento. Se detecta comparando la métrica de entrenamiento con la de prueba.</p></div>
+  <div class="card" style="left:31px;top:290px;width:470px;height:105px"><h4>Matriz de confusión · <span class="mono">conf_mat()</span></h4><p>Predicción contra verdad en cuatro celdas: VP, FP, FN, VN. "Positivo" es el primer nivel del factor.</p></div>
+  <div class="card" style="left:523px;top:290px;width:470px;height:105px"><h4>Exactitud, precisión, sensibilidad, F1 · <span class="mono">metric_set()</span></h4><p>Cuatro preguntas distintas a la misma matriz. La métrica correcta depende de qué error cuesta más.</p></div>
+  <div class="card" style="left:31px;top:410px;width:470px;height:105px"><h4>Umbral y curva ROC · <span class="mono">roc_curve(), roc_auc()</span></h4><p>El umbral reparte precisión y sensibilidad; la ROC recorre todos los umbrales y el AUC la resume.</p></div>
+  <div class="card" style="left:523px;top:410px;width:470px;height:105px"><h4>Hiperparámetro y regularización · <span class="mono">penalty, mixture</span></h4><p>Perillas que fija quien modela. La penalización encoge coeficientes y apaga tokens.</p></div>
+  <div class="card" style="left:31px;top:530px;width:470px;height:115px"><h4>Validación cruzada · <span class="mono">vfold_cv(), tune_grid()</span></h4><p>Pliegues dentro del entrenamiento para calificar cada valor del hiperparámetro sin tocar la prueba.</p></div>
+  <div class="card" style="left:523px;top:530px;width:470px;height:115px"><h4>Cierre del flujo · <span class="mono">finalize_workflow(), last_fit()</span></h4><p>Con el valor elegido se reentrena con todo el entrenamiento y se evalúa en la prueba, una vez.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 27. Recursos -->
+<section class="slide">
+  <div class="banda">Recursos para profundizar</div>
+  <div class="sub">Documentación oficial y dos libros en línea, gratuitos, escritos por quienes mantienen tidymodels.</div>
+  <div class="card" style="left:31px;top:170px;width:470px;height:130px"><h4>Kuhn, M. y Silge, J. (2022). <i>Tidy Modeling with R</i>. O'Reilly.</h4><p>tmwr.org. Capítulos 10 (remuestreo), 12 (afinación) y 9 (métricas). Es la referencia del flujo completo.</p></div>
+  <div class="card" style="left:523px;top:170px;width:470px;height:130px"><h4>Hvitfeldt, E. y Silge, J. (2021). <i>Supervised Machine Learning for Text Analysis in R</i>. CRC Press.</h4><p>smltar.com. Capítulo 7, clasificación de texto con regresión logística regularizada: el mismo flujo de esta sesión.</p></div>
+  <div class="card" style="left:31px;top:315px;width:307px;height:150px"><h4>textrecipes</h4><p>textrecipes.tidymodels.org. Referencia de cada <code>step_*</code> y de <code>show_tokens()</code>.</p></div>
+  <div class="card" style="left:358px;top:315px;width:307px;height:150px"><h4>yardstick</h4><p>yardstick.tidymodels.org. Definición de cada métrica, <code>event_level</code> y curvas ROC.</p></div>
+  <div class="card" style="left:686px;top:315px;width:307px;height:150px"><h4>tune y rsample</h4><p>tune.tidymodels.org y rsample.tidymodels.org. Artículo "Tune model parameters" en tidymodels.org/start/tuning.</p></div>
+  <div class="card soft" style="left:31px;top:480px;width:470px;height:165px"><h4>probably</h4><p>probably.tidymodels.org. <code>threshold_perf()</code> para elegir el umbral y <code>cal_plot_breaks()</code> para revisar la calibración de las probabilidades.</p></div>
+  <div class="card soft" style="left:523px;top:480px;width:470px;height:165px"><h4>Material de la sesión</h4><p><code>analisis_resenas.R</code> (flujo completo), <code>resenas_sinteticas.csv</code> (1,800 reseñas) y la app <code>app_resenas/</code> en el repositorio del curso.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 28. Conclusiones -->
+<section class="slide">
+  <div class="banda">Conclusiones</div>
+  <div class="sub">Cinco ideas que resumen la sesión; se quedan en pantalla durante las preguntas.</div>
+  <div class="card hl" style="left:31px;top:170px;width:962px;height:480px">
+    <ol style="font-size:21px;line-height:1.55;padding-left:30px;margin-top:10px">
+      <li style="margin-bottom:22px"><b>La única métrica creíble es la de la base de prueba</b>, y la prueba se usa una vez. Entrenamiento dio 0.969 y prueba 0.933: la diferencia es sobreajuste.</li>
+      <li style="margin-bottom:22px"><b>Una matriz de confusión responde cuatro preguntas distintas.</b> Exactitud, precisión, sensibilidad y F1 pesan los dos errores de forma diferente; elija según cuál cuesta más.</li>
+      <li style="margin-bottom:22px"><b>El umbral es una decisión y el AUC no depende de él.</b> La curva ROC muestra todos los umbrales; el AUC (0.966) sirve para comparar modelos, no para contar errores.</li>
+      <li style="margin-bottom:22px"><b>La validación cruzada es la forma honesta de afinar.</b> Cinco pliegues dentro del entrenamiento calificaron cada penalización (AUC 0.939 ± 0.006) sin tocar la prueba.</li>
+      <li><b>Leer los errores dice más que cambiar de algoritmo.</b> Contraste y sarcasmo marcan el límite de un modelo que cuenta palabras; el techo lo ponen los datos y las etiquetas.</li>
+    </ol>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 29. Gracias -->
+<section class="slide">
+  <div class="barra-gris"><img src="__LOGO__" alt="Tecnológico de Monterrey"></div>
+  <div class="bloque-azul"></div>
+  <div class="gracias">Gracias</div>
+  <div class="subtitulo-portada" style="top:330px">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+  <div class="preguntas">¿Preguntas?</div>
+  <div class="autor" style="top:540px">Jorge Juvenal Campos Ferreira<div class="correo">juvenal.campos@tec.mx</div></div>
+</section>
+
+</div>
+<div id="ayuda">Flechas, espacio o clic para avanzar. Para ver todas las animaciones completas, agregue ?todo a la dirección.</div>
+
+<script>
+// Datos reales exportados del modelo (ver construccion/construir.py)
+const D = __DATOS__;
+</script>
+<script>
+// ---------- Motor de diapositivas (1024 x 768, escalado al navegador) ----------
+const slides = Array.from(document.querySelectorAll('.slide'));
+const TODO = new URLSearchParams(location.search).has('todo');
+let cur = 0, step = 0;
+
+function escalar() {
+  const s = Math.min(window.innerWidth / 1024, window.innerHeight / 768);
+  document.documentElement.style.setProperty('--s', s);
+}
+window.addEventListener('resize', escalar); escalar();
+
+function maxStep(s) {
+  let m = +(s.dataset.steps || 0);
+  s.querySelectorAll('.frag').forEach(f => { m = Math.max(m, +(f.dataset.step || 1)); });
+  return m;
+}
+function pintar(inmediato) {
+  slides.forEach((s, i) => s.classList.toggle('activa', i === cur));
+  const s = slides[cur];
+  const st = TODO ? maxStep(s) : step;
+  if (inmediato) s.classList.add('sin-transicion');
+  s.querySelectorAll('.frag').forEach(f => f.classList.toggle('visible', (+(f.dataset.step || 1)) <= st));
+  if (s.dataset.anim && ANIM[s.dataset.anim]) ANIM[s.dataset.anim](s, st, TODO || inmediato);
+  if (inmediato) requestAnimationFrame(() => s.classList.remove('sin-transicion'));
+  history.replaceState(null, '', location.pathname + location.search + '#' + (cur + 1));
+}
+function adelante() {
+  if (step < maxStep(slides[cur])) step++;
+  else if (cur < slides.length - 1) { cur++; step = 0; }
+  pintar(false);
+}
+function atras() {
+  if (step > 0) step--;
+  else if (cur > 0) { cur--; step = maxStep(slides[cur]); }
+  pintar(true);
+}
+document.addEventListener('keydown', e => {
+  if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName) && e.key !== 'Escape') return;
+  if (['ArrowRight', 'ArrowDown', ' ', 'PageDown', 'Enter'].includes(e.key)) { e.preventDefault(); adelante(); }
+  else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); atras(); }
+  else if (e.key === 'Home') { cur = 0; step = 0; pintar(true); }
+  else if (e.key === 'End') { cur = slides.length - 1; step = 0; pintar(true); }
+});
+document.getElementById('escenario').addEventListener('click', e => {
+  if (e.target.closest('input, a, pre')) return;
+  if (e.clientX < window.innerWidth * 0.2) atras(); else adelante();
+});
+// Números de diapositiva en el pie
+slides.forEach((s, i) => { const p = s.querySelector('.pie'); if (p) p.textContent += ' · ' + (i + 1); });
+
+// ---------- Utilidades ----------
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent, texto) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (texto !== undefined) e.textContent = texto;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function prng(seed) { // generador determinista para posiciones reproducibles
+  let x = seed >>> 0;
+  return () => { x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; };
+}
+const AZUL = '#2F6FB5', ROJO = '#C0392B', NAVY = '#1E4C7D';
+
+// Matriz de confusión para la clase negativa con un umbral sobre P(positiva)
+function confusion(t) {
+  let vp = 0, fp = 0, fn = 0, vn = 0;
+  for (let i = 0; i < D.pred.p.length; i++) {
+    const neg = D.pred.p[i] < t, real = D.pred.y[i] === 0;
+    if (neg && real) vp++; else if (neg && !real) fp++; else if (!neg && real) fn++; else vn++;
+  }
+  return { vp, fp, fn, vn };
+}
+
+const ANIM = {};
+
+// ---------- Partición entrenamiento / prueba ----------
+ANIM.particion = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-particion');
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    const r = prng(2026);
+    // 892 negativas y 908 positivas en orden aleatorio
+    const clases = [];
+    for (let i = 0; i < 1800; i++) clases.push(i < 892 ? 0 : 1);
+    for (let i = clases.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [clases[i], clases[j]] = [clases[j], clases[i]]; }
+    // asignación a prueba: 223 negativas y 227 positivas
+    const cupo = { 0: 223, 1: 227 }, enPrueba = [];
+    for (let i = 0; i < 1800; i++) { const c = clases[i]; if (cupo[c] > 0 && r() < 0.26) { cupo[c]--; enPrueba[i] = true; } }
+    for (let i = 0; i < 1800 && (cupo[0] > 0 || cupo[1] > 0); i++) { if (!enPrueba[i] && cupo[clases[i]] > 0) { cupo[clases[i]]--; enPrueba[i] = true; } }
+    // rejilla inicial 60 x 30 y destinos: entrenamiento 45 x 30, prueba 15 x 30 con separación
+    const paso = 9.6, x0 = 20, y0 = 30;
+    let kE = 0, kP = 0;
+    const g = el('g', {}, svg);
+    for (let i = 0; i < 1800; i++) {
+      const col = i % 60, fila = Math.floor(i / 60);
+      const cx = x0 + col * paso, cy = y0 + fila * paso;
+      let tx, ty;
+      if (enPrueba[i]) { tx = x0 + 45 * paso + 28 + (kP % 15) * paso; ty = y0 + Math.floor(kP / 15) * paso; kP++; }
+      else { tx = x0 + (kE % 45) * paso; ty = y0 + Math.floor(kE / 45) * paso; kE++; }
+      const c = el('circle', { cx, cy, r: 3.6, fill: clases[i] ? AZUL : ROJO }, g);
+      c.style.transition = 'transform 1.4s ease';
+      c.dataset.dx = (tx - cx).toFixed(1); c.dataset.dy = (ty - cy).toFixed(1);
+    }
+    el('text', { x: 20, y: 18, 'font-size': 14, 'font-weight': 700, fill: NAVY, id: 'tit-part' }, svg, '1,800 reseñas etiquetadas, en orden aleatorio');
+    const et = el('g', { id: 'etq-part', opacity: 0 }, svg);
+    et.style.transition = 'opacity .6s';
+    el('rect', { x: 14, y: 22, width: 45 * paso + 2, height: 30 * paso + 2, fill: 'none', stroke: NAVY, 'stroke-width': 1.5 }, et);
+    el('rect', { x: 14 + 45 * paso + 28, y: 22, width: 15 * paso + 2, height: 30 * paso + 2, fill: 'none', stroke: ROJO, 'stroke-width': 1.5 }, et);
+    el('text', { x: 14, y: 326, 'font-size': 14, 'font-weight': 700, fill: NAVY }, et, 'Entrenamiento: 1,350 (75%)');
+    el('text', { x: 14 + 45 * paso + 28, y: 326, 'font-size': 14, 'font-weight': 700, fill: ROJO }, et, 'Prueba: 450 (25%)');
+  }
+  const partido = st >= 1;
+  svg.querySelectorAll('circle').forEach(c => {
+    if (inmediato) c.style.transition = 'none';
+    c.style.transform = partido ? `translate(${c.dataset.dx}px, ${c.dataset.dy}px)` : 'none';
+    if (inmediato) requestAnimationFrame(() => { c.style.transition = 'transform 1.4s ease'; });
+  });
+  svg.querySelector('#etq-part').setAttribute('opacity', partido ? 1 : 0);
+  svg.querySelector('#tit-part').textContent = partido ? 'initial_split(prop = 0.75, strata = sentimiento)' : '1,800 reseñas etiquetadas, en orden aleatorio';
+};
+
+// ---------- Métricas: resaltar celdas ----------
+ANIM.metricas = function (s, st) {
+  const usa = { 1: ['vp', 'vn'], 2: ['vp', 'fp'], 3: ['vp', 'fn'], 4: ['vp', 'fp', 'fn'] }[st] || [];
+  s.querySelectorAll('#mini-matriz .celda').forEach(c => {
+    c.classList.toggle('res', usa.includes(c.dataset.c));
+    c.classList.toggle('apag', st > 0 && !usa.includes(c.dataset.c));
+  });
+};
+
+// ---------- Umbral interactivo ----------
+ANIM.umbral = function (s) {
+  const svg = s.querySelector('#svg-umbral');
+  if (svg.dataset.listo) return;
+  svg.dataset.listo = 1;
+  const W = 620, H = 250, x0 = 92, x1 = W - 20;
+  const px = p => x0 + p * (x1 - x0);
+  const r = prng(15);
+  el('text', { x: x0, y: 16, 'font-size': 13, fill: '#333' }, svg, 'Cada punto es una reseña de prueba, colocada en su P(positiva)');
+  el('text', { x: x0 - 4, y: 76, 'font-size': 13, fill: ROJO, 'text-anchor': 'end', 'font-weight': 700 }, svg, 'negativas');
+  el('text', { x: x0 - 4, y: 156, 'font-size': 13, fill: AZUL, 'text-anchor': 'end', 'font-weight': 700 }, svg, 'positivas');
+  el('text', { x: x0 - 4, y: 90, 'font-size': 11, fill: '#555', 'text-anchor': 'end' }, svg, '(reales)');
+  el('text', { x: x0 - 4, y: 170, 'font-size': 11, fill: '#555', 'text-anchor': 'end' }, svg, '(reales)');
+  const ejeY = 205;
+  el('line', { x1: x0, y1: ejeY, x2: x1, y2: ejeY, class: 'eje' }, svg);
+  [0, 0.25, 0.5, 0.75, 1].forEach(v => {
+    el('line', { x1: px(v), y1: ejeY, x2: px(v), y2: ejeY + 5, class: 'eje' }, svg);
+    el('text', { x: px(v), y: ejeY + 20, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, v.toFixed(2));
+  });
+  el('text', { x: (x0 + x1) / 2, y: ejeY + 40, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, 'P(positiva) según el modelo');
+  const puntos = [];
+  for (let i = 0; i < D.pred.p.length; i++) {
+    const y = (D.pred.y[i] ? 150 : 70) + (r() - 0.5) * 50;
+    puntos.push(el('circle', { cx: px(D.pred.p[i]), cy: y, r: 3.2, fill: D.pred.y[i] ? AZUL : ROJO, 'fill-opacity': .55 }, svg));
+  }
+  const linea = el('line', { x1: px(.5), y1: 30, x2: px(.5), y2: ejeY, stroke: NAVY, 'stroke-width': 3 }, svg);
+  const etqIzq = el('text', { x: px(.5) - 8, y: 40, 'font-size': 12, 'text-anchor': 'end', fill: NAVY, 'font-weight': 700 }, svg, 'se marcan negativas');
+  const etqDer = el('text', { x: px(.5) + 8, y: 40, 'font-size': 12, fill: NAVY, 'font-weight': 700 }, svg, 'se marcan positivas');
+  const slider = s.querySelector('#umbral');
+  function actualizar() {
+    const t = +slider.value;
+    s.querySelector('#umbral-val').textContent = t.toFixed(2);
+    linea.setAttribute('x1', px(t)); linea.setAttribute('x2', px(t));
+    etqIzq.setAttribute('x', px(t) - 8); etqDer.setAttribute('x', px(t) + 8);
+    const m = confusion(t);
+    s.querySelector('#k-vp').textContent = m.vp; s.querySelector('#k-fp').textContent = m.fp;
+    s.querySelector('#k-fn').textContent = m.fn; s.querySelector('#k-vn').textContent = m.vn;
+    const prec = m.vp + m.fp ? m.vp / (m.vp + m.fp) : 0, rec = m.vp / (m.vp + m.fn), acc = (m.vp + m.vn) / 450;
+    s.querySelector('#k-prec').textContent = prec.toFixed(3);
+    s.querySelector('#k-rec').textContent = rec.toFixed(3);
+    s.querySelector('#k-acc').textContent = acc.toFixed(3);
+    puntos.forEach((c, i) => c.setAttribute('fill-opacity', (D.pred.p[i] < t) === (D.pred.y[i] === 0) ? .55 : .95));
+  }
+  slider.addEventListener('input', actualizar);
+  actualizar();
+};
+
+// ---------- Curva ROC ----------
+let rocAnim = null;
+ANIM.roc = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-roc');
+  const W = 470, m = { l: 55, r: 15, t: 20, b: 50 };
+  const X = v => m.l + v * (W - m.l - m.r), Y = v => (W - m.b) - v * (W - m.b - m.t);
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    // puntos de la curva: umbrales sobre P(positiva), de 0 (nada negativo) a 1 (todo negativo)
+    const ps = Array.from(new Set(D.pred.p)).sort((a, b) => a - b);
+    const nNeg = D.pred.y.filter(v => v === 0).length, nPos = 450 - nNeg;
+    const curva = [{ t: 0, x: 0, y: 0 }];
+    ps.forEach(t => { const c = confusion(t + 1e-9); curva.push({ t: t, x: c.fp / nPos, y: c.vp / nNeg }); });
+    curva.push({ t: 1, x: 1, y: 1 });
+    let auc = 0; for (let i = 1; i < curva.length; i++) auc += (curva[i].x - curva[i - 1].x) * (curva[i].y + curva[i - 1].y) / 2;
+    svg.curva = curva; svg.auc = auc;
+    for (let v = 0; v <= 1.0001; v += .25) {
+      el('line', { x1: X(0), y1: Y(v), x2: X(1), y2: Y(v), class: 'grid' }, svg);
+      el('line', { x1: X(v), y1: Y(0), x2: X(v), y2: Y(1), class: 'grid' }, svg);
+      el('text', { x: X(0) - 8, y: Y(v) + 4, 'font-size': 12, 'text-anchor': 'end', fill: '#333' }, svg, v.toFixed(2));
+      el('text', { x: X(v), y: Y(0) + 18, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, v.toFixed(2));
+    }
+    el('line', { x1: X(0), y1: Y(0), x2: X(1), y2: Y(0), class: 'eje' }, svg);
+    el('line', { x1: X(0), y1: Y(0), x2: X(0), y2: Y(1), class: 'eje' }, svg);
+    el('text', { x: (X(0) + X(1)) / 2, y: W - 10, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, '1 - especificidad (falsas alarmas)');
+    el('text', { x: 14, y: (Y(0) + Y(1)) / 2, 'font-size': 13, 'text-anchor': 'middle', fill: '#333', transform: `rotate(-90 14 ${(Y(0) + Y(1)) / 2})` }, svg, 'sensibilidad');
+    svg.diag = el('line', { x1: X(0), y1: Y(0), x2: X(1), y2: Y(1), stroke: '#9A9A9A', 'stroke-width': 1.5, opacity: 0 }, svg);
+    svg.area = el('path', { fill: AZUL, 'fill-opacity': .12, opacity: 0 }, svg);
+    svg.path = el('path', { fill: 'none', stroke: NAVY, 'stroke-width': 2.5 }, svg);
+    svg.punto = el('circle', { r: 6, fill: ROJO, opacity: 0 }, svg);
+    svg.etqAuc = el('text', { x: X(.55), y: Y(.3), 'font-size': 18, 'font-weight': 700, fill: NAVY, opacity: 0 }, svg, 'AUC = ' + auc.toFixed(3));
+    svg.p05 = el('g', { opacity: 0 }, svg);
+    const c05 = confusion(.5);
+    el('circle', { cx: X(c05.fp / nPos), cy: Y(c05.vp / nNeg), r: 7, fill: 'none', stroke: ROJO, 'stroke-width': 2.5 }, svg.p05);
+    el('text', { x: X(c05.fp / nPos) + 12, y: Y(c05.vp / nNeg) + 14, 'font-size': 13, fill: ROJO, 'font-weight': 700 }, svg.p05, 'umbral 0.5');
+  }
+  const curva = svg.curva;
+  const d = k => curva.slice(0, k + 1).map((p, i) => (i ? 'L' : 'M') + X(p.x).toFixed(1) + ' ' + Y(p.y).toFixed(1)).join(' ');
+  const estado = s.querySelector('#roc-estado');
+  if (rocAnim) { cancelAnimationFrame(rocAnim); rocAnim = null; }
+  svg.diag.setAttribute('opacity', st >= 1 ? 1 : 0);
+  if (st < 2) { svg.path.setAttribute('d', ''); svg.punto.setAttribute('opacity', 0); svg.area.setAttribute('opacity', 0); svg.etqAuc.setAttribute('opacity', 0); svg.p05.setAttribute('opacity', 0); return; }
+  const final = () => {
+    svg.path.setAttribute('d', d(curva.length - 1)); svg.punto.setAttribute('opacity', 0);
+    estado.textContent = 'barrido completo: ' + curva.length + ' umbrales';
+    const fin = st >= 3;
+    svg.area.setAttribute('d', d(curva.length - 1) + ' L ' + X(1) + ' ' + Y(0) + ' Z');
+    svg.area.setAttribute('opacity', fin ? 1 : 0); svg.etqAuc.setAttribute('opacity', fin ? 1 : 0); svg.p05.setAttribute('opacity', fin ? 1 : 0);
+  };
+  if (inmediato || st >= 3) { final(); return; }
+  const t0 = performance.now(), dur = 3500;
+  svg.punto.setAttribute('opacity', 1);
+  const paso = now => {
+    const f = Math.min(1, (now - t0) / dur), k = Math.floor(f * (curva.length - 1));
+    svg.path.setAttribute('d', d(k));
+    svg.punto.setAttribute('cx', X(curva[k].x)); svg.punto.setAttribute('cy', Y(curva[k].y));
+    estado.textContent = 'umbral = ' + curva[k].t.toFixed(2) + ' · sensibilidad = ' + curva[k].y.toFixed(3) + ' · 1 - especificidad = ' + curva[k].x.toFixed(3);
+    if (f < 1) rocAnim = requestAnimationFrame(paso); else final();
+  };
+  rocAnim = requestAnimationFrame(paso);
+};
+
+// ---------- Validación cruzada: pliegues ----------
+ANIM.kfold = function (s, st) {
+  const cont = s.querySelector('#pliegues');
+  if (!cont.dataset.listo) {
+    cont.dataset.listo = 1;
+    D.pliegues.forEach((pl, i) => {
+      const fila = document.createElement('div'); fila.className = 'fila-pl';
+      fila.innerHTML = '<div class="id">Ensayo ' + (i + 1) + '</div><div class="bloques">' +
+        [0, 1, 2, 3, 4].map(j => '<div class="bl" data-j="' + j + '">pliegue ' + (j + 1) + '</div>').join('') +
+        '</div><div class="met"></div>';
+      cont.appendChild(fila);
+    });
+  }
+  cont.querySelectorAll('.fila-pl').forEach((fila, i) => {
+    const activo = st >= i + 1;
+    fila.classList.toggle('on', st === 0 ? i === 0 : activo);
+    fila.querySelectorAll('.bl').forEach(bl => {
+      const j = +bl.dataset.j;
+      bl.classList.toggle('val', activo && j === i);
+      bl.classList.toggle('ent', activo && j !== i);
+      bl.textContent = activo ? (j === i ? 'validación (' + D.pliegues[i].n_val + ')' : 'entrena') : 'pliegue ' + (j + 1);
+    });
+    fila.querySelector('.met').textContent = activo ? 'AUC ' + D.pliegues[i].roc_auc.toFixed(3) : '';
+  });
+};
+
+// ---------- Resultado de la afinación ----------
+ANIM.cvplot = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-cv');
+  const W = 620, H = 400, m = { l: 60, r: 20, t: 20, b: 55 };
+  const datos = D.cv.filter(r => r['.metric'] === 'roc_auc');
+  const X = v => m.l + (Math.log10(v) + 5) / 3 * (W - m.l - m.r), Y = v => (H - m.b) - (v - .88) / (.96 - .88) * (H - m.b - m.t);
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    for (let v = .88; v <= .9601; v += .02) {
+      el('line', { x1: X(1e-5), y1: Y(v), x2: X(1e-2), y2: Y(v), class: 'grid' }, svg);
+      el('text', { x: m.l - 8, y: Y(v) + 4, 'font-size': 12, 'text-anchor': 'end', fill: '#333' }, svg, v.toFixed(2));
+    }
+    [1e-5, 1e-4, 1e-3, 1e-2].forEach((v, i) => {
+      el('line', { x1: X(v), y1: H - m.b, x2: X(v), y2: H - m.b + 5, class: 'eje' }, svg);
+      el('text', { x: X(v), y: H - m.b + 20, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, ['0.00001', '0.0001', '0.001', '0.01'][i]);
+    });
+    el('line', { x1: X(1e-5), y1: H - m.b, x2: X(1e-2), y2: H - m.b, class: 'eje' }, svg);
+    el('text', { x: (X(1e-5) + X(1e-2)) / 2, y: H - 12, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, 'penalización (escala logarítmica)');
+    el('text', { x: 14, y: (Y(.88) + Y(.96)) / 2, 'font-size': 13, 'text-anchor': 'middle', fill: '#333', transform: `rotate(-90 14 ${(Y(.88) + Y(.96)) / 2})` }, svg, 'AUC medio en validación cruzada');
+    svg.linea = el('path', { fill: 'none', stroke: NAVY, 'stroke-width': 2 }, svg);
+    svg.puntos = datos.map(r => {
+      const g = el('g', { opacity: 0 }, svg); g.style.transition = 'opacity .35s';
+      el('line', { x1: X(r.penalty), y1: Y(r.mean - r.std_err), x2: X(r.penalty), y2: Y(r.mean + r.std_err), stroke: NAVY, 'stroke-width': 1.5 }, g);
+      el('circle', { cx: X(r.penalty), cy: Y(r.mean), r: 5, fill: '#fff', stroke: NAVY, 'stroke-width': 2 }, g);
+      return g;
+    });
+    svg.mejor = el('g', { opacity: 0 }, svg); svg.mejor.style.transition = 'opacity .5s';
+    el('line', { x1: X(1e-2), y1: m.t, x2: X(1e-2), y2: H - m.b, stroke: ROJO, 'stroke-width': 2 }, svg.mejor);
+    el('text', { x: X(1e-2) - 8, y: m.t + 14, 'font-size': 13, 'text-anchor': 'end', fill: ROJO, 'font-weight': 700 }, svg.mejor, 'mejor: 0.01, AUC 0.939');
+    el('text', { x: X(1e-2) - 8, y: m.t + 32, 'font-size': 12, 'text-anchor': 'end', fill: ROJO }, svg.mejor, 'borde de la rejilla');
+    svg.d = datos.map((r, i) => (i ? 'L' : 'M') + X(r.penalty).toFixed(1) + ' ' + Y(r.mean).toFixed(1)).join(' ');
+  }
+  svg.puntos.forEach((g, i) => g.setAttribute('opacity', st >= 1 ? 1 : 0));
+  svg.linea.setAttribute('d', st >= 1 ? svg.d : '');
+  if (st >= 1 && !inmediato) {
+    const L = svg.linea.getTotalLength();
+    svg.linea.style.transition = 'none'; svg.linea.style.strokeDasharray = L; svg.linea.style.strokeDashoffset = L;
+    requestAnimationFrame(() => { svg.linea.style.transition = 'stroke-dashoffset 1.6s ease'; svg.linea.style.strokeDashoffset = 0; });
+  } else { svg.linea.style.strokeDasharray = 'none'; svg.linea.style.strokeDashoffset = 0; }
+  svg.mejor.setAttribute('opacity', st >= 2 ? 1 : 0);
+};
+
+// ---------- Ruta de coeficientes ----------
+ANIM.rutacoef = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-ruta');
+  const W = 640, H = 420, m = { l: 110, r: 55, t: 20, b: 55 };
+  const R = D.ruta, lx = R.lambdas.map(Math.log10);
+  const xmin = Math.min(...lx), xmax = Math.max(...lx);
+  let ymin = 0, ymax = 0; R.coef.forEach(c => c.forEach(v => { ymin = Math.min(ymin, v); ymax = Math.max(ymax, v); }));
+  const X = v => m.l + (v - xmin) / (xmax - xmin) * (W - m.l - m.r), Y = v => (H - m.b) - (v - ymin) / (ymax - ymin) * (H - m.b - m.t);
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    [-4, -3, -2, -1].forEach(v => {
+      el('line', { x1: X(v), y1: m.t, x2: X(v), y2: H - m.b, class: 'grid' }, svg);
+      el('text', { x: X(v), y: H - m.b + 20, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, ['0.0001', '0.001', '0.01', '0.1'][v + 4]);
+    });
+    el('line', { x1: X(xmin), y1: Y(0), x2: X(xmax), y2: Y(0), stroke: '#444', 'stroke-width': 1 }, svg);
+    el('line', { x1: X(xmin), y1: H - m.b, x2: X(xmax), y2: H - m.b, class: 'eje' }, svg);
+    el('text', { x: (X(xmin) + X(xmax)) / 2, y: H - 12, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, 'penalización (escala logarítmica)');
+    el('text', { x: X(xmax) + 6, y: Y(0) + 4, 'font-size': 12, fill: '#333' }, svg, 'coef = 0');
+    el('text', { x: X(xmax) + 6, y: Y(ymax) + 10, 'font-size': 12, fill: '#333' }, svg, ymax.toFixed(0));
+    el('text', { x: X(xmax) + 6, y: Y(ymin), 'font-size': 12, fill: '#333' }, svg, ymin.toFixed(0));
+    const idx = lx.map((v, i) => [Math.abs(v - Math.log10(R.mejor)), i]).sort((a, b) => a[0] - b[0])[0][1];
+    // etiquetas al extremo izquierdo, separadas para que no se encimen
+    const etiq = R.tokens.map((t, i) => ({ t, y: Y(R.coef[i][0]), signo: R.coef[i][idx] >= 0 })).sort((a, b) => a.y - b.y);
+    for (let i = 1; i < etiq.length; i++) if (etiq[i].y - etiq[i - 1].y < 15) etiq[i].y = etiq[i - 1].y + 15;
+    svg.lineas = R.tokens.map((t, i) => {
+      const col = R.coef[i][idx] >= 0 ? AZUL : ROJO;
+      const d = R.coef[i].map((v, k) => (k ? 'L' : 'M') + X(lx[k]).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ');
+      return el('path', { d, fill: 'none', stroke: col, 'stroke-width': 2, 'stroke-opacity': .85 }, svg);
+    });
+    etiq.forEach(e => el('text', { x: X(xmin) - 6, y: e.y + 4, 'font-size': 12, 'text-anchor': 'end', fill: e.signo ? AZUL : ROJO, 'font-weight': 700 }, svg, '"' + e.t.trim() + '"'));
+    svg.mejor = el('g', { opacity: 0 }, svg); svg.mejor.style.transition = 'opacity .5s';
+    el('line', { x1: X(Math.log10(R.mejor)), y1: m.t, x2: X(Math.log10(R.mejor)), y2: H - m.b, stroke: NAVY, 'stroke-width': 2 }, svg.mejor);
+    el('text', { x: X(Math.log10(R.mejor)) + 8, y: m.t + 14, 'font-size': 13, fill: NAVY, 'font-weight': 700 }, svg.mejor, 'elegida: 0.01');
+    el('text', { x: X(Math.log10(R.mejor)) + 8, y: m.t + 32, 'font-size': 12, fill: NAVY }, svg.mejor, D.resumen.n_coef + ' tokens siguen activos');
+  }
+  svg.lineas.forEach((p, i) => {
+    if (st >= 1 && !inmediato) {
+      const L = p.getTotalLength();
+      p.style.transition = 'none'; p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+      requestAnimationFrame(() => { p.style.transition = 'stroke-dashoffset 1.8s ease ' + (i * 0.08) + 's'; p.style.strokeDashoffset = 0; });
+    } else { p.style.transition = 'none'; p.style.strokeDasharray = 'none'; p.style.strokeDashoffset = 0; p.style.opacity = st >= 1 ? 1 : 0; }
+    if (st >= 1) p.style.opacity = 1;
+  });
+  svg.mejor.setAttribute('opacity', st >= 2 ? 1 : 0);
+};
+
+// ---------- Lista de errores ----------
+ANIM.errores = function (s) {
+  const cont = s.querySelector('#lista-errores');
+  if (cont.dataset.listo) return;
+  cont.dataset.listo = 1;
+  const sel = [0, 1, 4, 5, 6];
+  sel.forEach((k, i) => {
+    const e = D.errores[k];
+    const div = document.createElement('div'); div.className = 'err-item';
+    div.style.top = (165 + i * 100) + 'px'; div.style.height = '90px';
+    div.innerHTML = '<span class="p">P(positiva) = ' + e['.pred_positiva'].toFixed(2) + '</span><div class="cat">' + e.categoria + ' · etiqueta real: ' + e.sentimiento + '</div><div>' + e.texto + '</div>';
+    cont.appendChild(div);
+  });
+};
+
+// ---------- Arranque ----------
+setTimeout(() => document.getElementById('ayuda').classList.add('fuera'), 7000);
+(function () {
+  const h = parseInt(location.hash.replace('#', ''), 10);
+  if (h >= 1 && h <= slides.length) cur = h - 1;
+  pintar(true);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>15. Métricas de desempeño y validación cruzada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap">
+<style>
+/* Paleta Tec (ver CLAUDE.md) y colores de datos validados para daltonismo */
+:root{
+  --navy:#1E4C7D; --light:#EAF2FA; --soft:#DDE5ED; --sgreen:#D5F5E3; --dgreen:#1A7A3A;
+  --sred:#FADBD8; --dred:#C0392B; --hgreen:#F0FAF0; --gtop:#F0F0F0; --gray:#555555;
+  --rojo-tec:#E31B23; --azul-datos:#2F6FB5; --gris-datos:#9A9A9A;
+  --s:1;
+}
+html,body{margin:0;height:100%;background:#202020;font-family:Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif;color:#000;overflow:hidden}
+#escenario{position:absolute;left:50%;top:50%;width:1024px;height:768px;transform:translate(-50%,-50%) scale(var(--s));transform-origin:center center}
+.slide{position:absolute;inset:0;background:#fff;display:none;overflow:hidden}
+.slide.activa{display:block}
+#ayuda{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:rgba(30,76,125,.92);color:#fff;font-size:13px;padding:8px 16px;transition:opacity 1s;pointer-events:none;z-index:9}
+#ayuda.fuera{opacity:0}
+
+/* Encabezado estilo Tec: banda navy con título blanco */
+.banda{position:absolute;left:0;top:31px;width:760px;height:72px;background:var(--navy);color:#fff;font-weight:700;font-size:23px;line-height:1.15;display:flex;align-items:center;padding:0 22px 0 31px;box-sizing:border-box}
+.sub{position:absolute;left:31px;top:116px;width:962px;font-size:19px;line-height:1.3;color:#000}
+.sub em{color:var(--gray)}
+.pie{position:absolute;right:31px;bottom:16px;font-size:13px;color:var(--gray);font-style:italic}
+.fuente{position:absolute;left:31px;bottom:16px;font-size:12px;color:#666666}
+
+/* Tarjetas */
+.card{position:absolute;background:var(--light);padding:14px 16px;box-sizing:border-box}
+.card h4{margin:0 0 6px 0;color:var(--navy);font-size:18px;font-weight:700;line-height:1.2}
+.card p,.card li{font-size:15.5px;line-height:1.35;margin:0}
+.card ul,.card ol{margin:4px 0 0 0;padding-left:20px}
+.card li{margin-bottom:4px}
+.card.verde{background:var(--sgreen)} .card.verde h4{color:var(--dgreen)}
+.card.roja{background:var(--sred)} .card.roja h4{color:var(--dred)}
+.card.hl{background:var(--hgreen)} .card.hl h4{color:var(--dgreen)}
+.card.soft{background:var(--soft)}
+.card.navy{background:var(--navy);color:#fff} .card.navy h4{color:#fff}
+.card.navy p{color:#fff}
+.card.blanca{background:#fff;border:1px solid var(--soft)}
+.texto{position:absolute;font-size:16px;line-height:1.4}
+.texto ol,.texto ul{margin:0;padding-left:24px}
+.texto li{margin-bottom:6px}
+.grande{font-size:64px;font-weight:700;color:var(--navy);line-height:1}
+.num{font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700}
+code,.mono{font-family:"Ubuntu Mono",Menlo,monospace}
+code{background:#F4F6F8;padding:0 4px;font-size:.95em}
+pre.codigo{position:absolute;margin:0;background:#F4F6F8;border-left:4px solid var(--navy);font-family:"Ubuntu Mono",Menlo,monospace;font-size:14.5px;line-height:1.4;padding:10px 14px;white-space:pre;box-sizing:border-box;overflow:hidden}
+pre.codigo .c{color:#6A737D}
+pre.codigo .k{color:var(--navy);font-weight:700}
+pre.codigo .r{color:var(--dred);font-weight:700}
+.etq{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);background:var(--soft);padding:2px 8px}
+
+/* Fragmentos animados */
+.frag{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.frag.visible{opacity:1;transform:none}
+.sin-transicion *{transition:none !important}
+
+/* Portada y cierre */
+.barra-gris{position:absolute;left:0;top:0;width:1024px;height:113px;background:var(--gtop)}
+.barra-gris img{position:absolute;left:31px;top:28px;height:58px}
+.bloque-azul{position:absolute;left:0;top:113px;width:1024px;height:358px;background:var(--soft)}
+.titulo-portada{position:absolute;left:60px;top:150px;width:900px;font-size:66px;font-weight:700;line-height:1.05;color:var(--rojo-tec)}
+.subtitulo-portada{position:absolute;left:60px;top:390px;width:900px;font-size:27px;font-weight:700;color:var(--navy)}
+.autor{position:absolute;left:760px;top:530px;border-left:3px solid #BBBBBB;padding-left:22px;font-size:17px;font-weight:700;line-height:1.35;color:#222}
+.autor .correo{font-weight:400;font-size:14px;margin-top:10px}
+.gracias{position:absolute;left:60px;top:170px;font-size:110px;font-weight:700;color:var(--navy);line-height:1}
+.preguntas{position:absolute;left:60px;top:520px;background:var(--navy);color:#fff;font-size:40px;font-weight:700;padding:18px 40px}
+
+/* Barras horizontales */
+.barras{position:absolute}
+.fila-barra{display:flex;align-items:center;height:40px;margin-bottom:10px;font-size:16px}
+.fila-barra .lab{width:190px;text-align:right;padding-right:12px;color:#222}
+.fila-barra .pista{flex:1;height:26px;background:#F4F4F4;position:relative}
+.fila-barra .barra{height:100%;width:0;background:var(--azul-datos);transition:width 1.1s ease}
+.visible .fila-barra .barra,.fila-barra.visible .barra{width:var(--w)}
+.fila-barra .val{width:70px;padding-left:10px;font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700}
+
+/* Matriz de confusión */
+.matriz{position:absolute;display:grid;grid-template-columns:150px 170px 170px;grid-template-rows:60px 120px 120px;gap:4px}
+.matriz div{display:flex;align-items:center;justify-content:center;text-align:center;font-size:17px}
+.matriz .cab{background:var(--soft);font-weight:700;color:var(--navy);flex-direction:column;line-height:1.2}
+.matriz .celda{flex-direction:column;background:#F4F4F4;font-size:15px;line-height:1.25;transition:background .4s, outline .3s}
+.matriz .celda b{font-size:36px;font-family:"Ubuntu Mono",Menlo,monospace}
+.matriz .celda.ok{background:var(--sgreen)}
+.matriz .celda.err{background:var(--sred)}
+.matriz .celda.res{outline:4px solid var(--navy);outline-offset:-4px}
+.matriz .celda.apag{opacity:.35}
+
+/* Control deslizante */
+input[type=range]{width:100%;accent-color:var(--navy)}
+.kpi{display:flex;gap:10px}
+.kpi div{flex:1;background:var(--light);padding:8px 10px;text-align:center}
+.kpi .v{font-family:"Ubuntu Mono",Menlo,monospace;font-size:26px;font-weight:700;color:var(--navy)}
+.kpi .l{font-size:12.5px;line-height:1.25;color:#333}
+
+/* Validación cruzada */
+.pliegues{position:absolute;left:31px;top:165px;width:640px}
+.fila-pl{display:flex;align-items:center;height:52px;margin-bottom:8px;opacity:.25;transition:opacity .4s}
+.fila-pl.on{opacity:1}
+.fila-pl .id{width:88px;font-weight:700;color:var(--navy);font-size:16px}
+.fila-pl .bloques{display:flex;gap:4px;flex:1}
+.fila-pl .bl{flex:1;height:38px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:12.5px;color:var(--navy);transition:background .4s,color .4s}
+.fila-pl .bl.val{background:var(--dred);color:#fff;font-weight:700}
+.fila-pl .bl.ent{background:var(--azul-datos);color:#fff}
+.fila-pl .met{width:110px;text-align:right;font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700;font-size:17px;color:#222}
+
+/* Diagrama de flujo */
+.caja-flujo{position:absolute;background:var(--light);padding:10px 12px;box-sizing:border-box;font-size:14.5px;line-height:1.3;width:200px}
+.caja-flujo b{display:block;font-family:"Ubuntu Mono",Menlo,monospace;color:var(--navy);font-size:15px;margin-bottom:3px}
+.caja-flujo.roja{background:var(--sred)} .caja-flujo.roja b{color:var(--dred)}
+.caja-flujo.verde{background:var(--sgreen)} .caja-flujo.verde b{color:var(--dgreen)}
+.flecha{position:absolute;height:3px;background:var(--navy)}
+.flecha::after{content:"";position:absolute;right:-2px;top:-6px;border-left:12px solid var(--navy);border-top:7px solid transparent;border-bottom:7px solid transparent}
+
+/* Ejemplo de receta */
+.etapa{position:absolute;left:31px;width:560px;background:var(--light);padding:9px 12px;box-sizing:border-box}
+.etapa .t{font-size:12.5px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.05em}
+.etapa .x{font-family:"Ubuntu Mono",Menlo,monospace;font-size:14px;line-height:1.35;margin-top:3px;word-break:break-word}
+.etapa .x .tok{display:inline-block;background:#fff;padding:0 5px;margin:2px 3px 2px 0;border:1px solid var(--soft)}
+table.tfidf{border-collapse:collapse;font-size:13px;font-family:"Ubuntu Mono",Menlo,monospace;margin-top:4px}
+table.tfidf td{padding:1px 10px 1px 0;white-space:nowrap}
+table.tfidf td:last-child{text-align:right}
+
+svg text{font-family:Ubuntu,"Helvetica Neue",Helvetica,Arial,sans-serif}
+.eje{stroke:#444;stroke-width:1}
+.grid{stroke:#E6E6E6;stroke-width:1}
+.tabla{border-collapse:collapse;width:100%;font-size:15px}
+.tabla th{background:var(--navy);color:#fff;text-align:left;padding:7px 10px;font-weight:700}
+.tabla td{padding:6px 10px;border-bottom:1px solid var(--soft);vertical-align:top;line-height:1.3}
+.tabla tr:nth-child(even) td{background:#F6F8FA}
+.err-item{position:absolute;left:31px;width:600px;background:#F6F8FA;padding:8px 12px;box-sizing:border-box;font-size:14px;line-height:1.3}
+.err-item .cat{font-size:11.5px;font-weight:700;text-transform:uppercase;color:var(--navy);letter-spacing:.05em}
+.err-item .p{font-family:"Ubuntu Mono",Menlo,monospace;font-weight:700;float:right;color:var(--dred)}
+</style>
+</head>
+<body>
+<div id="escenario">
+
+<!-- 1. Portada -->
+<section class="slide">
+  <div class="barra-gris"><img src="data:image/png;base64,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" alt="Tecnológico de Monterrey"></div>
+  <div class="bloque-azul"></div>
+  <div class="titulo-portada">15. Métricas de desempeño y validación cruzada</div>
+  <div class="subtitulo-portada">Ciencia de datos para la toma de decisiones II</div>
+  <div class="autor">Jorge<br>Juvenal<br>Campos Ferreira<div class="correo">juvenal.campos@tec.mx</div></div>
+</section>
+
+<!-- 2. Contenido -->
+<section class="slide">
+  <div class="banda">Hoy cerramos el ciclo: entrenar, medir y afinar el modelo</div>
+  <div class="sub">La sesión retoma el flujo de la clase pasada y se concentra en los pasos que deciden si el modelo sirve.</div>
+  <div class="card" style="left:31px;top:170px;width:460px;height:470px">
+    <h4>Contenido</h4>
+    <ol style="font-size:17px;line-height:1.45">
+      <li>Repaso del flujo y de la receta de texto</li>
+      <li>Partición y sobreajuste: por qué no se mide en entrenamiento</li>
+      <li>Matriz de confusión y las cuatro métricas</li>
+      <li>El umbral de decisión, la curva ROC y el AUC</li>
+      <li>Validación cruzada y afinación de la penalización</li>
+      <li>Qué aprendió el modelo y dónde se equivoca</li>
+      <li>Ejercicio</li>
+    </ol>
+  </div>
+  <div class="card verde" style="left:515px;top:170px;width:478px;height:220px">
+    <h4>Caso de trabajo</h4>
+    <p>1,800 reseñas sintéticas en español (restaurante, hotel, producto, app y servicio), etiquetadas como positivas o negativas. El modelo es una regresión logística regularizada sobre tf-idf, el mismo de <code>analisis_resenas.R</code>.</p>
+  </div>
+  <div class="card hl" style="left:515px;top:410px;width:478px;height:230px">
+    <h4>Pregunta que guía la sesión</h4>
+    <p>El modelo acierta 93 de cada 100 reseñas de prueba. ¿Cómo sabemos que ese número es creíble, qué significa cada métrica y cómo elegimos la penalización sin hacer trampa con la base de prueba?</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 3. Diez pasos -->
+<section class="slide">
+  <div class="banda">El flujo tiene diez pasos y hoy trabajamos los últimos cinco</div>
+  <div class="sub">Los cinco primeros preparan los datos y el modelo; los cinco últimos lo entrenan, lo miden y deciden qué hacer con él.</div>
+  <div class="card soft" style="left:31px;top:170px;width:470px;height:300px">
+    <h4>Preparación (clase pasada)</h4>
+    <ol style="font-size:15.5px">
+      <li>Cargar los datos etiquetados y explorarlos: que la etiqueta sea factor y que las clases estén balanceadas.</li>
+      <li>Partir en base de entrenamiento y base de prueba.</li>
+      <li>Generar la receta de ingeniería de variables con <code>textrecipes</code>.</li>
+      <li>Aplicar la receta y preparar la matriz documento-término (DTM) de entrenamiento.</li>
+      <li>Declarar el modelo y sus parámetros.</li>
+    </ol>
+  </div>
+  <div class="card" style="left:523px;top:170px;width:470px;height:300px">
+    <h4>Entrenamiento y evaluación (hoy)</h4>
+    <ol start="6" style="font-size:15.5px">
+      <li class="frag" data-step="1">Ajustar el modelo con los datos de entrenamiento.</li>
+      <li class="frag" data-step="2">Predecir etiquetas y compararlas con la verdad.</li>
+      <li class="frag" data-step="3">Obtener las métricas: matriz de confusión, exactitud, precisión, sensibilidad, F1, curva ROC.</li>
+      <li class="frag" data-step="4">Evaluar en la base de prueba, una sola vez.</li>
+      <li class="frag" data-step="5">Si el modelo es bueno, pasa a producción (la app Shiny); si no, iterar: afinar hiperparámetros, mejorar la receta o cambiar de modelo.</li>
+    </ol>
+  </div>
+  <div class="card hl frag" data-step="5" style="left:31px;top:490px;width:962px;height:150px">
+    <h4>Las métricas se calculan dos veces y solo una cuenta</h4>
+    <p>En entrenamiento sirven para diagnosticar sobreajuste; en prueba, para reportar qué tan bien funcionará el modelo con textos nuevos. Entre las dos aparece hoy un paso nuevo: la validación cruzada, que permite afinar la penalización sin gastar la base de prueba.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 4. Librerías -->
+<section class="slide">
+  <div class="banda">Cinco librerías cubren el flujo completo, de la receta a la app</div>
+  <div class="sub">Todas se instalan una vez con <code>install.packages()</code>; <code>tidymodels</code> ya trae <code>rsample</code>, <code>tune</code> y <code>yardstick</code>.</div>
+  <div class="card frag" data-step="1" style="left:31px;top:170px;width:307px;height:150px"><h4>textrecipes</h4><p>Pasos <code>step_*</code> para tokenizar, quitar stopwords, hacer stemming, filtrar tokens y calcular tf-idf dentro de una receta.</p></div>
+  <div class="card frag" data-step="1" style="left:358px;top:170px;width:307px;height:150px"><h4>glmnet</h4><p>Motor de la regresión logística regularizada (lasso, ridge y elastic net). Permite afinar <code>penalty</code> y <code>mixture</code>.</p></div>
+  <div class="card frag" data-step="1" style="left:686px;top:170px;width:307px;height:150px"><h4>probably</h4><p>Herramientas para el umbral de decisión y la calibración de probabilidades, como <code>threshold_perf()</code>.</p></div>
+  <div class="card frag" data-step="2" style="left:31px;top:340px;width:307px;height:150px"><h4>naivebayes</h4><p>Un segundo algoritmo de clasificación para comparar con la regresión logística usando la misma receta.</p></div>
+  <div class="card frag" data-step="2" style="left:358px;top:340px;width:307px;height:150px"><h4>shiny</h4><p>Lleva el modelo a producción: una app donde el usuario escribe la reseña y el modelo responde.</p></div>
+  <div class="card soft frag" data-step="2" style="left:686px;top:340px;width:307px;height:150px"><h4>Incluidas en tidymodels</h4><p><code>rsample</code> parte los datos y crea pliegues, <code>tune</code> afina hiperparámetros y <code>yardstick</code> calcula las métricas.</p></div>
+  <pre class="codigo frag" data-step="3" style="left:31px;top:515px;width:962px;height:120px">install.packages(c("tidymodels", "textrecipes", "glmnet", "probably", "naivebayes", "shiny"))
+
+library(tidyverse); library(tidytext); library(tidymodels)
+library(textrecipes); library(glmnet); library(probably)
+tidymodels_prefer()   <span class="c"># evita conflictos de nombres entre paquetes</span></pre>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 5. Factor -->
+<section class="slide">
+  <div class="banda">La etiqueta es un factor y su primer nivel define la clase de interés</div>
+  <div class="sub">Convertir la columna de etiquetas a factor le dice al flujo que el problema es de clasificación, cuántas clases hay y cuál es la clase positiva.</div>
+  <div class="card" style="left:31px;top:175px;width:470px;height:200px">
+    <h4>Qué es un factor</h4>
+    <p>Es el tipo de dato de R para variables categóricas. Tiene una etiqueta de texto "por encima" y un número entero "por debajo". Las funciones que piden niveles en vez de textos (modelos, métricas, gráficas) funcionan correctamente solo con factores.</p>
+  </div>
+  <pre class="codigo" style="left:523px;top:175px;width:470px;height:200px">resenas <- read_csv("resenas_sinteticas.csv") |>
+  mutate(sentimiento = factor(
+    sentimiento,
+    levels = c(<span class="r">"negativa"</span>, "positiva")
+  ))
+
+resenas |> count(sentimiento)
+<span class="c">#  negativa   892
+#  positiva   908   (base balanceada)</span></pre>
+  <div class="card roja frag" data-step="1" style="left:31px;top:395px;width:470px;height:245px">
+    <h4>Cuidado: dos convenciones distintas</h4>
+    <p><b>yardstick</b> toma el primer nivel, <code>negativa</code>, como el evento de interés: precisión y sensibilidad se calculan para esa clase.</p>
+    <p style="margin-top:8px"><b>glmnet</b> modela la probabilidad del segundo nivel, <code>positiva</code>: un coeficiente positivo empuja hacia positiva.</p>
+    <p style="margin-top:8px">Por eso en el código la curva ROC usa <code>.pred_negativa</code>.</p>
+  </div>
+  <div class="card verde frag" data-step="2" style="left:523px;top:395px;width:470px;height:245px">
+    <h4>Si la clase que importa es la otra</h4>
+    <p>Dos opciones equivalentes: poner esa clase primero en <code>levels</code>, o pedir a yardstick que use el segundo nivel:</p>
+    <pre class="codigo" style="position:static;margin-top:10px;font-size:14px">precision(predicciones,
+  truth = sentimiento,
+  estimate = .pred_class,
+  event_level = "second")</pre>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 6. Receta -->
+<section class="slide" data-steps="4">
+  <div class="banda">La receta convierte cada reseña en 1,000 columnas numéricas</div>
+  <div class="sub">Lo que le llega al modelo no es el texto, sino el peso tf-idf de cada token. Sigamos una reseña inventada por la receta.</div>
+  <div class="etapa" style="top:168px">
+    <div class="t">Texto original</div>
+    <div class="x">"Buenísimooo!!! La comida llegó rapidísimo, jajaja no lo puedo creer"</div>
+  </div>
+  <div class="etapa frag" data-step="1" style="top:238px">
+    <div class="t">1 · step_mutate: minúsculas, sin acentos, alargamientos y "!!!" como token, sin puntuación</div>
+    <div class="x">buenisimo muchaexclamacion la comida llego rapidisimo jajaja no lo puedo creer</div>
+  </div>
+  <div class="etapa frag" data-step="2" style="top:325px">
+    <div class="t">2 · step_tokenize: palabras y pares de palabras (n = 2, n_min = 1)</div>
+    <div class="x"><span class="tok">buenisimo</span><span class="tok">muchaexclamacion</span><span class="tok">la</span><span class="tok">comida</span><span class="tok">llego</span><span class="tok">rapidisimo</span><span class="tok">jajaja</span><span class="tok">no</span><span class="tok">lo</span><span class="tok">puedo</span><span class="tok">creer</span><span class="tok">buenisimo muchaexclamacion</span><span class="tok">muchaexclamacion la</span><span class="tok">la comida</span><span class="tok">comida llego</span><span class="tok">…</span></div>
+  </div>
+  <div class="etapa frag" data-step="3" style="top:440px">
+    <div class="t">3 · step_stopwords y step_stem: fuera palabras vacías (menos las negaciones), raíces en vez de palabras</div>
+    <div class="x"><span class="tok">buenisim</span><span class="tok">muchaexclamacion</span><span class="tok">com</span><span class="tok">lleg</span><span class="tok">rapidisim</span><span class="tok">jajaj</span><span class="tok">no</span><span class="tok">creer</span><span class="tok">muchaexclamacion l</span><span class="tok">la com</span><span class="tok">no l</span><span class="tok">…</span></div>
+  </div>
+  <div class="etapa frag" data-step="4" style="top:545px;height:150px">
+    <div class="t">4 · step_tokenfilter y step_tfidf: solo los 1,000 tokens más frecuentes, cada uno con su peso tf-idf</div>
+    <div class="x" style="display:flex;gap:30px">
+      <table class="tfidf"><tr><td>buenisim</td><td>0.445</td></tr><tr><td>muchaexclamacion l</td><td>0.433</td></tr><tr><td>no l</td><td>0.401</td></tr><tr><td>jajaj</td><td>0.374</td></tr><tr><td>rapidisim</td><td>0.374</td></tr></table>
+      <table class="tfidf"><tr><td>com</td><td>0.346</td></tr><tr><td>la com</td><td>0.346</td></tr><tr><td>muchaexclamacion</td><td>0.296</td></tr><tr><td>lleg</td><td>0.215</td></tr><tr><td>no</td><td>0.156</td></tr></table>
+      <div style="font-family:Ubuntu;font-size:13px;line-height:1.3;color:#333;width:150px">Las otras 990 columnas valen 0. "creer" no está en el vocabulario y desaparece.</div>
+    </div>
+  </div>
+  <pre class="codigo" style="left:612px;top:168px;width:381px;height:400px;font-size:12px;line-height:1.3">receta <- recipe(sentimiento ~ texto,
+                 data = entrenamiento) |>
+  step_mutate(texto = str_to_lower(texto)) |>
+  step_mutate(texto = str_replace_all(texto,
+    c("á"="a","é"="e","í"="i","ó"="o","ú"="u"))) |>
+  step_mutate(texto = str_replace_all(texto,
+    "(ja){2,}", "jajaja")) |>
+  step_mutate(texto = str_replace_all(texto,
+    "([a-z])\\1{2,}", "\\1")) |>
+  step_mutate(texto = str_replace_all(texto,
+    "!{2,}", " muchaexclamacion ")) |>
+  step_mutate(texto = str_remove_all(texto,
+    "[\\.,;:\"'()\\[\\]{}<>/\\\\-]")) |>
+  step_mutate(texto = str_squish(texto)) |>
+  step_tokenize(texto, token = "ngrams",
+    options = list(n = 2, n_min = 1)) |>
+  step_stopwords(texto,
+    custom_stopword_source = stopwords_es) |>
+  step_stem(texto,
+    options = list(language = "spanish")) |>
+  step_tokenfilter(texto, min_times = 3,
+    max_tokens = 1000) |>
+  step_tfidf(texto)</pre>
+  <div class="card roja" style="left:612px;top:580px;width:381px;height:115px">
+    <h4>Dos detalles que importan</h4>
+    <p>Las negaciones ("no", "nada", "nunca", "sin") se quitan de la lista de stopwords porque son señal. La receta se aprende solo con entrenamiento: los idf no ven la prueba.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 7. Partición -->
+<section class="slide" data-anim="particion" data-steps="3">
+  <div class="banda">Partimos antes de modelar: 1,350 reseñas entrenan y 450 juzgan</div>
+  <div class="sub">La base de prueba simula los textos que el modelo verá en producción. Se aparta al inicio y no se toca hasta el final.</div>
+  <svg id="svg-particion" width="620" height="330" style="position:absolute;left:31px;top:165px"></svg>
+  <div class="texto frag" data-step="2" style="left:31px;top:505px;width:620px;font-size:14.5px;color:#333">
+    Cada punto es una reseña: azul positiva, rojo negativa. Con <code>strata = sentimiento</code> ambas bases conservan la mezcla 50/50: 669 negativas y 681 positivas en entrenamiento; 223 y 227 en prueba.
+  </div>
+  <pre class="codigo" style="left:672px;top:165px;width:321px;height:175px;font-size:13.5px">set.seed(2026)
+particion <- initial_split(
+  resenas,
+  prop = 0.75,
+  strata = sentimiento)
+
+entrenamiento <- training(particion)
+prueba        <- testing(particion)</pre>
+  <div class="card frag" data-step="1" style="left:672px;top:355px;width:321px;height:130px"><h4>set.seed(2026)</h4><p>La partición es aleatoria. La semilla la hace reproducible: todos obtenemos las mismas 450 reseñas de prueba.</p></div>
+  <div class="card roja frag" data-step="3" style="left:672px;top:500px;width:321px;height:150px"><h4>La regla de oro</h4><p>Todo lo que se aprende (vocabulario, idf, coeficientes, penalización) se aprende con entrenamiento. La prueba se usa una sola vez, al final.</p></div>
+  <div class="fuente">Fuente: resenas_sinteticas.csv, 1,800 reseñas. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 8. Sobreajuste -->
+<section class="slide">
+  <div class="banda">Medir en entrenamiento infla el resultado: 0.969 contra 0.933</div>
+  <div class="sub">El mismo modelo, evaluado en los textos que ya vio y en textos nuevos. La diferencia es la cuota del sobreajuste.</div>
+  <div class="barras frag" data-step="1" style="left:31px;top:175px;width:600px">
+    <div style="font-weight:700;color:var(--navy);margin-bottom:6px">Exactitud (accuracy)</div>
+    <div class="fila-barra"><div class="lab">entrenamiento</div><div class="pista"><div class="barra" style="--w:96.9%;background:var(--gris-datos)"></div></div><div class="val">0.969</div></div>
+    <div class="fila-barra"><div class="lab">prueba</div><div class="pista"><div class="barra" style="--w:93.3%"></div></div><div class="val">0.933</div></div>
+  </div>
+  <div class="barras frag" data-step="1" style="left:31px;top:315px;width:600px">
+    <div style="font-weight:700;color:var(--navy);margin-bottom:6px">Área bajo la curva ROC</div>
+    <div class="fila-barra"><div class="lab">entrenamiento</div><div class="pista"><div class="barra" style="--w:99.1%;background:var(--gris-datos)"></div></div><div class="val">0.991</div></div>
+    <div class="fila-barra"><div class="lab">prueba</div><div class="pista"><div class="barra" style="--w:96.6%"></div></div><div class="val">0.966</div></div>
+  </div>
+  <div class="card frag" data-step="2" style="left:31px;top:470px;width:600px;height:170px">
+    <h4>Por qué pasa</h4>
+    <p>El modelo tiene 1,000 columnas para 1,350 textos: puede memorizar combinaciones de tokens que solo aparecen en entrenamiento. En textos nuevos esas combinaciones no sirven. La brecha aquí es moderada (3.6 pp de exactitud) porque la regularización la contiene.</p>
+  </div>
+  <div class="card roja frag" data-step="3" style="left:655px;top:175px;width:338px;height:215px">
+    <h4>Cuándo preocuparse</h4>
+    <p>En el caso de comentarios ofensivos de la clase pasada, un <code>glm</code> sin regularizar dio 0.95 en entrenamiento y 0.61 en prueba. Esa brecha sí es sobreajuste severo: el modelo aprendió ruido.</p>
+  </div>
+  <div class="card verde frag" data-step="3" style="left:655px;top:410px;width:338px;height:230px">
+    <h4>Qué hacer</h4>
+    <ul>
+      <li>Reportar siempre la métrica de prueba, nunca la de entrenamiento.</li>
+      <li>Regularizar (<code>glmnet</code>) y afinar la penalización.</li>
+      <li>Reducir columnas: menos tokens, filtro de frecuencia mínima.</li>
+    </ul>
+  </div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba de 450 reseñas. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 9. Matriz de confusión -->
+<section class="slide">
+  <div class="banda">La matriz de confusión cruza predicción con verdad en cuatro celdas</div>
+  <div class="sub">Con el umbral de 0.5, el modelo acierta 420 de las 450 reseñas de prueba y se equivoca 30: 15 en cada dirección.</div>
+  <div class="matriz" style="left:31px;top:180px">
+    <div></div>
+    <div class="cab">Verdad:<br>negativa</div>
+    <div class="cab">Verdad:<br>positiva</div>
+    <div class="cab">Predicción:<br>negativa</div>
+    <div class="celda ok frag" data-step="1"><b>208</b><span class="frag" data-step="3">verdaderos positivos (VP)</span></div>
+    <div class="celda err frag" data-step="2"><b>15</b><span class="frag" data-step="3">falsos positivos (FP)</span></div>
+    <div class="cab">Predicción:<br>positiva</div>
+    <div class="celda err frag" data-step="2"><b>15</b><span class="frag" data-step="3">falsos negativos (FN)</span></div>
+    <div class="celda ok frag" data-step="1"><b>212</b><span class="frag" data-step="3">verdaderos negativos (VN)</span></div>
+  </div>
+  <pre class="codigo" style="left:31px;top:500px;width:498px;height:150px;font-size:13.5px">predicciones |>
+  conf_mat(truth = sentimiento, estimate = .pred_class)
+<span class="c">#            Truth
+# Prediction negativa positiva
+#   negativa      208       15
+#   positiva       15      212</span></pre>
+  <div class="card frag" data-step="1" style="left:555px;top:180px;width:438px;height:130px"><h4>La diagonal son aciertos</h4><p>208 negativas detectadas como negativas y 212 positivas como positivas. Verde en la matriz.</p></div>
+  <div class="card roja frag" data-step="2" style="left:555px;top:325px;width:438px;height:150px"><h4>Fuera de la diagonal, errores</h4><p>15 reseñas positivas marcadas como negativas y 15 negativas que pasaron como positivas. Los dos errores no cuestan lo mismo en todos los problemas.</p></div>
+  <div class="card soft frag" data-step="3" style="left:555px;top:490px;width:438px;height:160px"><h4>"Positivo" se refiere a la clase de interés</h4><p>Como el primer nivel del factor es <code>negativa</code>, aquí un "verdadero positivo" es una reseña negativa bien detectada. Es la convención de yardstick y conviene decirla en voz alta cada vez.</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 10. Métricas -->
+<section class="slide" data-anim="metricas" data-steps="4">
+  <div class="banda">Cuatro métricas salen de la misma matriz y responden preguntas distintas</div>
+  <div class="sub">Cada métrica combina celdas diferentes. Al resaltarlas se ve qué pregunta contesta cada una.</div>
+  <div class="matriz" id="mini-matriz" style="left:31px;top:175px;grid-template-columns:120px 130px 130px;grid-template-rows:54px 95px 95px">
+    <div></div><div class="cab" style="font-size:14px">Verdad:<br>negativa</div><div class="cab" style="font-size:14px">Verdad:<br>positiva</div>
+    <div class="cab" style="font-size:14px">Predicción:<br>negativa</div>
+    <div class="celda ok" data-c="vp"><b style="font-size:28px">208</b>VP</div>
+    <div class="celda err" data-c="fp"><b style="font-size:28px">15</b>FP</div>
+    <div class="cab" style="font-size:14px">Predicción:<br>positiva</div>
+    <div class="celda err" data-c="fn"><b style="font-size:28px">15</b>FN</div>
+    <div class="celda ok" data-c="vn"><b style="font-size:28px">212</b>VN</div>
+  </div>
+  <div class="card soft" style="left:31px;top:445px;width:388px;height:205px">
+    <h4>En código</h4>
+    <pre class="codigo" style="position:static;font-size:13px;margin-top:4px">metricas <- metric_set(accuracy,
+  precision, recall, f_meas)
+
+predicciones |>
+  metricas(truth = sentimiento,
+           estimate = .pred_class)</pre>
+  </div>
+  <div class="card frag" data-step="1" style="left:445px;top:175px;width:548px;height:108px">
+    <h4>Exactitud (accuracy) = (VP + VN) / total = 420 / 450 = <span class="num">0.933</span></h4>
+    <p>¿Qué fracción de todas las reseñas clasificó bien? Es la métrica más intuitiva y la más engañosa cuando una clase domina.</p>
+  </div>
+  <div class="card frag" data-step="2" style="left:445px;top:295px;width:548px;height:108px">
+    <h4>Precisión = VP / (VP + FP) = 208 / 223 = <span class="num">0.933</span></h4>
+    <p>De las reseñas que el modelo marcó como negativas, ¿cuántas lo eran? Mide cuántas falsas alarmas genera.</p>
+  </div>
+  <div class="card frag" data-step="3" style="left:445px;top:415px;width:548px;height:108px">
+    <h4>Sensibilidad (recall) = VP / (VP + FN) = 208 / 223 = <span class="num">0.933</span></h4>
+    <p>De las reseñas que de verdad eran negativas, ¿cuántas detectó? Mide cuántas se le escapan.</p>
+  </div>
+  <div class="card frag" data-step="4" style="left:445px;top:535px;width:548px;height:115px">
+    <h4>F1 = media armónica de precisión y sensibilidad = <span class="num">0.933</span></h4>
+    <p>Castiga que una sea alta y la otra baja. Aquí las cuatro coinciden porque hay 15 errores de cada tipo; en general no.</p>
+  </div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 11. Qué métrica importa -->
+<section class="slide">
+  <div class="banda">La métrica que importa depende de cuál error cuesta más</div>
+  <div class="sub">Antes de elegir métrica hay que preguntar qué pasa con un falso positivo y qué pasa con un falso negativo.</div>
+  <div class="card frag" data-step="1" style="left:31px;top:170px;width:307px;height:215px">
+    <h4>Moderar comentarios ofensivos</h4>
+    <p>Que se escape un comentario ofensivo (falso negativo) daña a la comunidad. Importa la <b>sensibilidad</b>: en el caso de la clase pasada fue 0.52, el modelo detectaba la mitad.</p>
+  </div>
+  <div class="card frag" data-step="1" style="left:358px;top:170px;width:307px;height:215px">
+    <h4>Filtro de spam</h4>
+    <p>Mandar un correo legítimo a spam (falso positivo) es peor que dejar pasar uno de publicidad. Importa la <b>precisión</b>.</p>
+  </div>
+  <div class="card frag" data-step="1" style="left:686px;top:170px;width:307px;height:215px">
+    <h4>Reseñas para un panel de control</h4>
+    <p>Los dos errores cuestan parecido y las clases están balanceadas. Sirven la <b>exactitud</b> y la <b>F1</b>, y el AUC para comparar versiones del modelo.</p>
+  </div>
+  <div class="card roja frag" data-step="2" style="left:31px;top:405px;width:470px;height:235px">
+    <h4>La exactitud engaña con clases desbalanceadas</h4>
+    <p>En la base de comentarios, 52% no eran ofensivos. Un "modelo tonto" que siempre responde "no ofensivo" tiene exactitud 0.52 sin aprender nada. El modelo real sacó 0.61: solo nueve puntos mejor que no hacer nada.</p>
+    <p style="margin-top:8px">Compare siempre contra esa línea base.</p>
+  </div>
+  <div class="card verde frag" data-step="3" style="left:523px;top:405px;width:470px;height:235px">
+    <h4>Precisión y sensibilidad se jalan en sentidos opuestos</h4>
+    <p>Si el modelo marca más reseñas como negativas, detecta más de las negativas reales (sube la sensibilidad) pero mete más positivas por error (baja la precisión). El punto de equilibrio lo fija el umbral de decisión, que vemos a continuación.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 12. Umbral interactivo -->
+<section class="slide" data-anim="umbral">
+  <div class="banda">El umbral de 0.5 es una decisión: moverlo cambia precisión por sensibilidad</div>
+  <div class="sub">El modelo entrega una probabilidad por reseña; la etiqueta aparece al cortar. Mueva el umbral y observe las 450 reseñas de prueba.</div>
+  <svg id="svg-umbral" width="620" height="250" style="position:absolute;left:31px;top:165px"></svg>
+  <div style="position:absolute;left:31px;top:418px;width:620px">
+    <div style="display:flex;align-items:center;gap:14px;font-size:15px"><span>Umbral sobre P(positiva):</span><input id="umbral" type="range" min="0.05" max="0.95" step="0.01" value="0.5" style="flex:1"><span class="num" id="umbral-val" style="font-size:20px;color:var(--navy)">0.50</span></div>
+    <div style="font-size:13.5px;color:#333;margin-top:4px">Se marca como negativa toda reseña con P(positiva) menor al umbral. Las métricas se calculan para la clase negativa.</div>
+  </div>
+  <div class="kpi" style="position:absolute;left:31px;top:492px;width:620px">
+    <div><div class="v" id="k-vp">208</div><div class="l">VP: negativas detectadas</div></div>
+    <div><div class="v" id="k-fp">15</div><div class="l">FP: falsas alarmas</div></div>
+    <div><div class="v" id="k-fn">15</div><div class="l">FN: negativas perdidas</div></div>
+    <div><div class="v" id="k-vn">212</div><div class="l">VN: positivas correctas</div></div>
+  </div>
+  <div class="kpi" style="position:absolute;left:31px;top:588px;width:620px">
+    <div style="background:var(--hgreen)"><div class="v" id="k-prec">0.933</div><div class="l">precisión</div></div>
+    <div style="background:var(--hgreen)"><div class="v" id="k-rec">0.933</div><div class="l">sensibilidad</div></div>
+    <div style="background:var(--hgreen)"><div class="v" id="k-acc">0.933</div><div class="l">exactitud</div></div>
+  </div>
+  <div class="card" style="left:672px;top:165px;width:321px;height:215px">
+    <h4>Qué observar</h4>
+    <ul>
+      <li>Umbral alto (0.8): casi todo se marca negativo. Sube la sensibilidad, cae la precisión.</li>
+      <li>Umbral bajo (0.2): solo las muy seguras se marcan negativas. Sube la precisión, caen las detectadas.</li>
+      <li>La exactitud se maximiza cerca de 0.5 porque las clases están balanceadas.</li>
+    </ul>
+  </div>
+  <pre class="codigo" style="left:672px;top:395px;width:321px;height:120px;font-size:12.5px">library(probably)
+predicciones |>
+  threshold_perf(
+    sentimiento, .pred_negativa,
+    thresholds = seq(0.1, 0.9, 0.05))</pre>
+  <div class="card verde" style="left:672px;top:530px;width:321px;height:120px"><h4>Para llevarse</h4><p>El umbral no se afina con la base de prueba. Se elige según el costo de cada error, idealmente con la validación cruzada.</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, probabilidades en la base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 13. Curva ROC -->
+<section class="slide" data-anim="roc" data-steps="3">
+  <div class="banda">La curva ROC recorre todos los umbrales de una sola vez</div>
+  <div class="sub">Para cada umbral se calcula un par (1 - especificidad, sensibilidad). Unir los puntos da la curva; el barrido va de "nada es negativo" a "todo es negativo".</div>
+  <svg id="svg-roc" width="470" height="470" style="position:absolute;left:31px;top:160px"></svg>
+  <div class="card" style="left:530px;top:160px;width:463px;height:150px">
+    <h4>Los dos ejes</h4>
+    <p><b>Sensibilidad</b> (eje vertical): fracción de negativas reales detectadas.<br><b>1 - especificidad</b> (eje horizontal): fracción de positivas reales marcadas como negativas por error, es decir, la tasa de falsas alarmas.</p>
+  </div>
+  <div class="card soft frag" data-step="1" style="left:530px;top:322px;width:463px;height:122px">
+    <h4>La diagonal es el azar</h4>
+    <p>Un modelo que asigna probabilidades al azar detecta tantas negativas como falsas alarmas genera. Cuanto más se despega la curva hacia la esquina superior izquierda, mejor separa.</p>
+  </div>
+  <div class="card frag" data-step="2" style="left:530px;top:454px;width:463px;height:88px">
+    <h4>Durante el barrido</h4>
+    <p id="roc-estado" class="mono" style="font-size:13.5px">umbral = 0.00 · sensibilidad = 0.000 · 1 - especificidad = 0.000</p>
+  </div>
+  <pre class="codigo frag" data-step="3" style="left:530px;top:550px;width:463px;height:108px;font-size:12.5px;line-height:1.25">predicciones |>
+  roc_curve(truth = sentimiento, .pred_negativa) |>
+  autoplot()
+
+predicciones |>
+  roc_auc(truth = sentimiento, .pred_negativa)</pre>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 14. AUC -->
+<section class="slide">
+  <div class="banda">Un AUC de 0.966 ordena bien 97 de cada 100 pares de reseñas</div>
+  <div class="sub">El área bajo la curva ROC resume la curva en un número entre 0.5 (azar) y 1 (separación perfecta), independiente del umbral.</div>
+  <svg width="962" height="150" style="position:absolute;left:31px;top:165px">
+    <rect x="40" y="60" width="880" height="18" fill="#EAF2FA"/>
+    <rect x="40" y="60" width="352" height="18" fill="#FADBD8"/>
+    <rect x="392" y="60" width="176" height="18" fill="#F3E6C9"/>
+    <rect x="568" y="60" width="176" height="18" fill="#D5F5E3"/>
+    <rect x="744" y="60" width="176" height="18" fill="#B9E8CC"/>
+    <g font-size="13" fill="#333" text-anchor="middle">
+      <text x="40" y="100">0.5</text><text x="216" y="100">0.6</text><text x="392" y="100">0.7</text><text x="568" y="100">0.8</text><text x="744" y="100">0.9</text><text x="920" y="100">1.0</text>
+      <text x="216" y="122" font-style="italic">casi azar</text><text x="480" y="122" font-style="italic">aceptable</text><text x="656" y="122" font-style="italic">bueno</text><text x="832" y="122" font-style="italic">excelente</text>
+    </g>
+    <g class="frag" data-step="1">
+      <line x1="392" y1="40" x2="392" y2="84" stroke="#C0392B" stroke-width="3"/>
+      <text x="392" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#C0392B">0.70 comentarios ofensivos</text>
+    </g>
+    <g class="frag" data-step="1">
+      <line x1="860" y1="40" x2="860" y2="84" stroke="#1E4C7D" stroke-width="3"/>
+      <text x="860" y="30" text-anchor="middle" font-size="14" font-weight="700" fill="#1E4C7D">0.966 reseñas sintéticas</text>
+    </g>
+  </svg>
+  <div class="card frag" data-step="2" style="left:31px;top:335px;width:470px;height:150px">
+    <h4>Qué significa el número</h4>
+    <p>Si tomamos al azar una reseña negativa y una positiva, el AUC es la probabilidad de que el modelo le dé mayor puntaje de "negativa" a la que sí lo es. Con 0.966, ordena bien 97 de cada 100 pares.</p>
+  </div>
+  <div class="card verde frag" data-step="2" style="left:523px;top:335px;width:470px;height:150px">
+    <h4>Para qué sirve</h4>
+    <p>Comparar modelos o versiones de la receta sin fijar un umbral. Por eso <code>tune_grid()</code> elige la penalización por <code>roc_auc</code> y no por exactitud.</p>
+  </div>
+  <div class="card roja frag" data-step="3" style="left:31px;top:500px;width:470px;height:150px">
+    <h4>Qué no dice</h4>
+    <p>No dice cuántos errores habrá en el umbral que use en producción, ni si las probabilidades están calibradas. Para eso están la matriz de confusión y la calibración.</p>
+  </div>
+  <div class="card soft frag" data-step="3" style="left:523px;top:500px;width:470px;height:150px">
+    <h4>La diferencia entre 0.70 y 0.966</h4>
+    <p>Misma receta y mismo algoritmo. Lo que cambia son los datos: etiquetas ruidosas en los comentarios reales, etiquetas limpias en las reseñas sintéticas. El techo lo ponen las etiquetas.</p>
+  </div>
+  <div class="fuente">Fuente: analisis_resenas.R y caso de comentarios ofensivos (sesión 14). Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 15. La perilla -->
+<section class="slide">
+  <div class="banda">La penalización es una perilla y la base de prueba no sirve para girarla</div>
+  <div class="sub">Un hiperparámetro no se aprende de los datos como un coeficiente: lo fija quien modela. Y hay que fijarlo sin mirar la prueba.</div>
+  <pre class="codigo" style="left:31px;top:170px;width:470px;height:178px">modelo <- logistic_reg(
+    penalty = <span class="r">tune()</span>,   <span class="c"># ¿cuánto regularizar?</span>
+    mixture = 0.5) |>     <span class="c"># elastic net</span>
+  set_engine("glmnet") |>
+  set_mode("classification")
+
+flujo <- workflow() |>
+  add_recipe(receta) |> add_model(modelo)</pre>
+  <div class="card" style="left:523px;top:170px;width:470px;height:178px">
+    <h4>Qué hace la penalización</h4>
+    <p>Encoge los coeficientes hacia cero. Con <code>mixture = 0.5</code> la mitad del castigo es lasso (apaga tokens por completo) y la otra mitad ridge (reduce todos un poco). Más penalización, modelo más simple.</p>
+  </div>
+  <div class="card roja frag" data-step="1" style="left:31px;top:365px;width:470px;height:280px">
+    <h4>Por qué no probar valores contra la base de prueba</h4>
+    <p>Si probamos diez penalizaciones y nos quedamos con la que mejor sale en prueba, la prueba ya participó en la decisión. La métrica final queda optimista: medimos el modelo con los mismos datos con que lo escogimos.</p>
+    <p style="margin-top:8px">Es la misma trampa del sobreajuste, un nivel arriba.</p>
+  </div>
+  <div class="card verde frag" data-step="2" style="left:523px;top:365px;width:470px;height:280px">
+    <h4>La salida: fabricar "pruebas" dentro del entrenamiento</h4>
+    <p>Dividimos la base de entrenamiento en pliegues, entrenamos con unos y validamos con el otro, y repetimos rotando. Cada penalización recibe un promedio honesto sin tocar la prueba.</p>
+    <p style="margin-top:8px">Eso es la <b>validación cruzada</b>.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 16. k-fold animado -->
+<section class="slide" data-anim="kfold" data-steps="6">
+  <div class="banda">La validación cruzada hace cinco ensayos con la misma base y los promedia</div>
+  <div class="sub">La base de entrenamiento (1,350 reseñas) se parte en cinco pliegues de unas 270. Cada pliegue es validación una vez y entrenamiento cuatro.</div>
+  <div class="pliegues" id="pliegues"></div>
+  <div class="card frag" data-step="6" style="left:31px;top:475px;width:640px;height:95px">
+    <h4>Promedio de los cinco ensayos (penalización 0.01)</h4>
+    <p>AUC medio <span class="num">0.939</span> con error estándar <span class="num">0.006</span>; exactitud media <span class="num">0.878</span>. Ese promedio es la calificación de esta penalización, obtenida sin mirar la base de prueba.</p>
+  </div>
+  <div class="card" style="left:695px;top:165px;width:298px;height:162px">
+    <h4>Qué se repite en cada ensayo</h4>
+    <p>Toda la receta: vocabulario, idf y stemming se aprenden solo con los cuatro pliegues de entrenamiento. Por eso usamos <code>workflow()</code>: no hay fuga de información hacia el pliegue de validación.</p>
+  </div>
+  <div class="card soft frag" data-step="3" style="left:695px;top:337px;width:298px;height:140px">
+    <h4>Por qué varía entre pliegues</h4>
+    <p>El AUC va de 0.927 a 0.961 según qué 270 reseñas tocaron validar. Un solo ensayo sería una medida ruidosa; cinco dan media y error estándar.</p>
+  </div>
+  <div class="card verde frag" data-step="6" style="left:695px;top:487px;width:298px;height:104px"><h4>Cuántos pliegues</h4><p>Cinco o diez es lo usual. Más pliegues: estimación más estable y más cómputo.</p></div>
+  <div class="card roja" style="left:31px;top:600px;width:962px;height:58px"><h4>La base de prueba sigue intacta</h4><p>Todo esto ocurre dentro de las 1,350 reseñas de entrenamiento. Las 450 de prueba siguen guardadas para el final.</p></div>
+  <div class="fuente">Fuente: fit_resamples() con los pliegues de analisis_resenas.R. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 17. Código de CV -->
+<section class="slide">
+  <div class="banda">En código son cuatro funciones: vfold_cv, grid_regular, tune_grid y select_best</div>
+  <div class="sub">Cada línea corresponde a una decisión: cuántos pliegues, qué valores probar, con qué métricas y cuál quedarse.</div>
+  <pre class="codigo" style="left:31px;top:165px;width:560px;height:488px;font-size:13.5px;line-height:1.35"><span class="c"># 1) pliegues estratificados dentro de entrenamiento</span>
+set.seed(2026)
+pliegues <- <span class="k">vfold_cv</span>(entrenamiento, v = 5,
+                     strata = sentimiento)
+
+<span class="c"># 2) qué métricas calcular en cada ensayo</span>
+metricas <- metric_set(roc_auc, accuracy,
+                       f_meas, precision, recall)
+
+<span class="c"># 3) rejilla de penalizaciones: 10 valores
+#    entre 10^-5 y 10^-2 (escala logarítmica)</span>
+rejilla <- <span class="k">grid_regular</span>(penalty(range = c(-5, -2)),
+                        levels = 10)
+
+<span class="c"># 4) entrenar y validar 10 x 5 = 50 veces</span>
+set.seed(2026)
+resultados_cv <- <span class="k">tune_grid</span>(flujo,
+  resamples = pliegues, grid = rejilla,
+  metrics = metricas)
+
+<span class="c"># 5) ver y elegir</span>
+autoplot(resultados_cv)
+show_best(resultados_cv, metric = "roc_auc")
+mejor <- <span class="k">select_best</span>(resultados_cv, metric = "roc_auc")</pre>
+  <div class="card frag" data-step="1" style="left:615px;top:170px;width:378px;height:140px"><h4>vfold_cv</h4><p><code>v = 5</code> pliegues; <code>strata</code> mantiene el 50/50 en cada uno. La semilla fija qué reseña cae en qué pliegue.</p></div>
+  <div class="card frag" data-step="2" style="left:615px;top:325px;width:378px;height:150px"><h4>grid_regular y penalty()</h4><p>El rango se da en potencias de 10: <code>c(-5, -2)</code> son valores de 0.00001 a 0.01. Las penalizaciones se exploran en escala logarítmica porque su efecto es multiplicativo.</p></div>
+  <div class="card frag" data-step="3" style="left:615px;top:490px;width:378px;height:150px"><h4>tune_grid y select_best</h4><p>Por cada penalización promedia las métricas de los cinco pliegues. <code>select_best</code> devuelve la fila ganadora según la métrica que se le indique; aquí, el AUC.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 18. Resultado de la afinación -->
+<section class="slide" data-anim="cvplot" data-steps="3">
+  <div class="banda">La afinación eligió la penalización más alta de la rejilla: hay que ampliarla</div>
+  <div class="sub">AUC promedio en validación cruzada para las diez penalizaciones. La curva sigue subiendo en el borde derecho.</div>
+  <svg id="svg-cv" width="620" height="400" style="position:absolute;left:31px;top:165px"></svg>
+  <div class="card" style="left:672px;top:165px;width:321px;height:140px"><h4>Cómo leer la gráfica</h4><p>Cada punto es el AUC medio de cinco pliegues; la barra vertical es más o menos un error estándar. El eje horizontal es logarítmico.</p></div>
+  <div class="card frag" data-step="2" style="left:672px;top:320px;width:321px;height:150px"><h4>Más penalización, mejor</h4><p>De 0.900 con casi nada de penalización a 0.939 con 0.01. Regularizar más quitó ruido y mejoró la generalización.</p></div>
+  <div class="card roja frag" data-step="3" style="left:672px;top:485px;width:321px;height:165px"><h4>El óptimo está en el borde</h4><p>Cuando el mejor valor es el extremo de la rejilla no sabemos si más allá sigue mejorando. Siguiente paso: repetir con <code>range = c(-5, -1)</code> o más niveles.</p></div>
+  <div class="fuente">Fuente: tune_grid() en analisis_resenas.R, 5 pliegues. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 19. Ruta de coeficientes -->
+<section class="slide" data-anim="rutacoef" data-steps="2">
+  <div class="banda">La regularización apaga tokens: con 0.01 sobreviven 454 de 1,000</div>
+  <div class="sub">Trayectoria de los doce coeficientes más grandes conforme crece la penalización. A la derecha todos llegan a cero.</div>
+  <svg id="svg-ruta" width="640" height="420" style="position:absolute;left:31px;top:165px"></svg>
+  <div class="card" style="left:695px;top:165px;width:298px;height:188px"><h4>Qué muestra</h4><p>glmnet ajusta el modelo para cien penalizaciones de una vez. Con penalización pequeña los coeficientes son grandes y muchos; conforme crece, los menos útiles caen a cero (azul empuja a positiva, rojo a negativa).</p></div>
+  <div class="card frag" data-step="2" style="left:695px;top:365px;width:298px;height:135px"><h4>En el valor elegido</h4><p>La línea vertical marca 0.01. Ahí quedan 454 tokens con coeficiente distinto de cero; los otros 546 no participan en la predicción.</p></div>
+  <div class="card verde frag" data-step="2" style="left:695px;top:512px;width:298px;height:138px"><h4>Lasso, ridge y elastic net</h4><p><code>mixture = 1</code> es lasso (ceros exactos), <code>0</code> es ridge (todos pequeños, ninguno cero) y <code>0.5</code> mezcla ambos. También se puede afinar con <code>tune()</code>.</p></div>
+  <div class="fuente">Fuente: ruta de coeficientes del modelo final (glmnet). Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 20. last_fit -->
+<section class="slide">
+  <div class="banda">La base de prueba se usa una sola vez, al final, con last_fit</div>
+  <div class="sub">Con la penalización elegida se cierra el flujo, se reentrena con todo el entrenamiento y se evalúa en la prueba. Después ya no se cambia nada.</div>
+  <div class="caja-flujo frag" data-step="1" style="left:31px;top:185px"><b>tune_grid()</b>50 ajustes: 10 penalizaciones por 5 pliegues, dentro del entrenamiento.</div>
+  <div class="flecha frag" data-step="1" style="left:235px;top:215px;width:40px"></div>
+  <div class="caja-flujo frag" data-step="1" style="left:280px;top:185px"><b>select_best()</b>Se queda con la penalización de mayor AUC medio: 0.01.</div>
+  <div class="flecha frag" data-step="2" style="left:484px;top:215px;width:40px"></div>
+  <div class="caja-flujo frag" data-step="2" style="left:529px;top:185px"><b>finalize_workflow()</b>Sustituye <code>tune()</code> por el valor elegido. El flujo queda cerrado.</div>
+  <div class="flecha frag" data-step="3" style="left:733px;top:215px;width:40px"></div>
+  <div class="caja-flujo roja frag" data-step="3" style="left:778px;top:185px;width:215px"><b>last_fit()</b>Entrena con las 1,350 de entrenamiento y predice las 450 de prueba. Una sola vez.</div>
+  <pre class="codigo frag" data-step="3" style="left:31px;top:300px;width:560px;height:175px;font-size:13.5px">flujo_final  <- finalize_workflow(flujo, mejor)
+ajuste_final <- last_fit(flujo_final, particion,
+                         metrics = metricas)
+
+collect_metrics(ajuste_final)       <span class="c"># métricas en prueba</span>
+predicciones <- collect_predictions(ajuste_final) |>
+  bind_cols(prueba |> select(id, categoria, texto))</pre>
+  <div class="card frag" data-step="4" style="left:615px;top:300px;width:378px;height:175px">
+    <h4>Prueba contra validación cruzada</h4>
+    <p>AUC en validación cruzada: 0.939. AUC en prueba: 0.966. Que la prueba salga un poco mejor es normal: el modelo final se entrenó con las 1,350 reseñas y no con 1,080.</p>
+  </div>
+  <div class="card roja frag" data-step="4" style="left:31px;top:495px;width:470px;height:150px">
+    <h4>Si vuelve a tocar la prueba, deja de ser prueba</h4>
+    <p>Cambiar la receta o el umbral "porque en prueba sale mejor" convierte la prueba en otra base de entrenamiento. Cualquier ajuste posterior regresa a la validación cruzada.</p>
+  </div>
+  <div class="card verde frag" data-step="4" style="left:523px;top:495px;width:470px;height:150px">
+    <h4>Lo que se reporta</h4>
+    <p>Las métricas de <code>collect_metrics(ajuste_final)</code>, la matriz de confusión y la curva ROC de la prueba. El modelo que va a producción es <code>extract_workflow(ajuste_final)</code>.</p>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 21. Por categoría -->
+<section class="slide">
+  <div class="banda">La exactitud en prueba va de 90% en apps a 97% en servicios</div>
+  <div class="sub">Una métrica global esconde diferencias entre subgrupos. Conviene desagregar por las variables que estén disponibles.</div>
+  <div class="barras frag" data-step="1" style="left:31px;top:175px;width:600px">
+    <div class="fila-barra"><div class="lab">servicio (n = 90)</div><div class="pista"><div class="barra" style="--w:96.7%"></div></div><div class="val">96.7%</div></div>
+    <div class="fila-barra"><div class="lab">hotel (n = 92)</div><div class="pista"><div class="barra" style="--w:94.6%"></div></div><div class="val">94.6%</div></div>
+    <div class="fila-barra"><div class="lab">producto (n = 82)</div><div class="pista"><div class="barra" style="--w:93.9%"></div></div><div class="val">93.9%</div></div>
+    <div class="fila-barra"><div class="lab">restaurante (n = 91)</div><div class="pista"><div class="barra" style="--w:91.2%"></div></div><div class="val">91.2%</div></div>
+    <div class="fila-barra"><div class="lab">app (n = 95)</div><div class="pista"><div class="barra" style="--w:90.4%"></div></div><div class="val">90.4%</div></div>
+  </div>
+  <pre class="codigo frag" data-step="1" style="left:31px;top:450px;width:600px;height:95px;font-size:13.5px">predicciones |>
+  group_by(categoria) |>
+  accuracy(truth = sentimiento, estimate = .pred_class)</pre>
+  <div class="card frag" data-step="2" style="left:655px;top:175px;width:338px;height:185px"><h4>Qué buscar al desagregar</h4><p>Subgrupos con desempeño muy distinto al global. Con 80 a 95 reseñas por categoría, una diferencia de 6 pp equivale a unas 5 reseñas: hay que leerla con cautela.</p></div>
+  <div class="card soft frag" data-step="2" style="left:655px;top:375px;width:338px;height:170px"><h4>Por qué apps sale más bajo</h4><p>Es una hipótesis para verificar leyendo los errores: las reseñas de apps mezclan vocabulario técnico (sincronización, actualización, pago) con quejas y elogios sobre lo mismo.</p></div>
+  <div class="card hl frag" data-step="2" style="left:31px;top:565px;width:962px;height:85px"><h4>Misma lógica para cualquier subgrupo</h4><p>Si la base trae región, fecha o tipo de usuario, repita el cálculo. Un modelo que falla sistemáticamente en un subgrupo es un problema aunque la exactitud global sea alta.</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba de 450 reseñas. Cálculos propios.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 22. Errores -->
+<section class="slide" data-anim="errores">
+  <div class="banda">Los errores más confiados son contraste y sarcasmo: el modelo cuenta palabras</div>
+  <div class="sub">Las 30 reseñas mal clasificadas, ordenadas por qué tan segura estaba la predicción. Leerlas vale más que probar otro algoritmo.</div>
+  <div id="lista-errores"></div>
+  <pre class="codigo" style="left:655px;top:165px;width:338px;height:150px;font-size:12.5px">errores <- predicciones |>
+  filter(sentimiento != .pred_class) |>
+  arrange(desc(abs(.pred_positiva - 0.5))) |>
+  select(categoria, texto,
+         sentimiento, .pred_positiva)
+nrow(errores)   <span class="c"># 30</span></pre>
+  <div class="card frag" data-step="1" style="left:655px;top:330px;width:338px;height:150px"><h4>Contraste "aunque X, Y"</h4><p>La reseña elogia dos cosas y condena una. El modelo suma pesos de tokens y gana la mayoría, no el veredicto.</p></div>
+  <div class="card roja frag" data-step="2" style="left:655px;top:495px;width:338px;height:155px"><h4>Sarcasmo</h4><p>"Lo máximo: el producto es de pésima calidad. Qué detalle." Las palabras positivas están ahí; la intención no. Pregunta para discutir: ¿qué necesitaría el modelo para entender estos casos?</p></div>
+  <div class="fuente">Fuente: analisis_resenas.R, base de prueba. Textos tal como vienen en la base sintética.</div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 23. Mejoras -->
+<section class="slide">
+  <div class="banda">Seis palancas para mejorar el modelo antes de cambiar de algoritmo</div>
+  <div class="sub">En orden aproximado de rendimiento por línea de código. Cada cambio se evalúa con validación cruzada, no con la prueba.</div>
+  <table class="tabla" style="position:absolute;left:31px;top:165px;width:962px">
+    <tr><th style="width:36px">#</th><th style="width:230px">Palanca</th><th>Qué hacer</th><th style="width:280px">Cuidado</th></tr>
+    <tr class="frag" data-step="1"><td>1</td><td>Regularizar y afinar</td><td><code>glmnet</code> con <code>penalty = tune()</code>, rejilla más amplia, <code>select_best</code> por AUC.</td><td>Si el óptimo cae en el borde, ampliar la rejilla.</td></tr>
+    <tr class="frag" data-step="1"><td>2</td><td>Mejores variables</td><td>Bigramas, stemming, más tokens, "!!!" y alargamientos como señal.</td><td>No borrar negaciones ni puntuación expresiva.</td></tr>
+    <tr class="frag" data-step="2"><td>3</td><td>Stopwords y diccionarios</td><td>Modificar la lista de stopwords con criterio; agregar un diccionario de palabras ofensivas o de sentimiento como variables extra.</td><td>Revisar qué palabras se van: "no" es señal.</td></tr>
+    <tr class="frag" data-step="2"><td>4</td><td>Dispersión de la DTM</td><td>Ajustar <code>min_times</code> y <code>max_tokens</code> en <code>step_tokenfilter</code>.</td><td>Menos columnas reduce sobreajuste; demasiado pocas pierden señal.</td></tr>
+    <tr class="frag" data-step="3"><td>5</td><td>Umbral de decisión</td><td>Mover el corte según el costo de cada error, con <code>probably::threshold_perf()</code>.</td><td>No cambia el AUC; cambia precisión y sensibilidad.</td></tr>
+    <tr class="frag" data-step="3"><td>6</td><td>Otro algoritmo o ensamble</td><td><code>naive_Bayes</code>, <code>svm_linear</code>, <code>rand_forest</code> con la misma receta; comparar con <code>workflow_set()</code>.</td><td>Si todos topan igual, el techo lo ponen las etiquetas.</td></tr>
+  </table>
+  <div class="card hl frag" data-step="3" style="left:31px;top:560px;width:962px;height:90px"><h4>Expectativa realista</h4><p>En el caso de comentarios ofensivos, las palancas 1 y 2 llevaron la exactitud de 0.61 a cerca de 0.70. El resto del techo lo pusieron las etiquetas. Con etiquetas limpias, como en las reseñas, la misma receta da AUC de 0.94 a 0.97.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 24. Ejercicio 1/2 -->
+<section class="slide">
+  <div class="banda">Ejercicio 01: un clasificador de reseñas de principio a fin (1 de 2)</div>
+  <div class="sub">A partir del archivo <code>resenas_sinteticas.csv</code>, genere un modelo que permita saber si una reseña es positiva o negativa.</div>
+  <div class="texto" style="left:31px;top:170px;width:962px;font-size:16.5px">
+    <ol>
+      <li>Cargue los datos del archivo.</li>
+      <li>Explórelos: cuántas reseñas positivas y cuántas negativas hay. ¿Está balanceada la base? Convierta la etiqueta a factor.</li>
+      <li>Haga el preprocesamiento correspondiente.</li>
+      <li>Parta en base de entrenamiento y base de prueba. Que la base de entrenamiento sea el 70% de los datos, estratificada por la etiqueta.</li>
+      <li>Genere la receta de preprocesamiento: quite stopwords, tokenice a palabras, haga stemming en vez de lematización, filtre los tokens que aparecen menos de 3 veces y quédese con un máximo de 500, y obtenga el tf-idf.</li>
+      <li>Programe el modelo: una regresión logística con penalización (use <code>penalty = 0.01</code> y <code>mixture = 0.5</code>, motor <code>glmnet</code>).</li>
+      <li>Genere el flujo de trabajo sumando la receta más el modelo.</li>
+      <li>Con ese flujo, ajuste el modelo con la función <code>fit()</code> sobre la base de entrenamiento.</li>
+    </ol>
+  </div>
+  <div class="card soft" style="left:31px;top:545px;width:962px;height:100px"><h4>Entregable</h4><p>Un script de R que corra de principio a fin, con comentarios que expliquen cada bloque. Las métricas deben venir de la base de prueba, no de la de entrenamiento.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 25. Ejercicio 2/2 -->
+<section class="slide">
+  <div class="banda">Ejercicio 01: un clasificador de reseñas de principio a fin (2 de 2)</div>
+  <div class="sub">La segunda parte evalúa el modelo, lo afina y lo lleva a una aplicación.</div>
+  <div class="texto" style="left:31px;top:170px;width:962px;font-size:16.5px">
+    <ol start="9">
+      <li>Obtenga la matriz de confusión en la base de prueba e identifique VP, FP, FN y VN. Diga cuál es la clase de interés según el orden del factor.</li>
+      <li>Calcule exactitud, precisión, sensibilidad y F1. Explique en una oración qué pregunta responde cada una.</li>
+      <li>Obtenga la curva ROC y el AUC. Interprete el AUC.</li>
+      <li>Sustituya <code>penalty = 0.01</code> por <code>tune()</code>, cree cinco pliegues estratificados con <code>vfold_cv()</code>, afine con <code>tune_grid()</code> y elija con <code>select_best()</code> por AUC. Compare el AUC de validación cruzada con el de prueba.</li>
+      <li>Cierre el flujo con <code>finalize_workflow()</code> y <code>last_fit()</code>. Reporte las métricas finales.</li>
+      <li>Usando vibe coding, programe una aplicación Shiny en la que usted escriba una reseña y, al apretar un botón, el modelo le diga si es positiva o negativa.</li>
+    </ol>
+  </div>
+  <div class="card roja" style="left:31px;top:510px;width:470px;height:135px"><h4>Dos errores que descuentan</h4><p>Reportar métricas de entrenamiento como si fueran de prueba, y elegir la penalización o el umbral mirando la base de prueba.</p></div>
+  <div class="card verde" style="left:523px;top:510px;width:470px;height:135px"><h4>Reto opcional</h4><p>Amplíe la rejilla de penalización a <code>range = c(-5, -1)</code> y afine también <code>mixture</code>. ¿Cambia la elección? ¿Cuántos tokens sobreviven?</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 26. Resumen -->
+<section class="slide">
+  <div class="banda">Resumen: ocho conceptos para llevarse de la sesión</div>
+  <div class="sub">Cada concepto tiene su función en tidymodels. Si puede explicar los ocho con sus palabras, domina la evaluación de un clasificador.</div>
+  <div class="card" style="left:31px;top:170px;width:470px;height:105px"><h4>Partición entrenamiento / prueba · <span class="mono">initial_split()</span></h4><p>La prueba simula datos nuevos. Se aparta al inicio, estratificada, y se usa una sola vez.</p></div>
+  <div class="card" style="left:523px;top:170px;width:470px;height:105px"><h4>Sobreajuste</h4><p>El modelo memoriza el entrenamiento. Se detecta comparando la métrica de entrenamiento con la de prueba.</p></div>
+  <div class="card" style="left:31px;top:290px;width:470px;height:105px"><h4>Matriz de confusión · <span class="mono">conf_mat()</span></h4><p>Predicción contra verdad en cuatro celdas: VP, FP, FN, VN. "Positivo" es el primer nivel del factor.</p></div>
+  <div class="card" style="left:523px;top:290px;width:470px;height:105px"><h4>Exactitud, precisión, sensibilidad, F1 · <span class="mono">metric_set()</span></h4><p>Cuatro preguntas distintas a la misma matriz. La métrica correcta depende de qué error cuesta más.</p></div>
+  <div class="card" style="left:31px;top:410px;width:470px;height:105px"><h4>Umbral y curva ROC · <span class="mono">roc_curve(), roc_auc()</span></h4><p>El umbral reparte precisión y sensibilidad; la ROC recorre todos los umbrales y el AUC la resume.</p></div>
+  <div class="card" style="left:523px;top:410px;width:470px;height:105px"><h4>Hiperparámetro y regularización · <span class="mono">penalty, mixture</span></h4><p>Perillas que fija quien modela. La penalización encoge coeficientes y apaga tokens.</p></div>
+  <div class="card" style="left:31px;top:530px;width:470px;height:115px"><h4>Validación cruzada · <span class="mono">vfold_cv(), tune_grid()</span></h4><p>Pliegues dentro del entrenamiento para calificar cada valor del hiperparámetro sin tocar la prueba.</p></div>
+  <div class="card" style="left:523px;top:530px;width:470px;height:115px"><h4>Cierre del flujo · <span class="mono">finalize_workflow(), last_fit()</span></h4><p>Con el valor elegido se reentrena con todo el entrenamiento y se evalúa en la prueba, una vez.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 27. Recursos -->
+<section class="slide">
+  <div class="banda">Recursos para profundizar</div>
+  <div class="sub">Documentación oficial y dos libros en línea, gratuitos, escritos por quienes mantienen tidymodels.</div>
+  <div class="card" style="left:31px;top:170px;width:470px;height:130px"><h4>Kuhn, M. y Silge, J. (2022). <i>Tidy Modeling with R</i>. O'Reilly.</h4><p>tmwr.org. Capítulos 10 (remuestreo), 12 (afinación) y 9 (métricas). Es la referencia del flujo completo.</p></div>
+  <div class="card" style="left:523px;top:170px;width:470px;height:130px"><h4>Hvitfeldt, E. y Silge, J. (2021). <i>Supervised Machine Learning for Text Analysis in R</i>. CRC Press.</h4><p>smltar.com. Capítulo 7, clasificación de texto con regresión logística regularizada: el mismo flujo de esta sesión.</p></div>
+  <div class="card" style="left:31px;top:315px;width:307px;height:150px"><h4>textrecipes</h4><p>textrecipes.tidymodels.org. Referencia de cada <code>step_*</code> y de <code>show_tokens()</code>.</p></div>
+  <div class="card" style="left:358px;top:315px;width:307px;height:150px"><h4>yardstick</h4><p>yardstick.tidymodels.org. Definición de cada métrica, <code>event_level</code> y curvas ROC.</p></div>
+  <div class="card" style="left:686px;top:315px;width:307px;height:150px"><h4>tune y rsample</h4><p>tune.tidymodels.org y rsample.tidymodels.org. Artículo "Tune model parameters" en tidymodels.org/start/tuning.</p></div>
+  <div class="card soft" style="left:31px;top:480px;width:470px;height:165px"><h4>probably</h4><p>probably.tidymodels.org. <code>threshold_perf()</code> para elegir el umbral y <code>cal_plot_breaks()</code> para revisar la calibración de las probabilidades.</p></div>
+  <div class="card soft" style="left:523px;top:480px;width:470px;height:165px"><h4>Material de la sesión</h4><p><code>analisis_resenas.R</code> (flujo completo), <code>resenas_sinteticas.csv</code> (1,800 reseñas) y la app <code>app_resenas/</code> en el repositorio del curso.</p></div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 28. Conclusiones -->
+<section class="slide">
+  <div class="banda">Conclusiones</div>
+  <div class="sub">Cinco ideas que resumen la sesión; se quedan en pantalla durante las preguntas.</div>
+  <div class="card hl" style="left:31px;top:170px;width:962px;height:480px">
+    <ol style="font-size:21px;line-height:1.55;padding-left:30px;margin-top:10px">
+      <li style="margin-bottom:22px"><b>La única métrica creíble es la de la base de prueba</b>, y la prueba se usa una vez. Entrenamiento dio 0.969 y prueba 0.933: la diferencia es sobreajuste.</li>
+      <li style="margin-bottom:22px"><b>Una matriz de confusión responde cuatro preguntas distintas.</b> Exactitud, precisión, sensibilidad y F1 pesan los dos errores de forma diferente; elija según cuál cuesta más.</li>
+      <li style="margin-bottom:22px"><b>El umbral es una decisión y el AUC no depende de él.</b> La curva ROC muestra todos los umbrales; el AUC (0.966) sirve para comparar modelos, no para contar errores.</li>
+      <li style="margin-bottom:22px"><b>La validación cruzada es la forma honesta de afinar.</b> Cinco pliegues dentro del entrenamiento calificaron cada penalización (AUC 0.939 ± 0.006) sin tocar la prueba.</li>
+      <li><b>Leer los errores dice más que cambiar de algoritmo.</b> Contraste y sarcasmo marcan el límite de un modelo que cuenta palabras; el techo lo ponen los datos y las etiquetas.</li>
+    </ol>
+  </div>
+  <div class="pie">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+</section>
+
+<!-- 29. Gracias -->
+<section class="slide">
+  <div class="barra-gris"><img src="data:image/png;base64,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" alt="Tecnológico de Monterrey"></div>
+  <div class="bloque-azul"></div>
+  <div class="gracias">Gracias</div>
+  <div class="subtitulo-portada" style="top:330px">Ciencia de datos para la toma de decisiones II · Sesión 15</div>
+  <div class="preguntas">¿Preguntas?</div>
+  <div class="autor" style="top:540px">Jorge Juvenal Campos Ferreira<div class="correo">juvenal.campos@tec.mx</div></div>
+</section>
+
+</div>
+<div id="ayuda">Flechas, espacio o clic para avanzar. Para ver todas las animaciones completas, agregue ?todo a la dirección.</div>
+
+<script>
+// Datos reales exportados del modelo (ver construccion/construir.py)
+const D = {"pred":{"p":[0.1002,0.6726,0.9347,0.1129,0.9813,0.5328,0.9231,0.8814,0.8199,0.3102,0.9413,0.8548,0.0372,0.986,0.0283,0.9459,0.8905,0.9364,0.9888,0.9867,0.9808,0.2606,0.0459,0.9853,0.0549,0.6749,0.2091,0.1036,0.4413,0.0597,0.268,0.8629,0.9214,0.9656,0.7512,0.0387,0.0868,0.9217,0.713,0.6347,0.3724,0.0762,0.3596,0.3832,0.9408,0.1324,0.0623,0.0277,0.9341,0.9285,0.9342,0.6054,0.9646,0.8693,0.0041,0.3163,0.947,0.0523,0.0091,0.2712,0.9652,0.1662,0.9294,0.0597,0.9935,0.9677,0.9537,0.7314,0.0041,0.091,0.2397,0.7587,0.4413,0.5111,0.7235,0.0598,0.5596,0.9914,0.6463,0.1725,0.237,0.0087,0.1402,0.967,0.6779,0.9684,0.9337,0.9641,0.9441,0.8104,0.0458,0.9305,0.993,0.6573,0.1749,0.9473,0.0626,0.1468,0.9254,0.8472,0.0847,0.0472,0.0961,0.0053,0.0931,0.9888,0.9871,0.9596,0.8252,0.0796,0.4413,0.5743,0.9598,0.0235,0.0525,0.8032,0.0083,0.9128,0.9793,0.9483,0.0553,0.0152,0.9824,0.2607,0.0331,0.7269,0.5964,0.9676,0.4413,0.9946,0.0317,0.0755,0.0037,0.8968,0.619,0.2426,0.4413,0.8942,0.226,0.2121,0.7714,0.0228,0.8631,0.192,0.2753,0.9935,0.7504,0.4258,0.8729,0.0986,0.936,0.587,0.988,0.0718,0.9003,0.1443,0.1096,0.1187,0.9228,0.9831,0.8948,0.4785,0.8827,0.7706,0.4452,0.8018,0.9235,0.9479,0.2377,0.9821,0.4427,0.4348,0.0313,0.0485,0.042,0.0402,0.3335,0.9699,0.9886,0.2064,0.7133,0.9401,0.9603,0.1566,0.9406,0.9844,0.1911,0.1053,0.1308,0.6163,0.7303,0.9318,0.0112,0.0479,0.1136,0.0319,0.0885,0.0237,0.0703,0.9177,0.0672,0.5345,0.8557,0.9744,0.0776,0.953,0.5456,0.1867,0.0401,0.9912,0.9648,0.5928,0.7638,0.7316,0.6811,0.9791,0.6897,0.9596,0.9189,0.4711,0.8567,0.9275,0.8593,0.0508,0.0245,0.8274,0.0418,0.051,0.0086,0.6042,0.9132,0.0241,0.1155,0.9782,0.9595,0.8072,0.0885,0.562,0.9851,0.9126,0.6242,0.0893,0.6035,0.0208,0.1173,0.9116,0.99,0.2788,0.088,0.6698,0.0173,0.0455,0.859,0.6472,0.0459,0.1221,0.9189,0.2442,0.1276,0.9397,0.98,0.0025,0.9752,0.8793,0.2012,0.9036,0.2525,0.9545,0.0485,0.1815,0.0221,0.3426,0.6867,0.9933,0.9364,0.9734,0.1841,0.6324,0.2863,0.6863,0.8058,0.1258,0.0984,0.9725,0.4429,0.0198,0.8958,0.9525,0.9664,0.9449,0.0488,0.2007,0.5308,0.0455,0.2497,0.0953,0.9308,0.916,0.3436,0.7396,0.9485,0.0285,0.7872,0.9926,0.2719,0.2279,0.0922,0.1588,0.2805,0.8736,0.9593,0.0743,0.1878,0.9042,0.5788,0.0031,0.9473,0.4581,0.7844,0.9972,0.88,0.4923,0.374,0.0077,0.0816,0.0766,0.0397,0.0163,0.3213,0.0088,0.732,0.4413,0.8089,0.9975,0.0074,0.1128,0.3134,0.6734,0.2483,0.7788,0.9491,0.8255,0.0674,0.8979,0.0728,0.1354,0.2715,0.7,0.0455,0.0233,0.2228,0.0466,0.0419,0.029,0.0671,0.1679,0.6161,0.0923,0.7364,0.648,0.8972,0.0615,0.9853,0.9325,0.0674,0.4899,0.9769,0.1735,0.1167,0.3487,0.1902,0.265,0.4413,0.9612,0.9596,0.1719,0.17,0.3124,0.3314,0.4707,0.3359,0.0554,0.987,0.9411,0.0407,0.6842,0.313,0.4413,0.7069,0.102,0.8207,0.9464,0.945,0.9475,0.0344,0.9367,0.0562,0.9827,0.6072,0.7907,0.9161,0.9407,0.5325,0.7963,0.8289,0.1634,0.1443,0.124,0.9506,0.5711,0.9111,0.0009,0.7962,0.716,0.0178,0.7811,0.013,0.8959,0.9535,0.9078,0.221,0.0659,0.0335,0.0175,0.0278,0.9006,0.0061,0.9598,0.3971,0.9944,0.1342,0.0013,0.9681,0.2489,0.1199,0.0364,0.5869,0.1338,0.1057,0.0246,0.7419,0.0365,0.8614,0.0485,0.9711,0.4413,0.0751,0.1054,0.8838,0.9945],"y":[0,1,1,0,1,0,1,1,1,0,1,1,0,1,0,1,1,1,1,1,1,0,0,1,0,1,0,0,0,0,0,1,1,1,1,0,0,1,1,0,0,0,0,0,1,0,0,0,1,1,1,1,1,1,0,0,1,0,0,1,1,0,1,0,1,1,1,1,0,0,0,1,0,0,1,0,1,1,1,0,0,0,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,0,1,1,0,0,0,0,0,1,1,1,1,0,1,1,1,0,0,1,0,1,1,1,0,0,0,0,0,1,1,1,0,1,0,0,0,1,1,0,1,1,0,0,1,0,1,0,1,1,1,0,1,0,1,1,1,0,1,0,0,1,1,1,1,1,1,1,0,1,1,1,0,1,0,1,0,0,0,0,1,1,1,0,1,1,1,0,1,0,0,0,0,1,1,1,0,0,1,0,0,0,0,1,0,1,1,1,0,1,0,0,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,1,0,0,0,0,1,0,0,1,1,1,0,1,1,1,1,0,1,0,0,1,1,0,0,1,0,1,1,0,0,0,0,0,0,1,1,0,1,1,0,1,0,1,0,0,0,0,1,1,1,1,0,1,1,1,1,0,0,1,0,0,1,1,1,1,0,0,1,0,0,0,1,1,0,0,1,0,1,1,0,0,0,0,0,1,1,0,0,1,1,0,1,0,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,0,0,0,1,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,1,1,0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1,1,0,1,0,1,1,0,0,1,1,1,0,1,0,1,0,1,1,1,1,1,1,0,0,0,1,1,1,0,1,0,0,1,0,1,1,1,0,0,0,0,0,1,0,1,0,1,0,0,1,0,1,0,1,0,0,0,1,0,1,0,1,1,0,0,1,1],"categoria":["restaurante","app","hotel","app","servicio","hotel","servicio","hotel","restaurante","restaurante","restaurante","restaurante","hotel","restaurante","restaurante","restaurante","app","hotel","restaurante","producto","hotel","hotel","hotel","producto","servicio","servicio","producto","restaurante","producto","app","app","producto","hotel","producto","app","app","app","restaurante","restaurante","app","app","servicio","producto","hotel","producto","restaurante","restaurante","producto","hotel","restaurante","app","servicio","restaurante","restaurante","restaurante","restaurante","producto","hotel","producto","servicio","hotel","hotel","producto","servicio","servicio","producto","hotel","restaurante","restaurante","servicio","app","hotel","hotel","restaurante","servicio","restaurante","app","hotel","restaurante","servicio","hotel","app","restaurante","app","servicio","restaurante","servicio","servicio","hotel","app","restaurante","servicio","hotel","hotel","restaurante","app","app","app","servicio","servicio","producto","hotel","hotel","restaurante","servicio","producto","producto","servicio","hotel","restaurante","restaurante","servicio","app","restaurante","hotel","hotel","app","restaurante","hotel","servicio","app","servicio","app","restaurante","servicio","restaurante","producto","app","producto","producto","producto","hotel","producto","producto","servicio","producto","hotel","servicio","hotel","producto","servicio","restaurante","servicio","app","restaurante","app","hotel","hotel","hotel","restaurante","restaurante","producto","hotel","producto","hotel","restaurante","app","app","restaurante","servicio","app","hotel","restaurante","app","hotel","app","producto","producto","app","restaurante","app","app","app","restaurante","restaurante","app","hotel","servicio","servicio","app","hotel","producto","restaurante","producto","producto","producto","producto","producto","restaurante","producto","hotel","servicio","app","hotel","producto","restaurante","servicio","hotel","hotel","producto","servicio","hotel","app","restaurante","app","restaurante","restaurante","hotel","producto","servicio","restaurante","app","app","restaurante","restaurante","restaurante","restaurante","servicio","restaurante","servicio","servicio","restaurante","hotel","servicio","app","app","app","restaurante","servicio","servicio","restaurante","restaurante","servicio","app","servicio","producto","servicio","app","producto","servicio","hotel","producto","restaurante","restaurante","servicio","app","servicio","producto","restaurante","hotel","producto","app","producto","producto","restaurante","producto","hotel","hotel","servicio","restaurante","hotel","producto","hotel","servicio","servicio","hotel","app","restaurante","servicio","hotel","hotel","hotel","app","hotel","producto","app","producto","app","app","hotel","servicio","producto","producto","restaurante","servicio","servicio","hotel","servicio","hotel","app","app","hotel","hotel","app","producto","app","hotel","app","app","servicio","servicio","restaurante","restaurante","servicio","servicio","servicio","servicio","producto","restaurante","hotel","app","hotel","producto","restaurante","app","restaurante","restaurante","app","producto","restaurante","producto","producto","producto","hotel","restaurante","restaurante","hotel","hotel","producto","restaurante","servicio","restaurante","servicio","servicio","hotel","servicio","producto","producto","restaurante","producto","restaurante","servicio","restaurante","servicio","restaurante","restaurante","servicio","app","restaurante","hotel","app","app","restaurante","producto","hotel","servicio","app","servicio","hotel","restaurante","app","hotel","app","hotel","app","restaurante","producto","servicio","servicio","hotel","servicio","servicio","hotel","restaurante","app","servicio","app","hotel","servicio","servicio","restaurante","app","servicio","producto","hotel","servicio","producto","producto","producto","servicio","producto","hotel","producto","app","producto","app","restaurante","servicio","restaurante","producto","producto","restaurante","app","restaurante","servicio","servicio","producto","hotel","hotel","servicio","hotel","producto","producto","restaurante","hotel","app","restaurante","restaurante","hotel","producto","hotel","servicio","producto","producto","hotel","producto","app","restaurante","servicio","hotel","app","app","servicio","producto","app","restaurante","hotel","servicio","hotel","hotel","servicio","servicio","app","servicio","hotel","restaurante","producto","restaurante","app","restaurante"]},"cv":[{"penalty":1e-05,".metric":"accuracy","mean":0.8452,"std_err":0.009},{"penalty":1e-05,".metric":"f_meas","mean":0.8427,"std_err":0.0091},{"penalty":1e-05,".metric":"precision","mean":0.8491,"std_err":0.0125},{"penalty":1e-05,".metric":"recall","mean":0.837,"std_err":0.0129},{"penalty":1e-05,".metric":"roc_auc","mean":0.9005,"std_err":0.0068},{"penalty":0,".metric":"accuracy","mean":0.8452,"std_err":0.009},{"penalty":0,".metric":"f_meas","mean":0.8427,"std_err":0.0091},{"penalty":0,".metric":"precision","mean":0.8491,"std_err":0.0125},{"penalty":0,".metric":"recall","mean":0.837,"std_err":0.0129},{"penalty":0,".metric":"roc_auc","mean":0.9005,"std_err":0.0068},{"penalty":0,".metric":"accuracy","mean":0.8466,"std_err":0.0092},{"penalty":0,".metric":"f_meas","mean":0.8445,"std_err":0.0092},{"penalty":0,".metric":"precision","mean":0.8496,"std_err":0.0125},{"penalty":0,".metric":"recall","mean":0.84,"std_err":0.0123},{"penalty":0,".metric":"roc_auc","mean":0.9022,"std_err":0.0066},{"penalty":0.0001,".metric":"accuracy","mean":0.8466,"std_err":0.0105},{"penalty":0.0001,".metric":"f_meas","mean":0.8445,"std_err":0.0104},{"penalty":0.0001,".metric":"precision","mean":0.8493,"std_err":0.0124},{"penalty":0.0001,".metric":"recall","mean":0.8401,"std_err":0.0124},{"penalty":0.0001,".metric":"roc_auc","mean":0.9047,"std_err":0.0062},{"penalty":0.0002,".metric":"accuracy","mean":0.8489,"std_err":0.011},{"penalty":0.0002,".metric":"f_meas","mean":0.8467,"std_err":0.0108},{"penalty":0.0002,".metric":"precision","mean":0.8524,"std_err":0.0142},{"penalty":0.0002,".metric":"recall","mean":0.8415,"std_err":0.0124},{"penalty":0.0002,".metric":"roc_auc","mean":0.9075,"std_err":0.0055},{"penalty":0.0005,".metric":"accuracy","mean":0.8481,"std_err":0.0111},{"penalty":0.0005,".metric":"f_meas","mean":0.8456,"std_err":0.0114},{"penalty":0.0005,".metric":"precision","mean":0.8518,"std_err":0.0119},{"penalty":0.0005,".metric":"recall","mean":0.84,"std_err":0.0149},{"penalty":0.0005,".metric":"roc_auc","mean":0.9125,"std_err":0.0047},{"penalty":0.001,".metric":"accuracy","mean":0.8489,"std_err":0.0099},{"penalty":0.001,".metric":"f_meas","mean":0.8455,"std_err":0.0111},{"penalty":0.001,".metric":"precision","mean":0.8551,"std_err":0.0083},{"penalty":0.001,".metric":"recall","mean":0.8371,"std_err":0.0189},{"penalty":0.001,".metric":"roc_auc","mean":0.9178,"std_err":0.0035},{"penalty":0.0022,".metric":"accuracy","mean":0.857,"std_err":0.0098},{"penalty":0.0022,".metric":"f_meas","mean":0.8544,"std_err":0.0108},{"penalty":0.0022,".metric":"precision","mean":0.8609,"std_err":0.0087},{"penalty":0.0022,".metric":"recall","mean":0.849,"std_err":0.0197},{"penalty":0.0022,".metric":"roc_auc","mean":0.9251,"std_err":0.0032},{"penalty":0.0046,".metric":"accuracy","mean":0.8659,"std_err":0.009},{"penalty":0.0046,".metric":"f_meas","mean":0.8634,"std_err":0.0096},{"penalty":0.0046,".metric":"precision","mean":0.8711,"std_err":0.0092},{"penalty":0.0046,".metric":"recall","mean":0.8565,"std_err":0.0161},{"penalty":0.0046,".metric":"roc_auc","mean":0.9336,"std_err":0.0042},{"penalty":0.01,".metric":"accuracy","mean":0.8777,"std_err":0.0097},{"penalty":0.01,".metric":"f_meas","mean":0.8749,"std_err":0.0102},{"penalty":0.01,".metric":"precision","mean":0.8871,"std_err":0.012},{"penalty":0.01,".metric":"recall","mean":0.864,"std_err":0.0159},{"penalty":0.01,".metric":"roc_auc","mean":0.9388,"std_err":0.006}],"pliegues":[{"id":"Fold1","accuracy":0.9004,"roc_auc":0.9267,"n_val":271,"n_ent":1079},{"id":"Fold2","accuracy":0.9,"roc_auc":0.9611,"n_val":270,"n_ent":1080},{"id":"Fold3","accuracy":0.8667,"roc_auc":0.9403,"n_val":270,"n_ent":1080},{"id":"Fold4","accuracy":0.8704,"roc_auc":0.9307,"n_val":270,"n_ent":1080},{"id":"Fold5","accuracy":0.8513,"roc_auc":0.935,"n_val":269,"n_ent":1081}],"ruta":{"lambdas":[0.25095,0.22866,0.20834,0.18983,0.17297,0.1576,0.1436,0.13085,0.11922,0.10863,0.09898,0.09019,0.08217,0.07487,0.06822,0.06216,0.05664,0.05161,0.04702,0.04285,0.03904,0.03557,0.03241,0.02953,0.02691,0.02452,0.02234,0.02036,0.01855,0.0169,0.0154,0.01403,0.01278,0.01165,0.01061,0.00967,0.00881,0.00803,0.00732,0.00667,0.00607,0.00553,0.00504,0.00459,0.00419,0.00381,0.00348,0.00317,0.00289,0.00263,0.0024,0.00218,0.00199,0.00181,0.00165,0.0015,0.00137,0.00125,0.00114,0.00104,0.00094,0.00086,0.00078,0.00071,0.00065,0.00059,0.00054,0.00049,0.00045,0.00041,0.00037,0.00034,0.00031,0.00028,0.00026,0.00023,0.00021,0.00019,0.00018,0.00016,0.00015,0.00013,0.00012,0.00011,0.0001,9e-05,8e-05,8e-05,7e-05,6e-05,6e-05,5e-05,5e-05,4e-05,4e-05,4e-05,3e-05,3e-05,3e-05,3e-05],"tokens":["no","es inserv","bien","perfect","mejor","a ped","y par","rap","suave y","dan","comod","vista "],"coef":[[0,0,-0.33056,-0.72785,-1.08287,-1.408,-1.71888,-2.04302,-2.47299,-2.93989,-3.43551,-3.95773,-4.44699,-4.87282,-5.30546,-5.72211,-6.09178,-6.4489,-6.81784,-7.16981,-7.49142,-7.78906,-8.07847,-8.35768,-8.63555,-8.91212,-9.21522,-9.52413,-9.86577,-10.19002,-10.49934,-10.78099,-11.03036,-11.27885,-11.53143,-11.7623,-12.02398,-12.31023,-12.64093,-12.96104,-13.30111,-13.68618,-14.09256,-14.5073,-14.9302,-15.36142,-15.8101,-16.26988,-16.7533,-17.23831,-17.73335,-18.22915,-18.73877,-19.24047,-19.74844,-20.28301,-20.80941,-21.37503,-21.94033,-22.49636,-23.07657,-23.64199,-24.15869,-24.56182,-24.94817,-25.3469,-25.7593,-26.19304,-26.63812,-27.02065,-27.41232,-27.80826,-28.21112,-28.62242,-29.02084,-29.41699,-29.82585,-30.22803,-30.62906,-31.04644,-31.44112,-31.85169,-32.28019,-32.71053,-33.13179,-33.5448,-33.95809,-34.35994,-34.77629,-35.20569,-35.64702,-36.1307,-36.5852,-37.05203,-37.52165,-37.99951,-38.4756,-38.96076,-39.44997,-39.89026],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.14557,-0.66636,-1.16737,-1.68115,-2.19929,-2.68,-3.12522,-3.54034,-3.96785,-4.40879,-4.8592,-5.34212,-5.85573,-6.3848,-6.93191,-7.53717,-8.1936,-8.84754,-9.50321,-10.1429,-10.79664,-11.46303,-12.10034,-12.74642,-13.57636,-15.09129,-16.52051,-17.85163,-19.1393,-20.35746,-21.48487,-22.68831,-23.90269,-25.12429,-26.32752,-27.56906,-28.85947,-30.17891,-31.53949,-32.89198,-34.25154,-35.68934,-37.04522,-38.56883,-40.0784,-41.62064,-43.24208,-44.87501,-46.4426,-48.01982,-49.65093,-51.26118,-52.93807,-54.6713,-56.4241,-58.18054,-59.88837,-61.60598,-63.34932,-65.13073,-66.88453,-68.65673,-70.41475,-72.13819,-73.90483,-75.65725,-77.48676,-79.24157,-81.0569,-82.78607,-84.4005,-86.01094,-87.57978,-89.1347,-90.67388,-92.25142,-93.84502,-95.48729,-97.01892,-98.64138,-100.3366,-102.07442,-103.7578,-105.49666,-107.25562,-108.84472],[0,0,0,0,0.18424,0.64696,1.09041,1.52633,1.94753,2.35156,2.7542,3.14455,3.539,3.92334,4.27085,4.59169,4.92468,5.2246,5.52241,5.83458,6.15628,6.47903,6.79764,7.10893,7.41047,7.706,7.98213,8.26912,8.55068,8.83093,9.11095,9.39403,9.68432,9.98928,10.27272,10.60928,10.74612,10.82923,10.91394,11.01075,11.04262,11.0662,11.11052,11.32115,11.61136,11.9419,12.29423,12.64249,13.00461,13.39615,13.82276,14.2565,14.7317,15.26003,15.84672,16.40484,16.9721,17.59665,18.23531,18.89857,19.5513,20.18278,20.79351,21.39439,22.00221,22.62946,23.26704,23.92187,24.59861,25.3035,25.98578,26.5873,27.15407,27.71434,28.27574,28.83559,29.39392,29.94912,30.50339,31.04751,31.60877,32.17117,32.74184,33.30616,33.87488,34.45594,35.03114,35.60934,36.1957,36.79669,37.40637,38.02912,38.63243,39.23535,39.85124,40.46268,41.05427,41.65444,42.25609,42.8253],[0,0,0,0.09883,0.62276,1.13134,1.63424,2.13143,2.61855,3.07388,3.51249,3.9215,4.26836,4.61398,4.93827,5.23335,5.53244,5.81838,6.06752,6.30576,6.51473,6.74486,6.96031,7.14209,7.34491,7.55802,7.76927,7.98874,8.20689,8.43996,8.67752,8.90508,9.11262,9.23669,9.34995,9.48871,9.61174,9.73072,9.83017,9.94837,10.0557,10.26462,10.46987,10.67841,10.90932,11.10788,11.30651,11.53357,11.80002,12.11761,12.47081,12.8498,13.2118,13.51362,13.83039,14.11489,14.38946,14.56714,14.75854,15.00392,15.24919,15.49174,15.73965,15.97917,16.22047,16.45331,16.67211,16.88507,17.09424,17.28754,17.47985,17.66608,17.84654,18.01105,18.18467,18.3594,18.53743,18.74047,18.95767,19.16274,19.35625,19.55995,19.74122,19.9359,20.13588,20.34432,20.5697,20.80358,21.04625,21.28816,21.52837,21.76819,22.01814,22.2753,22.53419,22.78745,23.05675,23.33025,23.60324,23.8812],[0,0.81,1.50334,1.97692,2.43256,2.87435,3.30571,3.73917,4.16959,4.59081,5.0125,5.42553,5.83558,6.20605,6.55204,6.89481,7.21852,7.38552,7.47286,7.57906,7.69246,7.79813,7.9111,8.02809,8.16084,8.2743,8.38345,8.49646,8.61907,8.76176,8.92841,9.07909,9.23165,9.36654,9.45964,9.35753,9.23303,9.08653,8.86003,8.61712,8.35991,8.0867,7.80556,7.54578,7.3135,7.09296,6.87321,6.66213,6.44083,6.36176,6.45746,6.57148,6.73473,6.9318,7.13977,7.35101,7.51519,7.6134,7.74787,7.9162,8.07879,8.24686,8.42189,8.59271,8.74344,8.88856,9.02899,9.16078,9.29643,9.48026,9.68333,9.9279,10.18413,10.44316,10.69359,10.93887,11.16648,11.38543,11.60114,11.80672,12.02527,12.23515,12.45648,12.66677,12.8942,13.12972,13.35184,13.57713,13.78477,13.99738,14.20966,14.41733,14.60322,14.79892,14.99681,15.19222,15.36571,15.54736,15.73143,15.89382],[0,0,0,0,0,0,0,0,0,0,0,0.07058,0.65147,1.20717,1.7092,2.1637,2.61852,2.93989,3.2556,3.57383,3.85771,4.17175,4.52922,4.8834,5.24544,5.60736,5.9521,6.30264,6.63317,6.96531,7.29534,7.61969,7.95139,8.27457,8.6346,9.05126,9.45217,9.83295,10.16439,10.49495,10.76833,10.98332,11.18488,11.42087,11.59111,11.74591,11.8892,12.00271,12.06912,12.13262,12.18191,12.21717,12.24481,12.27605,12.27832,12.24816,12.24741,12.20681,12.26111,12.3423,12.42653,12.53257,12.68134,12.93611,13.23251,13.56081,13.91528,14.29978,14.71258,15.16397,15.64035,16.14025,16.66144,17.19856,17.7466,18.30505,18.87368,19.4587,20.06921,20.66585,21.29373,21.91181,22.56017,23.1986,23.84623,24.49896,25.13431,25.79164,26.43774,27.09955,27.76332,28.36985,28.98867,29.60637,30.23603,30.85929,31.45327,32.0718,32.69056,33.34704],[0,0,0,0,0,0,-0.32157,-0.66465,-0.99738,-1.32504,-1.6342,-1.94318,-2.22536,-2.48471,-2.75018,-3.02205,-3.30873,-3.58987,-3.87767,-4.15779,-4.42509,-4.73544,-5.05595,-5.37203,-5.70981,-6.04012,-6.33666,-6.64698,-6.9608,-7.27281,-7.58095,-7.88774,-8.02446,-8.01218,-8.01384,-8.03087,-8.03887,-8.03915,-8.05447,-8.12851,-8.20791,-8.22214,-8.23478,-8.4116,-8.84739,-9.31818,-9.76998,-10.23708,-10.71601,-11.1771,-11.6301,-12.06857,-12.47006,-12.85166,-13.23357,-13.60963,-13.97336,-14.33909,-14.72847,-15.14782,-15.58914,-16.024,-16.45726,-16.86258,-17.26622,-17.68507,-18.13378,-18.59736,-19.06875,-19.5509,-20.01192,-20.47983,-20.93356,-21.37766,-21.80433,-22.22872,-22.63821,-23.04575,-23.46832,-23.88333,-24.33313,-24.74804,-25.20129,-25.60365,-26.00677,-26.40457,-26.78928,-27.20679,-27.60427,-28.02849,-28.47246,-28.90551,-29.33045,-29.76803,-30.19488,-30.62258,-31.01468,-31.43126,-31.85725,-32.26937],[0,0,0,0,0,0,0,0.35895,0.82338,1.26233,1.69507,2.11735,2.54081,2.94459,3.3185,3.66019,3.95589,4.19716,4.42808,4.65473,4.89045,5.12345,5.36232,5.5928,5.82867,6.06025,6.27203,6.48569,6.69915,6.8712,7.02626,7.17478,7.32043,7.45151,7.59254,7.73144,7.85912,7.98897,8.11199,8.24009,8.42137,8.62662,8.83335,9.04084,9.2279,9.43759,9.65776,9.88777,10.12251,10.35772,10.6021,10.88005,11.2054,11.55633,11.93839,12.34468,12.74498,13.17898,13.6184,14.06539,14.50212,14.93734,15.35502,15.77439,16.19755,16.60885,17.01957,17.42316,17.82003,18.20362,18.56719,18.93775,19.31114,19.69524,20.07366,20.45303,20.83416,21.19704,21.55852,21.92459,22.31656,22.68849,23.07781,23.45582,23.81062,24.16292,24.51164,24.84729,25.18266,25.52638,25.87764,26.26008,26.6087,26.97029,27.33939,27.7152,28.07068,28.43156,28.79437,29.11068],[0,0,0,0,0,0,0,0,0,0,0,0,0.04812,0.32045,0.57685,0.84728,1.1039,1.33807,1.576,1.85215,2.12711,2.39856,2.67566,2.98905,3.30695,3.63352,3.97129,4.32857,4.71677,5.12759,5.54366,5.92879,6.31726,6.70844,7.10809,7.45225,7.85491,8.30139,8.83985,9.5145,10.22142,10.96689,11.60352,12.15459,12.73797,13.32377,13.8983,14.49894,14.99275,15.38947,15.6893,15.95028,16.20093,16.45356,16.70364,16.92956,17.0704,17.26076,17.4905,17.72118,17.94268,18.1683,18.39801,18.60831,18.83069,19.06594,19.30492,19.54993,19.78915,20.01905,20.26365,20.51791,20.79412,21.07905,21.37416,21.66931,21.96768,22.25229,22.53835,22.84154,23.13361,23.42357,23.71304,23.9951,24.2765,24.5579,24.83768,25.10548,25.37673,25.64798,25.9203,26.21319,26.48701,26.76296,27.04403,27.32592,27.6083,27.88986,28.17505,28.43925],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,-0.18095,-0.73249,-1.17187,-1.48601,-1.75295,-2.02687,-2.3001,-2.58585,-2.87974,-3.18909,-3.50675,-3.83397,-4.1397,-4.44908,-4.79467,-5.19783,-5.60913,-6.01308,-6.38471,-6.75579,-7.12326,-7.44398,-7.81848,-8.26777,-8.80539,-9.44837,-10.10894,-10.78986,-11.48339,-12.19099,-12.90318,-13.62436,-14.37779,-15.11127,-15.81792,-16.51939,-17.23683,-17.93832,-18.57854,-19.24165,-19.89652,-20.54225,-21.12626,-21.68849,-22.21509,-22.73052,-23.28393,-23.85725,-24.44948,-25.05266,-25.6872,-26.34151,-27.01589,-27.70892,-28.42254,-29.16659,-29.92021,-30.71905,-31.53639,-32.37614,-33.1945,-34.00471,-34.80833,-35.60377,-36.42467,-37.21362,-38.0105,-38.79881,-39.6242,-40.43443,-41.26063,-42.07465,-42.84912,-43.60877,-44.35537,-45.10113,-45.8502,-46.63855,-47.38495,-48.12805,-48.87009,-49.6123,-50.33632,-51.06283,-51.79584,-52.48903],[0,0,0,0,0,0,0,0,0,0,0,0,0.29112,0.60103,0.89094,1.19857,1.51907,1.83488,2.13215,2.31461,2.49266,2.69778,2.90082,3.11222,3.34323,3.58945,3.83976,4.10674,4.37626,4.67398,5.01489,5.35118,5.70371,6.07112,6.46779,6.9742,7.46283,7.97265,8.45729,8.95943,9.47879,10.03075,10.45265,10.84062,11.22504,11.58168,11.94058,12.31946,12.71531,13.12794,13.55328,13.98321,14.4069,14.83901,15.27926,15.73237,16.22038,16.70217,17.17795,17.67438,18.18336,18.69766,19.21493,19.74472,20.30653,20.88449,21.48599,22.10563,22.74202,23.37962,23.94089,24.48261,25.01648,25.55243,26.06742,26.58495,27.10899,27.6292,28.16075,28.70613,29.29063,29.84971,30.42908,31.02574,31.65223,32.29262,32.92499,33.55802,34.18659,34.83496,35.50275,36.18088,36.83679,37.49133,38.14975,38.81037,39.44573,40.09023,40.73719,41.3503],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.08456,0.39604,0.69017,0.9317,1.17106,1.39702,1.62918,1.87986,2.15496,2.43535,2.72548,3.02736,3.3308,3.64809,3.96122,4.3011,4.66523,5.02975,5.42268,5.83563,6.2374,6.59336,6.94059,7.28788,7.59019,7.86849,8.14123,8.40256,8.64898,8.87396,9.12988,9.38912,9.66373,9.96071,10.28977,10.65025,11.06891,11.51242,11.98382,12.4818,13.00223,13.50168,14.0273,14.52768,15.06535,15.6094,16.15175,16.69066,17.24857,17.80813,18.37405,18.94389,19.51697,20.0932,20.67189,21.25262,21.82205,22.40565,22.99372,23.57903,24.15721,24.73922,25.30795,25.86968,26.44255,27.0149,27.60446,28.16307,28.73859,29.28596,29.83381,30.37731,30.91782,31.4534,31.99916,32.56065,33.12421,33.69736,34.20857,34.74174,35.27859,35.8096,36.33562,36.87,37.40612,37.88737]],"n_nonzero":[0,1,3,5,6,6,7,12,14,18,31,38,49,61,85,101,134,181,206,228,247,277,285,297,305,314,329,344,361,383,401,409,420,425,441,453,460,476,494,498,514,524,541,555,557,558,569,572,574,580,594,596,602,601,604,609,621,621,626,632,641,644,651,659,658,660,665,667,671,674,679,684,686,689,690,690,688,691,690,693,693,695,698,705,710,713,715,719,722,723,726,729,731,735,736,736,740,741,741,743],"mejor":[0.01]},"errores":[{"categoria":"producto","texto":"Que buena sorpresa... El empaque llego impecable, tambien la suela aguanta mucho.","sentimiento":"negativa",".pred_positiva":0.9844},{"categoria":"app","texto":"EL MAPA CARGA RÁPIDO, Y LO MEJOR: LA SINCRONIZACIÓN NUNCA FALLA, APARTE EL SOPORTE ES MUY ATENTO. VALE LA PENA.","sentimiento":"negativa",".pred_positiva":0.9824},{"categoria":"app","texto":"No me gustó el pago y no pienso regresar.","sentimiento":"positiva",".pred_positiva":0.0455},{"categoria":"restaurante","texto":"fui en hora pico. el lugar estaba sucio, y encima la carne venia cruda por dentro, tambien el servicio fue grosero.","sentimiento":"positiva",".pred_positiva":0.0674},{"categoria":"hotel","texto":"La habitación estaba impecable, además la ubicación está a pasos de todo, aunque el aire acondicionado no enfría. En general bien.","sentimiento":"negativa",".pred_positiva":0.9189},{"categoria":"producto","texto":"Lo maximo: el producto es de pesima calidad. Que detalle.","sentimiento":"positiva",".pred_positiva":0.1136},{"categoria":"app","texto":"el pago no me reconoce la tarjeta, y la velocidad es desesperante, además el mapa se pierde.","sentimiento":"positiva",".pred_positiva":0.1187},{"categoria":"app","texto":"LA DESCARGUÉ POR RECOMENDACIÓN. LA SINCRONIZACIÓN ES INMEDIATA.","sentimiento":"positiva",".pred_positiva":0.1199}],"acc_categoria":[{"categoria":"app","acc":0.9036,"n":83},{"categoria":"hotel","acc":0.9457,"n":92},{"categoria":"producto","acc":0.939,"n":82},{"categoria":"restaurante","acc":0.9118,"n":102},{"categoria":"servicio","acc":0.967,"n":91}],"coef_top":[{"token":"no","estimate":-11.6816,"empuja_a":"negativa"},{"token":"es inserv","estimate":-11.2301,"empuja_a":"negativa"},{"token":"y par","estimate":-8.0249,"empuja_a":"negativa"},{"token":"dan","estimate":-7.3319,"empuja_a":"negativa"},{"token":"dur","estimate":-5.4515,"empuja_a":"negativa"},{"token":"no l","estimate":-5.3819,"empuja_a":"negativa"},{"token":"convenci","estimate":-5.1457,"empuja_a":"negativa"},{"token":"me convenci","estimate":-5.0651,"empuja_a":"negativa"},{"token":"tard","estimate":-4.9502,"empuja_a":"negativa"},{"token":"dobl","estimate":-4.6985,"empuja_a":"negativa"},{"token":"veni","estimate":-4.4159,"empuja_a":"negativa"},{"token":"hic","estimate":-4.3133,"empuja_a":"negativa"},{"token":"bien","estimate":10.4916,"empuja_a":"positiva"},{"token":"perfect","estimate":9.4402,"empuja_a":"positiva"},{"token":"mejor","estimate":9.3932,"empuja_a":"positiva"},{"token":"a ped","estimate":8.9056,"empuja_a":"positiva"},{"token":"rap","estimate":7.6829,"empuja_a":"positiva"},{"token":"suave y","estimate":7.3319,"empuja_a":"positiva"},{"token":"comod","estimate":6.7972,"empuja_a":"positiva"},{"token":"vista ","estimate":6.4689,"empuja_a":"positiva"},{"token":"limpisim","estimate":5.8774,"empuja_a":"positiva"},{"token":"llego ","estimate":5.8051,"empuja_a":"positiva"},{"token":"aguanta much","estimate":5.681,"empuja_a":"positiva"},{"token":"tengo ni","estimate":5.5164,"empuja_a":"positiva"}],"resumen":{"n_coef":454,"n_vocab":1000,"intercepto":-0.2358,"metricas":[{".metric":"accuracy",".estimate":0.9333},{".metric":"f_meas",".estimate":0.9327},{".metric":"precision",".estimate":0.9327},{".metric":"recall",".estimate":0.9327},{".metric":"roc_auc",".estimate":0.9665}]}};
+</script>
+<script>
+// ---------- Motor de diapositivas (1024 x 768, escalado al navegador) ----------
+const slides = Array.from(document.querySelectorAll('.slide'));
+const TODO = new URLSearchParams(location.search).has('todo');
+let cur = 0, step = 0;
+
+function escalar() {
+  const s = Math.min(window.innerWidth / 1024, window.innerHeight / 768);
+  document.documentElement.style.setProperty('--s', s);
+}
+window.addEventListener('resize', escalar); escalar();
+
+function maxStep(s) {
+  let m = +(s.dataset.steps || 0);
+  s.querySelectorAll('.frag').forEach(f => { m = Math.max(m, +(f.dataset.step || 1)); });
+  return m;
+}
+function pintar(inmediato) {
+  slides.forEach((s, i) => s.classList.toggle('activa', i === cur));
+  const s = slides[cur];
+  const st = TODO ? maxStep(s) : step;
+  if (inmediato) s.classList.add('sin-transicion');
+  s.querySelectorAll('.frag').forEach(f => f.classList.toggle('visible', (+(f.dataset.step || 1)) <= st));
+  if (s.dataset.anim && ANIM[s.dataset.anim]) ANIM[s.dataset.anim](s, st, TODO || inmediato);
+  if (inmediato) requestAnimationFrame(() => s.classList.remove('sin-transicion'));
+  history.replaceState(null, '', location.pathname + location.search + '#' + (cur + 1));
+}
+function adelante() {
+  if (step < maxStep(slides[cur])) step++;
+  else if (cur < slides.length - 1) { cur++; step = 0; }
+  pintar(false);
+}
+function atras() {
+  if (step > 0) step--;
+  else if (cur > 0) { cur--; step = maxStep(slides[cur]); }
+  pintar(true);
+}
+document.addEventListener('keydown', e => {
+  if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName) && e.key !== 'Escape') return;
+  if (['ArrowRight', 'ArrowDown', ' ', 'PageDown', 'Enter'].includes(e.key)) { e.preventDefault(); adelante(); }
+  else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); atras(); }
+  else if (e.key === 'Home') { cur = 0; step = 0; pintar(true); }
+  else if (e.key === 'End') { cur = slides.length - 1; step = 0; pintar(true); }
+});
+document.getElementById('escenario').addEventListener('click', e => {
+  if (e.target.closest('input, a, pre')) return;
+  if (e.clientX < window.innerWidth * 0.2) atras(); else adelante();
+});
+// Números de diapositiva en el pie
+slides.forEach((s, i) => { const p = s.querySelector('.pie'); if (p) p.textContent += ' · ' + (i + 1); });
+
+// ---------- Utilidades ----------
+const NS = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent, texto) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (texto !== undefined) e.textContent = texto;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function prng(seed) { // generador determinista para posiciones reproducibles
+  let x = seed >>> 0;
+  return () => { x = (x * 1664525 + 1013904223) >>> 0; return x / 4294967296; };
+}
+const AZUL = '#2F6FB5', ROJO = '#C0392B', NAVY = '#1E4C7D';
+
+// Matriz de confusión para la clase negativa con un umbral sobre P(positiva)
+function confusion(t) {
+  let vp = 0, fp = 0, fn = 0, vn = 0;
+  for (let i = 0; i < D.pred.p.length; i++) {
+    const neg = D.pred.p[i] < t, real = D.pred.y[i] === 0;
+    if (neg && real) vp++; else if (neg && !real) fp++; else if (!neg && real) fn++; else vn++;
+  }
+  return { vp, fp, fn, vn };
+}
+
+const ANIM = {};
+
+// ---------- Partición entrenamiento / prueba ----------
+ANIM.particion = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-particion');
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    const r = prng(2026);
+    // 892 negativas y 908 positivas en orden aleatorio
+    const clases = [];
+    for (let i = 0; i < 1800; i++) clases.push(i < 892 ? 0 : 1);
+    for (let i = clases.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [clases[i], clases[j]] = [clases[j], clases[i]]; }
+    // asignación a prueba: 223 negativas y 227 positivas
+    const cupo = { 0: 223, 1: 227 }, enPrueba = [];
+    for (let i = 0; i < 1800; i++) { const c = clases[i]; if (cupo[c] > 0 && r() < 0.26) { cupo[c]--; enPrueba[i] = true; } }
+    for (let i = 0; i < 1800 && (cupo[0] > 0 || cupo[1] > 0); i++) { if (!enPrueba[i] && cupo[clases[i]] > 0) { cupo[clases[i]]--; enPrueba[i] = true; } }
+    // rejilla inicial 60 x 30 y destinos: entrenamiento 45 x 30, prueba 15 x 30 con separación
+    const paso = 9.6, x0 = 20, y0 = 30;
+    let kE = 0, kP = 0;
+    const g = el('g', {}, svg);
+    for (let i = 0; i < 1800; i++) {
+      const col = i % 60, fila = Math.floor(i / 60);
+      const cx = x0 + col * paso, cy = y0 + fila * paso;
+      let tx, ty;
+      if (enPrueba[i]) { tx = x0 + 45 * paso + 28 + (kP % 15) * paso; ty = y0 + Math.floor(kP / 15) * paso; kP++; }
+      else { tx = x0 + (kE % 45) * paso; ty = y0 + Math.floor(kE / 45) * paso; kE++; }
+      const c = el('circle', { cx, cy, r: 3.6, fill: clases[i] ? AZUL : ROJO }, g);
+      c.style.transition = 'transform 1.4s ease';
+      c.dataset.dx = (tx - cx).toFixed(1); c.dataset.dy = (ty - cy).toFixed(1);
+    }
+    el('text', { x: 20, y: 18, 'font-size': 14, 'font-weight': 700, fill: NAVY, id: 'tit-part' }, svg, '1,800 reseñas etiquetadas, en orden aleatorio');
+    const et = el('g', { id: 'etq-part', opacity: 0 }, svg);
+    et.style.transition = 'opacity .6s';
+    el('rect', { x: 14, y: 22, width: 45 * paso + 2, height: 30 * paso + 2, fill: 'none', stroke: NAVY, 'stroke-width': 1.5 }, et);
+    el('rect', { x: 14 + 45 * paso + 28, y: 22, width: 15 * paso + 2, height: 30 * paso + 2, fill: 'none', stroke: ROJO, 'stroke-width': 1.5 }, et);
+    el('text', { x: 14, y: 326, 'font-size': 14, 'font-weight': 700, fill: NAVY }, et, 'Entrenamiento: 1,350 (75%)');
+    el('text', { x: 14 + 45 * paso + 28, y: 326, 'font-size': 14, 'font-weight': 700, fill: ROJO }, et, 'Prueba: 450 (25%)');
+  }
+  const partido = st >= 1;
+  svg.querySelectorAll('circle').forEach(c => {
+    if (inmediato) c.style.transition = 'none';
+    c.style.transform = partido ? `translate(${c.dataset.dx}px, ${c.dataset.dy}px)` : 'none';
+    if (inmediato) requestAnimationFrame(() => { c.style.transition = 'transform 1.4s ease'; });
+  });
+  svg.querySelector('#etq-part').setAttribute('opacity', partido ? 1 : 0);
+  svg.querySelector('#tit-part').textContent = partido ? 'initial_split(prop = 0.75, strata = sentimiento)' : '1,800 reseñas etiquetadas, en orden aleatorio';
+};
+
+// ---------- Métricas: resaltar celdas ----------
+ANIM.metricas = function (s, st) {
+  const usa = { 1: ['vp', 'vn'], 2: ['vp', 'fp'], 3: ['vp', 'fn'], 4: ['vp', 'fp', 'fn'] }[st] || [];
+  s.querySelectorAll('#mini-matriz .celda').forEach(c => {
+    c.classList.toggle('res', usa.includes(c.dataset.c));
+    c.classList.toggle('apag', st > 0 && !usa.includes(c.dataset.c));
+  });
+};
+
+// ---------- Umbral interactivo ----------
+ANIM.umbral = function (s) {
+  const svg = s.querySelector('#svg-umbral');
+  if (svg.dataset.listo) return;
+  svg.dataset.listo = 1;
+  const W = 620, H = 250, x0 = 92, x1 = W - 20;
+  const px = p => x0 + p * (x1 - x0);
+  const r = prng(15);
+  el('text', { x: x0, y: 16, 'font-size': 13, fill: '#333' }, svg, 'Cada punto es una reseña de prueba, colocada en su P(positiva)');
+  el('text', { x: x0 - 4, y: 76, 'font-size': 13, fill: ROJO, 'text-anchor': 'end', 'font-weight': 700 }, svg, 'negativas');
+  el('text', { x: x0 - 4, y: 156, 'font-size': 13, fill: AZUL, 'text-anchor': 'end', 'font-weight': 700 }, svg, 'positivas');
+  el('text', { x: x0 - 4, y: 90, 'font-size': 11, fill: '#555', 'text-anchor': 'end' }, svg, '(reales)');
+  el('text', { x: x0 - 4, y: 170, 'font-size': 11, fill: '#555', 'text-anchor': 'end' }, svg, '(reales)');
+  const ejeY = 205;
+  el('line', { x1: x0, y1: ejeY, x2: x1, y2: ejeY, class: 'eje' }, svg);
+  [0, 0.25, 0.5, 0.75, 1].forEach(v => {
+    el('line', { x1: px(v), y1: ejeY, x2: px(v), y2: ejeY + 5, class: 'eje' }, svg);
+    el('text', { x: px(v), y: ejeY + 20, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, v.toFixed(2));
+  });
+  el('text', { x: (x0 + x1) / 2, y: ejeY + 40, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, 'P(positiva) según el modelo');
+  const puntos = [];
+  for (let i = 0; i < D.pred.p.length; i++) {
+    const y = (D.pred.y[i] ? 150 : 70) + (r() - 0.5) * 50;
+    puntos.push(el('circle', { cx: px(D.pred.p[i]), cy: y, r: 3.2, fill: D.pred.y[i] ? AZUL : ROJO, 'fill-opacity': .55 }, svg));
+  }
+  const linea = el('line', { x1: px(.5), y1: 30, x2: px(.5), y2: ejeY, stroke: NAVY, 'stroke-width': 3 }, svg);
+  const etqIzq = el('text', { x: px(.5) - 8, y: 40, 'font-size': 12, 'text-anchor': 'end', fill: NAVY, 'font-weight': 700 }, svg, 'se marcan negativas');
+  const etqDer = el('text', { x: px(.5) + 8, y: 40, 'font-size': 12, fill: NAVY, 'font-weight': 700 }, svg, 'se marcan positivas');
+  const slider = s.querySelector('#umbral');
+  function actualizar() {
+    const t = +slider.value;
+    s.querySelector('#umbral-val').textContent = t.toFixed(2);
+    linea.setAttribute('x1', px(t)); linea.setAttribute('x2', px(t));
+    etqIzq.setAttribute('x', px(t) - 8); etqDer.setAttribute('x', px(t) + 8);
+    const m = confusion(t);
+    s.querySelector('#k-vp').textContent = m.vp; s.querySelector('#k-fp').textContent = m.fp;
+    s.querySelector('#k-fn').textContent = m.fn; s.querySelector('#k-vn').textContent = m.vn;
+    const prec = m.vp + m.fp ? m.vp / (m.vp + m.fp) : 0, rec = m.vp / (m.vp + m.fn), acc = (m.vp + m.vn) / 450;
+    s.querySelector('#k-prec').textContent = prec.toFixed(3);
+    s.querySelector('#k-rec').textContent = rec.toFixed(3);
+    s.querySelector('#k-acc').textContent = acc.toFixed(3);
+    puntos.forEach((c, i) => c.setAttribute('fill-opacity', (D.pred.p[i] < t) === (D.pred.y[i] === 0) ? .55 : .95));
+  }
+  slider.addEventListener('input', actualizar);
+  actualizar();
+};
+
+// ---------- Curva ROC ----------
+let rocAnim = null;
+ANIM.roc = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-roc');
+  const W = 470, m = { l: 55, r: 15, t: 20, b: 50 };
+  const X = v => m.l + v * (W - m.l - m.r), Y = v => (W - m.b) - v * (W - m.b - m.t);
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    // puntos de la curva: umbrales sobre P(positiva), de 0 (nada negativo) a 1 (todo negativo)
+    const ps = Array.from(new Set(D.pred.p)).sort((a, b) => a - b);
+    const nNeg = D.pred.y.filter(v => v === 0).length, nPos = 450 - nNeg;
+    const curva = [{ t: 0, x: 0, y: 0 }];
+    ps.forEach(t => { const c = confusion(t + 1e-9); curva.push({ t: t, x: c.fp / nPos, y: c.vp / nNeg }); });
+    curva.push({ t: 1, x: 1, y: 1 });
+    let auc = 0; for (let i = 1; i < curva.length; i++) auc += (curva[i].x - curva[i - 1].x) * (curva[i].y + curva[i - 1].y) / 2;
+    svg.curva = curva; svg.auc = auc;
+    for (let v = 0; v <= 1.0001; v += .25) {
+      el('line', { x1: X(0), y1: Y(v), x2: X(1), y2: Y(v), class: 'grid' }, svg);
+      el('line', { x1: X(v), y1: Y(0), x2: X(v), y2: Y(1), class: 'grid' }, svg);
+      el('text', { x: X(0) - 8, y: Y(v) + 4, 'font-size': 12, 'text-anchor': 'end', fill: '#333' }, svg, v.toFixed(2));
+      el('text', { x: X(v), y: Y(0) + 18, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, v.toFixed(2));
+    }
+    el('line', { x1: X(0), y1: Y(0), x2: X(1), y2: Y(0), class: 'eje' }, svg);
+    el('line', { x1: X(0), y1: Y(0), x2: X(0), y2: Y(1), class: 'eje' }, svg);
+    el('text', { x: (X(0) + X(1)) / 2, y: W - 10, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, '1 - especificidad (falsas alarmas)');
+    el('text', { x: 14, y: (Y(0) + Y(1)) / 2, 'font-size': 13, 'text-anchor': 'middle', fill: '#333', transform: `rotate(-90 14 ${(Y(0) + Y(1)) / 2})` }, svg, 'sensibilidad');
+    svg.diag = el('line', { x1: X(0), y1: Y(0), x2: X(1), y2: Y(1), stroke: '#9A9A9A', 'stroke-width': 1.5, opacity: 0 }, svg);
+    svg.area = el('path', { fill: AZUL, 'fill-opacity': .12, opacity: 0 }, svg);
+    svg.path = el('path', { fill: 'none', stroke: NAVY, 'stroke-width': 2.5 }, svg);
+    svg.punto = el('circle', { r: 6, fill: ROJO, opacity: 0 }, svg);
+    svg.etqAuc = el('text', { x: X(.55), y: Y(.3), 'font-size': 18, 'font-weight': 700, fill: NAVY, opacity: 0 }, svg, 'AUC = ' + auc.toFixed(3));
+    svg.p05 = el('g', { opacity: 0 }, svg);
+    const c05 = confusion(.5);
+    el('circle', { cx: X(c05.fp / nPos), cy: Y(c05.vp / nNeg), r: 7, fill: 'none', stroke: ROJO, 'stroke-width': 2.5 }, svg.p05);
+    el('text', { x: X(c05.fp / nPos) + 12, y: Y(c05.vp / nNeg) + 14, 'font-size': 13, fill: ROJO, 'font-weight': 700 }, svg.p05, 'umbral 0.5');
+  }
+  const curva = svg.curva;
+  const d = k => curva.slice(0, k + 1).map((p, i) => (i ? 'L' : 'M') + X(p.x).toFixed(1) + ' ' + Y(p.y).toFixed(1)).join(' ');
+  const estado = s.querySelector('#roc-estado');
+  if (rocAnim) { cancelAnimationFrame(rocAnim); rocAnim = null; }
+  svg.diag.setAttribute('opacity', st >= 1 ? 1 : 0);
+  if (st < 2) { svg.path.setAttribute('d', ''); svg.punto.setAttribute('opacity', 0); svg.area.setAttribute('opacity', 0); svg.etqAuc.setAttribute('opacity', 0); svg.p05.setAttribute('opacity', 0); return; }
+  const final = () => {
+    svg.path.setAttribute('d', d(curva.length - 1)); svg.punto.setAttribute('opacity', 0);
+    estado.textContent = 'barrido completo: ' + curva.length + ' umbrales';
+    const fin = st >= 3;
+    svg.area.setAttribute('d', d(curva.length - 1) + ' L ' + X(1) + ' ' + Y(0) + ' Z');
+    svg.area.setAttribute('opacity', fin ? 1 : 0); svg.etqAuc.setAttribute('opacity', fin ? 1 : 0); svg.p05.setAttribute('opacity', fin ? 1 : 0);
+  };
+  if (inmediato || st >= 3) { final(); return; }
+  const t0 = performance.now(), dur = 3500;
+  svg.punto.setAttribute('opacity', 1);
+  const paso = now => {
+    const f = Math.min(1, (now - t0) / dur), k = Math.floor(f * (curva.length - 1));
+    svg.path.setAttribute('d', d(k));
+    svg.punto.setAttribute('cx', X(curva[k].x)); svg.punto.setAttribute('cy', Y(curva[k].y));
+    estado.textContent = 'umbral = ' + curva[k].t.toFixed(2) + ' · sensibilidad = ' + curva[k].y.toFixed(3) + ' · 1 - especificidad = ' + curva[k].x.toFixed(3);
+    if (f < 1) rocAnim = requestAnimationFrame(paso); else final();
+  };
+  rocAnim = requestAnimationFrame(paso);
+};
+
+// ---------- Validación cruzada: pliegues ----------
+ANIM.kfold = function (s, st) {
+  const cont = s.querySelector('#pliegues');
+  if (!cont.dataset.listo) {
+    cont.dataset.listo = 1;
+    D.pliegues.forEach((pl, i) => {
+      const fila = document.createElement('div'); fila.className = 'fila-pl';
+      fila.innerHTML = '<div class="id">Ensayo ' + (i + 1) + '</div><div class="bloques">' +
+        [0, 1, 2, 3, 4].map(j => '<div class="bl" data-j="' + j + '">pliegue ' + (j + 1) + '</div>').join('') +
+        '</div><div class="met"></div>';
+      cont.appendChild(fila);
+    });
+  }
+  cont.querySelectorAll('.fila-pl').forEach((fila, i) => {
+    const activo = st >= i + 1;
+    fila.classList.toggle('on', st === 0 ? i === 0 : activo);
+    fila.querySelectorAll('.bl').forEach(bl => {
+      const j = +bl.dataset.j;
+      bl.classList.toggle('val', activo && j === i);
+      bl.classList.toggle('ent', activo && j !== i);
+      bl.textContent = activo ? (j === i ? 'validación (' + D.pliegues[i].n_val + ')' : 'entrena') : 'pliegue ' + (j + 1);
+    });
+    fila.querySelector('.met').textContent = activo ? 'AUC ' + D.pliegues[i].roc_auc.toFixed(3) : '';
+  });
+};
+
+// ---------- Resultado de la afinación ----------
+ANIM.cvplot = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-cv');
+  const W = 620, H = 400, m = { l: 60, r: 20, t: 20, b: 55 };
+  const datos = D.cv.filter(r => r['.metric'] === 'roc_auc');
+  const X = v => m.l + (Math.log10(v) + 5) / 3 * (W - m.l - m.r), Y = v => (H - m.b) - (v - .88) / (.96 - .88) * (H - m.b - m.t);
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    for (let v = .88; v <= .9601; v += .02) {
+      el('line', { x1: X(1e-5), y1: Y(v), x2: X(1e-2), y2: Y(v), class: 'grid' }, svg);
+      el('text', { x: m.l - 8, y: Y(v) + 4, 'font-size': 12, 'text-anchor': 'end', fill: '#333' }, svg, v.toFixed(2));
+    }
+    [1e-5, 1e-4, 1e-3, 1e-2].forEach((v, i) => {
+      el('line', { x1: X(v), y1: H - m.b, x2: X(v), y2: H - m.b + 5, class: 'eje' }, svg);
+      el('text', { x: X(v), y: H - m.b + 20, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, ['0.00001', '0.0001', '0.001', '0.01'][i]);
+    });
+    el('line', { x1: X(1e-5), y1: H - m.b, x2: X(1e-2), y2: H - m.b, class: 'eje' }, svg);
+    el('text', { x: (X(1e-5) + X(1e-2)) / 2, y: H - 12, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, 'penalización (escala logarítmica)');
+    el('text', { x: 14, y: (Y(.88) + Y(.96)) / 2, 'font-size': 13, 'text-anchor': 'middle', fill: '#333', transform: `rotate(-90 14 ${(Y(.88) + Y(.96)) / 2})` }, svg, 'AUC medio en validación cruzada');
+    svg.linea = el('path', { fill: 'none', stroke: NAVY, 'stroke-width': 2 }, svg);
+    svg.puntos = datos.map(r => {
+      const g = el('g', { opacity: 0 }, svg); g.style.transition = 'opacity .35s';
+      el('line', { x1: X(r.penalty), y1: Y(r.mean - r.std_err), x2: X(r.penalty), y2: Y(r.mean + r.std_err), stroke: NAVY, 'stroke-width': 1.5 }, g);
+      el('circle', { cx: X(r.penalty), cy: Y(r.mean), r: 5, fill: '#fff', stroke: NAVY, 'stroke-width': 2 }, g);
+      return g;
+    });
+    svg.mejor = el('g', { opacity: 0 }, svg); svg.mejor.style.transition = 'opacity .5s';
+    el('line', { x1: X(1e-2), y1: m.t, x2: X(1e-2), y2: H - m.b, stroke: ROJO, 'stroke-width': 2 }, svg.mejor);
+    el('text', { x: X(1e-2) - 8, y: m.t + 14, 'font-size': 13, 'text-anchor': 'end', fill: ROJO, 'font-weight': 700 }, svg.mejor, 'mejor: 0.01, AUC 0.939');
+    el('text', { x: X(1e-2) - 8, y: m.t + 32, 'font-size': 12, 'text-anchor': 'end', fill: ROJO }, svg.mejor, 'borde de la rejilla');
+    svg.d = datos.map((r, i) => (i ? 'L' : 'M') + X(r.penalty).toFixed(1) + ' ' + Y(r.mean).toFixed(1)).join(' ');
+  }
+  svg.puntos.forEach((g, i) => g.setAttribute('opacity', st >= 1 ? 1 : 0));
+  svg.linea.setAttribute('d', st >= 1 ? svg.d : '');
+  if (st >= 1 && !inmediato) {
+    const L = svg.linea.getTotalLength();
+    svg.linea.style.transition = 'none'; svg.linea.style.strokeDasharray = L; svg.linea.style.strokeDashoffset = L;
+    requestAnimationFrame(() => { svg.linea.style.transition = 'stroke-dashoffset 1.6s ease'; svg.linea.style.strokeDashoffset = 0; });
+  } else { svg.linea.style.strokeDasharray = 'none'; svg.linea.style.strokeDashoffset = 0; }
+  svg.mejor.setAttribute('opacity', st >= 2 ? 1 : 0);
+};
+
+// ---------- Ruta de coeficientes ----------
+ANIM.rutacoef = function (s, st, inmediato) {
+  const svg = s.querySelector('#svg-ruta');
+  const W = 640, H = 420, m = { l: 110, r: 55, t: 20, b: 55 };
+  const R = D.ruta, lx = R.lambdas.map(Math.log10);
+  const xmin = Math.min(...lx), xmax = Math.max(...lx);
+  let ymin = 0, ymax = 0; R.coef.forEach(c => c.forEach(v => { ymin = Math.min(ymin, v); ymax = Math.max(ymax, v); }));
+  const X = v => m.l + (v - xmin) / (xmax - xmin) * (W - m.l - m.r), Y = v => (H - m.b) - (v - ymin) / (ymax - ymin) * (H - m.b - m.t);
+  if (!svg.dataset.listo) {
+    svg.dataset.listo = 1;
+    [-4, -3, -2, -1].forEach(v => {
+      el('line', { x1: X(v), y1: m.t, x2: X(v), y2: H - m.b, class: 'grid' }, svg);
+      el('text', { x: X(v), y: H - m.b + 20, 'font-size': 12, 'text-anchor': 'middle', fill: '#333' }, svg, ['0.0001', '0.001', '0.01', '0.1'][v + 4]);
+    });
+    el('line', { x1: X(xmin), y1: Y(0), x2: X(xmax), y2: Y(0), stroke: '#444', 'stroke-width': 1 }, svg);
+    el('line', { x1: X(xmin), y1: H - m.b, x2: X(xmax), y2: H - m.b, class: 'eje' }, svg);
+    el('text', { x: (X(xmin) + X(xmax)) / 2, y: H - 12, 'font-size': 13, 'text-anchor': 'middle', fill: '#333' }, svg, 'penalización (escala logarítmica)');
+    el('text', { x: X(xmax) + 6, y: Y(0) + 4, 'font-size': 12, fill: '#333' }, svg, 'coef = 0');
+    el('text', { x: X(xmax) + 6, y: Y(ymax) + 10, 'font-size': 12, fill: '#333' }, svg, ymax.toFixed(0));
+    el('text', { x: X(xmax) + 6, y: Y(ymin), 'font-size': 12, fill: '#333' }, svg, ymin.toFixed(0));
+    const idx = lx.map((v, i) => [Math.abs(v - Math.log10(R.mejor)), i]).sort((a, b) => a[0] - b[0])[0][1];
+    // etiquetas al extremo izquierdo, separadas para que no se encimen
+    const etiq = R.tokens.map((t, i) => ({ t, y: Y(R.coef[i][0]), signo: R.coef[i][idx] >= 0 })).sort((a, b) => a.y - b.y);
+    for (let i = 1; i < etiq.length; i++) if (etiq[i].y - etiq[i - 1].y < 15) etiq[i].y = etiq[i - 1].y + 15;
+    svg.lineas = R.tokens.map((t, i) => {
+      const col = R.coef[i][idx] >= 0 ? AZUL : ROJO;
+      const d = R.coef[i].map((v, k) => (k ? 'L' : 'M') + X(lx[k]).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ');
+      return el('path', { d, fill: 'none', stroke: col, 'stroke-width': 2, 'stroke-opacity': .85 }, svg);
+    });
+    etiq.forEach(e => el('text', { x: X(xmin) - 6, y: e.y + 4, 'font-size': 12, 'text-anchor': 'end', fill: e.signo ? AZUL : ROJO, 'font-weight': 700 }, svg, '"' + e.t.trim() + '"'));
+    svg.mejor = el('g', { opacity: 0 }, svg); svg.mejor.style.transition = 'opacity .5s';
+    el('line', { x1: X(Math.log10(R.mejor)), y1: m.t, x2: X(Math.log10(R.mejor)), y2: H - m.b, stroke: NAVY, 'stroke-width': 2 }, svg.mejor);
+    el('text', { x: X(Math.log10(R.mejor)) + 8, y: m.t + 14, 'font-size': 13, fill: NAVY, 'font-weight': 700 }, svg.mejor, 'elegida: 0.01');
+    el('text', { x: X(Math.log10(R.mejor)) + 8, y: m.t + 32, 'font-size': 12, fill: NAVY }, svg.mejor, D.resumen.n_coef + ' tokens siguen activos');
+  }
+  svg.lineas.forEach((p, i) => {
+    if (st >= 1 && !inmediato) {
+      const L = p.getTotalLength();
+      p.style.transition = 'none'; p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+      requestAnimationFrame(() => { p.style.transition = 'stroke-dashoffset 1.8s ease ' + (i * 0.08) + 's'; p.style.strokeDashoffset = 0; });
+    } else { p.style.transition = 'none'; p.style.strokeDasharray = 'none'; p.style.strokeDashoffset = 0; p.style.opacity = st >= 1 ? 1 : 0; }
+    if (st >= 1) p.style.opacity = 1;
+  });
+  svg.mejor.setAttribute('opacity', st >= 2 ? 1 : 0);
+};
+
+// ---------- Lista de errores ----------
+ANIM.errores = function (s) {
+  const cont = s.querySelector('#lista-errores');
+  if (cont.dataset.listo) return;
+  cont.dataset.listo = 1;
+  const sel = [0, 1, 4, 5, 6];
+  sel.forEach((k, i) => {
+    const e = D.errores[k];
+    const div = document.createElement('div'); div.className = 'err-item';
+    div.style.top = (165 + i * 100) + 'px'; div.style.height = '90px';
+    div.innerHTML = '<span class="p">P(positiva) = ' + e['.pred_positiva'].toFixed(2) + '</span><div class="cat">' + e.categoria + ' · etiqueta real: ' + e.sentimiento + '</div><div>' + e.texto + '</div>';
+    cont.appendChild(div);
+  });
+};
+
+// ---------- Arranque ----------
+setTimeout(() => document.getElementById('ayuda').classList.add('fuera'), 7000);
+(function () {
+  const h = parseInt(location.hash.replace('#', ''), 10);
+  if (h >= 1 && h <= slides.length) cur = h - 1;
+  pintar(true);
+})();
+</script>
+</body>
+</html>
