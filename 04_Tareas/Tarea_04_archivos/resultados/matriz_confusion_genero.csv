@@ -1,0 +1,17 @@
+genero,pred,n
+Latin Pop,Latin Pop,44
+Latin Pop,Latin Rhythm,39
+Latin Pop,Regional Mexican,43
+Latin Pop,Tropical,4
+Latin Rhythm,Latin Pop,22
+Latin Rhythm,Latin Rhythm,130
+Latin Rhythm,Regional Mexican,13
+Latin Rhythm,Tropical,2
+Regional Mexican,Latin Pop,25
+Regional Mexican,Latin Rhythm,17
+Regional Mexican,Regional Mexican,92
+Regional Mexican,Tropical,7
+Tropical,Latin Pop,15
+Tropical,Latin Rhythm,24
+Tropical,Regional Mexican,8
+Tropical,Tropical,3

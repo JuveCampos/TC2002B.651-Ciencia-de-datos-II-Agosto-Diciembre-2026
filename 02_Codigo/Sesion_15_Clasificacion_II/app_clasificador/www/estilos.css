@@ -1,0 +1,292 @@
+/* ============================================================
+   Clasificador de reseñas · estilos propios
+   Paleta tomada de una libreta de comentarios: papel, tinta,
+   verde oliva para lo positivo y rojo ladrillo para lo negativo.
+   ============================================================ */
+
+:root {
+  --papel: #f3eee3;
+  --papel-oscuro: #e8e1d1;
+  --tinta: #1f1b16;
+  --tinta-suave: #5f574c;
+  --linea: #c9bfaa;
+  --oliva: #3f6b3a;
+  --oliva-claro: #dde8d4;
+  --ladrillo: #a7362b;
+  --ladrillo-claro: #f0d9d3;
+  --ocre: #b8862b;
+}
+
+html, body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.container-fluid {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px 48px;
+}
+
+/* Cabecera ------------------------------------------------- */
+.cabecera {
+  padding: 48px 0 28px;
+  border-bottom: 3px double var(--tinta);
+  margin-bottom: 36px;
+}
+
+.sobretitulo {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin: 0 0 10px;
+}
+
+.cabecera h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1.05;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+}
+
+.bajada {
+  max-width: 720px;
+  font-size: 20px;
+  color: var(--tinta-suave);
+  margin: 0;
+}
+
+/* Tablero de dos columnas --------------------------------- */
+.tablero {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 48px;
+}
+
+@media (max-width: 860px) {
+  .tablero { grid-template-columns: 1fr; gap: 32px; }
+  .cabecera h1 { font-size: 40px; }
+}
+
+.etiqueta {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--linea);
+}
+
+.etiqueta-ejemplos { margin-top: 32px; }
+
+/* Entrada de texto ----------------------------------------- */
+.form-group { margin-bottom: 16px; }
+
+textarea.form-control,
+textarea.form-control:focus {
+  background: #fffdf8;
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+  border-radius: 0;
+  box-shadow: none;
+  font-family: "Newsreader", Georgia, serif;
+  font-size: 19px;
+  line-height: 1.5;
+  padding: 14px 16px;
+  resize: vertical;
+}
+
+textarea.form-control::placeholder { color: #9a9183; font-style: italic; }
+
+.fila-botones { display: flex; gap: 12px; align-items: center; }
+
+.btn.boton-principal,
+.btn.boton-secundario {
+  border-radius: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 12px 22px;
+  box-shadow: none;
+}
+
+.btn.boton-principal {
+  background: var(--tinta);
+  color: var(--papel);
+  border: 1px solid var(--tinta);
+}
+
+.btn.boton-principal:hover,
+.btn.boton-principal:focus {
+  background: var(--ocre);
+  border-color: var(--ocre);
+  color: var(--tinta);
+}
+
+.btn.boton-secundario {
+  background: transparent;
+  color: var(--tinta);
+  border: 1px solid var(--tinta);
+}
+
+.btn.boton-secundario:hover { background: var(--papel-oscuro); }
+
+/* Ejemplos ------------------------------------------------- */
+.ejemplos { display: flex; flex-direction: column; }
+
+a.ejemplo, a.ejemplo:hover, a.ejemplo:focus {
+  display: block;
+  color: var(--tinta);
+  text-decoration: none;
+  font-style: italic;
+  font-size: 17px;
+  padding: 12px 0 12px 18px;
+  border-left: 3px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+}
+
+a.ejemplo:hover { border-left-color: var(--ocre); background: #fffdf8; }
+
+/* Veredicto ------------------------------------------------ */
+.veredicto {
+  border: 1px solid var(--tinta);
+  padding: 28px 28px 24px;
+  margin-bottom: 32px;
+  background: #fffdf8;
+}
+
+.veredicto-vacio {
+  border-style: dashed;
+  border-color: var(--linea);
+  color: var(--tinta-suave);
+  font-style: italic;
+  background: transparent;
+}
+
+.veredicto-vacio p { margin: 0; }
+
+.veredicto .clase {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin: 0 0 10px;
+}
+
+.veredicto.positiva .clase { color: var(--oliva); }
+.veredicto.negativa .clase { color: var(--ladrillo); }
+
+.veredicto .probabilidad { margin: 0 0 18px; color: var(--tinta-suave); }
+
+.barra {
+  position: relative;
+  display: flex;
+  height: 18px;
+  border: 1px solid var(--tinta);
+  background: var(--papel-oscuro);
+}
+
+.barra-negativa { background: var(--ladrillo); height: 100%; }
+.barra-positiva { background: var(--oliva); height: 100%; }
+
+.barra-umbral {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  bottom: -6px;
+  width: 0;
+  border-left: 2px dashed var(--tinta);
+}
+
+.barra-leyenda {
+  display: flex;
+  justify-content: space-between;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  color: var(--tinta-suave);
+  margin-top: 10px;
+}
+
+/* Tabla de aportes ----------------------------------------- */
+.tabla-aportes {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.tabla-aportes th {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  text-align: left;
+  padding: 6px 8px 8px 0;
+  border-bottom: 1px solid var(--tinta);
+}
+
+.tabla-aportes td {
+  padding: 9px 8px 9px 0;
+  border-bottom: 1px solid var(--linea);
+  vertical-align: middle;
+}
+
+.tabla-aportes td.palabra { width: 38%; font-size: 19px; }
+
+.tabla-aportes .raiz {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  color: var(--tinta-suave);
+}
+
+.tabla-aportes td.aporte {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-barra { height: 14px; min-width: 2px; }
+.mini-barra.positiva { background: var(--oliva); }
+.mini-barra.negativa { background: var(--ladrillo); }
+
+.signo {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.signo.positiva { color: var(--oliva); }
+.signo.negativa { color: var(--ladrillo); }
+
+td.vacio { font-style: italic; color: var(--tinta-suave); }
+
+.nota {
+  font-size: 15px;
+  color: var(--tinta-suave);
+  margin: 0 0 8px;
+}
+
+/* Pie ------------------------------------------------------ */
+.pie {
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--tinta);
+  font-size: 15px;
+  color: var(--tinta-suave);
+}
+
+.pie p { margin: 0 0 6px; }
